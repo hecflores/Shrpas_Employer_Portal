@@ -21,4 +21,12 @@ public class GreetingController {
         return "greeting";
     }
 
+    @RequestMapping(value="/error" ,
+            method = RequestMethod.GET,
+            produces={MediaType.TEXT_HTML_VALUE})
+    public String error(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "greeting";
+    }
+
 }
