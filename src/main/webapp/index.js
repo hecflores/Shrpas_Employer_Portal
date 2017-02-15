@@ -37341,6 +37341,11 @@
 
 	                /*******************************************************************/
 	                _jquery2['default'].get($this.buildLink(link), function (data) {
+
+	                    if ($this.state.creatingNewQuestion) {
+	                        return;
+	                    }
+
 	                    data._embedded.questions.content = data._embedded.questions.map(function (question) {
 	                        question.content = JSON.parse(question.content);
 	                        if (question.content == null) {
@@ -37372,14 +37377,19 @@
 	        key: 'componentDidMount',
 	        value: function () {
 	            function componentDidMount() {
-	                this.updateTable();
 	                var $this = this;
-	                setInterval(function () {
-	                    if ($this.state.creatingNewQuestion) {
-	                        return;
+	                var _startUpdate;
+	                _startUpdate = function () {
+	                    function startUpdate() {
+	                        setTimeout(function () {
+	                            $this.updateTable(_startUpdate);
+	                        }, 1000);
 	                    }
-	                    $this.updateTable();
-	                }, 1000);
+
+	                    return startUpdate;
+	                }();
+
+	                _startUpdate();
 	            }
 
 	            return componentDidMount;
