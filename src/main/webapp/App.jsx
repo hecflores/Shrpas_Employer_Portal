@@ -1,5 +1,5 @@
 import React from 'react';
-
+import $ from 'jquery';
 
 class User extends React.Component{
     render() {
@@ -13,7 +13,7 @@ class User extends React.Component{
 }
 class UserList extends React.Component{
     addUser(){
-        $.get("/users/add",{name:$("#exampleInputName1").val(),email:$("#exampleInputEmail1").val()},function(){
+        $.get("/api/users/add",{name:$("#exampleInputName1").val(),email:$("#exampleInputEmail1").val()},function(){
 
         });
     }
@@ -70,7 +70,7 @@ class App extends React.Component {
     }
     updateUsers(){
         const $this=this;
-        $.get("/users/all",function(data){
+        $.get("/api/users/all",function(data){
             if(typeof data == "string"){
                 data=JSON.parse(data);
             }

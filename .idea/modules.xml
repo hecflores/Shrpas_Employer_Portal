@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal.iml" filepath="$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_main.iml" group="SHRPAS_Employer_Portal" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_test.iml" group="SHRPAS_Employer_Portal" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_Project.iml" filepath="$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_Project_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_Project_main.iml" group="SHRPAS_Employer_Portal_Project" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_Project_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SHRPAS_Employer_Portal_Project_test.iml" group="SHRPAS_Employer_Portal_Project" />
     </modules>
   </component>
 </project>

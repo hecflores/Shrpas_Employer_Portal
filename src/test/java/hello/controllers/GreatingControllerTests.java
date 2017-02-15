@@ -23,7 +23,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author Hector Flores
  */
 
-public class GreatingControllerTests{
+public class GreatingControllerTests {
 
     @InjectMocks
     private GreetingController greetingController;
