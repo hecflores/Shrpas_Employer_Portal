@@ -151,6 +151,11 @@ class Questions extends React.Component{
 
         /*******************************************************************/
         $.get($this.buildLink(link),function(data){
+
+            if($this.state.creatingNewQuestion){
+                return;
+            }
+
             data._embedded.questions.content=data._embedded.questions.map(function(question){
                 question.content=JSON.parse(question.content);
                 if(question.content==null){
