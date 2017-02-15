@@ -177,15 +177,18 @@ class Questions extends React.Component{
         });
     }
     componentDidMount() {
-        this.updateTable();
         var $this=this;
-        setInterval(function(){
-            if($this.state.creatingNewQuestion)
-            {
-                return;
-            }
-            $this.updateTable();
-        },1000)
+        var startUpdate;
+        startUpdate=function(){
+            setTimeout(function() {
+                $this.updateTable(startUpdate);
+            },1000);
+        }
+
+        startUpdate();
+
+
+
     }
     closeCreateQuestions(){
         this.setState({creatingNewQuestion:false});
