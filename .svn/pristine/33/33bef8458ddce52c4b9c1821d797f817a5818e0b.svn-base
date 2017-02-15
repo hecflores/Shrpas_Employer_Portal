@@ -6,11 +6,6 @@ import Modal from 'react-modal';
 
 import QuestionTypes from './QuestionTypes.jsx';
 
-const MultipleChoiceDisplay=QuestionTypes.MultipleChoiceQuestion.Display;
-const MultipleChoiceCreator=QuestionTypes.MultipleChoiceQuestion.Creator;
-const CodeQuestionDisplay=QuestionTypes.CodeQuestion.Display;
-const CodeQuestionCreator=QuestionTypes.CodeQuestion.Creator;
-
 const customStyles = {
     content : {
         top                   : '50%',
@@ -59,23 +54,6 @@ class Question extends React.Component{
             answered:props.answered
         };
         this.delete=this.delete.bind(this);
-
-        this.questionTypes=
-            {
-                'code': (
-                    <CodeQuestionDisplay question={this.props.question}>
-
-                    </CodeQuestionDisplay>
-                ),
-                'multiple-choice': (
-                    <MultipleChoiceDisplay question={this.props.question}>
-
-                    </MultipleChoiceDisplay>
-                )
-            };
-
-
-
     }
     delete(){
         var $this=this;
@@ -87,18 +65,20 @@ class Question extends React.Component{
         });
     }
     render() {
-
-        /*******************************************************************/
-        var questionType=(<div className="col-lg-12">Unkown Type <b>{this.props.question.type}</b></div>);
-        if(typeof this.questionTypes[this.props.question.type]!='undefined')
-        {
-            questionType=this.questionTypes[this.props.question.type];
-        }
-
-        /*******************************************************************/
         return (
             <div className='col-lg-12' style={{borderRadius:'10px',padding:'10px',margin:'5px',boxShadow:'0px 1px 3px black'}} >
-                {questionType}
+                <div className="col-lg-4 text-center">
+                    {this.props.question.ID}
+                </div>
+                <div className="col-lg-4 text-center">
+                    {this.props.question.type}
+                </div>
+                <div className="col-lg-2 text-center">
+                    {this.props.question.content}
+                </div>
+                <div className="col-lg-2 text-center">
+                    <span onClick={this.delete} className="btn btn-danger">Delete</span>
+                </div>
             </div>
         )
     }
@@ -151,16 +131,6 @@ class Questions extends React.Component{
 
         /*******************************************************************/
         $.get($this.buildLink(link),function(data){
-            data._embedded.questions.content=data._embedded.questions.map(function(question){
-                question.content=JSON.parse(question.content);
-                if(question.content==null){
-                    question.content={question:"Broke",choices:[]};
-                }
-                if(typeof question.content["choices"] == 'undefined'){
-                    question.content["choices"]=[];
-                }
-                return question;
-            });
             $this.setState(
                 {
                     questions:data._embedded.questions,
@@ -262,14 +232,15 @@ class Questions extends React.Component{
                     </ul>
 
                     <div className="tab-content">
-                        <MultipleChoiceCreator id="multipleChoice" isTab="true" isActive="true"/>
-                        {/*<QuestionTypes.TextQuestion id="question" isTab="true"/>*/}
-                        {/*<QuestionTypes.VideoQuestion id="video" isTab="true"/>*/}
-                        <CodeQuestionCreator id="code" isTab="true"/>
+                        <QuestionTypes.MultipleChoiceQuestion id="multipleChoice" isTab="true" isActive="true"/>
+                        <QuestionTypes.TextQuestion id="question" isTab="true"/>
+                        <QuestionTypes.VideoQuestion id="video" isTab="true"/>
+                        <QuestionTypes.CodeQuestion id="code" isTab="true"/>
                     </div>
 
                     <div>
                         <span className="pull-right">
+                            <button type="button" onClick={this.closeCreateQuestions} className="btn btn-primary">Add</button>
                             <button type="button" onClick={this.closeCreateQuestions} className="btn btn-danger">Close</button>
                         </span>
                     </div>

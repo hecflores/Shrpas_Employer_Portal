@@ -6,9 +6,9 @@ import Modal from 'react-modal';
 
 import GenericQuestion from './GenericQuestion.jsx';
 /***************************************************************************/
-/* Question(Code Question) - Create                                        */
+/* Question(Code Question)                                               */
 /***************************************************************************/
-class CodeQuestionCreator extends React.Component {
+class CodeQuestion extends React.Component {
 
     constructor(props) {
         super(props);
@@ -31,27 +31,4 @@ class CodeQuestionCreator extends React.Component {
             </GenericQuestion>);
     }
 }
-
-/***************************************************************************/
-/* Question(Code Question) - Display                                       */
-/***************************************************************************/
-class CodeQuestionDisplay extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-    render() {
-
-        return (
-            <div className="col-lg-12">
-                <pre>{this.props.question.content.code}</pre>
-                <p>{this.props.question.number}. {this.props.question.content.question}</p>
-            </div>)
-
-    }
-}
-export default
-{
-        Creator:CodeQuestionCreator,
-        Display:CodeQuestionDisplay
-};
+export default CodeQuestion;
