@@ -37378,18 +37378,18 @@
 	        value: function () {
 	            function componentDidMount() {
 	                var $this = this;
-	                var _startUpdate;
-	                _startUpdate = function () {
+	                var startUpdate;
+	                startUpdate = function () {
 	                    function startUpdate() {
 	                        setTimeout(function () {
-	                            $this.updateTable(_startUpdate);
+	                            $this.updateTable();
 	                        }, 1000);
 	                    }
 
 	                    return startUpdate;
 	                }();
 
-	                _startUpdate();
+	                startUpdate();
 	            }
 
 	            return componentDidMount;
