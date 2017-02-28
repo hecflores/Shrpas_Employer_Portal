@@ -1,9 +1,5 @@
 package hello.models;
 
-/**
- * Created by Hector on 1/28/2017.
- */
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

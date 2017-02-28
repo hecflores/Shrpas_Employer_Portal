@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdministratorController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Project</a> &gt; <a href="index.source.html" class="el_package">hello.controllers</a> &gt; <span class="el_source">AdministratorController.java</span></div><h1>AdministratorController.java</h1><pre class="source lang-java linenums">package hello.controllers;
+
+import hello.helpers.HibernateUtil;
+import hello.models.LoginRequest;
+import hello.models.LoginResults;
+import hello.models.User;
+import hello.models.UserSession;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import sun.rmi.runtime.Log;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.net.CookieManager;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by Hector on 1/28/2017.
+ */
+@Controller
+@RequestMapping(&quot;api&quot;)
+<span class="fc" id="L27">public class AdministratorController {</span>
+
+
+    @RequestMapping(value = &quot;login&quot;, method = RequestMethod.POST, consumes = &quot;application/json&quot;)
+    public @ResponseBody LoginResults login(@CookieValue(name = &quot;SessionID&quot;,defaultValue = &quot;NONE&quot;) String SessionID, @Valid @RequestBody LoginRequest user, BindingResult bindingResult, HttpServletResponse response) {
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        if(bindingResult.hasErrors()){</span>
+<span class="nc" id="L33">            return LoginResults.Failed(new Exception(&quot;Binding Had Errors&quot;));</span>
+        }
+
+        /*******************************************************************/
+<span class="nc bnc" id="L37" title="All 6 branches missed.">        if(user.getUserID()==null || user.getPassword()==null || user.getRoleID()==null){</span>
+<span class="nc" id="L38">            return LoginResults.Failed(new Exception(&quot;Some Perameters where not found(UserID(&quot;+</span>
+<span class="nc" id="L39">                    user.getUserID()+&quot;), Password(&quot;+user.getPassword()+&quot;), Role(&quot;+user.getRoleID()+&quot;)&quot;));</span>
+        }
+
+        /*******************************************************************/
+<span class="nc" id="L43">        Session sessionOne = HibernateUtil.getSessionFactory().openSession();</span>
+
+        /*******************************************************************/
+<span class="nc" id="L46">        List&lt;User&gt; users=sessionOne.createQuery(&quot;from hello.models.User where UserID = :userID and Password = :Password and Role_RoleId = :Role&quot;)</span>
+<span class="nc" id="L47">                .setParameter(&quot;userID&quot;,user.getUserID())</span>
+<span class="nc" id="L48">                .setParameter(&quot;Password&quot;,user.getPassword())</span>
+<span class="nc" id="L49">                .setParameter(&quot;Role&quot;,user.getRoleID())</span>
+<span class="nc" id="L50">                .list();</span>
+
+<span class="nc bnc" id="L52" title="All 2 branches missed.">        if(users.size()!=1){</span>
+<span class="nc" id="L53">            return LoginResults.Failed(new Exception(&quot;Unable to find the User name and password given&quot;));</span>
+        }
+
+        /*******************************************************************/
+<span class="nc" id="L57">        UserSession userSession=new UserSession();</span>
+<span class="nc" id="L58">        userSession.setLinkedUser(users.get(0));</span>
+<span class="nc" id="L59">        sessionOne.save(userSession);</span>
+<span class="nc" id="L60">        sessionOne.flush();</span>
+<span class="nc" id="L61">        sessionOne.close();</span>
+
+        /*******************************************************************/
+<span class="nc" id="L64">        Cookie sessionCookie=new Cookie(&quot;SessionID&quot;,userSession.getSessionID());</span>
+<span class="nc" id="L65">        sessionCookie.setMaxAge(1*60*60*12); //12 Hours</span>
+<span class="nc" id="L66">        response.addCookie(sessionCookie);</span>
+
+        /*******************************************************************/
+<span class="nc" id="L69">        return LoginResults.Passed(userSession);</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

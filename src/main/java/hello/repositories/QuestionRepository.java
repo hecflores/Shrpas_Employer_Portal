@@ -3,7 +3,6 @@ package hello.repositories;
 /**
  * Created by Hector on 1/28/2017.
  */
-import hello.User;
 import hello.models.Question;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
