@@ -2,8 +2,13 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="hecflore_SHRPAS_Employer_Portal@hectorsoftware.com" uuid="83d1cdb8-398c-40ae-a06e-a97f6f4acb23">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <database-info product="MySQL" version="5.5.51-38.2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>memory</secret-storage>
+      <user-name>hecflore_me</user-name>
     </data-source>
     <data-source name="hibernate.cfg.xml/Hibernate" uuid="38700291-ea53-459b-8db9-52f63611ecb9">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
