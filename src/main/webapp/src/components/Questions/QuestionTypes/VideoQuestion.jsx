@@ -34,14 +34,14 @@ class VideoQuestionCreator extends GenericQuestion {
         var caption = this.state.showVideo ? "Hide Video" : "Add Video";
         return (
             <GenericQuestion onCreatedNewQuestion={()=>this.props.onCreatedNewQuestion()} props={this.props} active={this} >
-                <h3>Video</h3>
+             
                 <form>
                     <div className="form-group">
-                        <label htmlFor="questionEntered2">Question</label>
+                       
                         <input value={this.state.question} onChange={(event)=>this.saveInput('question',event.target.value)} type="text" className="form-control" id="questionEntered2"/>
 
                         <div className="col-lg-12" style={{margin:"5px"}}>
-                            <span onClick={this.addVideo} className="btn btn-success">{caption}</span>
+                            <span onClick={this.addVideo} className="btn btn-default">{caption}</span>
                             {this.state.showVideo ? <Video /> : null}
                         </div>
                     </div>
@@ -49,25 +49,6 @@ class VideoQuestionCreator extends GenericQuestion {
             </GenericQuestion>);
     }
 
-
-    // successCallback(stream){
-    //     const options = {
-    //         mimeType: 'video/webm',
-    //         audioBitsPerSecond: 128000,
-    //         videoBitsPerSecond: 128000,
-    //         bitsPerSecond: 128000
-    //     };
-    //     recordRTC = RecordRTC(stream, options);
-    //     recordRTC.startRecording();
-    // }
-    //
-    // errorCallback(error){
-    //     console.log(error);
-    // }
-    //
-    // stopRecording() {
-    //     recordRTC.stopRecording
-    // }
 }
 VideoQuestionCreator.defaultProps={
     onCreatedNewQuestion:function () {}
@@ -79,14 +60,7 @@ class VideoQuestionDisplay extends React.Component {
 
     constructor(props) {
         super(props);
-        this.buildContent=this.buildContent.bind(this);
         this.active=this;
-    }
-    buildContent(){
-        return {
-            type:'video',
-            content:JSON.stringify({question:this.getInput('question')})
-        };
     }
 
     render() {
@@ -94,7 +68,8 @@ class VideoQuestionDisplay extends React.Component {
         return (
 
             <div className="col-lg-12">
-                <h3>{this.props.question.ID}. {this.props.question.content.question}</h3>
+                <h3>Video Question</h3>
+                <h2>{this.props.question.ID}. {this.props.question.content.question}</h2>
             </div>);
     }
 

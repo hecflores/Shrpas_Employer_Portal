@@ -1,16 +1,10 @@
 package hello.models;
 
-/**
- * Created by Hector on 1/28/2017.
- */
-
 import javax.persistence.*;
 
-
-@Entity(name = "User") // This tells Hibernate to make a table out of this class
-@Table(name="User")
-public class User
-{
+@Entity(name = "User")
+@Table(name = "User")
+public class User {
 
 
     /***********************************************************************/
@@ -24,11 +18,14 @@ public class User
     @ManyToOne
     private Role Role;
 
+    public User() {
+    }
 
     /***********************************************************************/
     public String getUserID() {
         return UserID;
     }
+
     public void setUserID(String userID) {
         UserID = userID;
     }
@@ -37,6 +34,7 @@ public class User
     public String getTitle() {
         return Title;
     }
+
     public void setTitle(String title) {
         Title = title;
     }
@@ -45,6 +43,7 @@ public class User
     public String getOrganization() {
         return Organization;
     }
+
     public void setOrganization(String organization) {
         Organization = organization;
     }
@@ -53,6 +52,7 @@ public class User
     public String getPassword() {
         return Password;
     }
+
     public void setPassword(String password) {
         Password = password;
     }
@@ -61,6 +61,7 @@ public class User
     public String getEmail() {
         return Email;
     }
+
     public void setEmail(String email) {
         Email = email;
     }
@@ -69,6 +70,7 @@ public class User
     public hello.models.Role getRole() {
         return Role;
     }
+
     public void setRole(hello.models.Role role) {
         Role = role;
     }

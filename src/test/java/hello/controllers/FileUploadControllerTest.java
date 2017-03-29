@@ -7,6 +7,7 @@ import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -15,6 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.nio.file.Paths;
 import java.util.stream.Stream;
@@ -36,14 +38,13 @@ public class FileUploadControllerTest {
     @MockBean
     private StorageService storageService;
 
+    @InjectMocks
+    private FileUploadController fileUploadController;
+
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-    }
-
-    @Test
-    public void canary(){
-        org.junit.Assert.assertTrue(true);
+        mvc = MockMvcBuilders.standaloneSetup(fileUploadController).build();
     }
 
     @Test

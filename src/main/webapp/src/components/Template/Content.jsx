@@ -1,14 +1,13 @@
-import React from 'react';
-import $ from 'jquery';
-import { Router, Route, Link,browserHistory } from 'react-router'
+import React from "react";
+import {Router, Route, browserHistory} from "react-router";
+import Home from "../Home/Home.jsx";
+import Questions from "../Questions/Questions.jsx";
 
-import Home from '../Home/Home.jsx';
-import Questions from '../Questions/Questions.jsx';
-import About from '../About/About.jsx';
-import Group from '../Group/Group.jsx';
-import Video from '../Prototype/Video.jsx';
-import Audio from '../Prototype/Audio.jsx';
-import Assessment from '../Assessment/Assessments.jsx';
+import Video from "../Prototype/Video.jsx";
+import Audio from "../Prototype/Audio.jsx";
+import Assessment from "../Assessment/Assessments.jsx";
+import AssessmentNew from "../Assessment/AssessmentNew.jsx";
+import AssessmentTimer from "../Prototype/AssessmentTimer.jsx";
 class App extends React.Component {
 
     constructor(props) {
@@ -19,15 +18,16 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="col-lg-12">
+            <div className="">
                 <Router history={browserHistory}>
                     <Route path="/" component={Home}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/questions" component={Questions}/>
-                    <Route path="/group" component={Group}/>
-                    <Route path="/prototype" component={Video}/>
-                    <Route path="/audioPrototype" component={Audio}/>
-                    <Route path="/assessment" component={Assessment}/>
+                    <Route path="/app/questions" component={Questions}/>
+                    <Route path="/app/prototype" component={Video}/>
+                    <Route path="/app/audioPrototype" component={Audio}/>
+                    <Route path="/app/assessmentTimer" component={AssessmentTimer}/>
+                    <Route path="/app/assessments/create" component={AssessmentNew} />
+                    <Route path="/app/assessments/:assessmentID" component={Assessment}/>
+
                 </Router>
             </div>
 

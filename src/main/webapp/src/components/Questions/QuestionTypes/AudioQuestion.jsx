@@ -9,7 +9,7 @@ import GenericQuestion from './GenericQuestion.jsx';
 /***************************************************************************/
 /* Question(Audio Question)                                               */
 /***************************************************************************/
-class AudioQuestionCreator extends React.Component {
+class AudioQuestionCreator extends GenericQuestion {
 
     constructor(props)
     {
@@ -30,10 +30,10 @@ class AudioQuestionCreator extends React.Component {
 
         return (
             <GenericQuestion active={this} onCreatedNewQuestion={()=>this.props.onCreatedNewQuestion()} props={this.props}>
-                <h3>Audio</h3>
+              
                 <form>
                     <div className="form-group">
-                        <label htmlFor="questionEntered2">Question</label>
+                    
                         <input value={this.state.question} onChange={(event)=>this.saveInput('question',event.target.value)} type="text" className="form-control" id="questionEntered2"/>
                         {/*<button onClick={this.stopRecording} value="Stop Recording"/>*/}
                     </div>
@@ -57,8 +57,8 @@ class AudioQuestionDisplay extends React.Component {
 
         return (
           <div className="col-lg-12">
-              <h3>{this.props.question.ID}. {this.props.question.content.question}</h3>
-              <Audio />
+              <h3>Audio Question</h3>
+              <h2>{this.props.question.ID}. {this.props.question.content.question}</h2>
           </div>);
     }
 }

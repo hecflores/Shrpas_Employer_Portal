@@ -26,11 +26,11 @@ class CodeQuestionCreator extends GenericQuestion {
 
         return (
             <GenericQuestion active={this} onCreatedNewQuestion={()=>this.props.onCreatedNewQuestion()} props={this.props}>
-                <h3>Question</h3>
+           
                 <form>
                     <div className="form-group">
-                        <label htmlFor="questionContent">Question</label>
-                        <input value={this.state.question} onChange={(event)=>this.saveInput('question',event.target.value)} type="text" className="form-control" id="questionEntered2"/>
+                        
+                        <input value={this.state.question}  onChange={(event)=>this.saveInput('question',event.target.value)} type="text" className="form-control" id="questionEntered2"/>
                     </div>
                 </form>
             </GenericQuestion>);

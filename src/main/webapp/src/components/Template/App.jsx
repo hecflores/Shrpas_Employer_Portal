@@ -19,7 +19,6 @@ class App extends React.Component {
     render() {
         return (
             <div className="">
-                <Heading title={this.state.headingTitle}/>
                 <Content OnRequestApp={()=>{return this;}}/>
                 <Footer/>
             </div>

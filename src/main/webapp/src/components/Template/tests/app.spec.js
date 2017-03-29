@@ -11,7 +11,7 @@ var App = require('../App.jsx').default; //my root-test lives in components/__te
 
 describe('Is the App There', function () {
     it('renders without problems', function () {
-        TestUtils.route='/';
+        TestUtils.route='/app/';
         var root = TestUtils.renderIntoDocument(<App />);
 
         expect(root).toExist();

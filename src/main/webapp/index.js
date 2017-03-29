@@ -45,7 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(275);
+	module.exports = __webpack_require__(1);
 
 
 /***/ },
@@ -21542,7 +21542,7 @@
 
 	var _Content2 = _interopRequireDefault(_Content);
 
-	var _Footer = __webpack_require__(274);
+	var _Footer = __webpack_require__(286);
 
 	var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -21585,7 +21585,6 @@
 	                return _react2['default'].createElement(
 	                    'div',
 	                    { className: '' },
-	                    _react2['default'].createElement(_Heading2['default'], { title: this.state.headingTitle }),
 	                    _react2['default'].createElement(_Content2['default'], { OnRequestApp: function () {
 	                            function OnRequestApp() {
 	                                return _this2;
@@ -31878,7 +31877,7 @@
 	            function render() {
 	                return _react2['default'].createElement(
 	                    'nav',
-	                    { className: 'navbar navbar-default' },
+	                    { style: { margin: "0px" }, className: 'navbar navbar-default' },
 	                    _react2['default'].createElement(
 	                        'div',
 	                        { className: 'container-fluid' },
@@ -31908,7 +31907,7 @@
 /* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -31920,10 +31919,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _jquery = __webpack_require__(180);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
 	var _reactRouter = __webpack_require__(183);
 
 	var _Home = __webpack_require__(238);
@@ -31934,27 +31929,27 @@
 
 	var _Questions2 = _interopRequireDefault(_Questions);
 
-	var _About = __webpack_require__(269);
-
-	var _About2 = _interopRequireDefault(_About);
-
-	var _Group = __webpack_require__(270);
-
-	var _Group2 = _interopRequireDefault(_Group);
-
-	var _Video = __webpack_require__(262);
+	var _Video = __webpack_require__(264);
 
 	var _Video2 = _interopRequireDefault(_Video);
 
-	var _Audio = __webpack_require__(267);
+	var _Audio = __webpack_require__(269);
 
 	var _Audio2 = _interopRequireDefault(_Audio);
 
-	var _Assessments = __webpack_require__(273);
+	var _Assessments = __webpack_require__(272);
 
 	var _Assessments2 = _interopRequireDefault(_Assessments);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _AssessmentNew = __webpack_require__(285);
+
+	var _AssessmentNew2 = _interopRequireDefault(_AssessmentNew);
+
+	var _AssessmentTimer = __webpack_require__(284);
+
+	var _AssessmentTimer2 = _interopRequireDefault(_AssessmentTimer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31972,22 +31967,22 @@
 	    }
 
 	    _createClass(App, [{
-	        key: 'render',
+	        key: "render",
 	        value: function () {
 	            function render() {
-	                return _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-lg-12' },
-	                    _react2['default'].createElement(
+	                return _react2["default"].createElement(
+	                    "div",
+	                    { className: "" },
+	                    _react2["default"].createElement(
 	                        _reactRouter.Router,
 	                        { history: _reactRouter.browserHistory },
-	                        _react2['default'].createElement(_reactRouter.Route, { path: '/', component: _Home2['default'] }),
-	                        _react2['default'].createElement(_reactRouter.Route, { path: '/about', component: _About2['default'] }),
-	                        _react2['default'].createElement(_reactRouter.Route, { path: '/questions', component: _Questions2['default'] }),
-	                        _react2['default'].createElement(_reactRouter.Route, { path: '/group', component: _Group2['default'] }),
-	                        _react2['default'].createElement(_reactRouter.Route, { path: '/prototype', component: _Video2['default'] }),
-	                        _react2['default'].createElement(_reactRouter.Route, { path: '/audioPrototype', component: _Audio2['default'] }),
-	                        _react2['default'].createElement(_reactRouter.Route, { path: '/assessment', component: _Assessments2['default'] })
+	                        _react2["default"].createElement(_reactRouter.Route, { path: "/", component: _Home2["default"] }),
+	                        _react2["default"].createElement(_reactRouter.Route, { path: "/app/questions", component: _Questions2["default"] }),
+	                        _react2["default"].createElement(_reactRouter.Route, { path: "/app/prototype", component: _Video2["default"] }),
+	                        _react2["default"].createElement(_reactRouter.Route, { path: "/app/audioPrototype", component: _Audio2["default"] }),
+	                        _react2["default"].createElement(_reactRouter.Route, { path: "/app/assessmentTimer", component: _AssessmentTimer2["default"] }),
+	                        _react2["default"].createElement(_reactRouter.Route, { path: "/app/assessments/create", component: _AssessmentNew2["default"] }),
+	                        _react2["default"].createElement(_reactRouter.Route, { path: "/app/assessments/:assessmentID", component: _Assessments2["default"] })
 	                    )
 	                );
 	            }
@@ -31997,9 +31992,9 @@
 	    }]);
 
 	    return App;
-	}(_react2['default'].Component);
+	}(_react2["default"].Component);
 
-	exports['default'] = App;
+	exports["default"] = App;
 
 /***/ },
 /* 183 */
@@ -37083,46 +37078,28 @@
 	                    'div',
 	                    null,
 	                    _react2['default'].createElement(
+	                        'h2',
+	                        null,
+	                        'Home Page'
+	                    ),
+	                    _react2['default'].createElement(
 	                        'div',
-	                        { className: 'jumbotron' },
+	                        { className: 'pull-left' },
 	                        _react2['default'].createElement(
-	                            'h1',
-	                            null,
-	                            'Welcome to SHRPAS Employer Portal'
-	                        ),
-	                        _react2['default'].createElement(
-	                            'p',
-	                            null,
-	                            'We are in the process of developing the website to its fullest. Please be patient and it will be done in no time'
+	                            'a',
+	                            { className: 'btn btn-default', href: '/app/group', role: 'button' },
+	                            _react2['default'].createElement('i', { className: 'glyphicon glyphicon-plus' }),
+	                            ' Add new target group'
 	                        )
 	                    ),
 	                    _react2['default'].createElement(
 	                        'div',
-	                        { className: 'media' },
+	                        { className: 'pull-right' },
 	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'media-left' },
-	                            _react2['default'].createElement(
-	                                'a',
-	                                { href: '#' },
-	                                _react2['default'].createElement('img', { className: 'media-object', src: 'https://specials-images.forbesimg.com/imageserve/56fad895e4b0072dbd74173d/640x434.jpg?fit=scale&background=000000', alt: '...' })
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'media-body' },
-	                            _react2['default'].createElement(
-	                                'h4',
-	                                { className: 'media-heading' },
-	                                'Currently Developing Questions'
-	                            ),
-	                            'Please ',
-	                            _react2['default'].createElement(
-	                                'a',
-	                                { href: 'questions' },
-	                                'Click Here'
-	                            ),
-	                            ' to see more'
+	                            'a',
+	                            { className: 'btn btn-default', href: '/app/assessments/create', role: 'button' },
+	                            _react2['default'].createElement('i', { className: 'glyphicon glyphicon-plus' }),
+	                            ' Add new assessment'
 	                        )
 	                    )
 	                );
@@ -37153,10 +37130,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactPopup = __webpack_require__(240);
-
-	var _reactPopup2 = _interopRequireDefault(_reactPopup);
-
 	var _reactDom = __webpack_require__(33);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -37165,13 +37138,17 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _reactModal = __webpack_require__(246);
+	var _reactModal = __webpack_require__(240);
 
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 
-	var _QuestionTypes = __webpack_require__(256);
+	var _QuestionTypes = __webpack_require__(250);
 
 	var _QuestionTypes2 = _interopRequireDefault(_QuestionTypes);
+
+	var _Question = __webpack_require__(271);
+
+	var _Question2 = _interopRequireDefault(_Question);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -37204,182 +37181,26 @@
 	};
 
 	/***************************************************************************/
-	/* Question Status                                                         */
-	/***************************************************************************/
-
-	var QuestionStatus = function (_React$Component) {
-	    _inherits(QuestionStatus, _React$Component);
-
-	    function QuestionStatus(props) {
-	        _classCallCheck(this, QuestionStatus);
-
-	        return _possibleConstructorReturn(this, (QuestionStatus.__proto__ || Object.getPrototypeOf(QuestionStatus)).call(this, props));
-	    }
-
-	    _createClass(QuestionStatus, [{
-	        key: 'render',
-	        value: function () {
-	            function render() {
-	                return _react2['default'].createElement(
-	                    'span',
-	                    { className: 'label label-primary' },
-	                    this.props.status
-	                );
-	            }
-
-	            return render;
-	        }()
-	    }]);
-
-	    return QuestionStatus;
-	}(_react2['default'].Component);
-
-	/***************************************************************************/
-	/* Question Type                                                           */
-	/***************************************************************************/
-
-
-	var QuestionType = function (_React$Component2) {
-	    _inherits(QuestionType, _React$Component2);
-
-	    function QuestionType(props) {
-	        _classCallCheck(this, QuestionType);
-
-	        return _possibleConstructorReturn(this, (QuestionType.__proto__ || Object.getPrototypeOf(QuestionType)).call(this, props));
-	    }
-
-	    _createClass(QuestionType, [{
-	        key: 'render',
-	        value: function () {
-	            function render() {
-	                return _react2['default'].createElement(
-	                    'span',
-	                    { className: 'label label-primary' },
-	                    this.props.type
-	                );
-	            }
-
-	            return render;
-	        }()
-	    }]);
-
-	    return QuestionType;
-	}(_react2['default'].Component);
-
-	/***************************************************************************/
-	/* Question                                                                */
-	/***************************************************************************/
-
-
-	var Question = function (_React$Component3) {
-	    _inherits(Question, _React$Component3);
-
-	    function Question(props) {
-	        _classCallCheck(this, Question);
-
-	        var _this3 = _possibleConstructorReturn(this, (Question.__proto__ || Object.getPrototypeOf(Question)).call(this, props));
-
-	        _this3.state = {
-	            answered: props.answered
-	        };
-	        _this3['delete'] = _this3['delete'].bind(_this3);
-
-	        _this3.questionTypes = {
-	            'code': _react2['default'].createElement(CodeQuestionDisplay, { question: _this3.props.question }),
-	            'text': _react2['default'].createElement(TextQuestionDisplay, { question: _this3.props.question }),
-	            'audio': _react2['default'].createElement(AudioQuestionDisplay, { question: _this3.props.question }),
-	            'video': _react2['default'].createElement(VideoQuestionDisplay, { question: _this3.props.question }),
-	            'multiple-choice': _react2['default'].createElement(MultipleChoiceDisplay, { question: _this3.props.question })
-	        };
-
-	        return _this3;
-	    }
-
-	    _createClass(Question, [{
-	        key: 'delete',
-	        value: function () {
-	            function _delete() {
-	                var $this = this;
-	                _jquery2['default'].ajax({
-	                    method: 'DELETE',
-	                    url: this.props.question._links.self.href
-	                }).done(function () {
-	                    $this.props.parent.updateTable();
-	                });
-	            }
-
-	            return _delete;
-	        }()
-	    }, {
-	        key: 'render',
-	        value: function () {
-	            function render() {
-
-	                /*******************************************************************/
-	                var questionType = _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-lg-12' },
-	                    'Unknown Type ',
-	                    _react2['default'].createElement(
-	                        'b',
-	                        null,
-	                        this.props.question.type
-	                    )
-	                );
-	                if (typeof this.questionTypes[this.props.question.type] != 'undefined') {
-	                    questionType = this.questionTypes[this.props.question.type];
-	                }
-
-	                /*******************************************************************/
-	                return _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-lg-12', style: { borderRadius: '10px', padding: '10px', margin: '5px', boxShadow: '0px 1px 3px black' } },
-	                    questionType,
-	                    _react2['default'].createElement(
-	                        'div',
-	                        { className: 'col-lg-2 text-right' },
-	                        _react2['default'].createElement(
-	                            'span',
-	                            { className: 'text-right' },
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { onClick: this['delete'], className: 'btn btn-danger ' },
-	                                'Delete'
-	                            )
-	                        )
-	                    )
-	                );
-	            }
-
-	            return render;
-	        }()
-	    }]);
-
-	    return Question;
-	}(_react2['default'].Component);
-
-	/***************************************************************************/
 	/* Questions                                                                */
 	/***************************************************************************/
 
-
-	var Questions = function (_React$Component4) {
-	    _inherits(Questions, _React$Component4);
+	var Questions = function (_React$Component) {
+	    _inherits(Questions, _React$Component);
 
 	    function Questions(props) {
 	        _classCallCheck(this, Questions);
 
-	        var _this4 = _possibleConstructorReturn(this, (Questions.__proto__ || Object.getPrototypeOf(Questions)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (Questions.__proto__ || Object.getPrototypeOf(Questions)).call(this, props));
 
-	        _this4.closeCreateQuestions = _this4.closeCreateQuestions.bind(_this4);
-	        _this4.openCreateQuestions = _this4.openCreateQuestions.bind(_this4);
-	        _this4.nextPage = _this4.nextPage.bind(_this4);
-	        _this4.prevPage = _this4.prevPage.bind(_this4);
-	        _this4.firstPage = _this4.firstPage.bind(_this4);
-	        _this4.lastPage = _this4.lastPage.bind(_this4);
+	        _this.closeCreateQuestions = _this.closeCreateQuestions.bind(_this);
+	        _this.openCreateQuestions = _this.openCreateQuestions.bind(_this);
+	        _this.nextPage = _this.nextPage.bind(_this);
+	        _this.prevPage = _this.prevPage.bind(_this);
+	        _this.firstPage = _this.firstPage.bind(_this);
+	        _this.lastPage = _this.lastPage.bind(_this);
 
-	        _this4.state = {
-	            questions: [],
+	        _this.state = {
+	            questions: _this.props.questions,
 	            currentPage: 0,
 	            pageSize: 20,
 	            totalElements: 0,
@@ -37388,9 +37209,12 @@
 	            next: null,
 	            prev: null,
 	            last: null,
-	            first: null
+	            first: null,
+	            creatingNewQuestion: false,
+	            addingNewQuestion: false,
+	            addingExistingQuestion: false
 	        };
-	        return _this4;
+	        return _this;
 	    }
 
 	    _createClass(Questions, [{
@@ -37410,39 +37234,41 @@
 	        key: 'updateTable',
 	        value: function () {
 	            function updateTable(link) {
-	                /*******************************************************************/
-	                var $this = this;
-
-	                /*******************************************************************/
-	                _jquery2['default'].get($this.buildLink(link), function (data) {
-
-	                    if ($this.state.creatingNewQuestion) {
-	                        return;
-	                    }
-
-	                    data._embedded.questions.content = data._embedded.questions.map(function (question) {
-	                        question.content = JSON.parse(question.content);
-	                        if (question.content == null) {
-	                            question.content = { question: "Broke", choices: [] };
-	                        }
-	                        if (typeof question.content["choices"] == 'undefined') {
-	                            question.content["choices"] = [];
-	                        }
-	                        return question;
-	                    });
-	                    $this.setState({
-	                        questions: data._embedded.questions,
-	                        totalElements: data.page.totalElements,
-	                        totalPages: data.page.totalPages,
-	                        pageSize: data.page.size,
-	                        number: data.page.number,
-	                        next: data._links ? data._links.next : null,
-	                        prev: data._links ? data._links.prev : null,
-	                        last: data._links ? data._links.last : null,
-	                        first: data._links ? data._links.first : null,
-	                        creatingNewQuestion: false
-	                    });
-	                });
+	                //Not Doing this any-more
+	                // /*******************************************************************/
+	                // var $this=this;
+	                //
+	                // /*******************************************************************/
+	                // $.get($this.buildLink(link),function(data){
+	                //
+	                //     if($this.state.creatingNewQuestion){
+	                //         return;
+	                //     }
+	                //
+	                //     data._embedded.questions.content=data._embedded.questions.map(function(question){
+	                //         question.content=JSON.parse(question.content);
+	                //         if(question.content==null){
+	                //             question.content={question:"Broke",choices:[]};
+	                //         }
+	                //         if(typeof question.content["choices"] == 'undefined'){
+	                //             question.content["choices"]=[];
+	                //         }
+	                //         return question;
+	                //     });
+	                //     $this.setState(
+	                //         {
+	                //             questions:data._embedded.questions,
+	                //             totalElements:data.page.totalElements,
+	                //             totalPages:data.page.totalPages,
+	                //             pageSize:data.page.size,
+	                //             number:data.page.number,
+	                //             next:(data._links?data._links.next:null),
+	                //             prev:(data._links?data._links.prev:null),
+	                //             last:(data._links?data._links.last:null),
+	                //             first:(data._links?data._links.first:null),
+	                //             creatingNewQuestion:false
+	                //         });
+	                // });
 	            }
 
 	            return updateTable;
@@ -37451,20 +37277,20 @@
 	        key: 'componentDidMount',
 	        value: function () {
 	            function componentDidMount() {
-	                var $this = this;
-	                var _startUpdate;
-	                _startUpdate = function () {
-	                    function startUpdate() {
-	                        setTimeout(function () {
-	                            $this.updateTable();
-	                            _startUpdate();
-	                        }, 1000);
-	                    }
 
-	                    return startUpdate;
-	                }();
+	                //Not Doing this anymore
+	                // var $this=this;
+	                // var startUpdate;
+	                // startUpdate=function(){
+	                //     setTimeout(function() {
+	                //         $this.updateTable();
+	                //         //startUpdate();
+	                //     },1000);
+	                // }
+	                //
+	                // startUpdate();
 
-	                _startUpdate();
+
 	            }
 
 	            return componentDidMount;
@@ -37524,194 +37350,57 @@
 	            return lastPage;
 	        }()
 	    }, {
-	        key: 'render',
+	        key: 'getNewQuetionModal',
 	        value: function () {
-	            function render() {
-	                var parent = this;
-	                var questions = this.state.questions.map(function (question, index) {
-	                    question.ID = index + parent.state.number * parent.state.pageSize;
-	                    return _react2['default'].createElement(Question, { key: index, question: question, parent: parent });
-	                });
+	            function getNewQuetionModal() {
 	                return _react2['default'].createElement(
 	                    'div',
 	                    null,
 	                    _react2['default'].createElement(
 	                        'div',
-	                        { className: 'container' },
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'well col-lg-12' },
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: 'col-lg-4 text-left' },
-	                                _react2['default'].createElement(
-	                                    'div',
-	                                    null,
-	                                    _react2['default'].createElement(
-	                                        'b',
-	                                        null,
-	                                        this.state.totalPages,
-	                                        ' Pages'
-	                                    )
-	                                )
-	                            ),
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: 'col-lg-4 text-center' },
-	                                _react2['default'].createElement(
-	                                    'div',
-	                                    null,
-	                                    _react2['default'].createElement(
-	                                        'b',
-	                                        null,
-	                                        this.state.totalElements,
-	                                        ' Elements'
-	                                    )
-	                                )
-	                            ),
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: 'col-lg-4 text-right' },
-	                                _react2['default'].createElement(
-	                                    'div',
-	                                    null,
-	                                    _react2['default'].createElement(
-	                                        'div',
-	                                        { onClick: this.openCreateQuestions, className: 'btn btn-success' },
-	                                        'Add'
-	                                    )
-	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'well col-lg-12' },
-	                            questions
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'well col-lg-12' },
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: 'col-lg-4 text-left' },
-	                                this.state.first != null && _react2['default'].createElement(
-	                                    'span',
-	                                    { onClick: this.firstPage, className: 'btn btn-primary' },
-	                                    'First'
-	                                ),
-	                                this.state.last != null && _react2['default'].createElement(
-	                                    'span',
-	                                    { onClick: this.prevPage, className: 'btn btn-default' },
-	                                    'Previous'
-	                                )
-	                            ),
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: 'col-lg-4 text-center' },
-	                                _react2['default'].createElement(
-	                                    'b',
-	                                    null,
-	                                    'Current Page(',
-	                                    this.state.number,
-	                                    ')'
-	                                )
-	                            ),
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: 'col-lg-4 text-right' },
-	                                this.state.next != null && _react2['default'].createElement(
-	                                    'span',
-	                                    { onClick: this.nextPage, className: 'btn btn-default' },
-	                                    'Next'
-	                                ),
-	                                this.state.last != null && _react2['default'].createElement(
-	                                    'span',
-	                                    { onClick: this.lastPage, className: 'btn btn-primary' },
-	                                    'Last'
-	                                )
-	                            )
-	                        )
+	                        { className: 'tab-content' },
+	                        _react2['default'].createElement(MultipleChoiceCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'multipleChoice', isTab: 'true' }),
+	                        _react2['default'].createElement(TextQuestionCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'question', isTab: 'true' }),
+	                        _react2['default'].createElement(VideoQuestionCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'video', isTab: 'true' }),
+	                        _react2['default'].createElement(AudioQuestionCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'audio', isTab: 'true' }),
+	                        _react2['default'].createElement(CodeQuestionCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'code', isTab: 'true' })
 	                    ),
 	                    _react2['default'].createElement(
-	                        _reactModal2['default'],
-	                        { isOpen: this.state.creatingNewQuestion },
+	                        'div',
+	                        null,
 	                        _react2['default'].createElement(
-	                            'h2',
-	                            { ref: 'subtitle' },
-	                            'Create A Question'
-	                        ),
-	                        _react2['default'].createElement(
-	                            'ul',
-	                            { className: 'nav nav-tabs nav-justified' },
+	                            'span',
+	                            { className: 'pull-right' },
 	                            _react2['default'].createElement(
-	                                'li',
-	                                { className: 'active' },
-	                                _react2['default'].createElement(
-	                                    'a',
-	                                    { 'data-toggle': 'tab', href: '#multipleChoice' },
-	                                    'Multiple Choice'
-	                                )
-	                            ),
-	                            _react2['default'].createElement(
-	                                'li',
-	                                null,
-	                                _react2['default'].createElement(
-	                                    'a',
-	                                    { 'data-toggle': 'tab', href: '#question' },
-	                                    'Question'
-	                                )
-	                            ),
-	                            _react2['default'].createElement(
-	                                'li',
-	                                null,
-	                                _react2['default'].createElement(
-	                                    'a',
-	                                    { 'data-toggle': 'tab', href: '#video' },
-	                                    'Video'
-	                                )
-	                            ),
-	                            _react2['default'].createElement(
-	                                'li',
-	                                null,
-	                                _react2['default'].createElement(
-	                                    'a',
-	                                    { 'data-toggle': 'tab', href: '#audio' },
-	                                    'Audio'
-	                                )
-	                            ),
-	                            _react2['default'].createElement(
-	                                'li',
-	                                null,
-	                                _react2['default'].createElement(
-	                                    'a',
-	                                    { 'data-toggle': 'tab', href: '#code' },
-	                                    'Code'
-	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'tab-content' },
-	                            _react2['default'].createElement(MultipleChoiceCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'multipleChoice', isTab: 'true', isActive: 'true' }),
-	                            _react2['default'].createElement(TextQuestionCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'question', isTab: 'true' }),
-	                            _react2['default'].createElement(VideoQuestionCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'video', isTab: 'true' }),
-	                            _react2['default'].createElement(AudioQuestionCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'audio', isTab: 'true' }),
-	                            _react2['default'].createElement(CodeQuestionCreator, { onCreatedNewQuestion: this.closeCreateQuestions, id: 'code', isTab: 'true' })
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            null,
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { className: 'pull-right' },
-	                                _react2['default'].createElement(
-	                                    'button',
-	                                    { type: 'button', onClick: this.closeCreateQuestions, className: 'btn btn-danger' },
-	                                    'Close'
-	                                )
+	                                'button',
+	                                { type: 'button', onClick: this.closeCreateQuestions, className: 'btn btn-default' },
+	                                'Close'
 	                            )
 	                        )
 	                    )
+	                );
+	            }
+
+	            return getNewQuetionModal;
+	        }()
+	    }, {
+	        key: 'render',
+	        value: function () {
+	            function render() {
+	                var parent = this;
+	                console.log("Questions: " + JSON.stringify(this.props.questions));
+
+	                if (typeof this.props.questions == "undefined") {
+	                    return _react2['default'].createElement('div', { ref: 'Questions' });
+	                }
+	                var questions = this.props.questions.map(function (question, index) {
+	                    question.ID = index + 1 + parent.state.number * parent.state.pageSize;
+	                    return _react2['default'].createElement(_Question2['default'], { key: index, question: question, parent: parent });
+	                });
+	                return _react2['default'].createElement(
+	                    'div',
+	                    { ref: 'Questions' },
+	                    questions
 	                );
 	            }
 
@@ -37728,1118 +37417,22 @@
 /* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _events = __webpack_require__(241);
-
-	var _Header = __webpack_require__(242);
-
-	var _Header2 = _interopRequireDefault(_Header);
-
-	var _Footer = __webpack_require__(243);
-
-	var _Footer2 = _interopRequireDefault(_Footer);
-
-	var _Input = __webpack_require__(245);
-
-	var _Input2 = _interopRequireDefault(_Input);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var SHOW_EVENT = 'show';
-	var CLOSE_EVENT = 'close';
-	var REFRESH_EVENT = 'refresh_position';
-
-	var _props = {};
-	var _initialState = {};
-
-	var Manager = _extends({}, _events.EventEmitter.prototype, {
-
-	    id: 1,
-
-	    popups: {},
-
-	    queue: [],
-
-	    active: null,
-
-	    value: null,
-
-	    getId: function getId() {
-	        return 'id_' + this.id++;
-	    },
-
-	    activePopup: function activePopup() {
-	        return this.popups[this.active];
-	    },
-
-	    close: function close() {
-	        if (!this.active) {
-	            return false;
-	        }
-
-	        var id = this.active;
-	        this.active = null;
-
-	        this.emit(CLOSE_EVENT);
-	        this.dispatch();
-
-	        this.value = null;
-
-	        return id;
-	    },
-
-	    dispatch: function dispatch() {
-	        if (this.active || this.queue.length < 1) {
-	            return false;
-	        }
-
-	        var id = this.queue.shift();
-
-	        /** Set active */
-	        this.active = id;
-
-	        this.emit(SHOW_EVENT);
-	    },
-
-	    refreshPosition: function refreshPosition(position) {
-	        this.emit(REFRESH_EVENT, position);
-	    }
-
-	});
-
-	var Component = _react2.default.createClass({
-
-	    displayName: 'Popup',
-
-	    getInitialState: function getInitialState() {
-	        var state = {
-	            'title': null,
-	            'buttons': false,
-	            'content': null,
-	            'visible': false,
-	            'className': null,
-	            'noOverlay': false,
-	            'position': false,
-	            'wildClasses': false
-	        };
-
-	        _initialState = state;
-
-	        return state;
-	    },
-
-	    getDefaultProps: function getDefaultProps() {
-	        return {
-	            'className': 'mm-popup',
-	            'btnClass': 'mm-popup__btn',
-	            'inputClass': 'mm-popup__input',
-	            'closeBtn': true,
-	            'closeHtml': null,
-	            'defaultOk': 'Ok',
-	            'defaultCancel': 'Cancel'
-	        };
-	    },
-
-	    statics: {
-
-	        plugins: {},
-
-	        addShowListener: function addShowListener(callback) {
-	            Manager.on(SHOW_EVENT, callback);
-	        },
-
-	        removeShowListener: function removeShowListener(callback) {
-	            Manager.removeListener(SHOW_EVENT, callback);
-	        },
-
-	        addCloseListener: function addCloseListener(callback) {
-	            Manager.on(CLOSE_EVENT, callback);
-	        },
-
-	        removeCloseListener: function removeCloseListener(callback) {
-	            Manager.removeListener(CLOSE_EVENT, callback);
-	        },
-
-	        register: function register(data) {
-	            var id = Manager.getId();
-
-	            data = _extends({}, _initialState, data);
-
-	            Manager.popups[id] = data;
-
-	            return id;
-	        },
-
-	        queue: function queue(id) {
-	            if (!Manager.popups.hasOwnProperty(id)) {
-	                return false;
-	            }
-
-	            /** Add popup to queue */
-	            Manager.queue.push(id);
-
-	            /** Dispatch queue */
-	            Manager.dispatch();
-
-	            return id;
-	        },
-
-	        create: function create(data) {
-	            /** Register popup */
-	            var id = this.register(data);
-
-	            /** Queue popup */
-	            this.queue(id);
-
-	            return id;
-	        },
-
-	        alert: function alert(text, title, noQueue) {
-	            var data = {
-	                title: title,
-	                content: text,
-	                buttons: {
-	                    right: ['ok']
-	                }
-	            };
-
-	            if (noQueue) {
-	                return this.register(data);
-	            }
-
-	            return this.create(data);
-	        },
-
-	        prompt: function prompt(title, text, inputAttributes, okBtn, noQueue) {
-	            if (!okBtn) {
-	                okBtn = 'ok';
-	            }
-
-	            inputAttributes || (inputAttributes = {
-	                value: '',
-	                placeholder: '',
-	                type: 'text'
-	            });
-
-	            Manager.value = inputAttributes.value;
-
-	            function onChange(value) {
-	                Manager.value = value;
-	            }
-
-	            if (text) {
-	                text = _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    text
-	                );
-	            }
-
-	            var content = _react2.default.createElement(
-	                'div',
-	                null,
-	                text,
-	                _react2.default.createElement(_Input2.default, { value: inputAttributes.value, placeholder: inputAttributes.placeholder, type: inputAttributes.type, className: _props.inputClass, onChange: onChange })
-	            );
-
-	            var data = {
-	                title: title,
-	                content: content,
-	                buttons: {
-	                    left: ['cancel'],
-	                    right: [okBtn]
-	                }
-	            };
-
-	            if (noQueue) {
-	                return this.register(data);
-	            }
-
-	            return this.create(data);
-	        },
-
-	        close: function close() {
-	            Manager.close();
-	        },
-
-	        getValue: function getValue() {
-	            return Manager.value;
-	        },
-
-	        registerPlugin: function registerPlugin(name, callback) {
-	            this.plugins[name] = callback.bind(this);
-	        },
-
-	        refreshPosition: function refreshPosition(position) {
-	            return Manager.refreshPosition(position);
-	        }
-
-	    },
-
-	    componentDidMount: function componentDidMount() {
-	        var _this = this;
-
-	        Manager.on(SHOW_EVENT, function () {
-	            var popup = Manager.activePopup();
-
-	            _this.setState({
-	                title: popup.title,
-	                content: popup.content,
-	                buttons: popup.buttons,
-	                visible: true,
-	                className: popup.className,
-	                noOverlay: popup.noOverlay,
-	                position: popup.position
-	            });
-	        });
-
-	        _props = this.props;
-
-	        Manager.on(CLOSE_EVENT, function () {
-	            _this.setState(_this.getInitialState());
-	        });
-
-	        Manager.on(REFRESH_EVENT, function (position) {
-	            _this.setPosition(position);
-	        });
-	    },
-
-	    componentDidUpdate: function componentDidUpdate() {
-	        this.setPosition(this.state.position);
-	    },
-
-	    setPosition: function setPosition(position) {
-	        var box = this.refs.box;
-
-	        if (!box) {
-	            return;
-	        }
-
-	        if (!position) {
-	            position = this.state.position;
-	        }
-
-	        if (!position) {
-	            box.style.opacity = 1;
-	            box.style.top = null;
-	            box.style.left = null;
-	            box.style.margin = null;
-
-	            return false;
-	        }
-
-	        if (typeof position === 'function') {
-	            return position.call(null, box);
-	        }
-
-	        box.style.top = parseInt(position.y, 10) + 'px';
-	        box.style.left = parseInt(position.x, 10) + 'px';
-	        box.style.margin = 0;
-	        box.style.opacity = 1;
-	    },
-
-	    hasClass: function hasClass(element, className) {
-	        if (element.classList) {
-	            return !!className && element.classList.contains(className);
-	        }
-
-	        return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
-	    },
-
-	    className: function className(_className) {
-	        return this.props.className + '__' + _className;
-	    },
-
-	    wildClass: function wildClass(className, base) {
-	        if (!className) {
-	            return null;
-	        }
-
-	        if (this.props.wildClasses) {
-	            return className;
-	        }
-
-	        var finalClass = [];
-	        var classNames = className.split(' ');
-
-	        classNames.forEach(function (className) {
-	            finalClass.push(base + '--' + className);
-	        });
-
-	        return finalClass.join(' ');
-	    },
-
-	    onClose: function onClose() {
-	        Manager.close();
-	    },
-
-	    handleButtonClick: function handleButtonClick(action) {
-	        if (typeof action === 'function') {
-	            return action.call(this, Manager);
-	        }
-	    },
-
-	    containerClick: function containerClick(e) {
-	        if (this.hasClass(e.target, this.props.className)) {
-	            this.onClose();
-	        }
-	    },
-
-	    render: function render() {
-	        var className = this.props.className;
-	        var box = null;
-	        var overlayStyle = {};
-
-	        if (this.state.visible) {
-	            var closeBtn = null;
-
-	            className += ' ' + this.props.className + '--visible';
-
-	            if (this.props.closeBtn) {
-	                closeBtn = _react2.default.createElement(
-	                    'button',
-	                    { onClick: this.onClose, className: this.props.className + '__close' },
-	                    this.props.closeHtml
-	                );
-	            }
-
-	            var boxClass = this.className('box');
-
-	            if (this.state.className) {
-	                boxClass += ' ' + this.wildClass(this.state.className, boxClass);
-	            }
-
-	            box = _react2.default.createElement(
-	                'article',
-	                { ref: 'box', style: { opacity: 0 }, className: boxClass },
-	                closeBtn,
-	                _react2.default.createElement(_Header2.default, { title: this.state.title, className: this.className('box__header') }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: this.className('box__body') },
-	                    this.state.content
-	                ),
-	                _react2.default.createElement(_Footer2.default, {
-	                    className: this.className('box__footer'),
-	                    wildClasses: this.props.wildClasses,
-	                    btnClass: this.props.btnClass,
-	                    buttonClick: this.handleButtonClick,
-	                    onClose: this.onClose,
-	                    onOk: this.onClose,
-	                    defaultOk: this.props.defaultOk,
-	                    defaultCancel: this.props.defaultCancel,
-	                    buttons: this.state.buttons })
-	            );
-	        }
-
-	        if (this.state.noOverlay) {
-	            overlayStyle.background = 'transparent';
-	        }
-
-	        return _react2.default.createElement(
-	            'div',
-	            { onClick: this.containerClick, className: className, style: overlayStyle },
-	            box
-	        );
-	    }
-
-	});
-
-	exports.default = Component;
-
-/***/ },
-/* 241 */
-/***/ function(module, exports) {
-
-	// Copyright Joyent, Inc. and other Node contributors.
-	//
-	// Permission is hereby granted, free of charge, to any person obtaining a
-	// copy of this software and associated documentation files (the
-	// "Software"), to deal in the Software without restriction, including
-	// without limitation the rights to use, copy, modify, merge, publish,
-	// distribute, sublicense, and/or sell copies of the Software, and to permit
-	// persons to whom the Software is furnished to do so, subject to the
-	// following conditions:
-	//
-	// The above copyright notice and this permission notice shall be included
-	// in all copies or substantial portions of the Software.
-	//
-	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-	// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-	function EventEmitter() {
-	  this._events = this._events || {};
-	  this._maxListeners = this._maxListeners || undefined;
-	}
-	module.exports = EventEmitter;
-
-	// Backwards-compat with node 0.10.x
-	EventEmitter.EventEmitter = EventEmitter;
-
-	EventEmitter.prototype._events = undefined;
-	EventEmitter.prototype._maxListeners = undefined;
-
-	// By default EventEmitters will print a warning if more than 10 listeners are
-	// added to it. This is a useful default which helps finding memory leaks.
-	EventEmitter.defaultMaxListeners = 10;
-
-	// Obviously not all Emitters should be limited to 10. This function allows
-	// that to be increased. Set to zero for unlimited.
-	EventEmitter.prototype.setMaxListeners = function(n) {
-	  if (!isNumber(n) || n < 0 || isNaN(n))
-	    throw TypeError('n must be a positive number');
-	  this._maxListeners = n;
-	  return this;
-	};
-
-	EventEmitter.prototype.emit = function(type) {
-	  var er, handler, len, args, i, listeners;
-
-	  if (!this._events)
-	    this._events = {};
-
-	  // If there is no 'error' event listener then throw.
-	  if (type === 'error') {
-	    if (!this._events.error ||
-	        (isObject(this._events.error) && !this._events.error.length)) {
-	      er = arguments[1];
-	      if (er instanceof Error) {
-	        throw er; // Unhandled 'error' event
-	      } else {
-	        // At least give some kind of context to the user
-	        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
-	        err.context = er;
-	        throw err;
-	      }
-	    }
-	  }
-
-	  handler = this._events[type];
-
-	  if (isUndefined(handler))
-	    return false;
-
-	  if (isFunction(handler)) {
-	    switch (arguments.length) {
-	      // fast cases
-	      case 1:
-	        handler.call(this);
-	        break;
-	      case 2:
-	        handler.call(this, arguments[1]);
-	        break;
-	      case 3:
-	        handler.call(this, arguments[1], arguments[2]);
-	        break;
-	      // slower
-	      default:
-	        args = Array.prototype.slice.call(arguments, 1);
-	        handler.apply(this, args);
-	    }
-	  } else if (isObject(handler)) {
-	    args = Array.prototype.slice.call(arguments, 1);
-	    listeners = handler.slice();
-	    len = listeners.length;
-	    for (i = 0; i < len; i++)
-	      listeners[i].apply(this, args);
-	  }
-
-	  return true;
-	};
-
-	EventEmitter.prototype.addListener = function(type, listener) {
-	  var m;
-
-	  if (!isFunction(listener))
-	    throw TypeError('listener must be a function');
-
-	  if (!this._events)
-	    this._events = {};
-
-	  // To avoid recursion in the case that type === "newListener"! Before
-	  // adding it to the listeners, first emit "newListener".
-	  if (this._events.newListener)
-	    this.emit('newListener', type,
-	              isFunction(listener.listener) ?
-	              listener.listener : listener);
-
-	  if (!this._events[type])
-	    // Optimize the case of one listener. Don't need the extra array object.
-	    this._events[type] = listener;
-	  else if (isObject(this._events[type]))
-	    // If we've already got an array, just append.
-	    this._events[type].push(listener);
-	  else
-	    // Adding the second element, need to change to array.
-	    this._events[type] = [this._events[type], listener];
-
-	  // Check for listener leak
-	  if (isObject(this._events[type]) && !this._events[type].warned) {
-	    if (!isUndefined(this._maxListeners)) {
-	      m = this._maxListeners;
-	    } else {
-	      m = EventEmitter.defaultMaxListeners;
-	    }
-
-	    if (m && m > 0 && this._events[type].length > m) {
-	      this._events[type].warned = true;
-	      console.error('(node) warning: possible EventEmitter memory ' +
-	                    'leak detected. %d listeners added. ' +
-	                    'Use emitter.setMaxListeners() to increase limit.',
-	                    this._events[type].length);
-	      if (typeof console.trace === 'function') {
-	        // not supported in IE 10
-	        console.trace();
-	      }
-	    }
-	  }
-
-	  return this;
-	};
-
-	EventEmitter.prototype.on = EventEmitter.prototype.addListener;
-
-	EventEmitter.prototype.once = function(type, listener) {
-	  if (!isFunction(listener))
-	    throw TypeError('listener must be a function');
-
-	  var fired = false;
-
-	  function g() {
-	    this.removeListener(type, g);
-
-	    if (!fired) {
-	      fired = true;
-	      listener.apply(this, arguments);
-	    }
-	  }
-
-	  g.listener = listener;
-	  this.on(type, g);
-
-	  return this;
-	};
-
-	// emits a 'removeListener' event iff the listener was removed
-	EventEmitter.prototype.removeListener = function(type, listener) {
-	  var list, position, length, i;
-
-	  if (!isFunction(listener))
-	    throw TypeError('listener must be a function');
-
-	  if (!this._events || !this._events[type])
-	    return this;
-
-	  list = this._events[type];
-	  length = list.length;
-	  position = -1;
-
-	  if (list === listener ||
-	      (isFunction(list.listener) && list.listener === listener)) {
-	    delete this._events[type];
-	    if (this._events.removeListener)
-	      this.emit('removeListener', type, listener);
-
-	  } else if (isObject(list)) {
-	    for (i = length; i-- > 0;) {
-	      if (list[i] === listener ||
-	          (list[i].listener && list[i].listener === listener)) {
-	        position = i;
-	        break;
-	      }
-	    }
-
-	    if (position < 0)
-	      return this;
-
-	    if (list.length === 1) {
-	      list.length = 0;
-	      delete this._events[type];
-	    } else {
-	      list.splice(position, 1);
-	    }
-
-	    if (this._events.removeListener)
-	      this.emit('removeListener', type, listener);
-	  }
-
-	  return this;
-	};
-
-	EventEmitter.prototype.removeAllListeners = function(type) {
-	  var key, listeners;
-
-	  if (!this._events)
-	    return this;
-
-	  // not listening for removeListener, no need to emit
-	  if (!this._events.removeListener) {
-	    if (arguments.length === 0)
-	      this._events = {};
-	    else if (this._events[type])
-	      delete this._events[type];
-	    return this;
-	  }
-
-	  // emit removeListener for all listeners on all events
-	  if (arguments.length === 0) {
-	    for (key in this._events) {
-	      if (key === 'removeListener') continue;
-	      this.removeAllListeners(key);
-	    }
-	    this.removeAllListeners('removeListener');
-	    this._events = {};
-	    return this;
-	  }
-
-	  listeners = this._events[type];
-
-	  if (isFunction(listeners)) {
-	    this.removeListener(type, listeners);
-	  } else if (listeners) {
-	    // LIFO order
-	    while (listeners.length)
-	      this.removeListener(type, listeners[listeners.length - 1]);
-	  }
-	  delete this._events[type];
-
-	  return this;
-	};
-
-	EventEmitter.prototype.listeners = function(type) {
-	  var ret;
-	  if (!this._events || !this._events[type])
-	    ret = [];
-	  else if (isFunction(this._events[type]))
-	    ret = [this._events[type]];
-	  else
-	    ret = this._events[type].slice();
-	  return ret;
-	};
-
-	EventEmitter.prototype.listenerCount = function(type) {
-	  if (this._events) {
-	    var evlistener = this._events[type];
-
-	    if (isFunction(evlistener))
-	      return 1;
-	    else if (evlistener)
-	      return evlistener.length;
-	  }
-	  return 0;
-	};
-
-	EventEmitter.listenerCount = function(emitter, type) {
-	  return emitter.listenerCount(type);
-	};
-
-	function isFunction(arg) {
-	  return typeof arg === 'function';
-	}
-
-	function isNumber(arg) {
-	  return typeof arg === 'number';
-	}
-
-	function isObject(arg) {
-	  return typeof arg === 'object' && arg !== null;
-	}
-
-	function isUndefined(arg) {
-	  return arg === void 0;
-	}
-
-
-/***/ },
-/* 242 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Component = _react2.default.createClass({
-
-		displayName: 'PopupHeader',
-
-		getInitialProps: function getInitialProps() {
-			return {
-				title: null,
-				className: null
-			};
-		},
-
-		render: function render() {
-			if (this.props.title) {
-				return _react2.default.createElement(
-					'header',
-					{ className: this.props.className },
-					_react2.default.createElement(
-						'h1',
-						{ className: this.props.className + '__title' },
-						this.props.title
-					)
-				);
-			}
-
-			return null;
-		}
-
-	});
-
-	exports.default = Component;
-
-/***/ },
-/* 243 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _ActionButton = __webpack_require__(244);
-
-	var _ActionButton2 = _interopRequireDefault(_ActionButton);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ButtonsSpace = void 0,
-	    Component = void 0;
-
-	ButtonsSpace = _react2.default.createClass({
-
-		displayName: 'PopupFooterButtons',
-
-		getInitialProps: function getInitialProps() {
-			return {
-				buttons: null,
-				className: null,
-				onOk: null,
-				onClose: null,
-				buttonClick: null,
-				btnClass: null,
-				href: null
-			};
-		},
-
-		onOk: function onOk() {
-			if (this.props.onOk) {
-				return this.props.onOk();
-			}
-		},
-
-		onClose: function onClose() {
-			if (this.props.onClose) {
-				return this.props.onClose();
-			}
-		},
-
-		buttonClick: function buttonClick(action) {
-			if (this.props.buttonClick) {
-				return this.props.buttonClick(action);
-			}
-		},
-
-		wildClass: function wildClass(className, base) {
-			if (!className) {
-				return null;
-			}
-
-			if (this.props.wildClasses) {
-				return className;
-			}
-
-			var finalClass = [],
-			    classNames = className.split(' ');
-
-			classNames.forEach(function (className) {
-				finalClass.push(base + '--' + className);
-			});
-
-			return finalClass.join(' ');
-		},
-
-		render: function render() {
-			if (!this.props.buttons) {
-				return null;
-			}
-
-			var i,
-			    btns = [],
-			    btn,
-			    className,
-			    url;
-
-			for (i = 0; i < this.props.buttons.length; i++) {
-				btn = this.props.buttons[i];
-				url = btn.url ? btn.url : null;
-
-				if (typeof btn === 'string') {
-					if (btn === 'ok') {
-						btns.push(_react2.default.createElement(
-							_ActionButton2.default,
-							{ className: this.props.btnClass + ' ' + this.props.btnClass + '--ok', key: i, onClick: this.onOk },
-							this.props.defaultOk
-						));
-					} else if (btn === 'cancel') {
-						btns.push(_react2.default.createElement(
-							_ActionButton2.default,
-							{ className: this.props.btnClass + ' ' + this.props.btnClass + '--cancel', key: i, onClick: this.onClose },
-							this.props.defaultCancel
-						));
-					}
-				} else {
-					className = this.props.btnClass + ' ' + this.wildClass(btn.className, this.props.btnClass);
-					btns.push(_react2.default.createElement(
-						_ActionButton2.default,
-						{ className: className, key: i, url: url, onClick: this.buttonClick.bind(this, btn.action) },
-						btn.text
-					));
-				}
-			}
-
-			return _react2.default.createElement(
-				'div',
-				{ className: this.props.className },
-				btns
-			);
-		}
-
-	});
-
-	Component = _react2.default.createClass({
-
-		displayName: 'PopupFooter',
-
-		getInitialProps: function getInitialProps() {
-			return {
-				buttons: null,
-				className: null,
-				wildClasses: false,
-				btnClass: null,
-				defaultOk: null,
-				defaultCancel: null,
-				buttonClick: null,
-				onOk: null,
-				onClose: null
-			};
-		},
-
-		render: function render() {
-			if (this.props.buttons) {
-				return _react2.default.createElement(
-					'footer',
-					{ className: this.props.className },
-					_react2.default.createElement(ButtonsSpace, {
-						buttonClick: this.props.buttonClick,
-						onOk: this.props.onOk,
-						onClose: this.props.onClose,
-						className: this.props.className + '__left-space',
-						wildClasses: this.props.wildClasses,
-						btnClass: this.props.btnClass,
-						defaultOk: this.props.defaultOk,
-						defaultCancel: this.props.defaultCancel,
-						buttons: this.props.buttons.left }),
-					_react2.default.createElement(ButtonsSpace, {
-						buttonClick: this.props.buttonClick,
-						onOk: this.props.onOk,
-						onClose: this.props.onClose,
-						className: this.props.className + '__right-space',
-						wildClasses: this.props.wildClasses,
-						btnClass: this.props.btnClass,
-						defaultOk: this.props.defaultOk,
-						defaultCancel: this.props.defaultCancel,
-						buttons: this.props.buttons.right })
-				);
-			}
-
-			return null;
-		}
-
-	});
-
-	exports.default = Component;
-
-/***/ },
-/* 244 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Component = _react2.default.createClass({
-
-		displayName: 'PopupAction',
-
-		propTypes: {
-			children: _react2.default.PropTypes.node.isRequired
-		},
-
-		getInitialProps: function getInitialProps() {
-			return {
-				onClick: function onClick() {},
-				className: 'btn',
-				url: null
-			};
-		},
-
-		handleClick: function handleClick() {
-			return this.props.onClick();
-		},
-
-		render: function render() {
-			var className = this.props.className,
-			    url = false;
-
-			if (this.props.url) {
-				if (this.props.url !== '#') {
-					url = true;
-				}
-
-				if (!url) {
-					return _react2.default.createElement(
-						'a',
-						{ target: '_blank', className: className },
-						this.props.children
-					);
-				}
-
-				return _react2.default.createElement(
-					'a',
-					{ href: this.props.url, target: '_blank', className: className },
-					this.props.children
-				);
-			}
-
-			return _react2.default.createElement(
-				'button',
-				{ onClick: this.handleClick, className: className },
-				this.props.children
-			);
-		}
-
-	});
-
-	exports.default = Component;
-
-/***/ },
-/* 245 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(33);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Component = _react2.default.createClass({
-
-		displayName: 'PopupInput',
-
-		getInitialState: function getInitialState() {
-			return {
-				value: this.props.value
-			};
-		},
-
-		getInitialProps: function getInitialProps() {
-			return {
-				className: 'input',
-				value: '',
-				placeholder: '',
-				type: 'text',
-				onChange: function onChange() {}
-			};
-		},
-
-		componentDidMount: function componentDidMount() {
-			_reactDom2.default.findDOMNode(this).focus();
-		},
-
-		handleChange: function handleChange(event) {
-			this.setState({ value: event.target.value });
-			this.props.onChange(event.target.value);
-		},
-
-		render: function render() {
-			var className = this.props.className;
-
-			return _react2.default.createElement('input', { value: this.state.value, className: className, placeholder: this.props.placeholder, type: this.props.type, onChange: this.handleChange });
-		}
-
-	});
-
-	exports.default = Component;
-
-/***/ },
-/* 246 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(247);
+	module.exports = __webpack_require__(241);
 
 
 
 /***/ },
-/* 247 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(33);
-	var ExecutionEnvironment = __webpack_require__(248);
-	var ModalPortal = React.createFactory(__webpack_require__(249));
-	var ariaAppHider = __webpack_require__(254);
-	var elementClass = __webpack_require__(255);
+	var ExecutionEnvironment = __webpack_require__(242);
+	var ModalPortal = React.createFactory(__webpack_require__(243));
+	var ariaAppHider = __webpack_require__(248);
+	var elementClass = __webpack_require__(249);
 	var renderSubtreeIntoContainer = __webpack_require__(33).unstable_renderSubtreeIntoContainer;
-	var Assign = __webpack_require__(253);
+	var Assign = __webpack_require__(247);
 
 	var SafeHTMLElement = ExecutionEnvironment.canUseDOM ? window.HTMLElement : {};
 	var AppElement = ExecutionEnvironment.canUseDOM ? document.body : {appendChild: function() {}};
@@ -38972,7 +37565,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 248 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -39017,14 +37610,14 @@
 
 
 /***/ },
-/* 249 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
 	var div = React.DOM.div;
-	var focusManager = __webpack_require__(250);
-	var scopeTab = __webpack_require__(252);
-	var Assign = __webpack_require__(253);
+	var focusManager = __webpack_require__(244);
+	var scopeTab = __webpack_require__(246);
+	var Assign = __webpack_require__(247);
 
 	// so that our CSS is statically analyzable
 	var CLASS_NAMES = {
@@ -39234,10 +37827,10 @@
 
 
 /***/ },
-/* 250 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(251);
+	var findTabbable = __webpack_require__(245);
 	var modalElement = null;
 	var focusLaterElement = null;
 	var needToFocus = false;
@@ -39308,7 +37901,7 @@
 
 
 /***/ },
-/* 251 */
+/* 245 */
 /***/ function(module, exports) {
 
 	/*!
@@ -39364,10 +37957,10 @@
 
 
 /***/ },
-/* 252 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(251);
+	var findTabbable = __webpack_require__(245);
 
 	module.exports = function(node, event) {
 	  var tabbable = findTabbable(node);
@@ -39389,7 +37982,7 @@
 
 
 /***/ },
-/* 253 */
+/* 247 */
 /***/ function(module, exports) {
 
 	/**
@@ -40032,7 +38625,7 @@
 
 
 /***/ },
-/* 254 */
+/* 248 */
 /***/ function(module, exports) {
 
 	var _element = typeof document !== 'undefined' ? document.body : null;
@@ -40080,7 +38673,7 @@
 
 
 /***/ },
-/* 255 */
+/* 249 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -40145,7 +38738,7 @@
 
 
 /***/ },
-/* 256 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40158,39 +38751,27 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactPopup = __webpack_require__(240);
-
-	var _reactPopup2 = _interopRequireDefault(_reactPopup);
-
 	var _reactDom = __webpack_require__(33);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _jquery = __webpack_require__(180);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
-	var _reactModal = __webpack_require__(246);
-
-	var _reactModal2 = _interopRequireDefault(_reactModal);
-
-	var _CodeQuestion = __webpack_require__(257);
+	var _CodeQuestion = __webpack_require__(251);
 
 	var _CodeQuestion2 = _interopRequireDefault(_CodeQuestion);
 
-	var _MultipleChoiceQuestion = __webpack_require__(259);
+	var _MultipleChoiceQuestion = __webpack_require__(261);
 
 	var _MultipleChoiceQuestion2 = _interopRequireDefault(_MultipleChoiceQuestion);
 
-	var _TextQuestion = __webpack_require__(260);
+	var _TextQuestion = __webpack_require__(262);
 
 	var _TextQuestion2 = _interopRequireDefault(_TextQuestion);
 
-	var _VideoQuestion = __webpack_require__(261);
+	var _VideoQuestion = __webpack_require__(263);
 
 	var _VideoQuestion2 = _interopRequireDefault(_VideoQuestion);
 
-	var _AudioQuestion = __webpack_require__(266);
+	var _AudioQuestion = __webpack_require__(268);
 
 	var _AudioQuestion2 = _interopRequireDefault(_AudioQuestion);
 
@@ -40205,7 +38786,7 @@
 	};
 
 /***/ },
-/* 257 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40220,7 +38801,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactPopup = __webpack_require__(240);
+	var _reactPopup = __webpack_require__(252);
 
 	var _reactPopup2 = _interopRequireDefault(_reactPopup);
 
@@ -40232,13 +38813,13 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _reactModal = __webpack_require__(246);
+	var _reactModal = __webpack_require__(240);
 
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 
-	var _GenericQuestion = __webpack_require__(258);
+	var _GenericQuestion2 = __webpack_require__(258);
 
-	var _GenericQuestion2 = _interopRequireDefault(_GenericQuestion);
+	var _GenericQuestion3 = _interopRequireDefault(_GenericQuestion2);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -40251,8 +38832,8 @@
 	/***************************************************************************/
 	/* Question(Code Question) - Create                                        */
 	/***************************************************************************/
-	var CodeQuestionCreator = function (_React$Component) {
-	    _inherits(CodeQuestionCreator, _React$Component);
+	var CodeQuestionCreator = function (_GenericQuestion) {
+	    _inherits(CodeQuestionCreator, _GenericQuestion);
 
 	    function CodeQuestionCreator(props) {
 	        _classCallCheck(this, CodeQuestionCreator);
@@ -40260,6 +38841,8 @@
 	        var _this = _possibleConstructorReturn(this, (CodeQuestionCreator.__proto__ || Object.getPrototypeOf(CodeQuestionCreator)).call(this, props));
 
 	        _this.buildContent = _this.buildContent2.bind(_this);
+	        _this.active = _this;
+	        _this.state = { question: "Default Coding Question" };
 	        return _this;
 	    }
 
@@ -40282,23 +38865,28 @@
 	                var _this2 = this;
 
 	                return _react2['default'].createElement(
-	                    _GenericQuestion2['default'],
-	                    { onCreatedNewQuestion: function () {
+	                    _GenericQuestion3['default'],
+	                    { active: this, onCreatedNewQuestion: function () {
 	                            function onCreatedNewQuestion() {
 	                                return _this2.props.onCreatedNewQuestion();
 	                            }
 
 	                            return onCreatedNewQuestion;
-	                        }(), props: this.props, active: this },
+	                        }(), props: this.props },
 	                    _react2['default'].createElement(
-	                        'h3',
+	                        'form',
 	                        null,
-	                        'Code'
-	                    ),
-	                    _react2['default'].createElement(
-	                        'h2',
-	                        null,
-	                        'Not Implemented'
+	                        _react2['default'].createElement(
+	                            'div',
+	                            { className: 'form-group' },
+	                            _react2['default'].createElement('input', { value: this.state.question, onChange: function () {
+	                                    function onChange(event) {
+	                                        return _this2.saveInput('question', event.target.value);
+	                                    }
+
+	                                    return onChange;
+	                                }(), type: 'text', className: 'form-control', id: 'questionEntered2' })
+	                        )
 	                    )
 	                );
 	            }
@@ -40308,15 +38896,15 @@
 	    }]);
 
 	    return CodeQuestionCreator;
-	}(_react2['default'].Component);
+	}(_GenericQuestion3['default']);
 
 	/***************************************************************************/
 	/* Question(Code Question) - Display                                       */
 	/***************************************************************************/
 
 
-	var CodeQuestionDisplay = function (_React$Component2) {
-	    _inherits(CodeQuestionDisplay, _React$Component2);
+	var CodeQuestionDisplay = function (_React$Component) {
+	    _inherits(CodeQuestionDisplay, _React$Component);
 
 	    function CodeQuestionDisplay(props) {
 	        _classCallCheck(this, CodeQuestionDisplay);
@@ -40340,7 +38928,9 @@
 	                    _react2['default'].createElement(
 	                        'h2',
 	                        null,
-	                        'Not Implemented'
+	                        this.props.question.ID,
+	                        '. ',
+	                        this.props.question.content.question
 	                    )
 	                );
 	            }
@@ -40358,6 +38948,1102 @@
 	};
 
 /***/ },
+/* 252 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _events = __webpack_require__(253);
+
+	var _Header = __webpack_require__(254);
+
+	var _Header2 = _interopRequireDefault(_Header);
+
+	var _Footer = __webpack_require__(255);
+
+	var _Footer2 = _interopRequireDefault(_Footer);
+
+	var _Input = __webpack_require__(257);
+
+	var _Input2 = _interopRequireDefault(_Input);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var SHOW_EVENT = 'show';
+	var CLOSE_EVENT = 'close';
+	var REFRESH_EVENT = 'refresh_position';
+
+	var _props = {};
+	var _initialState = {};
+
+	var Manager = _extends({}, _events.EventEmitter.prototype, {
+
+	    id: 1,
+
+	    popups: {},
+
+	    queue: [],
+
+	    active: null,
+
+	    value: null,
+
+	    getId: function getId() {
+	        return 'id_' + this.id++;
+	    },
+
+	    activePopup: function activePopup() {
+	        return this.popups[this.active];
+	    },
+
+	    close: function close() {
+	        if (!this.active) {
+	            return false;
+	        }
+
+	        var id = this.active;
+	        this.active = null;
+
+	        this.emit(CLOSE_EVENT);
+	        this.dispatch();
+
+	        this.value = null;
+
+	        return id;
+	    },
+
+	    dispatch: function dispatch() {
+	        if (this.active || this.queue.length < 1) {
+	            return false;
+	        }
+
+	        var id = this.queue.shift();
+
+	        /** Set active */
+	        this.active = id;
+
+	        this.emit(SHOW_EVENT);
+	    },
+
+	    refreshPosition: function refreshPosition(position) {
+	        this.emit(REFRESH_EVENT, position);
+	    }
+
+	});
+
+	var Component = _react2.default.createClass({
+
+	    displayName: 'Popup',
+
+	    getInitialState: function getInitialState() {
+	        var state = {
+	            'title': null,
+	            'buttons': false,
+	            'content': null,
+	            'visible': false,
+	            'className': null,
+	            'noOverlay': false,
+	            'position': false,
+	            'wildClasses': false
+	        };
+
+	        _initialState = state;
+
+	        return state;
+	    },
+
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            'className': 'mm-popup',
+	            'btnClass': 'mm-popup__btn',
+	            'inputClass': 'mm-popup__input',
+	            'closeBtn': true,
+	            'closeHtml': null,
+	            'defaultOk': 'Ok',
+	            'defaultCancel': 'Cancel'
+	        };
+	    },
+
+	    statics: {
+
+	        plugins: {},
+
+	        addShowListener: function addShowListener(callback) {
+	            Manager.on(SHOW_EVENT, callback);
+	        },
+
+	        removeShowListener: function removeShowListener(callback) {
+	            Manager.removeListener(SHOW_EVENT, callback);
+	        },
+
+	        addCloseListener: function addCloseListener(callback) {
+	            Manager.on(CLOSE_EVENT, callback);
+	        },
+
+	        removeCloseListener: function removeCloseListener(callback) {
+	            Manager.removeListener(CLOSE_EVENT, callback);
+	        },
+
+	        register: function register(data) {
+	            var id = Manager.getId();
+
+	            data = _extends({}, _initialState, data);
+
+	            Manager.popups[id] = data;
+
+	            return id;
+	        },
+
+	        queue: function queue(id) {
+	            if (!Manager.popups.hasOwnProperty(id)) {
+	                return false;
+	            }
+
+	            /** Add popup to queue */
+	            Manager.queue.push(id);
+
+	            /** Dispatch queue */
+	            Manager.dispatch();
+
+	            return id;
+	        },
+
+	        create: function create(data) {
+	            /** Register popup */
+	            var id = this.register(data);
+
+	            /** Queue popup */
+	            this.queue(id);
+
+	            return id;
+	        },
+
+	        alert: function alert(text, title, noQueue) {
+	            var data = {
+	                title: title,
+	                content: text,
+	                buttons: {
+	                    right: ['ok']
+	                }
+	            };
+
+	            if (noQueue) {
+	                return this.register(data);
+	            }
+
+	            return this.create(data);
+	        },
+
+	        prompt: function prompt(title, text, inputAttributes, okBtn, noQueue) {
+	            if (!okBtn) {
+	                okBtn = 'ok';
+	            }
+
+	            inputAttributes || (inputAttributes = {
+	                value: '',
+	                placeholder: '',
+	                type: 'text'
+	            });
+
+	            Manager.value = inputAttributes.value;
+
+	            function onChange(value) {
+	                Manager.value = value;
+	            }
+
+	            if (text) {
+	                text = _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    text
+	                );
+	            }
+
+	            var content = _react2.default.createElement(
+	                'div',
+	                null,
+	                text,
+	                _react2.default.createElement(_Input2.default, { value: inputAttributes.value, placeholder: inputAttributes.placeholder, type: inputAttributes.type, className: _props.inputClass, onChange: onChange })
+	            );
+
+	            var data = {
+	                title: title,
+	                content: content,
+	                buttons: {
+	                    left: ['cancel'],
+	                    right: [okBtn]
+	                }
+	            };
+
+	            if (noQueue) {
+	                return this.register(data);
+	            }
+
+	            return this.create(data);
+	        },
+
+	        close: function close() {
+	            Manager.close();
+	        },
+
+	        getValue: function getValue() {
+	            return Manager.value;
+	        },
+
+	        registerPlugin: function registerPlugin(name, callback) {
+	            this.plugins[name] = callback.bind(this);
+	        },
+
+	        refreshPosition: function refreshPosition(position) {
+	            return Manager.refreshPosition(position);
+	        }
+
+	    },
+
+	    componentDidMount: function componentDidMount() {
+	        var _this = this;
+
+	        Manager.on(SHOW_EVENT, function () {
+	            var popup = Manager.activePopup();
+
+	            _this.setState({
+	                title: popup.title,
+	                content: popup.content,
+	                buttons: popup.buttons,
+	                visible: true,
+	                className: popup.className,
+	                noOverlay: popup.noOverlay,
+	                position: popup.position
+	            });
+	        });
+
+	        _props = this.props;
+
+	        Manager.on(CLOSE_EVENT, function () {
+	            _this.setState(_this.getInitialState());
+	        });
+
+	        Manager.on(REFRESH_EVENT, function (position) {
+	            _this.setPosition(position);
+	        });
+	    },
+
+	    componentDidUpdate: function componentDidUpdate() {
+	        this.setPosition(this.state.position);
+	    },
+
+	    setPosition: function setPosition(position) {
+	        var box = this.refs.box;
+
+	        if (!box) {
+	            return;
+	        }
+
+	        if (!position) {
+	            position = this.state.position;
+	        }
+
+	        if (!position) {
+	            box.style.opacity = 1;
+	            box.style.top = null;
+	            box.style.left = null;
+	            box.style.margin = null;
+
+	            return false;
+	        }
+
+	        if (typeof position === 'function') {
+	            return position.call(null, box);
+	        }
+
+	        box.style.top = parseInt(position.y, 10) + 'px';
+	        box.style.left = parseInt(position.x, 10) + 'px';
+	        box.style.margin = 0;
+	        box.style.opacity = 1;
+	    },
+
+	    hasClass: function hasClass(element, className) {
+	        if (element.classList) {
+	            return !!className && element.classList.contains(className);
+	        }
+
+	        return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+	    },
+
+	    className: function className(_className) {
+	        return this.props.className + '__' + _className;
+	    },
+
+	    wildClass: function wildClass(className, base) {
+	        if (!className) {
+	            return null;
+	        }
+
+	        if (this.props.wildClasses) {
+	            return className;
+	        }
+
+	        var finalClass = [];
+	        var classNames = className.split(' ');
+
+	        classNames.forEach(function (className) {
+	            finalClass.push(base + '--' + className);
+	        });
+
+	        return finalClass.join(' ');
+	    },
+
+	    onClose: function onClose() {
+	        Manager.close();
+	    },
+
+	    handleButtonClick: function handleButtonClick(action) {
+	        if (typeof action === 'function') {
+	            return action.call(this, Manager);
+	        }
+	    },
+
+	    containerClick: function containerClick(e) {
+	        if (this.hasClass(e.target, this.props.className)) {
+	            this.onClose();
+	        }
+	    },
+
+	    render: function render() {
+	        var className = this.props.className;
+	        var box = null;
+	        var overlayStyle = {};
+
+	        if (this.state.visible) {
+	            var closeBtn = null;
+
+	            className += ' ' + this.props.className + '--visible';
+
+	            if (this.props.closeBtn) {
+	                closeBtn = _react2.default.createElement(
+	                    'button',
+	                    { onClick: this.onClose, className: this.props.className + '__close' },
+	                    this.props.closeHtml
+	                );
+	            }
+
+	            var boxClass = this.className('box');
+
+	            if (this.state.className) {
+	                boxClass += ' ' + this.wildClass(this.state.className, boxClass);
+	            }
+
+	            box = _react2.default.createElement(
+	                'article',
+	                { ref: 'box', style: { opacity: 0 }, className: boxClass },
+	                closeBtn,
+	                _react2.default.createElement(_Header2.default, { title: this.state.title, className: this.className('box__header') }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: this.className('box__body') },
+	                    this.state.content
+	                ),
+	                _react2.default.createElement(_Footer2.default, {
+	                    className: this.className('box__footer'),
+	                    wildClasses: this.props.wildClasses,
+	                    btnClass: this.props.btnClass,
+	                    buttonClick: this.handleButtonClick,
+	                    onClose: this.onClose,
+	                    onOk: this.onClose,
+	                    defaultOk: this.props.defaultOk,
+	                    defaultCancel: this.props.defaultCancel,
+	                    buttons: this.state.buttons })
+	            );
+	        }
+
+	        if (this.state.noOverlay) {
+	            overlayStyle.background = 'transparent';
+	        }
+
+	        return _react2.default.createElement(
+	            'div',
+	            { onClick: this.containerClick, className: className, style: overlayStyle },
+	            box
+	        );
+	    }
+
+	});
+
+	exports.default = Component;
+
+/***/ },
+/* 253 */
+/***/ function(module, exports) {
+
+	// Copyright Joyent, Inc. and other Node contributors.
+	//
+	// Permission is hereby granted, free of charge, to any person obtaining a
+	// copy of this software and associated documentation files (the
+	// "Software"), to deal in the Software without restriction, including
+	// without limitation the rights to use, copy, modify, merge, publish,
+	// distribute, sublicense, and/or sell copies of the Software, and to permit
+	// persons to whom the Software is furnished to do so, subject to the
+	// following conditions:
+	//
+	// The above copyright notice and this permission notice shall be included
+	// in all copies or substantial portions of the Software.
+	//
+	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+	// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+	function EventEmitter() {
+	  this._events = this._events || {};
+	  this._maxListeners = this._maxListeners || undefined;
+	}
+	module.exports = EventEmitter;
+
+	// Backwards-compat with node 0.10.x
+	EventEmitter.EventEmitter = EventEmitter;
+
+	EventEmitter.prototype._events = undefined;
+	EventEmitter.prototype._maxListeners = undefined;
+
+	// By default EventEmitters will print a warning if more than 10 listeners are
+	// added to it. This is a useful default which helps finding memory leaks.
+	EventEmitter.defaultMaxListeners = 10;
+
+	// Obviously not all Emitters should be limited to 10. This function allows
+	// that to be increased. Set to zero for unlimited.
+	EventEmitter.prototype.setMaxListeners = function(n) {
+	  if (!isNumber(n) || n < 0 || isNaN(n))
+	    throw TypeError('n must be a positive number');
+	  this._maxListeners = n;
+	  return this;
+	};
+
+	EventEmitter.prototype.emit = function(type) {
+	  var er, handler, len, args, i, listeners;
+
+	  if (!this._events)
+	    this._events = {};
+
+	  // If there is no 'error' event listener then throw.
+	  if (type === 'error') {
+	    if (!this._events.error ||
+	        (isObject(this._events.error) && !this._events.error.length)) {
+	      er = arguments[1];
+	      if (er instanceof Error) {
+	        throw er; // Unhandled 'error' event
+	      } else {
+	        // At least give some kind of context to the user
+	        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
+	        err.context = er;
+	        throw err;
+	      }
+	    }
+	  }
+
+	  handler = this._events[type];
+
+	  if (isUndefined(handler))
+	    return false;
+
+	  if (isFunction(handler)) {
+	    switch (arguments.length) {
+	      // fast cases
+	      case 1:
+	        handler.call(this);
+	        break;
+	      case 2:
+	        handler.call(this, arguments[1]);
+	        break;
+	      case 3:
+	        handler.call(this, arguments[1], arguments[2]);
+	        break;
+	      // slower
+	      default:
+	        args = Array.prototype.slice.call(arguments, 1);
+	        handler.apply(this, args);
+	    }
+	  } else if (isObject(handler)) {
+	    args = Array.prototype.slice.call(arguments, 1);
+	    listeners = handler.slice();
+	    len = listeners.length;
+	    for (i = 0; i < len; i++)
+	      listeners[i].apply(this, args);
+	  }
+
+	  return true;
+	};
+
+	EventEmitter.prototype.addListener = function(type, listener) {
+	  var m;
+
+	  if (!isFunction(listener))
+	    throw TypeError('listener must be a function');
+
+	  if (!this._events)
+	    this._events = {};
+
+	  // To avoid recursion in the case that type === "newListener"! Before
+	  // adding it to the listeners, first emit "newListener".
+	  if (this._events.newListener)
+	    this.emit('newListener', type,
+	              isFunction(listener.listener) ?
+	              listener.listener : listener);
+
+	  if (!this._events[type])
+	    // Optimize the case of one listener. Don't need the extra array object.
+	    this._events[type] = listener;
+	  else if (isObject(this._events[type]))
+	    // If we've already got an array, just append.
+	    this._events[type].push(listener);
+	  else
+	    // Adding the second element, need to change to array.
+	    this._events[type] = [this._events[type], listener];
+
+	  // Check for listener leak
+	  if (isObject(this._events[type]) && !this._events[type].warned) {
+	    if (!isUndefined(this._maxListeners)) {
+	      m = this._maxListeners;
+	    } else {
+	      m = EventEmitter.defaultMaxListeners;
+	    }
+
+	    if (m && m > 0 && this._events[type].length > m) {
+	      this._events[type].warned = true;
+	      console.error('(node) warning: possible EventEmitter memory ' +
+	                    'leak detected. %d listeners added. ' +
+	                    'Use emitter.setMaxListeners() to increase limit.',
+	                    this._events[type].length);
+	      if (typeof console.trace === 'function') {
+	        // not supported in IE 10
+	        console.trace();
+	      }
+	    }
+	  }
+
+	  return this;
+	};
+
+	EventEmitter.prototype.on = EventEmitter.prototype.addListener;
+
+	EventEmitter.prototype.once = function(type, listener) {
+	  if (!isFunction(listener))
+	    throw TypeError('listener must be a function');
+
+	  var fired = false;
+
+	  function g() {
+	    this.removeListener(type, g);
+
+	    if (!fired) {
+	      fired = true;
+	      listener.apply(this, arguments);
+	    }
+	  }
+
+	  g.listener = listener;
+	  this.on(type, g);
+
+	  return this;
+	};
+
+	// emits a 'removeListener' event iff the listener was removed
+	EventEmitter.prototype.removeListener = function(type, listener) {
+	  var list, position, length, i;
+
+	  if (!isFunction(listener))
+	    throw TypeError('listener must be a function');
+
+	  if (!this._events || !this._events[type])
+	    return this;
+
+	  list = this._events[type];
+	  length = list.length;
+	  position = -1;
+
+	  if (list === listener ||
+	      (isFunction(list.listener) && list.listener === listener)) {
+	    delete this._events[type];
+	    if (this._events.removeListener)
+	      this.emit('removeListener', type, listener);
+
+	  } else if (isObject(list)) {
+	    for (i = length; i-- > 0;) {
+	      if (list[i] === listener ||
+	          (list[i].listener && list[i].listener === listener)) {
+	        position = i;
+	        break;
+	      }
+	    }
+
+	    if (position < 0)
+	      return this;
+
+	    if (list.length === 1) {
+	      list.length = 0;
+	      delete this._events[type];
+	    } else {
+	      list.splice(position, 1);
+	    }
+
+	    if (this._events.removeListener)
+	      this.emit('removeListener', type, listener);
+	  }
+
+	  return this;
+	};
+
+	EventEmitter.prototype.removeAllListeners = function(type) {
+	  var key, listeners;
+
+	  if (!this._events)
+	    return this;
+
+	  // not listening for removeListener, no need to emit
+	  if (!this._events.removeListener) {
+	    if (arguments.length === 0)
+	      this._events = {};
+	    else if (this._events[type])
+	      delete this._events[type];
+	    return this;
+	  }
+
+	  // emit removeListener for all listeners on all events
+	  if (arguments.length === 0) {
+	    for (key in this._events) {
+	      if (key === 'removeListener') continue;
+	      this.removeAllListeners(key);
+	    }
+	    this.removeAllListeners('removeListener');
+	    this._events = {};
+	    return this;
+	  }
+
+	  listeners = this._events[type];
+
+	  if (isFunction(listeners)) {
+	    this.removeListener(type, listeners);
+	  } else if (listeners) {
+	    // LIFO order
+	    while (listeners.length)
+	      this.removeListener(type, listeners[listeners.length - 1]);
+	  }
+	  delete this._events[type];
+
+	  return this;
+	};
+
+	EventEmitter.prototype.listeners = function(type) {
+	  var ret;
+	  if (!this._events || !this._events[type])
+	    ret = [];
+	  else if (isFunction(this._events[type]))
+	    ret = [this._events[type]];
+	  else
+	    ret = this._events[type].slice();
+	  return ret;
+	};
+
+	EventEmitter.prototype.listenerCount = function(type) {
+	  if (this._events) {
+	    var evlistener = this._events[type];
+
+	    if (isFunction(evlistener))
+	      return 1;
+	    else if (evlistener)
+	      return evlistener.length;
+	  }
+	  return 0;
+	};
+
+	EventEmitter.listenerCount = function(emitter, type) {
+	  return emitter.listenerCount(type);
+	};
+
+	function isFunction(arg) {
+	  return typeof arg === 'function';
+	}
+
+	function isNumber(arg) {
+	  return typeof arg === 'number';
+	}
+
+	function isObject(arg) {
+	  return typeof arg === 'object' && arg !== null;
+	}
+
+	function isUndefined(arg) {
+	  return arg === void 0;
+	}
+
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Component = _react2.default.createClass({
+
+		displayName: 'PopupHeader',
+
+		getInitialProps: function getInitialProps() {
+			return {
+				title: null,
+				className: null
+			};
+		},
+
+		render: function render() {
+			if (this.props.title) {
+				return _react2.default.createElement(
+					'header',
+					{ className: this.props.className },
+					_react2.default.createElement(
+						'h1',
+						{ className: this.props.className + '__title' },
+						this.props.title
+					)
+				);
+			}
+
+			return null;
+		}
+
+	});
+
+	exports.default = Component;
+
+/***/ },
+/* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ActionButton = __webpack_require__(256);
+
+	var _ActionButton2 = _interopRequireDefault(_ActionButton);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ButtonsSpace = void 0,
+	    Component = void 0;
+
+	ButtonsSpace = _react2.default.createClass({
+
+		displayName: 'PopupFooterButtons',
+
+		getInitialProps: function getInitialProps() {
+			return {
+				buttons: null,
+				className: null,
+				onOk: null,
+				onClose: null,
+				buttonClick: null,
+				btnClass: null,
+				href: null
+			};
+		},
+
+		onOk: function onOk() {
+			if (this.props.onOk) {
+				return this.props.onOk();
+			}
+		},
+
+		onClose: function onClose() {
+			if (this.props.onClose) {
+				return this.props.onClose();
+			}
+		},
+
+		buttonClick: function buttonClick(action) {
+			if (this.props.buttonClick) {
+				return this.props.buttonClick(action);
+			}
+		},
+
+		wildClass: function wildClass(className, base) {
+			if (!className) {
+				return null;
+			}
+
+			if (this.props.wildClasses) {
+				return className;
+			}
+
+			var finalClass = [],
+			    classNames = className.split(' ');
+
+			classNames.forEach(function (className) {
+				finalClass.push(base + '--' + className);
+			});
+
+			return finalClass.join(' ');
+		},
+
+		render: function render() {
+			if (!this.props.buttons) {
+				return null;
+			}
+
+			var i,
+			    btns = [],
+			    btn,
+			    className,
+			    url;
+
+			for (i = 0; i < this.props.buttons.length; i++) {
+				btn = this.props.buttons[i];
+				url = btn.url ? btn.url : null;
+
+				if (typeof btn === 'string') {
+					if (btn === 'ok') {
+						btns.push(_react2.default.createElement(
+							_ActionButton2.default,
+							{ className: this.props.btnClass + ' ' + this.props.btnClass + '--ok', key: i, onClick: this.onOk },
+							this.props.defaultOk
+						));
+					} else if (btn === 'cancel') {
+						btns.push(_react2.default.createElement(
+							_ActionButton2.default,
+							{ className: this.props.btnClass + ' ' + this.props.btnClass + '--cancel', key: i, onClick: this.onClose },
+							this.props.defaultCancel
+						));
+					}
+				} else {
+					className = this.props.btnClass + ' ' + this.wildClass(btn.className, this.props.btnClass);
+					btns.push(_react2.default.createElement(
+						_ActionButton2.default,
+						{ className: className, key: i, url: url, onClick: this.buttonClick.bind(this, btn.action) },
+						btn.text
+					));
+				}
+			}
+
+			return _react2.default.createElement(
+				'div',
+				{ className: this.props.className },
+				btns
+			);
+		}
+
+	});
+
+	Component = _react2.default.createClass({
+
+		displayName: 'PopupFooter',
+
+		getInitialProps: function getInitialProps() {
+			return {
+				buttons: null,
+				className: null,
+				wildClasses: false,
+				btnClass: null,
+				defaultOk: null,
+				defaultCancel: null,
+				buttonClick: null,
+				onOk: null,
+				onClose: null
+			};
+		},
+
+		render: function render() {
+			if (this.props.buttons) {
+				return _react2.default.createElement(
+					'footer',
+					{ className: this.props.className },
+					_react2.default.createElement(ButtonsSpace, {
+						buttonClick: this.props.buttonClick,
+						onOk: this.props.onOk,
+						onClose: this.props.onClose,
+						className: this.props.className + '__left-space',
+						wildClasses: this.props.wildClasses,
+						btnClass: this.props.btnClass,
+						defaultOk: this.props.defaultOk,
+						defaultCancel: this.props.defaultCancel,
+						buttons: this.props.buttons.left }),
+					_react2.default.createElement(ButtonsSpace, {
+						buttonClick: this.props.buttonClick,
+						onOk: this.props.onOk,
+						onClose: this.props.onClose,
+						className: this.props.className + '__right-space',
+						wildClasses: this.props.wildClasses,
+						btnClass: this.props.btnClass,
+						defaultOk: this.props.defaultOk,
+						defaultCancel: this.props.defaultCancel,
+						buttons: this.props.buttons.right })
+				);
+			}
+
+			return null;
+		}
+
+	});
+
+	exports.default = Component;
+
+/***/ },
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Component = _react2.default.createClass({
+
+		displayName: 'PopupAction',
+
+		propTypes: {
+			children: _react2.default.PropTypes.node.isRequired
+		},
+
+		getInitialProps: function getInitialProps() {
+			return {
+				onClick: function onClick() {},
+				className: 'btn',
+				url: null
+			};
+		},
+
+		handleClick: function handleClick() {
+			return this.props.onClick();
+		},
+
+		render: function render() {
+			var className = this.props.className,
+			    url = false;
+
+			if (this.props.url) {
+				if (this.props.url !== '#') {
+					url = true;
+				}
+
+				if (!url) {
+					return _react2.default.createElement(
+						'a',
+						{ target: '_blank', className: className },
+						this.props.children
+					);
+				}
+
+				return _react2.default.createElement(
+					'a',
+					{ href: this.props.url, target: '_blank', className: className },
+					this.props.children
+				);
+			}
+
+			return _react2.default.createElement(
+				'button',
+				{ onClick: this.handleClick, className: className },
+				this.props.children
+			);
+		}
+
+	});
+
+	exports.default = Component;
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(33);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Component = _react2.default.createClass({
+
+		displayName: 'PopupInput',
+
+		getInitialState: function getInitialState() {
+			return {
+				value: this.props.value
+			};
+		},
+
+		getInitialProps: function getInitialProps() {
+			return {
+				className: 'input',
+				value: '',
+				placeholder: '',
+				type: 'text',
+				onChange: function onChange() {}
+			};
+		},
+
+		componentDidMount: function componentDidMount() {
+			_reactDom2.default.findDOMNode(this).focus();
+		},
+
+		handleChange: function handleChange(event) {
+			this.setState({ value: event.target.value });
+			this.props.onChange(event.target.value);
+		},
+
+		render: function render() {
+			var className = this.props.className;
+
+			return _react2.default.createElement('input', { value: this.state.value, className: className, placeholder: this.props.placeholder, type: this.props.type, onChange: this.handleChange });
+		}
+
+	});
+
+	exports.default = Component;
+
+/***/ },
 /* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -40373,7 +40059,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactPopup = __webpack_require__(240);
+	var _reactPopup = __webpack_require__(252);
 
 	var _reactPopup2 = _interopRequireDefault(_reactPopup);
 
@@ -40385,9 +40071,17 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _reactModal = __webpack_require__(246);
+	var _reactModal = __webpack_require__(240);
 
 	var _reactModal2 = _interopRequireDefault(_reactModal);
+
+	var _Hints = __webpack_require__(259);
+
+	var _Hints2 = _interopRequireDefault(_Hints);
+
+	var _Rest = __webpack_require__(260);
+
+	var _Rest2 = _interopRequireDefault(_Rest);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -40412,10 +40106,51 @@
 	        _this.buildContent = _this.buildContent2.bind(_this);
 	        _this.state = { inputs: {}, content: {} };
 	        _this.saveQuestionContent = _this.saveQuestionContent.bind(_this);
+	        _this.hintChanged = _this.hintChanged.bind(_this);
 	        return _this;
 	    }
 
 	    _createClass(GenericQuestion, [{
+	        key: 'hintChanged',
+	        value: function () {
+	            function hintChanged(hasHint, hint) {
+	                this.props.active.setState({ hasHint: hasHint, hint: hint });
+	            }
+
+	            return hintChanged;
+	        }()
+	    }, {
+	        key: 'componentDidMount',
+	        value: function () {
+	            function componentDidMount() {
+	                if (typeof this.props.props != "undefined") {
+	                    if (typeof this.props.props.eventHandler != "undefined") {
+	                        var $this = this;
+
+	                        this.props.props.eventHandler.on("save-hint", function (e) {
+	                            $this.props.active.setState({ hasHint: e.hasHint, hint: e.hint });
+	                        });
+	                        this.props.props.eventHandler.on("save-question", function (e) {
+
+	                            /***********************************************************/
+	                            $this.props.props.eventHandler.trigger("save-question", "started", { question: this });
+
+	                            /***********************************************************/
+	                            $this.saveQuestionContent(function (data) {
+	                                if (data.failed) {
+	                                    $this.props.props.eventHandler.trigger("save-question", "error", { question: this, data: data });
+	                                    return;
+	                                }
+	                                $this.props.props.eventHandler.trigger("save-question", "finished", { question: this, data: data });
+	                            });
+	                        });
+	                    }
+	                }
+	            }
+
+	            return componentDidMount;
+	        }()
+	    }, {
 	        key: 'buildContent2',
 	        value: function () {
 	            function buildContent2() {
@@ -40452,16 +40187,26 @@
 	        value: function () {
 	            function saveQuestionContent(callback) {
 	                var $this = this;
-	                _jquery2['default'].ajax({
-	                    method: "POST",
-	                    url: '/api/questions',
-	                    data: JSON.stringify(this.props.active.buildContent()),
-	                    dataType: "json",
-	                    contentType: 'application/json'
-	                }).done(function (msg) {
+
+	                _Rest2['default'].Lets().post('/rest/questions', _jquery2['default'].extend(this.props.active.buildContent(), { hasHint: this.props.active.state.hasHint,
+	                    hint: this.props.active.state.hint }), function (data) {
 	                    $this.props.onCreatedNewQuestion();
-	                    callback();
+	                    typeof callback == "function" ? callback(data) : true;
 	                });
+	                // $.ajax({
+	                //     method: "POST",
+	                //     url: '/rest/questions',
+	                //     data: JSON.stringify(
+	                //         $.extend(this.props.active.buildContent(),{hasHint:this.props.active.hasHint,
+	                //         hint:this.props.active.hint})),
+	                //     dataType: "json",
+	                //     contentType:'application/json'
+	                // }).done(function (data) {
+	                //     $this.props.onCreatedNewQuestion();
+	                //     (typeof callback == "function")?callback(data):true;
+	                // }).fail(function (jqXHR,textStatus,errorThrown) {
+	                //     (typeof callback == "function")?callback({failed:true,error:{jqXHR:jqXHR,textStatus:textStatus,errorThrown:errorThrown}}):true;
+	                // });;
 	            }
 
 	            return saveQuestionContent;
@@ -40480,9 +40225,14 @@
 
 	                return _react2['default'].createElement(
 	                    'div',
-	                    { id: this.props.props.id, className: className },
+	                    { id: this.props.props.id, className: 'question-container' },
 	                    this.props.children,
 	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'hint-container' },
+	                        _react2['default'].createElement(_Hints2['default'], { eventHandler: this.props.props.eventHandler, hasHint: this.props.active.state.hasHint, hint: this.props.active.state.hint })
+	                    ),
+	                    this.props.props.noCreateBtn ? "" : _react2['default'].createElement(
 	                        'div',
 	                        null,
 	                        _react2['default'].createElement(
@@ -40490,7 +40240,7 @@
 	                            { className: 'pull-right' },
 	                            _react2['default'].createElement(
 	                                'button',
-	                                { type: 'button', onClick: this.saveQuestionContent, className: 'btn btn-success' },
+	                                { type: 'button', onClick: this.saveQuestionContent, className: 'btn btn-default' },
 	                                'Create'
 	                            )
 	                        )
@@ -40530,7 +40280,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactPopup = __webpack_require__(240);
+	var _reactPopup = __webpack_require__(252);
 
 	var _reactPopup2 = _interopRequireDefault(_reactPopup);
 
@@ -40538,13 +40288,489 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var HintsDropdown = function (_React$Component) {
+	    _inherits(HintsDropdown, _React$Component);
+
+	    function HintsDropdown(props) {
+	        _classCallCheck(this, HintsDropdown);
+
+	        var _this = _possibleConstructorReturn(this, (HintsDropdown.__proto__ || Object.getPrototypeOf(HintsDropdown)).call(this, props));
+
+	        _this.state = {
+	            hasHint: "NO"
+	        };
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(HintsDropdown, [{
+	        key: 'handleChange',
+	        value: function () {
+	            function handleChange(event) {
+	                this.setState({
+	                    hasHint: event.target.value
+	                });
+	                console.log("This is hasHint: " + this.state.hasHint);
+	            }
+
+	            return handleChange;
+	        }()
+	    }, {
+	        key: 'render',
+	        value: function () {
+	            function render() {
+
+	                return _react2['default'].createElement(
+	                    'div',
+	                    null,
+	                    _react2['default'].createElement(
+	                        'label',
+	                        { className: 'hints-checkbox-label' },
+	                        'Hints',
+	                        _react2['default'].createElement(
+	                            'select',
+	                            { className: 'hints-checkbox-select', value: this.state.hasHint, onChange: this.handleChange },
+	                            _react2['default'].createElement(
+	                                'option',
+	                                { value: 'YES' },
+	                                'Yes'
+	                            ),
+	                            _react2['default'].createElement(
+	                                'option',
+	                                { value: 'NO' },
+	                                'No'
+	                            )
+	                        )
+	                    ),
+	                    _react2['default'].createElement(Hints, { eventHandler: this.props.eventHandler, onChoose: this.state.hasHint })
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return HintsDropdown;
+	}(_react2['default'].Component);
+
+	var Hints = function (_React$Component2) {
+	    _inherits(Hints, _React$Component2);
+
+	    function Hints(props) {
+	        _classCallCheck(this, Hints);
+
+	        var _this2 = _possibleConstructorReturn(this, (Hints.__proto__ || Object.getPrototypeOf(Hints)).call(this, props));
+
+	        _this2.state = {
+	            hint: ''
+	        };
+	        _this2.handleChange = _this2.handleChange.bind(_this2);
+	        return _this2;
+	    }
+
+	    _createClass(Hints, [{
+	        key: 'handleChange',
+	        value: function () {
+	            function handleChange(event) {
+	                this.setState({
+	                    hint: event.target.value
+	                });
+	                console.log("This is hint: " + this.state.hint);
+	                this.props.eventHandler.trigger("save-hint", { hasHint: true, hint: event.target.value });
+	            }
+
+	            return handleChange;
+	        }()
+	    }, {
+	        key: 'render',
+	        value: function () {
+	            function render() {
+	                if (this.props.onChoose == "YES") {
+	                    return _react2['default'].createElement(
+	                        'form',
+	                        { onSubmit: this.handleSubmit },
+	                        _react2['default'].createElement(
+	                            'div',
+	                            { className: 'form-group' },
+	                            _react2['default'].createElement(
+	                                'label',
+	                                { htmlFor: 'hintContent hint-input-label' },
+	                                'Hint'
+	                            ),
+	                            _react2['default'].createElement('textarea', { placeholder: 'Hint text', className: 'hint-input', type: 'text', value: this.state.hint, onChange: this.handleChange })
+	                        )
+	                    );
+	                } else this.props.onChoose == "NO";
+	                return null;
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return Hints;
+	}(_react2['default'].Component);
+
+	exports['default'] = HintsDropdown;
+
+/***/ },
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.jQueryRest = exports.TestingRest = exports.TestingRestRepository = exports.Rests = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _jquery = __webpack_require__(180);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _reactModal = __webpack_require__(246);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-	var _reactModal2 = _interopRequireDefault(_reactModal);
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/***************************************************************************/
+	var Rests = exports.Rests = function () {
+	    _createClass(Rests, null, [{
+	        key: "Lets",
+	        value: function () {
+	            function Lets() {
+	                if (typeof Rests._adapter_ == "undefined") {
+	                    Rests._adapter_ = new jQueryRest();
+	                }
+	                return Rests._adapter_;
+	            }
+
+	            return Lets;
+	        }()
+	    }]);
+
+	    function Rests() {
+	        _classCallCheck(this, Rests);
+	    }
+
+	    _createClass(Rests, [{
+	        key: "changeTo",
+	        value: function () {
+	            function changeTo(newAdapter) {
+	                Rests._adapter_ = newAdapter;
+	                return Rests.Lets();
+	            }
+
+	            return changeTo;
+	        }()
+	    }, {
+	        key: "get",
+	        value: function () {
+	            function get(url, parameters, success) {
+	                throw new Error("Rest.get: Requires Override");
+	            }
+
+	            return get;
+	        }()
+	    }, {
+	        key: "post",
+	        value: function () {
+	            function post(url, parameters, success) {
+	                throw new Error("Rest.post: Requires Override");
+	            }
+
+	            return post;
+	        }()
+	    }, {
+	        key: "put",
+	        value: function () {
+	            function put(url, parameters, success) {
+	                throw new Error("Rest.put: Requires Override");
+	            }
+
+	            return put;
+	        }()
+	    }, {
+	        key: "patch",
+	        value: function () {
+	            function patch(url, parameters, success) {
+	                throw new Error("Rest.patch: Requires Override");
+	            }
+
+	            return patch;
+	        }()
+	    }, {
+	        key: "delete",
+	        value: function () {
+	            function _delete(url, parameters, success) {
+	                throw new Error("Rest.delete: Requires Override");
+	            }
+
+	            return _delete;
+	        }()
+	    }]);
+
+	    return Rests;
+	}();
+
+	var TestingRestRepository = exports.TestingRestRepository = function () {
+	    function TestingRestRepository(name, urlRegex, method, controllerCallback, init) {
+	        _classCallCheck(this, TestingRestRepository);
+
+	        this.name = name;
+	        this.url = urlRegex;
+	        this.method = method;
+	        this.controllerCallback = controllerCallback;
+	        this.init = init;
+	    }
+
+	    return TestingRestRepository;
+	}();
+
+	var TestingRest = exports.TestingRest = function (_Rests) {
+	    _inherits(TestingRest, _Rests);
+
+	    function TestingRest() {
+	        _classCallCheck(this, TestingRest);
+
+	        var _this = _possibleConstructorReturn(this, (TestingRest.__proto__ || Object.getPrototypeOf(TestingRest)).call(this));
+
+	        _this.__repositories__ = [];
+	        return _this;
+	    }
+
+	    _createClass(TestingRest, [{
+	        key: "addRepository",
+	        value: function () {
+	            function addRepository(repository) {
+	                /*******************************************************************/
+	                if (!(repository instanceof TestingRestRepository)) {
+	                    throw new Error("TestingRest.addRepository: Expected type TestingRestRepository, did not recieve that");
+	                }
+
+	                /*******************************************************************/
+	                this.__repositories__.push(repository);
+	            }
+
+	            return addRepository;
+	        }()
+	    }, {
+	        key: "searchForRepository",
+	        value: function () {
+	            function searchForRepository(url) {
+	                var found = null;
+	                this.__repositories__.forEach(function (repo) {
+	                    if (found != null) {
+	                        return;
+	                    }
+	                    var results;
+	                    if ((results = repo.url.exec(url)) === null) {
+	                        return;
+	                    }
+
+	                    found = { match: results, repo: repo };
+	                });
+
+	                return found;
+	            }
+
+	            return searchForRepository;
+	        }()
+	    }, {
+	        key: "get",
+	        value: function () {
+	            function get(url, parameters, success) {
+	                var results = null;
+	                if ((results = this.searchForRepository(url)) == null) {
+	                    throw new Error("TestingRest.get: Unkown Repo link " + url);
+	                }
+
+	                success(results.repo.controllerCallback(results, parameters));
+	            }
+
+	            return get;
+	        }()
+	    }, {
+	        key: "post",
+	        value: function () {
+	            function post(url, parameters, success) {
+	                var results = null;
+	                if ((results = this.searchForRepository(url)) == null) {
+	                    throw new Error("TestingRest.post: Unkown Repo link " + url);
+	                }
+
+	                success(results.repo.controllerCallback(results, parameters));
+	            }
+
+	            return post;
+	        }()
+	    }, {
+	        key: "put",
+	        value: function () {
+	            function put(url, parameters, success) {
+	                var results = null;
+	                if ((results = this.searchForRepository(url)) == null) {
+	                    throw new Error("TestingRest.put: Unkown Repo link " + url);
+	                }
+
+	                success(results.repo.controllerCallback(results, parameters));
+	            }
+
+	            return put;
+	        }()
+	    }, {
+	        key: "patch",
+	        value: function () {
+	            function patch(url, parameters, success) {
+	                var results = null;
+	                if ((results = this.searchForRepository(url)) == null) {
+	                    throw new Error("TestingRest.patch: Unkown Repo link " + url);
+	                }
+
+	                success(results.repo.controllerCallback(results, parameters));
+	            }
+
+	            return patch;
+	        }()
+	    }, {
+	        key: "delete",
+	        value: function () {
+	            function _delete(url, parameters, success) {
+	                var results = null;
+	                if ((results = this.searchForRepository(url)) == null) {
+	                    throw new Error("TestingRest.delete: Unkown Repo link " + url);
+	                }
+
+	                success(results.repo.controllerCallback(results, parameters));
+	            }
+
+	            return _delete;
+	        }()
+	    }]);
+
+	    return TestingRest;
+	}(Rests);
+
+	/***************************************************************************/
+
+
+	var jQueryRest = exports.jQueryRest = function (_Rests2) {
+	    _inherits(jQueryRest, _Rests2);
+
+	    function jQueryRest() {
+	        _classCallCheck(this, jQueryRest);
+
+	        return _possibleConstructorReturn(this, (jQueryRest.__proto__ || Object.getPrototypeOf(jQueryRest)).call(this));
+	    }
+
+	    _createClass(jQueryRest, [{
+	        key: "get",
+	        value: function () {
+	            function get(url, parameters, success) {
+	                _jquery2["default"].get(url, parameters, success);
+	            }
+
+	            return get;
+	        }()
+	    }, {
+	        key: "post",
+	        value: function () {
+	            function post(url, data, success) {
+	                _jquery2["default"].ajax({
+	                    url: url,
+	                    method: "POST",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(data)
+	                }).done(function (data) {
+	                    success ? success(data) : true;
+	                });
+	            }
+
+	            return post;
+	        }()
+	    }, {
+	        key: "put",
+	        value: function () {
+	            function put(url, data, success) {
+	                _jquery2["default"].ajax({
+	                    url: url,
+	                    method: "PUT",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(data)
+	                }).done(function (data) {
+	                    success ? success(data) : true;
+	                });
+	            }
+
+	            return put;
+	        }()
+	    }, {
+	        key: "patch",
+	        value: function () {
+	            function patch(url, data, success) {
+	                _jquery2["default"].ajax({
+	                    url: url,
+	                    method: "PATCH",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(data)
+	                }).done(function (data) {
+	                    success ? success(data) : true;
+	                });
+	            }
+
+	            return patch;
+	        }()
+	    }, {
+	        key: "delete",
+	        value: function () {
+	            function _delete(url, data, success) {
+	                _jquery2["default"].ajax({
+	                    url: url,
+	                    method: "DELETE",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(data)
+	                }).done(function (data) {
+	                    success ? success(data) : true;
+	                });
+	            }
+
+	            return _delete;
+	        }()
+	    }]);
+
+	    return jQueryRest;
+	}(Rests);
+
+	exports["default"] = Rests;
+
+/***/ },
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
 
 	var _GenericQuestion3 = __webpack_require__(258);
 
@@ -40566,7 +40792,7 @@
 
 	        var _this = _possibleConstructorReturn(this, (AnswerChoice.__proto__ || Object.getPrototypeOf(AnswerChoice)).call(this, props));
 
-	        _this.state = { choice: props.choice, changingText: false, changingTextTo: "" };
+	        _this.state = { choice: _this.props.choice, changingText: false, changingTextTo: "" };
 
 	        _this.startEditing = _this.startEditing.bind(_this);
 	        _this.setEditingText = _this.setEditingText.bind(_this);
@@ -40651,28 +40877,32 @@
 	                var $this = this;
 	                return _react2['default'].createElement(
 	                    'div',
-	                    { className: 'col-lg-12', style: { margin: "2px", padding: '10px', borderRadius: '5px', border: '2px solid rgba(100,100,100,.9)' } },
+	                    { className: 'multiple-choice-answer-choice-editable-mode-container' },
 	                    _react2['default'].createElement(
 	                        'div',
-	                        { className: 'col-lg-10' },
+	                        { className: 'multiple-choice-answer-choice-details-container' },
 	                        _react2['default'].createElement(
 	                            'span',
 	                            { onClick: this.startEditing, className: 'answer-choice answer-choice-editable' },
 	                            _react2['default'].createElement(
 	                                'b',
-	                                null,
+	                                { className: 'choice-letter' },
 	                                this.props.letter,
 	                                '. '
 	                            ),
-	                            this.props.choice.text
+	                            _react2['default'].createElement(
+	                                'span',
+	                                { className: 'choice-text' },
+	                                this.props.choice.text
+	                            )
 	                        )
 	                    ),
 	                    _react2['default'].createElement(
 	                        'div',
-	                        { className: 'col-lg-2 text-right' },
+	                        { className: 'choice-delete-btn-container' },
 	                        _react2['default'].createElement(
 	                            'span',
-	                            { className: 'text-right' },
+	                            { className: 'choice-delete-btn-holder' },
 	                            _react2['default'].createElement(
 	                                'span',
 	                                { onClick: function () {
@@ -40681,7 +40911,7 @@
 	                                        }
 
 	                                        return onClick;
-	                                    }(), className: 'btn btn-danger ' },
+	                                    }(), className: 'choice-delete-btn' },
 	                                'Delete'
 	                            )
 	                        )
@@ -40698,38 +40928,34 @@
 	                var $this = this;
 	                return _react2['default'].createElement(
 	                    'div',
-	                    { className: 'col-lg-12', style: { margin: "2px", padding: '10px', borderRadius: '5px', border: '2px solid rgba(100,100,100,.9)' } },
+	                    { className: 'multiple-choice-answer-choice-editing-mode-container' },
 	                    _react2['default'].createElement(
-	                        'div',
-	                        { className: 'col-lg-12' },
+	                        'form',
+	                        { className: 'form-inline' },
 	                        _react2['default'].createElement(
-	                            'form',
-	                            { className: 'form-inline' },
+	                            'div',
+	                            { style: { marginRight: '30px' }, className: 'input-group mb-2 mr-sm-2 mb-sm-0 multiple-choice-answer-choice-details-container' },
 	                            _react2['default'].createElement(
 	                                'div',
-	                                { style: { marginRight: '30px' }, className: 'input-group mb-2 mr-sm-2 mb-sm-0' },
+	                                { className: 'input-group-addon' },
 	                                _react2['default'].createElement(
-	                                    'div',
-	                                    { className: 'input-group-addon' },
-	                                    _react2['default'].createElement(
-	                                        'b',
-	                                        null,
-	                                        this.props.letter,
-	                                        '.'
-	                                    )
-	                                ),
-	                                _react2['default'].createElement('input', { onChange: this.setEditingText, value: this.state.changingTextTo, type: 'text', className: 'form-control', id: 'anserInput' })
+	                                    'b',
+	                                    { className: 'choice-letter' },
+	                                    this.props.letter,
+	                                    '.'
+	                                )
 	                            ),
-	                            _react2['default'].createElement(
-	                                'button',
-	                                { onClick: this.saveEditing, type: 'button', className: 'btn btn-success' },
-	                                'Save'
-	                            ),
-	                            _react2['default'].createElement(
-	                                'button',
-	                                { onClick: this.cancelEditing, type: 'button', className: 'btn btn-danger' },
-	                                'Cancel'
-	                            )
+	                            _react2['default'].createElement('input', { onChange: this.setEditingText, value: this.state.changingTextTo, type: 'text', className: 'form-control choice-text', id: 'anserInput' })
+	                        ),
+	                        _react2['default'].createElement(
+	                            'button',
+	                            { onClick: this.saveEditing, type: 'button', className: 'btn btn-success choice-save-button' },
+	                            'Save'
+	                        ),
+	                        _react2['default'].createElement(
+	                            'button',
+	                            { onClick: this.cancelEditing, type: 'button', className: 'btn btn-danger choice-cancel-button' },
+	                            'Cancel'
 	                        )
 	                    )
 	                );
@@ -40744,17 +40970,22 @@
 	                var $this = this;
 	                return _react2['default'].createElement(
 	                    'div',
-	                    { className: 'col-lg-12', style: { margin: "2px", padding: '10px', borderRadius: '5px', border: '2px solid rgba(100,100,100,.9)' } },
+	                    { className: 'multiple-choice-answer-choice-container' },
 	                    _react2['default'].createElement(
 	                        'span',
-	                        { className: 'answer-choice' },
+	                        { className: 'multiple-choice-answer-choice' },
 	                        _react2['default'].createElement(
 	                            'b',
-	                            null,
+	                            { className: 'choice-letter' },
 	                            this.props.letter,
 	                            '. '
 	                        ),
-	                        this.props.choice.text
+	                        _react2['default'].createElement(
+	                            'span',
+	                            { className: 'choice-text' },
+	                            ' ',
+	                            this.props.choice.text
+	                        )
 	                    )
 	                );
 	            }
@@ -40778,7 +41009,7 @@
 	                }
 	                return _react2['default'].createElement(
 	                    'div',
-	                    { className: 'col-lg-6', style: { margin: "0px" } },
+	                    { className: 'answer-choice-main-container' },
 	                    body
 	                );
 	            }
@@ -40807,7 +41038,7 @@
 
 	        var _this3 = _possibleConstructorReturn(this, (AnswerChoices.__proto__ || Object.getPrototypeOf(AnswerChoices)).call(this, props));
 
-	        _this3.state = { choices: props.choices };
+	        _this3.state = { choices: _this3.props.choices };
 	        _this3.triggerAnswersChanged = _this3.triggerAnswersChanged.bind(_this3);
 	        _this3.deleteAnswer = _this3.deleteAnswer.bind(_this3);
 	        return _this3;
@@ -40856,7 +41087,11 @@
 	                /*******************************************************************/
 	                var $this = this;
 	                var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-	                var questions = this.state.choices.map(function (answerChoice, index) {
+
+	                if (typeof this.getChoices() != "undefined") {
+	                    console.log(this.state.choices);
+	                }
+	                var questions = this.getChoices().map(function (answerChoice, index) {
 	                    var letter = letters[index % letters.length];
 	                    return _react2['default'].createElement(AnswerChoice, { choice: answerChoice, onAnswerDelete: $this.deleteAnswer, editible: $this.props.editible, key: index, id: index, letter: letter, onAnswerChanged: $this.triggerAnswersChanged });
 	                });
@@ -40864,12 +41099,9 @@
 	                /*******************************************************************/
 	                return _react2['default'].createElement(
 	                    'div',
-	                    { className: 'col-lg-12' },
-	                    _react2['default'].createElement(
-	                        'div',
-	                        { className: 'col-lg-12' },
-	                        questions
-	                    )
+	                    { className: 'multiple-choice-choices-container' },
+	                    questions,
+	                    this.props.appendComponent
 	                );
 	            }
 
@@ -40900,7 +41132,6 @@
 	        _this4.active = _this4;
 
 	        /*******************************************************************/
-
 	        _this4.state = { question: 'Unknown', choices: [{ 'text': 'Unknown', 'letter': 'A' }] };
 
 	        return _this4;
@@ -40926,6 +41157,11 @@
 	                var myChoices = this.state.choices;
 	                myChoices.push({ text: "Unknown", letter: letters[myChoices.length % letters.length] });
 	                this.setState({ choices: myChoices });
+
+	                /*******************************************************************/
+	                /* Allow Others to grab question content                           */
+	                /*******************************************************************/
+	                this.props.onChanged ? this.props.onChanged(this.buildContent()) : true;
 	            }
 
 	            return addChoice;
@@ -40937,6 +41173,11 @@
 	                var myChoices = this.state.choices;
 	                myChoices = choices.getChoices();
 	                this.setState({ choices: myChoices });
+
+	                /*******************************************************************/
+	                /* Allow Others to grab question content                           */
+	                /*******************************************************************/
+	                this.props.onChanged ? this.props.onChanged(this.buildContent()) : true;
 	            }
 
 	            return updateChoices;
@@ -40957,40 +41198,25 @@
 	                            return onCreatedNewQuestion;
 	                        }(), props: this.props, active: this },
 	                    _react2['default'].createElement(
-	                        'h3',
-	                        null,
-	                        'Multiple Choice'
-	                    ),
-	                    _react2['default'].createElement(
 	                        'form',
 	                        null,
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'form-group' },
-	                            _react2['default'].createElement(
-	                                'label',
-	                                { htmlFor: 'questionEntered2' },
-	                                'Question'
-	                            ),
-	                            _react2['default'].createElement('input', { value: this.state.question, onChange: function () {
-	                                    function onChange(event) {
-	                                        return _this5.saveInput('question', event.target.value);
-	                                    }
+	                        _react2['default'].createElement('input', { value: this.state.question, onChange: function () {
+	                                function onChange(event) {
+	                                    return _this5.saveInput('question', event.target.value);
+	                                }
 
-	                                    return onChange;
-	                                }(), type: 'text', className: 'form-control', id: 'questionEntered2' })
-	                        )
+	                                return onChange;
+	                            }(), type: 'text', className: 'form-control multiple-choice-question-input', id: 'questionEntered2' })
 	                    ),
-	                    _react2['default'].createElement(AnswerChoices, { choices: this.state.choices, onAnswersChanged: this.updateChoices, editible: 'true' }),
-	                    _react2['default'].createElement(
-	                        'div',
-	                        { className: 'col-lg-12', style: { margin: "5px" } },
-	                        _react2['default'].createElement(
-	                            'span',
-	                            { onClick: this.addChoice, className: 'btn btn-success btn-block btn-lg' },
-	                            'Add Answer'
-	                        )
-	                    )
+	                    _react2['default'].createElement(AnswerChoices, { choices: this.state.choices, onAnswersChanged: this.updateChoices, editible: 'true', appendComponent: _react2['default'].createElement(
+	                            'div',
+	                            { onClick: this.addChoice, className: 'multiple-choice-add-choice-container' },
+	                            _react2['default'].createElement(
+	                                'span',
+	                                { className: 'multiple-choice-add-choice-btn ' },
+	                                'Add Answer'
+	                            )
+	                        ) })
 	                );
 	            }
 
@@ -41020,35 +41246,11 @@
 
 	        var _this6 = _possibleConstructorReturn(this, (MultipleChoiceQuestionDisplay.__proto__ || Object.getPrototypeOf(MultipleChoiceQuestionDisplay)).call(this, props));
 
-	        _this6.buildContent = _this6.buildContent.bind(_this6);
-	        _this6.updateChoices = _this6.updateChoices.bind(_this6);
 	        _this6.active = _this6;
 	        return _this6;
 	    }
 
 	    _createClass(MultipleChoiceQuestionDisplay, [{
-	        key: 'buildContent',
-	        value: function () {
-	            function buildContent() {
-	                return {
-	                    type: 'multiple-choice',
-	                    content: JSON.stringify({ question: this.getInput('question'),
-	                        choices: this.state.choices })
-	                };
-	            }
-
-	            return buildContent;
-	        }()
-	    }, {
-	        key: 'updateChoices',
-	        value: function () {
-	            function updateChoices(choices) {
-	                this.setState({ choices: choices.getChoices() });
-	            }
-
-	            return updateChoices;
-	        }()
-	    }, {
 	        key: 'render',
 	        value: function () {
 	            function render() {
@@ -41056,19 +41258,20 @@
 	                /*******************************************************************/
 	                return _react2['default'].createElement(
 	                    'div',
-	                    { className: 'col-lg-12', style: { borderBottom: '2px solid black' } },
+	                    { className: 'col-lg-12' },
 	                    _react2['default'].createElement(
-	                        'div',
-	                        { className: 'col-lg-12' },
-	                        _react2['default'].createElement(
-	                            'h3',
-	                            null,
-	                            this.props.question.ID,
-	                            '. ',
-	                            this.props.question.content.question
-	                        )
+	                        'h3',
+	                        null,
+	                        'Multiple Choice Question'
 	                    ),
-	                    _react2['default'].createElement(AnswerChoices, { onAnswersChanged: this.updateChoices, choices: this.props.question.content.choices })
+	                    _react2['default'].createElement(
+	                        'h2',
+	                        null,
+	                        this.props.question.ID,
+	                        '. ',
+	                        this.props.question.content.question
+	                    ),
+	                    _react2['default'].createElement(AnswerChoices, { choices: this.props.question.content.choices })
 	                );
 	            }
 
@@ -41085,7 +41288,7 @@
 	};
 
 /***/ },
-/* 260 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41100,7 +41303,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactPopup = __webpack_require__(240);
+	var _reactPopup = __webpack_require__(252);
 
 	var _reactPopup2 = _interopRequireDefault(_reactPopup);
 
@@ -41112,7 +41315,7 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _reactModal = __webpack_require__(246);
+	var _reactModal = __webpack_require__(240);
 
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 
@@ -41164,6 +41367,7 @@
 	            function render() {
 	                var _this2 = this;
 
+	                console.log(this);
 	                return _react2['default'].createElement(
 	                    _GenericQuestion3['default'],
 	                    { active: this, onCreatedNewQuestion: function () {
@@ -41174,21 +41378,11 @@
 	                            return onCreatedNewQuestion;
 	                        }(), props: this.props },
 	                    _react2['default'].createElement(
-	                        'h3',
-	                        null,
-	                        'Question'
-	                    ),
-	                    _react2['default'].createElement(
 	                        'form',
 	                        null,
 	                        _react2['default'].createElement(
 	                            'div',
 	                            { className: 'form-group' },
-	                            _react2['default'].createElement(
-	                                'label',
-	                                { htmlFor: 'questionContent' },
-	                                'Question'
-	                            ),
 	                            _react2['default'].createElement('input', { value: this.state.question, onChange: function () {
 	                                    function onChange(event) {
 	                                        return _this2.saveInput('question', event.target.value);
@@ -41258,7 +41452,7 @@
 	};
 
 /***/ },
-/* 261 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41277,7 +41471,7 @@
 
 	var _GenericQuestion3 = _interopRequireDefault(_GenericQuestion2);
 
-	var _Video = __webpack_require__(262);
+	var _Video = __webpack_require__(264);
 
 	var _Video2 = _interopRequireDefault(_Video);
 
@@ -41350,21 +41544,11 @@
 	                            return onCreatedNewQuestion;
 	                        }(), props: this.props, active: this },
 	                    _react2['default'].createElement(
-	                        'h3',
-	                        null,
-	                        'Video'
-	                    ),
-	                    _react2['default'].createElement(
 	                        'form',
 	                        null,
 	                        _react2['default'].createElement(
 	                            'div',
 	                            { className: 'form-group' },
-	                            _react2['default'].createElement(
-	                                'label',
-	                                { htmlFor: 'questionEntered2' },
-	                                'Question'
-	                            ),
 	                            _react2['default'].createElement('input', { value: this.state.question, onChange: function () {
 	                                    function onChange(event) {
 	                                        return _this2.saveInput('question', event.target.value);
@@ -41377,7 +41561,7 @@
 	                                { className: 'col-lg-12', style: { margin: "5px" } },
 	                                _react2['default'].createElement(
 	                                    'span',
-	                                    { onClick: this.addVideo, className: 'btn btn-success' },
+	                                    { onClick: this.addVideo, className: 'btn btn-default' },
 	                                    caption
 	                                ),
 	                                this.state.showVideo ? _react2['default'].createElement(_Video2['default'], null) : null
@@ -41389,26 +41573,6 @@
 
 	            return render;
 	        }()
-
-	        // successCallback(stream){
-	        //     const options = {
-	        //         mimeType: 'video/webm',
-	        //         audioBitsPerSecond: 128000,
-	        //         videoBitsPerSecond: 128000,
-	        //         bitsPerSecond: 128000
-	        //     };
-	        //     recordRTC = RecordRTC(stream, options);
-	        //     recordRTC.startRecording();
-	        // }
-	        //
-	        // errorCallback(error){
-	        //     console.log(error);
-	        // }
-	        //
-	        // stopRecording() {
-	        //     recordRTC.stopRecording
-	        // }
-
 	    }]);
 
 	    return VideoQuestionCreator;
@@ -41433,24 +41597,11 @@
 
 	        var _this3 = _possibleConstructorReturn(this, (VideoQuestionDisplay.__proto__ || Object.getPrototypeOf(VideoQuestionDisplay)).call(this, props));
 
-	        _this3.buildContent = _this3.buildContent.bind(_this3);
 	        _this3.active = _this3;
 	        return _this3;
 	    }
 
 	    _createClass(VideoQuestionDisplay, [{
-	        key: 'buildContent',
-	        value: function () {
-	            function buildContent() {
-	                return {
-	                    type: 'video',
-	                    content: JSON.stringify({ question: this.getInput('question') })
-	                };
-	            }
-
-	            return buildContent;
-	        }()
-	    }, {
 	        key: 'render',
 	        value: function () {
 	            function render() {
@@ -41460,6 +41611,11 @@
 	                    { className: 'col-lg-12' },
 	                    _react2['default'].createElement(
 	                        'h3',
+	                        null,
+	                        'Video Question'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'h2',
 	                        null,
 	                        this.props.question.ID,
 	                        '. ',
@@ -41481,7 +41637,7 @@
 	};
 
 /***/ },
-/* 262 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41496,7 +41652,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Webcam = __webpack_require__(263);
+	var _Webcam = __webpack_require__(265);
 
 	var _Webcam2 = _interopRequireDefault(_Webcam);
 
@@ -41504,7 +41660,7 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _AppUtils = __webpack_require__(265);
+	var _AppUtils = __webpack_require__(267);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -41679,7 +41835,7 @@
 	exports['default'] = Video;
 
 /***/ },
-/* 263 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41694,7 +41850,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _recordrtc = __webpack_require__(264);
+	var _recordrtc = __webpack_require__(266);
 
 	var _recordrtc2 = _interopRequireDefault(_recordrtc);
 
@@ -41702,7 +41858,7 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _AppUtils = __webpack_require__(265);
+	var _AppUtils = __webpack_require__(267);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -41742,7 +41898,7 @@
 	exports['default'] = Webcam;
 
 /***/ },
-/* 264 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {// Last time updated: 2017-02-13 9:58:18 AM UTC
@@ -46075,7 +46231,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 265 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46087,7 +46243,7 @@
 	exports.captureUserAudio = captureUserAudio;
 	exports.getRecordRTCObject = getRecordRTCObject;
 
-	var _recordrtc = __webpack_require__(264);
+	var _recordrtc = __webpack_require__(266);
 
 	var _recordrtc2 = _interopRequireDefault(_recordrtc);
 
@@ -46123,7 +46279,7 @@
 	}
 
 /***/ },
-/* 266 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46138,7 +46294,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactPopup = __webpack_require__(240);
+	var _reactPopup = __webpack_require__(252);
 
 	var _reactPopup2 = _interopRequireDefault(_reactPopup);
 
@@ -46150,17 +46306,17 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _reactModal = __webpack_require__(246);
+	var _reactModal = __webpack_require__(240);
 
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 
-	var _Audio = __webpack_require__(267);
+	var _Audio = __webpack_require__(269);
 
 	var _Audio2 = _interopRequireDefault(_Audio);
 
-	var _GenericQuestion = __webpack_require__(258);
+	var _GenericQuestion2 = __webpack_require__(258);
 
-	var _GenericQuestion2 = _interopRequireDefault(_GenericQuestion);
+	var _GenericQuestion3 = _interopRequireDefault(_GenericQuestion2);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -46173,8 +46329,8 @@
 	/***************************************************************************/
 	/* Question(Audio Question)                                               */
 	/***************************************************************************/
-	var AudioQuestionCreator = function (_React$Component) {
-	    _inherits(AudioQuestionCreator, _React$Component);
+	var AudioQuestionCreator = function (_GenericQuestion) {
+	    _inherits(AudioQuestionCreator, _GenericQuestion);
 
 	    function AudioQuestionCreator(props) {
 	        _classCallCheck(this, AudioQuestionCreator);
@@ -46206,7 +46362,7 @@
 	                var _this2 = this;
 
 	                return _react2['default'].createElement(
-	                    _GenericQuestion2['default'],
+	                    _GenericQuestion3['default'],
 	                    { active: this, onCreatedNewQuestion: function () {
 	                            function onCreatedNewQuestion() {
 	                                return _this2.props.onCreatedNewQuestion();
@@ -46215,21 +46371,11 @@
 	                            return onCreatedNewQuestion;
 	                        }(), props: this.props },
 	                    _react2['default'].createElement(
-	                        'h3',
-	                        null,
-	                        'Audio'
-	                    ),
-	                    _react2['default'].createElement(
 	                        'form',
 	                        null,
 	                        _react2['default'].createElement(
 	                            'div',
 	                            { className: 'form-group' },
-	                            _react2['default'].createElement(
-	                                'label',
-	                                { htmlFor: 'questionEntered2' },
-	                                'Question'
-	                            ),
 	                            _react2['default'].createElement('input', { value: this.state.question, onChange: function () {
 	                                    function onChange(event) {
 	                                        return _this2.saveInput('question', event.target.value);
@@ -46247,7 +46393,7 @@
 	    }]);
 
 	    return AudioQuestionCreator;
-	}(_react2['default'].Component);
+	}(_GenericQuestion3['default']);
 
 	AudioQuestionCreator.defaultProps = {
 	    onCreatedNewQuestion: function () {
@@ -46260,8 +46406,8 @@
 	/* Question(Audio Question)                                               */
 	/***************************************************************************/
 
-	var AudioQuestionDisplay = function (_React$Component2) {
-	    _inherits(AudioQuestionDisplay, _React$Component2);
+	var AudioQuestionDisplay = function (_React$Component) {
+	    _inherits(AudioQuestionDisplay, _React$Component);
 
 	    function AudioQuestionDisplay(props) {
 	        _classCallCheck(this, AudioQuestionDisplay);
@@ -46280,11 +46426,15 @@
 	                    _react2['default'].createElement(
 	                        'h3',
 	                        null,
+	                        'Audio Question'
+	                    ),
+	                    _react2['default'].createElement(
+	                        'h2',
+	                        null,
 	                        this.props.question.ID,
 	                        '. ',
 	                        this.props.question.content.question
-	                    ),
-	                    _react2['default'].createElement(_Audio2['default'], null)
+	                    )
 	                );
 	            }
 
@@ -46301,7 +46451,7 @@
 	};
 
 /***/ },
-/* 267 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46316,7 +46466,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Player = __webpack_require__(268);
+	var _Player = __webpack_require__(270);
 
 	var _Player2 = _interopRequireDefault(_Player);
 
@@ -46324,7 +46474,7 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _AppUtils = __webpack_require__(265);
+	var _AppUtils = __webpack_require__(267);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -46476,7 +46626,7 @@
 	exports['default'] = Audio;
 
 /***/ },
-/* 268 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46533,7 +46683,7 @@
 	exports['default'] = Player;
 
 /***/ },
-/* 269 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46548,6 +46698,14 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _jquery = __webpack_require__(180);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _QuestionTypes = __webpack_require__(250);
+
+	var _QuestionTypes2 = _interopRequireDefault(_QuestionTypes);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46556,150 +46714,86 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var About = function (_React$Component) {
-	    _inherits(About, _React$Component);
+	var MultipleChoiceDisplay = _QuestionTypes2["default"].MultipleChoiceQuestion.Display;
+	var MultipleChoiceCreator = _QuestionTypes2["default"].MultipleChoiceQuestion.Creator;
+	var CodeQuestionDisplay = _QuestionTypes2["default"].CodeQuestion.Display;
+	var CodeQuestionCreator = _QuestionTypes2["default"].CodeQuestion.Creator;
+	var VideoQuestionDisplay = _QuestionTypes2["default"].VideoQuestion.Display;
+	var VideoQuestionCreator = _QuestionTypes2["default"].VideoQuestion.Creator;
+	var TextQuestionDisplay = _QuestionTypes2["default"].TextQuestion.Display;
+	var TextQuestionCreator = _QuestionTypes2["default"].TextQuestion.Creator;
+	var AudioQuestionDisplay = _QuestionTypes2["default"].AudioQuestion.Display;
+	var AudioQuestionCreator = _QuestionTypes2["default"].AudioQuestion.Creator;
 
-	    function About() {
-	        _classCallCheck(this, About);
+	/***************************************************************************/
+	/* Question                                                                */
+	/***************************************************************************/
 
-	        return _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).apply(this, arguments));
-	    }
+	var Question = function (_React$Component) {
+	    _inherits(Question, _React$Component);
 
-	    _createClass(About, [{
-	        key: "render",
-	        value: function () {
-	            function render() {
-	                return _react2["default"].createElement(
-	                    "div",
-	                    { style: { position: "absolute", left: "50vw", "top": "50vh", "transform": "translate(-50%,-50%)" } },
-	                    "Hector was here so dont leave!"
-	                );
-	            }
+	    function Question(props) {
+	        _classCallCheck(this, Question);
 
-	            return render;
-	        }()
-	    }]);
-
-	    return About;
-	}(_react2["default"].Component);
-
-	exports["default"] = About;
-
-/***/ },
-/* 270 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _User = __webpack_require__(271);
-
-	var _User2 = _interopRequireDefault(_User);
-
-	var _UserForm = __webpack_require__(272);
-
-	var _UserForm2 = _interopRequireDefault(_UserForm);
-
-	var _reactDom = __webpack_require__(33);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _jquery = __webpack_require__(180);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Group = function (_React$Component) {
-	    _inherits(Group, _React$Component);
-
-	    function Group(props) {
-	        _classCallCheck(this, Group);
-
-	        var _this = _possibleConstructorReturn(this, (Group.__proto__ || Object.getPrototypeOf(Group)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (Question.__proto__ || Object.getPrototypeOf(Question)).call(this, props));
 
 	        _this.state = {
-	            users: [],
-	            index: 0
+	            answered: props.answered
 	        };
+	        _this["delete"] = _this["delete"].bind(_this);
+
+	        _this.questionTypes = {
+	            'code': _react2["default"].createElement(CodeQuestionDisplay, { question: _this.props.question }),
+	            'text': _react2["default"].createElement(TextQuestionDisplay, { question: _this.props.question }),
+	            'audio': _react2["default"].createElement(AudioQuestionDisplay, { question: _this.props.question }),
+	            'video': _react2["default"].createElement(VideoQuestionDisplay, { question: _this.props.question }),
+	            'multiple-choice': _react2["default"].createElement(MultipleChoiceDisplay, { question: _this.props.question })
+	        };
+
 	        return _this;
 	    }
 
-	    _createClass(Group, [{
-	        key: 'addUserToGroup',
+	    _createClass(Question, [{
+	        key: "delete",
 	        value: function () {
-	            function addUserToGroup(firstName, lastName, email) {
-	                var newUser = { key: this.state.index.toString(), firstName: firstName, lastName: lastName, email: email };
-	                var newState = this.state.users;
-	                newState.push(newUser);
-	                this.setState({
-	                    users: newState,
-	                    index: this.state.index + 1
+	            function _delete() {
+	                var $this = this;
+	                _jquery2["default"].ajax({
+	                    method: 'DELETE',
+	                    url: "/rest/questions/" + this.props.question.id
+	                }).done(function () {
+	                    location.reload();
 	                });
 	            }
 
-	            return addUserToGroup;
+	            return _delete;
 	        }()
 	    }, {
-	        key: 'render',
+	        key: "render",
 	        value: function () {
 	            function render() {
-	                var userList = this.state.users.map(function (user) {
-	                    return _react2['default'].createElement(_User2['default'], { key: user.key.toString(),
-	                        firstName: user.firstName,
-	                        lastName: user.lastName,
-	                        email: user.email
-	                    });
-	                });
-	                return _react2['default'].createElement(
-	                    'div',
-	                    null,
-	                    _react2['default'].createElement(_UserForm2['default'], { addUserToGroup: this.addUserToGroup.bind(this) }),
-	                    _react2['default'].createElement('br', null),
-	                    _react2['default'].createElement('br', null),
-	                    _react2['default'].createElement(
-	                        'div',
-	                        { className: 'table-responsive' },
-	                        _react2['default'].createElement(
-	                            'table',
-	                            { className: 'table table-hover' },
-	                            _react2['default'].createElement(
-	                                'tr',
-	                                null,
-	                                _react2['default'].createElement(
-	                                    'th',
-	                                    null,
-	                                    'First Name'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'th',
-	                                    null,
-	                                    'Last Name'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'th',
-	                                    null,
-	                                    'Email:'
-	                                )
-	                            ),
-	                            userList
-	                        )
+
+	                /*******************************************************************/
+	                var questionType = _react2["default"].createElement(
+	                    "div",
+	                    { className: "col-lg-12" },
+	                    "Unknown Type ",
+	                    _react2["default"].createElement(
+	                        "b",
+	                        null,
+	                        this.props.question.type
 	                    )
+	                );
+	                if (typeof this.questionTypes[this.props.question.type] != 'undefined') {
+	                    questionType = this.questionTypes[this.props.question.type];
+	                }
+	                console.log("I'm rendering");
+
+	                /*******************************************************************/
+	                return _react2["default"].createElement(
+	                    "div",
+	                    { className: "col-lg-12 question-item", style: { borderRadius: '10px', padding: '10px', margin: '5px', boxShadow: '0px 1px 3px black' } },
+	                    questionType
 	                );
 	            }
 
@@ -46707,117 +46801,16 @@
 	        }()
 	    }]);
 
-	    return Group;
-	}(_react2['default'].Component);
+	    return Question;
+	}(_react2["default"].Component);
 
-	exports['default'] = Group;
-
-/***/ },
-/* 271 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _jquery = __webpack_require__(180);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var User = function (_React$Component) {
-	    _inherits(User, _React$Component);
-
-	    function User(props) {
-	        _classCallCheck(this, User);
-
-	        return _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
-	    }
-
-	    _createClass(User, [{
-	        key: 'render',
-	        value: function () {
-	            function render() {
-	                var firstName = this.getFirstName();
-	                var lastName = this.getLastName();
-	                var email = this.getEmail();
-	                return _react2['default'].createElement(
-	                    'tr',
-	                    null,
-	                    _react2['default'].createElement(
-	                        'td',
-	                        null,
-	                        firstName
-	                    ),
-	                    _react2['default'].createElement(
-	                        'td',
-	                        null,
-	                        lastName
-	                    ),
-	                    _react2['default'].createElement(
-	                        'td',
-	                        null,
-	                        email
-	                    )
-	                );
-	            }
-
-	            return render;
-	        }()
-	    }, {
-	        key: 'getFirstName',
-	        value: function () {
-	            function getFirstName() {
-	                return this.props.firstName;
-	            }
-
-	            return getFirstName;
-	        }()
-	    }, {
-	        key: 'getLastName',
-	        value: function () {
-	            function getLastName() {
-	                return this.props.lastName;
-	            }
-
-	            return getLastName;
-	        }()
-	    }, {
-	        key: 'getEmail',
-	        value: function () {
-	            function getEmail() {
-	                return this.props.email;
-	            }
-
-	            return getEmail;
-	        }()
-	    }]);
-
-	    return User;
-	}(_react2['default'].Component);
-
-	exports['default'] = User;
+	exports["default"] = Question;
 
 /***/ },
 /* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -46828,153 +46821,40 @@
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	var _reactPopup = __webpack_require__(240);
-
-	var _reactPopup2 = _interopRequireDefault(_reactPopup);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var UserForm = function (_React$Component) {
-	    _inherits(UserForm, _React$Component);
-
-	    function UserForm(props) {
-	        _classCallCheck(this, UserForm);
-
-	        return _possibleConstructorReturn(this, (UserForm.__proto__ || Object.getPrototypeOf(UserForm)).call(this, props));
-	    }
-
-	    _createClass(UserForm, [{
-	        key: 'addUser',
-	        value: function () {
-	            function addUser() {
-	                var firstName = document.getElementById('firstName').value;
-	                var lastName = document.getElementById('lastName').value;
-	                var email = document.getElementById('email').value;
-	                this.props.addUserToGroup(firstName, lastName, email);
-	            }
-
-	            return addUser;
-	        }()
-	    }, {
-	        key: 'render',
-	        value: function () {
-	            function render() {
-	                var _this2 = this;
-
-	                return _react2['default'].createElement(
-	                    'div',
-	                    null,
-	                    _react2['default'].createElement(
-	                        'form',
-	                        { style: { display: 'inline' }, action: '#', method: 'POST' },
-	                        _react2['default'].createElement(
-	                            'div',
-	                            null,
-	                            _react2['default'].createElement(
-	                                'label',
-	                                { htmlFor: 'firstName' },
-	                                'First Name:'
-	                            ),
-	                            _react2['default'].createElement('br', null),
-	                            _react2['default'].createElement('input', { id: 'firstName', type: 'text' })
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            null,
-	                            _react2['default'].createElement(
-	                                'label',
-	                                { 'for': 'lastName' },
-	                                'Last Name:'
-	                            ),
-	                            _react2['default'].createElement('br', null),
-	                            _react2['default'].createElement('input', { id: 'lastName', type: 'text' })
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            null,
-	                            _react2['default'].createElement(
-	                                'label',
-	                                { 'for': 'email' },
-	                                'Email:'
-	                            ),
-	                            _react2['default'].createElement('br', null),
-	                            _react2['default'].createElement('input', { id: 'email', type: 'email' })
-	                        ),
-	                        _react2['default'].createElement('br', null),
-	                        _react2['default'].createElement('div', null)
-	                    ),
-	                    _react2['default'].createElement('br', null),
-	                    _react2['default'].createElement(
-	                        'button',
-	                        { onClick: function () {
-	                                function onClick() {
-	                                    _this2.addUser();
-	                                }
-
-	                                return onClick;
-	                            }(), className: 'btn btn-default' },
-	                        'Add User'
-	                    )
-	                );
-	            }
-
-	            return render;
-	        }()
-	    }]);
-
-	    return UserForm;
-	}(_react2['default'].Component);
-
-	exports['default'] = UserForm;
-
-/***/ },
-/* 273 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactPopup = __webpack_require__(240);
-
-	var _reactPopup2 = _interopRequireDefault(_reactPopup);
-
-	var _reactDom = __webpack_require__(33);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
 
 	var _jquery = __webpack_require__(180);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _reactModal = __webpack_require__(246);
+	var _EventHandler = __webpack_require__(273);
 
-	var _reactModal2 = _interopRequireDefault(_reactModal);
+	var _EventHandler2 = _interopRequireDefault(_EventHandler);
 
-	var _QuestionTypes = __webpack_require__(256);
+	var _Rest = __webpack_require__(260);
 
-	var _QuestionTypes2 = _interopRequireDefault(_QuestionTypes);
+	var _Rest2 = _interopRequireDefault(_Rest);
 
 	var _Questions = __webpack_require__(239);
 
 	var _Questions2 = _interopRequireDefault(_Questions);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _ExistingQuestions = __webpack_require__(274);
+
+	var _ExistingQuestions2 = _interopRequireDefault(_ExistingQuestions);
+
+	var _AssessmentPreview = __webpack_require__(277);
+
+	var _AssessmentPreview2 = _interopRequireDefault(_AssessmentPreview);
+
+	var _AssessmentTimer = __webpack_require__(284);
+
+	var _AssessmentTimer2 = _interopRequireDefault(_AssessmentTimer);
+
+	var _QuestionTypes = __webpack_require__(250);
+
+	var _QuestionTypes2 = _interopRequireDefault(_QuestionTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -46982,16 +46862,20 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var MultipleChoiceDisplay = _QuestionTypes2['default'].MultipleChoiceQuestion.Display;
-	var MultipleChoiceCreator = _QuestionTypes2['default'].MultipleChoiceQuestion.Creator;
-	var CodeQuestionDisplay = _QuestionTypes2['default'].CodeQuestion.Display;
-	var CodeQuestionCreator = _QuestionTypes2['default'].CodeQuestion.Creator;
-	var VideoQuestionDisplay = _QuestionTypes2['default'].VideoQuestion.Display;
-	var VideoQuestionCreator = _QuestionTypes2['default'].VideoQuestion.Creator;
-	var TextQuestionDisplay = _QuestionTypes2['default'].TextQuestion.Display;
-	var TextQuestionCreator = _QuestionTypes2['default'].TextQuestion.Creator;
-	var AudioQuestionDisplay = _QuestionTypes2['default'].AudioQuestion.Display;
-	var AudioQuestionCreator = _QuestionTypes2['default'].AudioQuestion.Creator;
+	var MultipleChoiceDisplay = _QuestionTypes2["default"].MultipleChoiceQuestion.Display;
+	var MultipleChoiceCreator = _QuestionTypes2["default"].MultipleChoiceQuestion.Creator;
+	var CodeQuestionDisplay = _QuestionTypes2["default"].CodeQuestion.Display;
+	var CodeQuestionCreator = _QuestionTypes2["default"].CodeQuestion.Creator;
+	var VideoQuestionDisplay = _QuestionTypes2["default"].VideoQuestion.Display;
+	var VideoQuestionCreator = _QuestionTypes2["default"].VideoQuestion.Creator;
+	var TextQuestionDisplay = _QuestionTypes2["default"].TextQuestion.Display;
+	var TextQuestionCreator = _QuestionTypes2["default"].TextQuestion.Creator;
+	var AudioQuestionDisplay = _QuestionTypes2["default"].AudioQuestion.Display;
+	var AudioQuestionCreator = _QuestionTypes2["default"].AudioQuestion.Creator;
+
+	/**
+	 *
+	 */
 
 	var Assessment = function (_React$Component) {
 	    _inherits(Assessment, _React$Component);
@@ -47002,425 +46886,1045 @@
 	        var _this = _possibleConstructorReturn(this, (Assessment.__proto__ || Object.getPrototypeOf(Assessment)).call(this, props));
 
 	        var $this = _this;
-	        _this.state = { "step": 0, questions: [] };
-	        _this.SideBar = _react2['default'].createElement(
-	            'div',
-	            { className: 'col-lg-1 assessment-side-panel' },
-	            _react2['default'].createElement(
-	                'span',
-	                { className: 'assessment-side-panel-item btn btn-block btn-default' },
-	                _react2['default'].createElement('span', { className: 'glyphicon glyphicon-plus' })
+
+	        /*******************************************************************/
+	        /* Setup Event Handler to handle Events Between Components         */
+	        /*******************************************************************/
+	        _this.myEventHandler = new _EventHandler2["default"]();
+
+	        /*******************************************************************/
+	        _this.myEventHandler.on("save-question", "started", function (e) {
+	            $this.loading("Saving Question...");
+	        });
+
+	        /*******************************************************************/
+	        _this.myEventHandler.on("save-question", "finished", function (e) {
+
+	            var questionInfo = e.data;
+	            $this.loading("Adding Question to Assessment...");
+	            _Rest2["default"].Lets().post("/rest/assessments/" + $this.getAssessmentID() + "/question/" + e.data.id, {}, function (data) {
+	                var assessmentInfo = data;
+	                $this.myEventHandler.trigger("question-added", { question: questionInfo, assessment: assessmentInfo });
+	            });
+	            // $.ajax({
+	            //     url:,
+	            //     method:"POST",
+	            //     dataType: "json",
+	            //     contentType:'application/json',
+	            //     success:function(data){
+	            //         var assessmentInfo=data;
+	            //         $this.myEventHandler.trigger("question-added",{question:questionInfo,assessment:assessmentInfo});
+	            //     }
+	            // });
+	        });
+	        $this.myEventHandler.on("question-added", function (e) {
+	            $this.notLoading();
+	            $this.MoveTo("mainPage");
+	            $this.loadQuestions();
+	        });
+
+	        $this.myEventHandler.on("questions-loaded", function (e) {
+	            var questions = e.questions.map(function (item) {
+	                item.content = JSON.parse(item.content);
+	                return item;
+	            });
+	            console.log(JSON.stringify(questions));
+
+	            $this.setState({ questions: questions });
+	        });
+
+	        //TODO After performing testing, this seemed to never be used
+	        // this.myEventHandler.on("get-all-existing-questions", function (event) {
+	        //     const data = Rests.Lets.get('/rest/questions',{}, function (data) {
+	        //         return data;
+	        //     });
+	        //     console.log(data);
+	        //     return data;
+	        // });
+
+
+	        _this.state = { "currentPage": "mainPage", questions: [] };
+	        _this.SideBar = _react2["default"].createElement(
+	            "div",
+	            { className: "col-lg-1 assessment-side-panel" },
+	            _react2["default"].createElement(
+	                "span",
+	                { className: "assessment-side-panel-item btn btn-block btn-default" },
+	                _react2["default"].createElement("span", { className: "glyphicon glyphicon-plus" })
 	            ),
-	            _react2['default'].createElement(
-	                'span',
-	                { className: 'assessment-side-panel-item btn btn-block btn-primary' },
-	                _react2['default'].createElement('span', { className: 'glyphicon glyphicon-home' })
+	            _react2["default"].createElement(
+	                "span",
+	                { className: "assessment-side-panel-item btn btn-block btn-primary" },
+	                _react2["default"].createElement("span", { className: "glyphicon glyphicon-home" })
 	            ),
-	            _react2['default'].createElement(
-	                'span',
-	                { className: 'assessment-side-panel-item btn btn-block btn-primary' },
-	                _react2['default'].createElement('span', { className: 'glyphicon glyphicon-user' })
+	            _react2["default"].createElement(
+	                "span",
+	                { className: "assessment-side-panel-item btn btn-block btn-primary" },
+	                _react2["default"].createElement("span", { className: "glyphicon glyphicon-user" })
 	            ),
-	            _react2['default'].createElement(
-	                'span',
-	                { className: 'assessment-side-panel-item btn btn-block btn-primary' },
-	                _react2['default'].createElement('span', { className: 'glyphicon glyphicon-th' })
+	            _react2["default"].createElement(
+	                "span",
+	                { className: "assessment-side-panel-item btn btn-block btn-primary" },
+	                _react2["default"].createElement("span", { className: "glyphicon glyphicon-th" })
 	            ),
-	            _react2['default'].createElement(
-	                'span',
-	                { className: 'assessment-side-panel-item btn btn-block btn-primary' },
-	                _react2['default'].createElement('span', { className: 'glyphicon glyphicon-check' })
+	            _react2["default"].createElement(
+	                "span",
+	                { className: "assessment-side-panel-item btn btn-block btn-primary" },
+	                _react2["default"].createElement("span", { className: "glyphicon glyphicon-check" })
 	            )
 	        );
 
 	        /*******************************************************************/
 	        _this.questionTypes = {
-	            'code': _react2['default'].createElement(CodeQuestionCreator, { question: _this.props.question }),
-	            'text': _react2['default'].createElement(TextQuestionCreator, { question: _this.props.question }),
-	            'audio': _react2['default'].createElement(AudioQuestionCreator, { question: _this.props.question }),
-	            'video': _react2['default'].createElement(VideoQuestionCreator, { question: _this.props.question }),
-	            'multiple-choice': _react2['default'].createElement(MultipleChoiceCreator, { question: _this.props.question })
+	            'code': _react2["default"].createElement(CodeQuestionCreator, { noCreateBtn: true, eventHandler: _this.myEventHandler, question: _this.props.question }),
+	            'text': _react2["default"].createElement(TextQuestionCreator, { noCreateBtn: true, eventHandler: _this.myEventHandler, question: _this.props.question }),
+	            'audio': _react2["default"].createElement(AudioQuestionCreator, { noCreateBtn: true, eventHandler: _this.myEventHandler, question: _this.props.question }),
+	            'video': _react2["default"].createElement(VideoQuestionCreator, { noCreateBtn: true, eventHandler: _this.myEventHandler, question: _this.props.question }),
+	            'multiple-choice': _react2["default"].createElement(MultipleChoiceCreator, { noCreateBtn: true, eventHandler: _this.myEventHandler, question: _this.props.question })
 	        };
 
-	        _this.questionSelection = _react2['default'].createElement(
-	            'div',
-	            { className: 'col-lg-12 question-type-selection' },
-	            _react2['default'].createElement(
-	                'div',
-	                { onClick: function () {
-	                        function onClick() {
-	                            return $this.chooseQuestionType('multiple-choice');
+	        _this.questionSelection = function (selection) {
+	            return _react2["default"].createElement(
+	                "div",
+	                { className: (typeof selection != "undefined" ? "selection-exists" : "") + " question-type-selection" },
+	                _react2["default"].createElement(
+	                    "div",
+	                    { onClick: function () {
+	                            function onClick() {
+	                                return $this.chooseQuestionType('multiple-choice');
+	                            }
+
+	                            return onClick;
+	                        }(), className: "btn question-type-selection-option multiple-choice-selection  " + (selection == 'multiple-choice' ? 'selected' : '') },
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-icon" },
+	                        _react2["default"].createElement("span", { className: "glyphicon glyphicon-star-empty" })
+	                    ),
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-text" },
+	                        "Multiple Choice"
+	                    )
+	                ),
+	                _react2["default"].createElement(
+	                    "div",
+	                    { onClick: function () {
+	                            function onClick() {
+	                                return $this.chooseQuestionType('text');
+	                            }
+
+	                            return onClick;
+	                        }(), className: "btn question-type-selection-option text-selection  " + (selection == 'text' ? 'selected' : '') },
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-icon" },
+	                        _react2["default"].createElement("span", { className: "glyphicon glyphicon-font" }),
+	                        " "
+	                    ),
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-text" },
+	                        "Text response"
+	                    )
+	                ),
+	                _react2["default"].createElement(
+	                    "div",
+	                    { onClick: function () {
+	                            function onClick() {
+	                                return $this.chooseQuestionType('video');
+	                            }
+
+	                            return onClick;
+	                        }(), className: "btn question-type-selection-option video-selection  " + (selection == 'video' ? 'selected' : '') },
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-icon" },
+	                        _react2["default"].createElement("span", { className: "glyphicon glyphicon-facetime-video" }),
+	                        " "
+	                    ),
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-text" },
+	                        "Video response"
+	                    )
+	                ),
+	                _react2["default"].createElement(
+	                    "div",
+	                    { onClick: function () {
+	                            function onClick() {
+	                                return $this.chooseQuestionType('audio');
+	                            }
+
+	                            return onClick;
+	                        }(), className: "btn question-type-selection-option audio-selection  " + (selection == 'audio' ? 'selected' : '') },
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-icon" },
+	                        _react2["default"].createElement("span", { className: "glyphicon glyphicon-volume-up" }),
+	                        " "
+	                    ),
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-text" },
+	                        "Audio response"
+	                    )
+	                ),
+	                _react2["default"].createElement(
+	                    "div",
+	                    { onClick: function () {
+	                            function onClick() {
+	                                return $this.chooseQuestionType('code');
+	                            }
+
+	                            return onClick;
+	                        }(), className: "btn question-type-selection-option code-selection " + (selection == 'code' ? 'selected' : '') },
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-icon" },
+	                        _react2["default"].createElement("span", { className: "glyphicon glyphicon-console" }),
+	                        " "
+	                    ),
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "question-type-selection-option-text" },
+	                        "Code response"
+	                    )
+	                )
+	            );
+	        };
+
+	        //TODO After performing testing, this seemed to never be used
+	        // this.getExistingQuestionSelection=function () {
+	        //     return (
+	        //         <div>
+	        //             <h2>Hello world</h2>
+	        //             <div className="assessment-questions-header-container">
+	        //                 <div className="assessment-questions-header-add-container">
+	        //                                 <span onClick={() => {
+	        //                                     $this.MoveTo("interPageForQuestions")
+	        //                                 }} className="btn assessment-questions-container-add-btn"><span className="glyphicon glyphicon-plus"/> Add</span>
+	        //                 </div>
+	        //                 <div className="assessment-questions-header-title">{$this.state.questions.length} Questions</div>
+	        //
+	        //             </div>
+	        //             <div className="assessment-questions-body">
+	        //                 <Questions questions={$this.state.questions}/>
+	        //             </div>
+	        //         </div>
+	        //     );
+	        // };
+
+
+	        _this.stepInstructions = {
+
+	            /***************************************************************/
+	            /* Page: Main Page                                             */
+	            /* Description: Where the questions currently in assessment are*/
+	            /*              shown                                          */
+	            /* Developers: Hector Flores    - Design, Structure            */
+	            /*             Sean Graham      - Design, Questions List       */
+	            /*             Rashan Whittaker - Design, Set Time List        */
+	            /*             Joshua Bird      - Design, Expiration Date      */
+	            /***************************************************************/
+	            "mainPage": {
+
+	                /***********************************************************/
+	                /* What is Displayed on Top Heading                        */
+	                /***********************************************************/
+	                headingTitle: "New Assessment",
+
+	                /***********************************************************/
+	                /* Previous Button Properties                              */
+	                /***********************************************************/
+	                previous: {
+	                    enabled: true,
+	                    html: "Cancel",
+	                    clicked: function () {
+	                        function clicked($this) {
+	                            $this.MoveTo("targetGroups");
 	                        }
 
-	                        return onClick;
-	                    }(), className: 'btn question-type-selection-option' },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-icon' },
-	                    _react2['default'].createElement('span', { className: 'glyphicon glyphicon-star-empty' })
-	                ),
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-text' },
-	                    'Multiple Choice'
-	                )
-	            ),
-	            _react2['default'].createElement(
-	                'div',
-	                { onClick: function () {
-	                        function onClick() {
-	                            return $this.chooseQuestionType('text');
+	                        return clicked;
+	                    }()
+	                },
+
+	                /***********************************************************/
+	                /* Next Button Properties                                  */
+	                /***********************************************************/
+	                next: {
+	                    enabled: function () {
+	                        function enabled($this) {
+	                            return $this.state.questions.length > 0;
 	                        }
 
-	                        return onClick;
-	                    }(), className: 'btn  question-type-selection-option' },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-icon' },
-	                    _react2['default'].createElement('span', { className: 'glyphicon glyphicon-font' }),
-	                    ' '
-	                ),
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-text' },
-	                    'Text response'
-	                )
-	            ),
-	            _react2['default'].createElement(
-	                'div',
-	                { onClick: function () {
-	                        function onClick() {
-	                            return $this.chooseQuestionType('video');
+	                        return enabled;
+	                    }(),
+	                    html: function () {
+	                        function html($this) {
+	                            if ($this.state.questions.length > 0) {
+	                                return "Save";
+	                            }
+	                            return "Next";
 	                        }
 
-	                        return onClick;
-	                    }(), className: 'btn  question-type-selection-option' },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-icon' },
-	                    _react2['default'].createElement('span', { className: 'glyphicon glyphicon-facetime-video' }),
-	                    ' '
-	                ),
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-text' },
-	                    'Video response'
-	                )
-	            ),
-	            _react2['default'].createElement(
-	                'div',
-	                { onClick: function () {
-	                        function onClick() {
-	                            return $this.chooseQuestionType('audio');
+	                        return html;
+	                    }(),
+	                    clicked: function () {
+	                        function clicked($this) {
+	                            $this.MoveTo("saveAssessment");
 	                        }
 
-	                        return onClick;
-	                    }(), className: 'btn question-type-selection-option' },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-icon' },
-	                    _react2['default'].createElement('span', { className: 'glyphicon glyphicon-volume-up' }),
-	                    ' '
-	                ),
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-text' },
-	                    'Audio response'
-	                )
-	            ),
-	            _react2['default'].createElement(
-	                'div',
-	                { onClick: function () {
-	                        function onClick() {
-	                            return $this.chooseQuestionType('code');
+	                        return clicked;
+	                    }()
+	                },
+
+	                /***********************************************************/
+	                /* Render Function(Meat Goes Here)                         */
+	                /***********************************************************/
+	                render: function () {
+	                    function render() {
+
+	                        return _react2["default"].createElement(
+	                            "div",
+	                            { className: "build-your-assessment-container" },
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "top-header-container" },
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "top-header-title" },
+	                                    "Build Your Assessment"
+	                                ),
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "top-header-tools" },
+	                                    _react2["default"].createElement(_AssessmentTimer2["default"], { assessmentID: $this.getAssessmentID(), timeInSeconds: $this.state.allowed_time_sec,
+	                                        isTimed: $this.state.is_timed }),
+	                                    _react2["default"].createElement(
+	                                        "div",
+	                                        { className: "top-header-expiration-date-container" },
+	                                        _react2["default"].createElement("i", { className: "fa fa-calendar" }),
+	                                        "Set Expiration"
+	                                    ),
+	                                    _react2["default"].createElement(
+	                                        "div",
+	                                        { onClick: function () {
+	                                                function onClick() {
+	                                                    $this.MoveTo("previewAssessment");
+	                                                }
+
+	                                                return onClick;
+	                                            }(), className: "top-header-preview-container" },
+	                                        _react2["default"].createElement(
+	                                            "div",
+	                                            { className: "preview-button" },
+	                                            _react2["default"].createElement("i", { className: "fa fa-eye" }),
+	                                            " Preview"
+	                                        )
+	                                    )
+	                                )
+	                            ),
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "assessment-questions-container" },
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "assessment-questions-header-container" },
+	                                    _react2["default"].createElement(
+	                                        "div",
+	                                        { className: "assessment-questions-header-add-container" },
+	                                        _react2["default"].createElement(
+	                                            "span",
+	                                            { onClick: function () {
+	                                                    function onClick() {
+	                                                        $this.MoveTo("interPageForQuestions");
+	                                                    }
+
+	                                                    return onClick;
+	                                                }(), className: "btn assessment-questions-container-add-btn" },
+	                                            _react2["default"].createElement("span", { className: "glyphicon glyphicon-plus" }),
+	                                            " Add"
+	                                        )
+	                                    ),
+	                                    _react2["default"].createElement(
+	                                        "div",
+	                                        { className: "assessment-questions-header-title" },
+	                                        $this.state.questions.length,
+	                                        " Questions"
+	                                    )
+	                                ),
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "assessment-questions-body" },
+	                                    _react2["default"].createElement(_Questions2["default"], { questions: $this.state.questions })
+	                                )
+	                            )
+	                        );
+	                    }
+
+	                    return render;
+	                }()
+	            },
+
+	            /***************************************************************/
+	            /* Page: New/Existing Question                                 */
+	            /* Description: Where the questions currently in assessment are*/
+	            /*              shown                                          */
+	            /* Developers: Mathew Dickens -Design, Structure, Functionality*/
+	            /***************************************************************/
+	            "interPageForQuestions": {
+
+	                /***********************************************************/
+	                /* What is Displayed on Top Heading                        */
+	                /***********************************************************/
+	                headingTitle: "New/Existing Question",
+
+	                /***********************************************************/
+	                /* Previous Button Properties                              */
+	                /***********************************************************/
+	                previous: {
+	                    enabled: true,
+	                    html: "Cancel",
+	                    clicked: function () {
+	                        function clicked($this) {
+	                            $this.MoveTo("mainPage");
 	                        }
 
-	                        return onClick;
-	                    }(), className: 'btn question-type-selection-option' },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-icon' },
-	                    _react2['default'].createElement('span', { className: 'glyphicon glyphicon-console' }),
-	                    ' '
-	                ),
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'question-type-selection-option-text' },
-	                    'Code response'
-	                )
-	            )
-	        );
+	                        return clicked;
+	                    }()
+	                },
 
-	        _this.stepInstructions = [{
-	            headingTitle: "Populate your Assessment",
-	            render: function () {
-	                function render() {
-	                    return _react2['default'].createElement(
-	                        'div',
-	                        { className: 'col-lg-12' },
-	                        _react2['default'].createElement(
-	                            'h1',
+	                /***********************************************************/
+	                /* Next Button Properties                                  */
+	                /***********************************************************/
+	                next: { //swdp-iteration2 We dont want to be next. Matt, you have to call $this.MoveTo("chooseQuestion") or $this.MoveTo("getExistingQuestion") depending on this selection
+	                    enabled: false,
+	                    html: "Done",
+	                    clicked: function () {
+	                        function clicked($this) {}
+
+	                        return clicked;
+	                    }()
+	                },
+
+	                /***********************************************************/
+	                /* Render Function(Meat Goes Here)                         */
+	                /***********************************************************/
+	                render: function () {
+	                    function render() {
+	                        return _react2["default"].createElement(
+	                            "div",
 	                            null,
-	                            'Add Questions to your assessment'
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'assessment-questions-container' },
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: 'assessment-questions-container-title' },
-	                                '0 Questions'
+	                            _react2["default"].createElement(
+	                                "h2",
+	                                { className: "quick-note" },
+	                                "Choose to add a new question or existing question"
 	                            ),
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: 'assessment-questions-container-body' },
-	                                _react2['default'].createElement(
-	                                    'span',
-	                                    { onClick: function () {
-	                                            function onClick() {
-	                                                $this.NextStep();
-	                                            }
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "row" },
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "col-md-2 col-md-offset-5" },
+	                                    _react2["default"].createElement(
+	                                        "button",
+	                                        { onClick: function () {
+	                                                function onClick() {
+	                                                    return $this.MoveTo("getExistingQuestion");
+	                                                }
 
-	                                            return onClick;
-	                                        }(), className: 'btn' },
-	                                    _react2['default'].createElement('span', { className: 'glyphicon glyphicon-plus' }),
-	                                    ' Add new question'
+	                                                return onClick;
+	                                            }(), className: "btn btn-default btn-lg add-existing-question-btn" },
+	                                        "Add Existing Question"
+	                                    ),
+	                                    _react2["default"].createElement(
+	                                        "button",
+	                                        { onClick: function () {
+	                                                function onClick() {
+	                                                    return $this.MoveTo("chooseQuestion");
+	                                                }
+
+	                                                return onClick;
+	                                            }(), className: "btn btn-default btn-lg add-new-question-btn" },
+	                                        "Add New Question"
+	                                    )
 	                                )
 	                            )
-	                        )
-	                    );
-	                }
+	                        );
+	                    }
 
-	                return render;
-	            }()
-	        }, {
-	            headingTitle: "Pick a Question",
-	            render: function () {
-	                function render() {
-	                    return _react2['default'].createElement(
-	                        'div',
-	                        { className: 'col-lg-12' },
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'assessment-top-title col-lg-12' },
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { className: 'assessment-top-title-text' },
-	                                'Select components to build your Assessment'
-	                            ),
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { className: 'btn' },
-	                                _react2['default'].createElement('span', { className: 'glyphicon glyphicon glyphicon-time' }),
-	                                _react2['default'].createElement(
-	                                    'span',
-	                                    { className: 'assessment-top-title-time-allowed' },
-	                                    'Time Allowed'
-	                                )
-	                            ),
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { className: 'btn' },
-	                                _react2['default'].createElement('span', { className: 'glyphicon glyphicon glyphicon glyphicon-remove' }),
-	                                _react2['default'].createElement(
-	                                    'span',
-	                                    { className: 'assessment-top-title-set-expiration' },
-	                                    'Set Expiration'
-	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'col-lg-12' },
-	                            $this.SideBar,
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { className: 'col-lg-11' },
-	                                _react2['default'].createElement(
-	                                    'div',
-	                                    { className: 'col-lg-12' },
-	                                    $this.questionSelection
-	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'col-lg-12 bottomBar' },
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { className: 'assessment-steps-highlight' },
-	                                _react2['default'].createElement(
-	                                    'span',
-	                                    { className: 'active' },
-	                                    'Step 1'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'span',
-	                                    { className: '' },
-	                                    'Step 2'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'span',
-	                                    { className: '' },
-	                                    'Step 3'
-	                                )
-	                            )
-	                        )
-	                    );
-	                }
+	                    return render;
+	                }()
+	            },
 
-	                return render;
-	            }()
-	        }, {
-	            headingTitle: "Populate Question",
-	            render: function () {
-	                function render() {
-	                    return _react2['default'].createElement(
-	                        'div',
-	                        null,
-	                        $this.questionTypes[$this.state.selection],
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'col-lg-12 bottomBar' },
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { className: 'assessment-steps-highlight' },
-	                                _react2['default'].createElement(
-	                                    'span',
-	                                    { className: '' },
-	                                    'Step 1'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'span',
-	                                    { className: 'active' },
-	                                    'Step 2'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'span',
-	                                    { className: '' },
-	                                    'Step 3'
-	                                ),
-	                                _react2['default'].createElement(
-	                                    'div',
-	                                    { className: 'btn', onClick: function () {
-	                                            function onClick() {
-	                                                $this.setState({ step: 3 });
-	                                            }
+	            /***************************************************************/
+	            /* Page:Add a Question                                         */
+	            /* Description: Main Page where a question is created          */
+	            /* Developers: Hector Flores - Outer Design, Structure         */
+	            /*                             Outer Functionality             */
+	            /*             Lauren Oneal  - Design, Finalizing Functionality*/
+	            /***************************************************************/
+	            "chooseQuestion": {
 
-	                                            return onClick;
-	                                        }() },
-	                                    'Next'
+	                /***********************************************************/
+	                /* What is Displayed on Top Heading                        */
+	                /***********************************************************/
+	                headingTitle: "Add a Question",
+
+	                /***********************************************************/
+	                /* Previous Button Properties                              */
+	                /***********************************************************/
+	                previous: {
+	                    enabled: true,
+	                    html: "Back",
+	                    clicked: function () {
+	                        function clicked($this) {
+	                            $this.MoveTo("interPageForQuestions");
+	                        }
+
+	                        return clicked;
+	                    }()
+	                },
+
+	                /***********************************************************/
+	                /* Next Button Properties                                  */
+	                /***********************************************************/
+	                next: {
+	                    enabled: function () {
+	                        function enabled($this) {
+	                            return typeof $this.state.selection != "undefined";
+	                        }
+
+	                        return enabled;
+	                    }(),
+	                    html: function () {
+	                        function html($this) {
+	                            return "Next";
+	                        }
+
+	                        return html;
+	                    }(),
+	                    clicked: function () {
+	                        function clicked($this) {
+	                            $this.myEventHandler.trigger("save-question");
+	                        }
+
+	                        return clicked;
+	                    }()
+	                },
+
+	                /***********************************************************/
+	                /* Render Function(Meat Goes Here)                         */
+	                /***********************************************************/
+	                render: function () {
+	                    function render() {
+	                        return (
+
+	                            // swdp-iteration2 Lauren Oneal - Please get the Design Working for All Question Types(Checkout hector.css)
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "add-a-question-main-container" },
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "add-a-question-types-selection" },
+	                                    $this.questionSelection($this.state.selection)
+	                                ),
+	                                _react2["default"].createElement(
+	                                    "div",
+	                                    { className: "add-a-question-type-selected" },
+	                                    typeof $this.state.selection != "undefined" ? _react2["default"].createElement(
+	                                        "div",
+	                                        null,
+	                                        $this.questionTypes[$this.state.selection],
+	                                        _react2["default"].createElement("div", { className: "col-lg-12 bottomBar" })
+	                                    ) : _react2["default"].createElement(
+	                                        "div",
+	                                        { className: "no-type-selected-message" },
+	                                        "Select Question Type"
+	                                    )
 	                                )
 	                            )
-	                        )
-	                    );
-	                }
+	                        );
+	                    }
 
-	                return render;
-	            }()
-	        }, {
-	            headingTitle: "More?",
-	            render: function () {
-	                function render() {
-	                    return _react2['default'].createElement(
-	                        'div',
-	                        null,
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { onClick: function () {
-	                                    function onClick() {
-	                                        $this.setState({ step: 1 });
-	                                    }
+	                    return render;
+	                }()
+	            },
+	            "getExistingQuestion": {
 
-	                                    return onClick;
-	                                }(), className: 'btn' },
-	                            'More?'
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { onClick: $this.NextStep(), className: 'btn' },
-	                            'Done?'
-	                        )
-	                    );
-	                }
+	                /***********************************************************/
+	                /* What is Displayed on Top Heading                        */
+	                /***********************************************************/
+	                headingTitle: "Choose Existing Question",
 
-	                return render;
-	            }()
-	        }, {
-	            headingTitle: "Review Assessment",
-	            render: function () {
-	                function render() {
-	                    return _react2['default'].createElement(
-	                        'div',
-	                        null,
-	                        _react2['default'].createElement(_Questions2['default'], null),
-	                        _react2['default'].createElement(
-	                            'div',
+	                /***********************************************************/
+	                /* Previous Button Properties                              */
+	                /***********************************************************/
+	                previous: {
+	                    enabled: true,
+	                    html: "Back",
+	                    clicked: function () {
+	                        function clicked($this) {
+	                            $this.MoveTo("interPageForQuestions");
+	                        }
+
+	                        return clicked;
+	                    }()
+	                },
+
+	                /***********************************************************/
+	                /* Next Button Properties                                  */
+	                /***********************************************************/
+	                next: {
+	                    enabled: function () {
+	                        function enabled($this) {
+	                            return typeof $this.state.selection != "undefined";
+	                        }
+
+	                        return enabled;
+	                    }(),
+	                    html: function () {
+	                        function html($this) {
+	                            return "Next";
+	                        }
+
+	                        return html;
+	                    }(),
+	                    clicked: function () {
+	                        function clicked($this) {
+	                            $this.myEventHandler.trigger("save-question");
+	                        }
+
+	                        return clicked;
+	                    }()
+	                },
+
+	                /***********************************************************/
+	                /* Render Function(Meat Goes Here)                         */
+	                /***********************************************************/
+	                render: function () {
+	                    function render() {
+	                        var assessmentID = $this.getAssessmentID();
+	                        return _react2["default"].createElement(
+	                            "div",
 	                            null,
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { onClick: function () {
-	                                        function onClick() {
-	                                            $this.setState({ step: 1 });
-	                                        }
+	                            _react2["default"].createElement(_ExistingQuestions2["default"], { assessmentID: $this.getAssessmentID() })
+	                        );
+	                    }
 
-	                                        return onClick;
-	                                    }(), className: 'btn' },
-	                                'More?'
-	                            ),
-	                            _react2['default'].createElement(
-	                                'div',
-	                                { onClick: $this.NextStep(), className: 'btn' },
-	                                'Done?'
+	                    return render;
+	                }()
+	            },
+
+	            /***************************************************************/
+	            /* Needs Improving                                             */
+	            /***************************************************************/
+	            "saveAssessment": {
+
+	                /***********************************************************/
+	                /* What is Displayed on Top Heading                        */
+	                /***********************************************************/
+	                headingTitle: "More?",
+
+	                /***********************************************************/
+	                /* Render Function(Meat Goes Here)                         */
+	                /***********************************************************/
+	                render: function () {
+	                    function render() {
+	                        return _react2["default"].createElement(
+	                            "div",
+	                            null,
+	                            "/* TODO Code will need to change to a local data center before this is usfull. Next Iteration */"
+	                        );
+	                    }
+
+	                    return render;
+	                }()
+	            },
+	            "reviewAssessments": {
+
+	                /***********************************************************/
+	                /* What is Displayed on Top Heading                        */
+	                /***********************************************************/
+	                headingTitle: "Review Assessment",
+
+	                /***********************************************************/
+	                /* Render Function(Meat Goes Here)                         */
+	                /***********************************************************/
+	                render: function () {
+	                    function render() {
+	                        return _react2["default"].createElement("div", null);
+	                    }
+
+	                    return render;
+	                }()
+	            },
+
+	            /***************************************************************/
+	            /* Page:Preview Assessment                                     */
+	            /* Description: Will Show a Question List of view of runnable  */
+	            /*              questions to make sure the assessment looks as */
+	            /*              expected                                       */
+	            /* Developers:  Sajiva Pradham - Solo Developer (Design,       */
+	            /*                               Functionality, Structure)     */
+	            /***************************************************************/
+	            "previewAssessment": {
+
+	                /***********************************************************/
+	                /* What is Displayed on Top Heading                        */
+	                /***********************************************************/
+	                headingTitle: "Preview Assessment",
+
+	                /***********************************************************/
+	                /* Previous Button Properties                              */
+	                /***********************************************************/
+	                previous: {
+	                    enabled: true,
+	                    html: "Back",
+	                    clicked: function () {
+	                        function clicked($this) {
+	                            $this.MoveTo("mainPage");
+	                        }
+
+	                        return clicked;
+	                    }()
+	                },
+
+	                /***********************************************************/
+	                /* Next Button Properties                                  */
+	                /***********************************************************/
+	                next: {
+	                    enabled: true,
+	                    html: "Done",
+	                    clicked: function () {
+	                        function clicked($this) {
+	                            $this.MoveTo("mainPage");
+	                        }
+
+	                        return clicked;
+	                    }()
+	                },
+
+	                /***********************************************************/
+	                /* Render Function(Meat Goes Here)                         */
+	                /***********************************************************/
+	                render: function () {
+	                    function render() {
+	                        var assessmentID = $this.getAssessmentID();
+	                        return _react2["default"].createElement(
+	                            "div",
+	                            { className: "build-your-assessment-container" },
+	                            _react2["default"].createElement(_AssessmentPreview2["default"], { assessmentID: assessmentID, questions: $this.state.questions })
+	                        );
+	                    }
+
+	                    return render;
+	                }()
+	            },
+
+	            /****************************************************************/
+	            /* Special Pages                                                */
+	            /****************************************************************/
+	            "targetGroups": {
+	                urlRoute: "/app/target-groups"
+	            },
+
+	            /****************************************************************/
+	            "errorPage": {
+	                headingTitle: "Unkown Page",
+
+	                /***********************************************************/
+	                /* Render Function(Meat Goes Here)                         */
+	                /***********************************************************/
+	                render: function () {
+	                    function render() {
+	                        return _react2["default"].createElement(
+	                            "div",
+	                            null,
+	                            _react2["default"].createElement(
+	                                "h2",
+	                                { className: "text-danger" },
+	                                _react2["default"].createElement(
+	                                    "b",
+	                                    null,
+	                                    "Error"
+	                                ),
+	                                this.state.error
 	                            )
-	                        )
-	                    );
-	                }
+	                        );
+	                    }
 
-	                return render;
-	            }()
-	        }, {
-	            //urlRoute:"/assessment"
-	        }];
+	                    return render;
+	                }()
+	            }
+
+	        };
 
 	        return _this;
 	    }
 
 	    _createClass(Assessment, [{
-	        key: 'chooseQuestionType',
+	        key: "componentDidMount",
+	        value: function () {
+	            function componentDidMount() {
+	                this.loadQuestions();
+	            }
+
+	            return componentDidMount;
+	        }()
+	    }, {
+	        key: "loadQuestions",
+	        value: function () {
+	            function loadQuestions() {
+	                var $this = this;
+	                $this.loading("Loading Questions...");
+
+	                _Rest2["default"].Lets().get("/rest/assessments/" + $this.getAssessmentID() + "/", { "_": _jquery2["default"].now() }, function (data) {
+	                    var assessmentInfo = data;
+	                    $this.notLoading();
+	                    $this.myEventHandler.trigger("questions-loaded", { questions: data.questionSet });
+	                });
+
+	                // $.get("/rest/assessments/"+$this.getAssessmentID()+"/",{"_":$.now()},function(data)
+	                // {
+	                //     var assessmentInfo=data;
+	                //     $this.notLoading();
+	                //     $this.myEventHandler.trigger("questions-loaded",{questions:data.questionSet});
+	                //
+	                // });
+	            }
+
+	            return loadQuestions;
+	        }()
+	    }, {
+	        key: "getCurrentPageProperties",
+	        value: function () {
+	            function getCurrentPageProperties() {
+	                return this.stepInstructions[this.state.currentPage];
+	            }
+
+	            return getCurrentPageProperties;
+	        }()
+	    }, {
+	        key: "MoveTo",
+	        value: function () {
+	            function MoveTo(pageName) {
+
+	                /*******************************************************************/
+	                if (typeof this.stepInstructions[this.state.currentPage] == "undefined") {
+	                    this.setState({
+	                        error: "Unkown Page" + pageName,
+	                        currentPage: "errorPage"
+	                    });
+	                    return;
+	                }
+
+	                /*******************************************************************/
+	                this.setState({ "currentPage": pageName });
+	            }
+
+	            return MoveTo;
+	        }()
+	    }, {
+	        key: "getAssessmentID",
+	        value: function () {
+	            function getAssessmentID() {
+	                return this.props.params.assessmentID;
+	            }
+
+	            return getAssessmentID;
+	        }()
+	    }, {
+	        key: "chooseQuestionType",
 	        value: function () {
 	            function chooseQuestionType(selectionChoicen) {
-	                this.setState({ selection: selectionChoicen, "step": 2 });
+	                this.setState({ selection: selectionChoicen });
 	            }
 
 	            return chooseQuestionType;
 	        }()
 	    }, {
-	        key: 'NextStep',
+	        key: "loading",
 	        value: function () {
-	            function NextStep() {
-	                this.setState({ "step": this.state.step + 1 });
+	            function loading(message) {
+	                this.setState({ loading: true, loadingMessage: message });
 	            }
 
-	            return NextStep;
+	            return loading;
 	        }()
 	    }, {
-	        key: 'render',
+	        key: "notLoading",
+	        value: function () {
+	            function notLoading() {
+	                this.setState({ loading: false });
+	            }
+
+	            return notLoading;
+	        }()
+	    }, {
+	        key: "render",
 	        value: function () {
 	            function render() {
-
-	                if (typeof this.stepInstructions[this.state.step]["urlRoute"] != "undefined") {
-	                    //document.location=this.stepInstructions[this.state.step]["urlRoute"];
-	                    return _react2['default'].createElement('div', null);
-	                }
-	                //this.props.OnRequestApp().setHeadingTitle(this.stepInstructions[this.state.step].headingTitle);
-
+	                var _this2 = this;
 
 	                /*******************************************************************/
-	                return _react2['default'].createElement(
-	                    'div',
-	                    null,
-	                    this.stepInstructions[this.state.step].render()
+	                var $this = this;
+
+	                /*******************************************************************/
+	                /* Check for Rerouting                                             */
+	                /*******************************************************************/
+	                if (typeof this.getCurrentPageProperties()["urlRoute"] != "undefined") {
+	                    document.location = this.getCurrentPageProperties()["urlRoute"];
+	                    return _react2["default"].createElement("div", null);
+	                }
+
+	                /*******************************************************************/
+	                /* Back Info                                                       */
+	                /*******************************************************************/
+	                var backInfo = {};
+	                if (typeof this.getCurrentPageProperties().previous == "undefined") {
+	                    backInfo.enabled = false;
+	                    backInfo.html = "Back";
+	                    backInfo["class"] = "back-btn disabled";
+	                    backInfo.click = function () {};
+	                } else {
+	                    /***************************************************************/
+	                    if (typeof this.getCurrentPageProperties().previous.enabled == "function") {
+	                        backInfo.enabled = this.getCurrentPageProperties().previous.enabled(this);
+	                    } else {
+	                        backInfo.enabled = this.getCurrentPageProperties().previous.enabled;
+	                    }
+
+	                    /***************************************************************/
+	                    if (typeof this.getCurrentPageProperties().previous.html == "function") {
+	                        backInfo.html = this.getCurrentPageProperties().previous.html(this);
+	                    } else if (typeof this.getCurrentPageProperties().previous.html == "string") {
+	                        backInfo.html = this.getCurrentPageProperties().previous.html;
+	                    }
+
+	                    /***************************************************************/
+	                    backInfo.clicked = this.getCurrentPageProperties().previous.clicked ? this.getCurrentPageProperties().previous.clicked : function () {};
+
+	                    /***************************************************************/
+	                    backInfo["class"] = backInfo.enabled ? "back-btn" : "back-btn disabled";
+	                }
+
+	                /*******************************************************************/
+	                /* Next Info                                                       */
+	                /*******************************************************************/
+	                var nextInfo = {};
+	                if (typeof this.getCurrentPageProperties().next == "undefined") {
+	                    nextInfo.enabled = false;
+	                    nextInfo.html = "Back";
+	                    nextInfo["class"] = "back-btn disabled";
+	                    nextInfo.click = function () {};
+	                } else {
+	                    /***************************************************************/
+	                    if (typeof this.getCurrentPageProperties().next.enabled == "function") {
+	                        nextInfo.enabled = this.getCurrentPageProperties().next.enabled(this);
+	                    } else {
+	                        nextInfo.enabled = this.getCurrentPageProperties().next.enabled;
+	                    }
+
+	                    /***************************************************************/
+	                    if (typeof this.getCurrentPageProperties().next.html == "function") {
+	                        nextInfo.html = this.getCurrentPageProperties().next.html(this);
+	                    } else if (typeof this.getCurrentPageProperties().next.html == "string") {
+	                        nextInfo.html = this.getCurrentPageProperties().next.html;
+	                    }
+
+	                    /***************************************************************/
+	                    nextInfo.clicked = this.getCurrentPageProperties().next.clicked ? this.getCurrentPageProperties().next.clicked : function () {};
+
+	                    /***************************************************************/
+	                    nextInfo["class"] = nextInfo.enabled ? "next-btn" : "next-btn disabled";
+	                }
+
+	                //Add Later
+	                //this.props.OnRequestApp().setHeadingTitle(this.stepInstructions[this.state.step].headingTitle);
+
+	                /*******************************************************************/
+	                return _react2["default"].createElement(
+	                    "div",
+	                    { className: "new-assessment-main-container" },
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "new-assessment-container" },
+	                        _react2["default"].createElement(
+	                            "div",
+	                            { className: "top-main-header" },
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "assessment-id" },
+	                                "ASSESS",
+	                                $this.getAssessmentID()
+	                            ),
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { ref: function () {
+	                                        function ref(input) {
+	                                            _this2.headingTitle = input;
+	                                        }
+
+	                                        return ref;
+	                                    }(), className: "heading-title" },
+	                                this.getCurrentPageProperties().headingTitle
+	                            ),
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "heading-user-info" },
+	                                _react2["default"].createElement("i", { className: "fa fa-user-circle-o" })
+	                            )
+	                        ),
+	                        this.getCurrentPageProperties().render()
+	                    ),
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: "new-assessment-footer" },
+	                        _react2["default"].createElement(
+	                            "div",
+	                            { className: "new-assessment-previous-next-buttons" },
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { ref: "backButton", onClick: function () {
+	                                        function onClick() {
+	                                            backInfo.clicked(_this2);
+	                                        }
+
+	                                        return onClick;
+	                                    }(), className: backInfo["class"] },
+	                                _react2["default"].createElement("i", { className: "fa fa-arrow-circle-o-left" }),
+	                                backInfo.html
+	                            ),
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { ref: "nextButton", onClick: function () {
+	                                        function onClick() {
+	                                            nextInfo.clicked(_this2);
+	                                        }
+
+	                                        return onClick;
+	                                    }(), className: nextInfo["class"] },
+	                                nextInfo.html,
+	                                _react2["default"].createElement("i", { className: "fa fa-arrow-circle-o-right" })
+	                            )
+	                        )
+	                    ),
+	                    _react2["default"].createElement(
+	                        "div",
+	                        { className: (this.state.loading ? "" : "disabled") + " loading-splash-screen" },
+	                        _react2["default"].createElement(
+	                            "div",
+	                            { className: "loading-spinner-container" },
+	                            _react2["default"].createElement("div", { className: "loading-spinner" }),
+	                            _react2["default"].createElement(
+	                                "div",
+	                                { className: "loading-message" },
+	                                this.state.loadingMessage
+	                            )
+	                        )
+	                    )
 	                );
 	            }
 
@@ -47429,12 +47933,1522 @@
 	    }]);
 
 	    return Assessment;
-	}(_react2['default'].Component);
+	}(_react2["default"].Component);
 
-	exports['default'] = Assessment;
+	exports["default"] = Assessment;
+
+/***/ },
+/* 273 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _jquery = __webpack_require__(180);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	 * Created by Hector on 2/27/2017.
+	 * I made awhile back for js, converted for React use
+	 */
+	var MyEvent = function () {
+	    function MyEvent(data) {
+	        _classCallCheck(this, MyEvent);
+
+	        _jquery2["default"].extend(this, data);
+	    }
+
+	    return MyEvent;
+	}();
+
+	var EventHandler = function () {
+	    function EventHandler() {
+	        _classCallCheck(this, EventHandler);
+
+	        this._events = { events: [], subevents: {} };
+	    }
+
+	    _createClass(EventHandler, [{
+	        key: "unbind",
+	        value: function () {
+	            function unbind() {
+	                if (_typeof(this._events) != "object") {
+	                    this._events = { events: [], subevents: {} };
+	                }
+	                switch (arguments.length) {
+	                    case 0:
+	                        throw Error("EventHandler.unbind: Invalid number of parameters");
+	                    default:
+	                        /*******************************************************/
+	                        /* Grab the corresponding Event Node                   */
+	                        /*******************************************************/
+	                        var node = this._events;
+	                        var nodeBefore = null;
+	                        var keyForSubNode = null;
+	                        for (var i = 0; i < arguments.length; i++) {
+
+	                            /*******************************************************/
+	                            if (typeof arguments[i] != "string") {
+	                                throw new Error("EventHandler.unbind: Parameter(" + i + ") - String Event Identifiers Excepted only, " + _typeof(arguments[i]) + " not excepted");
+	                            }
+
+	                            /*******************************************************/
+	                            if (typeof node.subevents[arguments[i]] == "undefined") {
+	                                node = null;
+	                                continue;
+	                            }
+
+	                            /*******************************************************/
+	                            nodeBefore = node;
+	                            keyForSubNode = arguments[i];
+	                            node = node.subevents[keyForSubNode];
+	                        }
+
+	                        /*******************************************************/
+	                        if (node == null) {
+	                            return;
+	                        }
+
+	                        /*******************************************************/
+	                        node.events = [];
+
+	                        break;
+
+	                }
+	            }
+
+	            return unbind;
+	        }()
+	    }, {
+	        key: "unbindAll",
+	        value: function () {
+	            function unbindAll() {
+	                if (_typeof(this._events) != "object") {
+	                    this._events = { events: [], subevents: {} };
+	                }
+	                /*******************************************************/
+	                /* Grab the corresponding Event Node                   */
+	                /*******************************************************/
+	                var node = this._events;
+	                var nodeBefore = null;
+	                var keyForSubNode = null;
+	                for (var i = 0; i < arguments.length; i++) {
+
+	                    /*******************************************************/
+	                    if (typeof arguments[i] != "string") {
+	                        throw new Error("EventHandler.unbindAll: Parameter(" + i + ") - String Event Identifiers Excepted only, " + _typeof(arguments[i]) + " not excepted");
+	                    }
+
+	                    /*******************************************************/
+	                    if (typeof node.subevents[arguments[i]] == "undefined") {
+	                        node = null;
+	                        continue;
+	                    }
+
+	                    /*******************************************************/
+	                    nodeBefore = node;
+	                    keyForSubNode = arguments[i];
+	                    node = node.subevents[keyForSubNode];
+	                }
+
+	                /*******************************************************/
+	                if (node == null) {
+	                    return;
+	                }
+
+	                /*******************************************************/
+	                delete nodeBefore.subevents[keyForSubNode];
+	            }
+
+	            return unbindAll;
+	        }()
+	    }, {
+	        key: "on",
+	        value: function () {
+	            function on() {
+	                if (this._events == null || _typeof(this._events) != "object") {
+	                    this._events = { events: [], subevents: {} };
+	                }
+	                switch (arguments.length) {
+	                    case 0:
+	                        throw new Error("EventHandler.on: Invalid number of parameters(0)");
+	                    case 1:
+	                        throw new Error("EventHandler.on: Invalid number of parameters(1)");
+	                    default:
+	                        if (typeof arguments[arguments.length - 1] != "function") {
+	                            throw new Error("EventHandler.on: Last argument is not a function");
+	                        }
+
+	                        /*******************************************************/
+	                        /* Grab the corresponding Event Node                   */
+	                        /*******************************************************/
+	                        var node = this._events;
+	                        for (var i = 0; i < arguments.length - 1; i++) {
+
+	                            /*******************************************************/
+	                            if (typeof arguments[i] != "string") {
+	                                throw new Error("EventHandler.on: Parameter(" + i + ") - String Event Identifiers Excepted only, " + _typeof(arguments[i]) + " not excepted");
+	                            }
+
+	                            /*******************************************************/
+	                            if (typeof node.subevents[arguments[i]] == "undefined") {
+	                                node.subevents[arguments[i]] = { events: [], subevents: {} };
+	                            }
+
+	                            /*******************************************************/
+	                            node = node.subevents[arguments[i]];
+	                        }
+
+	                        /*******************************************************/
+	                        /* Add the Event to the List of Events                 */
+	                        /*******************************************************/
+	                        node.events.push(arguments[arguments.length - 1]);
+
+	                }
+	                return this;
+	            }
+
+	            return on;
+	        }()
+	    }, {
+	        key: "trigger",
+	        value: function () {
+	            function trigger() {
+	                if (_typeof(this._events) != "object") {
+	                    this._events = { events: [], subevents: {} };
+	                }
+
+	                switch (arguments.length) {
+
+	                    case 0:
+	                        throw new Error("EventHandler.trigger: Invalid number of parameters");
+	                    case 1:
+	                        if (typeof arguments[0] != "string") {
+	                            throw new Error("EventHandler.trigger: If one parameter it must be a string name of the event");
+	                        }
+	                    default:
+
+	                        if (!(arguments[arguments.length - 1] instanceof MyEvent)) {
+	                            if (_typeof(arguments[arguments.length - 1]) == "object") {
+	                                arguments[arguments.length - 1] = this.createEvent(arguments[arguments.length - 1]);
+	                            } else {
+
+	                                arguments[arguments.length++] = this.createEvent({});
+	                            }
+	                        }
+
+	                        /*******************************************************/
+	                        /* Grab the corresponding Event Node                   */
+	                        /*******************************************************/
+	                        var node = this._events;
+	                        for (var i = 0; i < arguments.length - 1; i++) {
+
+	                            /*******************************************************/
+	                            if (typeof arguments[i] != "string") {
+	                                throw new Error("EventHandler.trigger: Parameter(" + i + ") - String Event Identifiers Excepted only, " + _typeof(arguments[i]) + " not excepted");
+	                            }
+
+	                            /*******************************************************/
+	                            if (typeof node.subevents[arguments[i]] == "undefined") {
+	                                node = null;
+	                                continue;
+	                            }
+
+	                            /*******************************************************/
+	                            node = node.subevents[arguments[i]];
+	                        }
+
+	                        /*******************************************************/
+	                        if (node == null) {
+	                            return;
+	                        }
+
+	                        /*******************************************************/
+	                        /* Trigger all events in that Event Group              */
+	                        /*******************************************************/
+	                        var myArguments = arguments;
+	                        node.events.forEach(function (item) {
+	                            item(myArguments[myArguments.length - 1]);
+	                        });
+	                }
+	            }
+
+	            return trigger;
+	        }()
+	    }, {
+	        key: "triggerAll",
+	        value: function () {
+	            function triggerAll() {
+	                if (_typeof(this._events) != "object") {
+	                    this._events = { events: [], subevents: {} };
+	                }
+	                switch (arguments.length) {
+	                    case 0:
+	                        throw new Error("EventHandler.triggerAll: Invalid number of parameters");
+	                    case 1:
+	                        if (typeof arguments[0] != "string") {
+	                            throw new Error("EventHandler.triggerAll: If one parameter it must be a string name of the event");
+	                        }
+	                    default:
+
+	                        if (!(arguments[arguments.length - 1] instanceof MyEvent)) {
+	                            if (_typeof(arguments[arguments.length - 1]) == "object") {
+	                                arguments[arguments.length - 1] = this.createEvent(arguments[arguments.length - 1]);
+	                            } else {
+	                                arguments[arguments.length++] = this.createEvent({});
+	                            }
+	                        }
+
+	                        /***********************************************************/
+	                        var node = this._events;
+	                        var myArguments = arguments;
+
+	                        /*******************************************************/
+	                        /* Grab the corresponding Event Node                   */
+	                        /*******************************************************/
+	                        for (var i = 0; i < arguments.length - 1; i++) {
+	                            /*******************************************************/
+	                            if (typeof arguments[i] != "string") {
+	                                throw new Error("EventHandler.triggerAll: Parameter(" + i + ") - String Event Identifiers Excepted only, " + _typeof(arguments[i]) + " not excepted");
+	                            }
+
+	                            /*******************************************************/
+	                            if (typeof node.subevents[arguments[i]] == "undefined") {
+	                                node = null;
+	                                continue;
+	                            }
+	                            node = node.subevents[arguments[i]];
+	                        }
+
+	                        /***********************************************************/
+	                        if (node == null) {
+	                            return;
+	                        }
+
+	                        /***********************************************************/
+	                        /* It was not easy to convert it to array for some reason  */
+	                        /* React didnt know what Object.values. I think its because*/
+	                        /* It comes from the browser and we test using phantom     */
+	                        /***********************************************************/
+	                        var argumentsAsArray = [];
+	                        for (var item in myArguments) {
+	                            argumentsAsArray.push(myArguments[item]);
+	                        }
+
+	                        /***********************************************************/
+	                        var $this = this;
+	                        Object.keys(node.subevents).forEach(function (subEvent) {
+
+	                            var newArguments = argumentsAsArray;
+
+	                            //Remove Event Parameters
+	                            newArguments.splice(newArguments.length - 1, 1);
+
+	                            //Add New SubEvent
+	                            newArguments.push(subEvent);
+
+	                            //Add Event Back(We want it last)
+	                            newArguments.push(myArguments[myArguments.length - 1]);
+
+	                            EventHandler.prototype.triggerAll.apply($this, newArguments);
+	                        });
+
+	                        /***********************************************************/
+	                        node.events.forEach(function (item) {
+	                            item(myArguments[myArguments.length - 1]);
+	                        });
+	                }
+	            }
+
+	            return triggerAll;
+	        }()
+	    }, {
+	        key: "createEvent",
+	        value: function () {
+	            function createEvent(data) {
+	                var newData = _jquery2["default"].extend({}, data, { sender: this });
+	                return new MyEvent(newData);
+	            }
+
+	            return createEvent;
+	        }()
+	    }]);
+
+	    return EventHandler;
+	}();
+
+	exports["default"] = EventHandler;
 
 /***/ },
 /* 274 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(33);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _jquery = __webpack_require__(180);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _EventHandler = __webpack_require__(273);
+
+	var _EventHandler2 = _interopRequireDefault(_EventHandler);
+
+	var _Rest = __webpack_require__(260);
+
+	var _Rest2 = _interopRequireDefault(_Rest);
+
+	var _ExistingQuestion = __webpack_require__(275);
+
+	var _ExistingQuestion2 = _interopRequireDefault(_ExistingQuestion);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * @class ExistingQuestions
+	 * @description This renders existing questions
+	 */
+	var ExistingQuestions = function (_React$Component) {
+	    _inherits(ExistingQuestions, _React$Component);
+
+	    function ExistingQuestions(props) {
+	        _classCallCheck(this, ExistingQuestions);
+
+	        var _this = _possibleConstructorReturn(this, (ExistingQuestions.__proto__ || Object.getPrototypeOf(ExistingQuestions)).call(this, props));
+
+	        var $this = _this;
+	        _this.myEventHandler = new _EventHandler2['default']();
+
+	        _this.myEventHandler.on('questions-loaded', function (eventData) {
+	            var questions = eventData.questions.map(function (question, index) {
+	                return question;
+	            });
+	            $this.setState({ questions: questions });
+	        });
+
+	        _this.state = {
+	            assessmentID: _this.props.assessmentID,
+	            questions: [],
+	            pageSize: 20
+	        };
+	        return _this;
+	    }
+
+	    _createClass(ExistingQuestions, [{
+	        key: 'render',
+	        value: function () {
+	            function render() {
+	                if (typeof this.state.questions == "undefined") {
+	                    return _react2['default'].createElement('div', { ref: 'Questions' });
+	                }
+	                var assessmentID = this.props.assessmentID;
+	                var questions = this.state.questions.map(function (question, index) {
+	                    return _react2['default'].createElement(_ExistingQuestion2['default'], { key: index, assessmentID: assessmentID, question: question });
+	                });
+	                return _react2['default'].createElement(
+	                    'div',
+	                    null,
+	                    _react2['default'].createElement(
+	                        'h3',
+	                        null,
+	                        assessmentID
+	                    ),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'assessment-questions-container' },
+	                        _react2['default'].createElement(
+	                            'div',
+	                            { className: 'assessment-questions-header-container' },
+	                            _react2['default'].createElement(
+	                                'div',
+	                                { className: 'assessment-questions-header-title' },
+	                                this.state.questions.length,
+	                                ' Questions'
+	                            )
+	                        ),
+	                        _react2['default'].createElement(
+	                            'div',
+	                            { className: 'assessment-questions-body' },
+	                            questions
+	                        )
+	                    )
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }, {
+	        key: 'componentDidMount',
+	        value: function () {
+	            function componentDidMount() {
+	                setTimeout(this.getAllQuestions(), 2000);
+	            }
+
+	            return componentDidMount;
+	        }()
+	    }, {
+	        key: 'getAllQuestions',
+	        value: function () {
+	            function getAllQuestions() {
+	                var $this = this;
+	                _Rest2['default'].Lets().get('/rest/questions', {}, function (data) {
+	                    $this.myEventHandler.trigger('questions-loaded', { questions: data });
+	                });
+	            }
+
+	            return getAllQuestions;
+	        }()
+	    }]);
+
+	    return ExistingQuestions;
+	}(_react2['default'].Component);
+
+	exports['default'] = ExistingQuestions;
+
+/***/ },
+/* 275 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _jquery = __webpack_require__(180);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _ExistingQuestionChoice = __webpack_require__(276);
+
+	var _ExistingQuestionChoice2 = _interopRequireDefault(_ExistingQuestionChoice);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * Existing Question Component
+	 * @description This will render a single question in the existing questions component
+	 */
+	var ExistingQuestion = function (_React$Component) {
+	    _inherits(ExistingQuestion, _React$Component);
+
+	    function ExistingQuestion(props) {
+	        _classCallCheck(this, ExistingQuestion);
+
+	        var _this = _possibleConstructorReturn(this, (ExistingQuestion.__proto__ || Object.getPrototypeOf(ExistingQuestion)).call(this, props));
+
+	        _this.questionTypeMap = {
+	            'text': 'Text Question',
+	            'multiple-choice': 'Multiple Choice Question',
+	            'code': 'Code Question',
+	            'audio': 'Audio Question',
+	            'video': 'Video Question'
+	        };
+	        return _this;
+	    }
+
+	    _createClass(ExistingQuestion, [{
+	        key: "addExistingQuestionToAssessment",
+	        value: function () {
+	            function addExistingQuestionToAssessment() {
+	                var questionID = this.props.question.id;
+	                var assessmentID = this.props.assessmentID;
+	                _jquery2["default"].ajax({
+	                    url: '/rest/assessments/' + assessmentID + '/question/' + questionID,
+	                    method: 'POST',
+	                    contentType: 'application/json'
+	                }).done(function (data) {
+	                    console.log("Completed Saved:", data);
+	                    window.location.href = '/app/assessments/' + assessmentID;
+	                }).error(function (message) {
+	                    console.log("ERROR: ", message);
+	                });
+	            }
+
+	            return addExistingQuestionToAssessment;
+	        }()
+	    }, {
+	        key: "render",
+	        value: function () {
+	            function render() {
+	                var _this2 = this;
+
+	                var questionType = this.questionTypeMap[this.props.question.type];
+	                var questionContent = JSON.parse(this.props.question.content);
+	                var questionText = questionContent.question;
+	                var questionBody = _react2["default"].createElement("div", null);
+	                if ("choices" in questionContent) {
+	                    var questionChoicesRender = questionContent.choices.map(function (choice, index) {
+	                        return _react2["default"].createElement(_ExistingQuestionChoice2["default"], { key: index, choice: choice });
+	                    });
+	                    questionBody = _react2["default"].createElement(
+	                        "div",
+	                        { className: "multiple-choice-answer-choice-container" },
+	                        questionChoicesRender
+	                    );
+	                }
+	                return _react2["default"].createElement(
+	                    "div",
+	                    { className: "col-lg-12", style: { borderRadius: '10px', padding: '10px', margin: '5px', boxShadow: '0px 1px 3px black' } },
+	                    _react2["default"].createElement(
+	                        "h3",
+	                        null,
+	                        questionText
+	                    ),
+	                    _react2["default"].createElement(
+	                        "h5",
+	                        null,
+	                        "Type: ",
+	                        questionType
+	                    ),
+	                    questionBody,
+	                    _react2["default"].createElement(
+	                        "span",
+	                        { className: "float-right" },
+	                        _react2["default"].createElement(
+	                            "button",
+	                            { className: "btn btn-success", onClick: function () {
+	                                    function onClick() {
+	                                        return _this2.addExistingQuestionToAssessment();
+	                                    }
+
+	                                    return onClick;
+	                                }() },
+	                            "Add Question To Assessment"
+	                        )
+	                    )
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return ExistingQuestion;
+	}(_react2["default"].Component);
+
+	exports["default"] = ExistingQuestion;
+
+/***/ },
+/* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _jquery = __webpack_require__(180);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * @class ExistingQuestionChoice
+	 * @description Renders a single answer choice if the question is a multiple choice question
+	 */
+	var ExistingQuestionChoice = function (_React$Component) {
+	    _inherits(ExistingQuestionChoice, _React$Component);
+
+	    function ExistingQuestionChoice(props) {
+	        _classCallCheck(this, ExistingQuestionChoice);
+
+	        return _possibleConstructorReturn(this, (ExistingQuestionChoice.__proto__ || Object.getPrototypeOf(ExistingQuestionChoice)).call(this, props));
+	    }
+
+	    _createClass(ExistingQuestionChoice, [{
+	        key: "render",
+	        value: function () {
+	            function render() {
+	                return _react2["default"].createElement(
+	                    "span",
+	                    { className: "col-lg-6" },
+	                    _react2["default"].createElement(
+	                        "b",
+	                        { className: "choice-letter" },
+	                        this.props.choice.letter,
+	                        ":"
+	                    ),
+	                    _react2["default"].createElement(
+	                        "span",
+	                        { className: "choice-text" },
+	                        this.props.choice.text
+	                    )
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return ExistingQuestionChoice;
+	}(_react2["default"].Component);
+
+	exports["default"] = ExistingQuestionChoice;
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _QuestionPreview = __webpack_require__(278);
+
+	var _QuestionPreview2 = _interopRequireDefault(_QuestionPreview);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AssessmentPreview = function (_React$Component) {
+	    _inherits(AssessmentPreview, _React$Component);
+
+	    function AssessmentPreview(props) {
+	        _classCallCheck(this, AssessmentPreview);
+
+	        return _possibleConstructorReturn(this, (AssessmentPreview.__proto__ || Object.getPrototypeOf(AssessmentPreview)).call(this, props));
+	    }
+
+	    _createClass(AssessmentPreview, [{
+	        key: 'render',
+	        value: function () {
+	            function render() {
+
+	                var questions = null;
+	                var count = 0;
+
+	                if (typeof this.props.questions != "undefined") {
+	                    questions = this.props.questions.map(function (question, index) {
+	                        return _react2['default'].createElement(_QuestionPreview2['default'], { key: index, question: question, id: index + 1 });
+	                    });
+
+	                    count = this.props.questions.length;
+	                }
+
+	                return _react2['default'].createElement(
+	                    'div',
+	                    { className: 'assessment-questions-container' },
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'assessment-questions-header-container' },
+	                        _react2['default'].createElement(
+	                            'div',
+	                            { className: 'assessment-questions-header-title' },
+	                            _react2['default'].createElement(
+	                                'span',
+	                                null,
+	                                count
+	                            ),
+	                            ' Questions'
+	                        )
+	                    ),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'assessment-questions-body' },
+	                        questions
+	                    )
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return AssessmentPreview;
+	}(_react2['default'].Component);
+
+	exports['default'] = AssessmentPreview;
+
+/***/ },
+/* 278 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _MultipleChoiceQuestionPreview = __webpack_require__(279);
+
+	var _MultipleChoiceQuestionPreview2 = _interopRequireDefault(_MultipleChoiceQuestionPreview);
+
+	var _TextQuestionPreview = __webpack_require__(280);
+
+	var _TextQuestionPreview2 = _interopRequireDefault(_TextQuestionPreview);
+
+	var _CodeQuestionPreview = __webpack_require__(281);
+
+	var _CodeQuestionPreview2 = _interopRequireDefault(_CodeQuestionPreview);
+
+	var _AudioQuestionPreview = __webpack_require__(282);
+
+	var _AudioQuestionPreview2 = _interopRequireDefault(_AudioQuestionPreview);
+
+	var _VideoQuestionPreview = __webpack_require__(283);
+
+	var _VideoQuestionPreview2 = _interopRequireDefault(_VideoQuestionPreview);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var QuestionPreview = function (_React$Component) {
+	    _inherits(QuestionPreview, _React$Component);
+
+	    function QuestionPreview(props) {
+	        _classCallCheck(this, QuestionPreview);
+
+	        var _this = _possibleConstructorReturn(this, (QuestionPreview.__proto__ || Object.getPrototypeOf(QuestionPreview)).call(this, props));
+
+	        _this.questionTypes = {
+	            'code': _react2['default'].createElement(_CodeQuestionPreview2['default'], { content: _this.props.question.content, id: _this.props.id, key: _this.props.id }),
+	            'text': _react2['default'].createElement(_TextQuestionPreview2['default'], { content: _this.props.question.content, id: _this.props.id, key: _this.props.id }),
+	            'audio': _react2['default'].createElement(_AudioQuestionPreview2['default'], { content: _this.props.question.content, id: _this.props.id, key: _this.props.id }),
+	            'video': _react2['default'].createElement(_VideoQuestionPreview2['default'], { content: _this.props.question.content, id: _this.props.id, key: _this.props.id }),
+	            'multiple-choice': _react2['default'].createElement(_MultipleChoiceQuestionPreview2['default'], { content: _this.props.question.content, id: _this.props.id, key: _this.props.id })
+	        };
+
+	        return _this;
+	    }
+
+	    _createClass(QuestionPreview, [{
+	        key: 'render',
+	        value: function () {
+	            function render() {
+
+	                return _react2['default'].createElement(
+	                    'div',
+	                    { className: 'col-lg-12', style: { borderRadius: '10px', padding: '10px', margin: '5px', boxShadow: '0px 1px 3px black' } },
+	                    this.questionTypes[this.props.question.type]
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return QuestionPreview;
+	}(_react2['default'].Component);
+
+	exports['default'] = QuestionPreview;
+
+/***/ },
+/* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var MultipleChoiceQuestionPreview = function (_React$Component) {
+	    _inherits(MultipleChoiceQuestionPreview, _React$Component);
+
+	    function MultipleChoiceQuestionPreview(props) {
+	        _classCallCheck(this, MultipleChoiceQuestionPreview);
+
+	        var _this = _possibleConstructorReturn(this, (MultipleChoiceQuestionPreview.__proto__ || Object.getPrototypeOf(MultipleChoiceQuestionPreview)).call(this, props));
+
+	        _this.state = {
+	            answer: ''
+	        };
+
+	        _this.onAnswerSelected = _this.onAnswerSelected.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(MultipleChoiceQuestionPreview, [{
+	        key: 'onAnswerSelected',
+	        value: function () {
+	            function onAnswerSelected(event) {
+	                this.setState({ answer: event.target.value });
+	            }
+
+	            return onAnswerSelected;
+	        }()
+	    }, {
+	        key: 'render',
+	        value: function () {
+	            function render() {
+
+	                var answerChoices = typeof this.props.content.choices != "undefined" ? this.props.content.choices.map(function (answerChoice, index) {
+	                    return _react2['default'].createElement(AnswerOption, { choice: answerChoice, key: index, id: this.props.id + index, name: this.props.id,
+	                        checked: this.state.answer === answerChoice.text,
+	                        handleChange: this.onAnswerSelected });
+	                }, this) : [];
+
+	                return _react2['default'].createElement(
+	                    'div',
+	                    { className: 'col-lg-12' },
+	                    _react2['default'].createElement(
+	                        'h2',
+	                        null,
+	                        this.props.id,
+	                        '. ',
+	                        this.props.content.question
+	                    ),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'multiple-choice-choices-container' },
+	                        answerChoices
+	                    )
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return MultipleChoiceQuestionPreview;
+	}(_react2['default'].Component);
+
+	function AnswerOption(props) {
+
+	    return _react2['default'].createElement(
+	        'div',
+	        { className: 'answer-choice-main-container' },
+	        _react2['default'].createElement('input', {
+	            type: 'radio',
+	            className: 'radio-button',
+	            name: props.name,
+	            checked: props.checked,
+	            id: props.id,
+	            value: props.choice.text,
+	            onChange: props.handleChange
+	        }),
+	        _react2['default'].createElement(
+	            'label',
+	            { className: 'multiple-choice-answer-choice' },
+	            props.choice.letter,
+	            '. ',
+	            props.choice.text
+	        )
+	    );
+	}
+
+	exports['default'] = MultipleChoiceQuestionPreview;
+
+/***/ },
+/* 280 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TextQuestionPreview = function (_React$Component) {
+	    _inherits(TextQuestionPreview, _React$Component);
+
+	    function TextQuestionPreview(props) {
+	        _classCallCheck(this, TextQuestionPreview);
+
+	        var _this = _possibleConstructorReturn(this, (TextQuestionPreview.__proto__ || Object.getPrototypeOf(TextQuestionPreview)).call(this, props));
+
+	        _this.state = {
+	            answer: 'Enter your response here'
+	        };
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(TextQuestionPreview, [{
+	        key: 'handleChange',
+	        value: function () {
+	            function handleChange(event) {
+	                this.setState({ answer: event.target.value });
+	            }
+
+	            return handleChange;
+	        }()
+	    }, {
+	        key: 'render',
+	        value: function () {
+	            function render() {
+
+	                return _react2['default'].createElement(
+	                    'div',
+	                    { className: 'col-lg-12' },
+	                    _react2['default'].createElement(
+	                        'h2',
+	                        null,
+	                        this.props.id,
+	                        '. ',
+	                        this.props.content.question
+	                    ),
+	                    _react2['default'].createElement('textarea', { value: this.state.answer, onChange: this.handleChange, className: 'form-control' })
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return TextQuestionPreview;
+	}(_react2['default'].Component);
+
+	exports['default'] = TextQuestionPreview;
+
+/***/ },
+/* 281 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CodeQuestionPreview = function (_React$Component) {
+	    _inherits(CodeQuestionPreview, _React$Component);
+
+	    function CodeQuestionPreview(props) {
+	        _classCallCheck(this, CodeQuestionPreview);
+
+	        var _this = _possibleConstructorReturn(this, (CodeQuestionPreview.__proto__ || Object.getPrototypeOf(CodeQuestionPreview)).call(this, props));
+
+	        _this.state = {
+	            answer: 'Enter your response here'
+	        };
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(CodeQuestionPreview, [{
+	        key: 'handleChange',
+	        value: function () {
+	            function handleChange(event) {
+	                this.setState({ answer: event.target.value });
+	            }
+
+	            return handleChange;
+	        }()
+	    }, {
+	        key: 'render',
+	        value: function () {
+	            function render() {
+
+	                return _react2['default'].createElement(
+	                    'div',
+	                    { className: 'col-lg-12' },
+	                    _react2['default'].createElement(
+	                        'h2',
+	                        null,
+	                        this.props.id,
+	                        '. ',
+	                        this.props.content.question
+	                    ),
+	                    _react2['default'].createElement('textarea', { value: this.state.answer, onChange: this.handleChange, className: 'form-control' })
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return CodeQuestionPreview;
+	}(_react2['default'].Component);
+
+	exports['default'] = CodeQuestionPreview;
+
+/***/ },
+/* 282 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Audio = __webpack_require__(269);
+
+	var _Audio2 = _interopRequireDefault(_Audio);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AudioQuestionPreview = function (_React$Component) {
+	    _inherits(AudioQuestionPreview, _React$Component);
+
+	    function AudioQuestionPreview(props) {
+	        _classCallCheck(this, AudioQuestionPreview);
+
+	        return _possibleConstructorReturn(this, (AudioQuestionPreview.__proto__ || Object.getPrototypeOf(AudioQuestionPreview)).call(this, props));
+	    }
+
+	    _createClass(AudioQuestionPreview, [{
+	        key: 'render',
+	        value: function () {
+	            function render() {
+
+	                return _react2['default'].createElement(
+	                    'div',
+	                    { className: 'col-lg-12' },
+	                    _react2['default'].createElement(
+	                        'h2',
+	                        null,
+	                        this.props.id,
+	                        '. ',
+	                        this.props.content.question
+	                    ),
+	                    _react2['default'].createElement(_Audio2['default'], null)
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return AudioQuestionPreview;
+	}(_react2['default'].Component);
+
+	exports['default'] = AudioQuestionPreview;
+
+/***/ },
+/* 283 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Video = __webpack_require__(264);
+
+	var _Video2 = _interopRequireDefault(_Video);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var VideoQuestionPreview = function (_React$Component) {
+	    _inherits(VideoQuestionPreview, _React$Component);
+
+	    function VideoQuestionPreview(props) {
+	        _classCallCheck(this, VideoQuestionPreview);
+
+	        return _possibleConstructorReturn(this, (VideoQuestionPreview.__proto__ || Object.getPrototypeOf(VideoQuestionPreview)).call(this, props));
+	    }
+
+	    _createClass(VideoQuestionPreview, [{
+	        key: 'render',
+	        value: function () {
+	            function render() {
+
+	                return _react2['default'].createElement(
+	                    'div',
+	                    { className: 'col-lg-12' },
+	                    _react2['default'].createElement(
+	                        'h2',
+	                        null,
+	                        this.props.id,
+	                        '. ',
+	                        this.props.content.question
+	                    ),
+	                    _react2['default'].createElement(_Video2['default'], null)
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return VideoQuestionPreview;
+	}(_react2['default'].Component);
+
+	exports['default'] = VideoQuestionPreview;
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _jquery = __webpack_require__(180);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AssessmentTimer = function (_React$Component) {
+	    _inherits(AssessmentTimer, _React$Component);
+
+	    function AssessmentTimer(props) {
+	        _classCallCheck(this, AssessmentTimer);
+
+	        var _this = _possibleConstructorReturn(this, (AssessmentTimer.__proto__ || Object.getPrototypeOf(AssessmentTimer)).call(this, props));
+
+	        _this.state = {
+	            timeInSeconds: _this.props.timeInSeconds,
+	            isTimed: _this.props.isTimed
+	        };
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        _this.setTimeAllowed = _this.setTimeAllowed.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(AssessmentTimer, [{
+	        key: 'handleChange',
+	        value: function () {
+	            function handleChange(event) {
+	                var timeInSeconds = event.target.value;
+	                console.log(timeInSeconds);
+	                this.setState({
+	                    timeInSeconds: timeInSeconds
+	                });
+	            }
+
+	            return handleChange;
+	        }()
+	    }, {
+	        key: 'setTimeAllowed',
+	        value: function () {
+	            function setTimeAllowed() {
+
+	                _jquery2['default'].ajax({
+	                    url: '/rest/assessments/' + this.props.assessmentID,
+	                    contentType: 'application/json',
+	                    method: 'PATCH',
+	                    data: JSON.stringify({ allowed_time_sec: this.state.timeInSeconds, is_timed: this.state.isTimed })
+	                }).done(function (data) {
+	                    console.log("SUCCESS: You are not a terrible coder after all", data);
+	                }).error(function (data) {
+	                    console.log("ERROR: YOU DONE GOOFED", data);
+	                });
+	            }
+
+	            return setTimeAllowed;
+	        }()
+	    }, {
+	        key: 'render',
+	        value: function () {
+	            function render() {
+	                return _react2['default'].createElement(
+	                    'span',
+	                    null,
+	                    _react2['default'].createElement('input', { type: 'text', onChange: this.handleChange }),
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { onClick: this.setTimeAllowed, className: 'top-header-time-allowed-container' },
+	                        _react2['default'].createElement('i', { className: 'fa fa-clock-o' }),
+	                        'Time allowed'
+	                    )
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return AssessmentTimer;
+	}(_react2['default'].Component);
+
+	exports['default'] = AssessmentTimer;
+
+/***/ },
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _jquery = __webpack_require__(180);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * @class AssessmentNew
+	 * @extends React.Component
+	 * @description The component in which creates an initial assessment for the creation of assessments
+	 */
+	var AssessmentNew = function (_React$Component) {
+	    _inherits(AssessmentNew, _React$Component);
+
+	    /**
+	     * @constructor
+	     * @param props
+	     */
+	    function AssessmentNew(props) {
+	        _classCallCheck(this, AssessmentNew);
+
+	        var _this = _possibleConstructorReturn(this, (AssessmentNew.__proto__ || Object.getPrototypeOf(AssessmentNew)).call(this, props));
+
+	        _this.state = { init: true, data: {} };
+	        return _this;
+	    }
+
+	    /**
+	     * @description Creates a POST request that submits the data. After that, done() will redirect the user to the next
+	     *              page within the assessment creation.
+	     */
+
+
+	    _createClass(AssessmentNew, [{
+	        key: "createAndRedirect",
+	        value: function () {
+	            function createAndRedirect() {
+	                _jquery2["default"].ajax({
+	                    url: "/rest/assessments",
+	                    method: "POST",
+	                    contentType: "application/json",
+	                    data: JSON.stringify(this.state.data)
+	                }).done(function (data) {
+	                    window.location = "/app/assessments/" + data.id;
+	                });
+	            }
+
+	            return createAndRedirect;
+	        }()
+
+	        /**
+	         * @function The render method to the NewAssessment component
+	         * @description The inital state is false at first enabling the user to enter the name of the assessment. Once the
+	         * user hits the submit button, the assessment will go into a state in which creates a POST request.
+	         * @returns {XML}
+	         */
+
+	    }, {
+	        key: "render",
+	        value: function () {
+	            function render() {
+	                var _this2 = this;
+
+	                if (!this.state.init) {
+	                    this.createAndRedirect();
+	                }
+
+	                return _react2["default"].createElement(
+	                    "div",
+	                    { className: "new-assessment-name-container", style: {
+	                            border: '0',
+	                            borderRadius: '4px',
+	                            bottom: 'auto',
+	                            minHeight: '10rem',
+	                            left: '50%',
+	                            padding: '2rem',
+	                            position: 'fixed',
+	                            right: 'auto',
+	                            top: '50%',
+	                            transform: 'translate(-50%,-50%)',
+	                            minWidth: '20rem',
+	                            width: '80%',
+	                            maxWidth: '60rem'
+	                        } },
+	                    _react2["default"].createElement(
+	                        "h2",
+	                        { className: "new-assessment-name-title" },
+	                        "New Assessment"
+	                    ),
+	                    _react2["default"].createElement("input", { ref: "assessmentNameInput", onChange: function () {
+	                            function onChange(e) {
+	                                return _this2.setState({ name: e.target.value });
+	                            }
+
+	                            return onChange;
+	                        }(), type: "text", className: "new-assessment-name-input form-control assessment-create-set-name-input", placeholder: "Enter the Name" }),
+	                    _react2["default"].createElement("input", { className: "new-assessment-name-btn", type: "submit", onClick: function () {
+	                            function onClick() {
+	                                _this2.setState({ init: false });
+	                            }
+
+	                            return onClick;
+	                        }() })
+	                );
+	            }
+
+	            return render;
+	        }()
+	    }]);
+
+	    return AssessmentNew;
+	}(_react2["default"].Component);
+
+	exports["default"] = AssessmentNew;
+
+/***/ },
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47485,39 +49499,6 @@
 	}(_react2['default'].Component);
 
 	exports['default'] = Footer;
-
-/***/ },
-/* 275 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	var config = {
-	    entry: './src/app.js',
-
-	    output: {
-	        path: './',
-	        filename: 'index.js'
-	    },
-
-	    devServer: {
-	        inline: true,
-	        port: 8080
-	    },
-
-	    module: {
-	        loaders: [{
-	            test: /\.jsx?$/,
-	            exclude: /node_modules/,
-	            loader: 'babel',
-	            query: {
-	                presets: ['es2015', 'react']
-	            }
-	        }]
-	    }
-	};
-
-	module.exports = config;
 
 /***/ }
 /******/ ]);

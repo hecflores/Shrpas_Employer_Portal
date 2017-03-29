@@ -1,9 +1,5 @@
 import React from 'react';
-import Popup from 'react-popup';
 import ReactDom from 'react-dom';
-import $ from 'jquery';
-import Modal from 'react-modal';
-
 import CodeQuestion from './QuestionTypes/CodeQuestion.jsx';
 import MultipleChoiceQuestion from './QuestionTypes/MultipleChoiceQuestion.jsx';
 import TextQuestion from './QuestionTypes/TextQuestion.jsx';
@@ -19,3 +15,4 @@ export default {
     VideoQuestion:VideoQuestion,
     AudioQuestion:AudioQuestion
 }
+

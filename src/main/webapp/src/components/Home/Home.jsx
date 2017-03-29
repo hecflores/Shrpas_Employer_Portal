@@ -13,7 +13,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <div className="jumbotron">
+                {/*<div className="jumbotron">
                     <h1>Welcome to SHRPAS Employer Portal</h1>
                     <p>We are in the process of developing the website to its fullest. Please be patient and it will be done in no time</p>
                 </div>
@@ -27,10 +27,17 @@ class Home extends React.Component {
                         <h4 className="media-heading">Currently Developing Questions</h4>
                         Please <a href="questions">Click Here</a> to see more
                     </div>
+                </div>*/}
+                <h2>Home Page</h2>
+                <div className="pull-left">
+                    <a className="btn btn-default" href="/app/group" role="button"><i className="glyphicon glyphicon-plus"/> Add new target group</a>
+                </div>
+                <div className="pull-right">
+                    <a className="btn btn-default" href="/app/assessments/create" role="button"><i className="glyphicon glyphicon-plus"/> Add new assessment</a>
                 </div>
             </div>
         );
     }
 }
 
-export default Home
+export default Home;

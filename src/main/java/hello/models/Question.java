@@ -1,9 +1,7 @@
 package hello.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity // This tells Hibernate to make a table out of this class
@@ -13,11 +11,15 @@ public class Question {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    private String Type;
+    private String type;
 
-    private String Status;
+    private String status;
 
-    private String Content;
+    private String content;
+
+    private String hint;
+
+    private boolean hasHint;
 
     public Integer getId() {
         return id;
@@ -27,23 +29,43 @@ public class Question {
         this.id = id;
     }
 
-    public void setType(String Type) {
-        this.Type = Type;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
-    public void setContent(String Content) {
-        this.Content = Content;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
+    public String getStatus()
+    {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
+    public String getHint() {
+        return hint;
+    }
 
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
 
+    public boolean isHasHint() {
+        return hasHint;
+    }
+
+    public void setHasHint(boolean hasHint) {
+        this.hasHint = hasHint;
+    }
 }

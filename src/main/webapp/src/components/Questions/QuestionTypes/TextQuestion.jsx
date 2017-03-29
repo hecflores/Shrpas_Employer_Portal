@@ -24,13 +24,13 @@ class TextQuestionCreator extends GenericQuestion {
         };
     }
     render() {
-
+        console.log(this)
         return (
             <GenericQuestion active={this} onCreatedNewQuestion={()=>this.props.onCreatedNewQuestion()} props={this.props}>
-                <h3>Question</h3>
+               
                 <form>
                     <div className="form-group">
-                        <label htmlFor="questionContent">Question</label>
+
                         <input value={this.state.question} onChange={(event)=>this.saveInput('question',event.target.value)} type="text" className="form-control" id="questionEntered2"/>
                     </div>
                 </form>
@@ -55,7 +55,8 @@ class TextQuestionDisplay extends React.Component {
             </div>);
     }
 }
+
 export default {
     Creator:TextQuestionCreator,
-    Display:TextQuestionDisplay
+    Display:TextQuestionDisplay,
 };

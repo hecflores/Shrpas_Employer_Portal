@@ -1,8 +1,4 @@
 import React from 'react';
-import Popup from 'react-popup';
-import ReactDom from 'react-dom';
-import $ from 'jquery';
-import Modal from 'react-modal';
 import GenericQuestion from './GenericQuestion.jsx';
 
 class AnswerChoice extends React.Component
@@ -10,7 +6,7 @@ class AnswerChoice extends React.Component
     constructor(props) {
         super(props);
 
-        this.state={choice:props.choice,changingText:false,changingTextTo:""};
+        this.state={choice:this.props.choice,changingText:false,changingTextTo:""};
 
         this.startEditing=this.startEditing.bind(this);
         this.setEditingText=this.setEditingText.bind(this);
@@ -56,13 +52,14 @@ class AnswerChoice extends React.Component
         /*******************************************************************/
         var $this=this;
         return (
-            <div className="col-lg-12" style={{margin:"2px",padding:'10px',borderRadius:'5px', border:'2px solid rgba(100,100,100,.9)'}}>
-                <div className='col-lg-10'>
-                    <span onClick={this.startEditing} className="answer-choice answer-choice-editable"><b>{this.props.letter}. </b>{this.props.choice.text}</span>
+
+            <div className="multiple-choice-answer-choice-editable-mode-container" >
+                <div className='multiple-choice-answer-choice-details-container'>
+                    <span onClick={this.startEditing} className="answer-choice answer-choice-editable"><b className="choice-letter">{this.props.letter}. </b><span className="choice-text">{this.props.choice.text}</span></span>
                 </div>
-                <div className="col-lg-2 text-right">
-                    <span className="text-right">
-                        <span onClick={(event)=>this.props.onAnswerDelete($this)} className="btn btn-danger ">Delete</span>
+                <div className="choice-delete-btn-container">
+                    <span className="choice-delete-btn-holder">
+                        <span onClick={(event)=>this.props.onAnswerDelete($this)} className="choice-delete-btn">Delete</span>
                     </span>
                 </div>
             </div>);
@@ -71,26 +68,24 @@ class AnswerChoice extends React.Component
     {
         var $this=this;
         return (
-            <div className="col-lg-12" style={{margin:"2px",padding:'10px',borderRadius:'5px', border:'2px solid rgba(100,100,100,.9)'}}>
-                <div className='col-lg-12' >
-                    <form className="form-inline">
-                        <div style={{marginRight:'30px'}}  className="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div className="input-group-addon"><b>{this.props.letter}.</b></div>
-                            <input onChange={this.setEditingText} value={this.state.changingTextTo} type="text" className="form-control" id="anserInput"/>
-                        </div>
-                        <button onClick={this.saveEditing} type="button" className="btn btn-success">Save</button>
-                        <button onClick={this.cancelEditing} type="button" className="btn btn-danger">Cancel</button>
-                    </form>
-                </div>
+            <div className="multiple-choice-answer-choice-editing-mode-container">
+                <form className="form-inline">
+                    <div style={{marginRight:'30px'}}  className="input-group mb-2 mr-sm-2 mb-sm-0 multiple-choice-answer-choice-details-container">
+                        <div className="input-group-addon"><b className="choice-letter">{this.props.letter}.</b></div>
+                        <input onChange={this.setEditingText} value={this.state.changingTextTo} type="text" className="form-control choice-text" id="anserInput"/>
+                    </div>
+                    <button onClick={this.saveEditing} type="button" className="btn btn-success choice-save-button">Save</button>
+                    <button onClick={this.cancelEditing} type="button" className="btn btn-danger choice-cancel-button">Cancel</button>
+                </form>
             </div>);
     }
     renderNormalVersion()
     {
         var $this=this;
         return (
-            <div className="col-lg-12" style={{margin:"2px",padding:'10px',borderRadius:'5px', border:'2px solid rgba(100,100,100,.9)'}}>
+            <div className="multiple-choice-answer-choice-container" >
 
-                <span className="answer-choice"><b>{this.props.letter}. </b>{this.props.choice.text}</span>
+                <span className="multiple-choice-answer-choice"><b className="choice-letter">{this.props.letter}. </b><span className="choice-text"> {this.props.choice.text}</span></span>
 
             </div>)
     }
@@ -113,7 +108,7 @@ class AnswerChoice extends React.Component
 
 
 
-            <div className="col-lg-6" style={{margin:"0px"}}>
+            <div className="answer-choice-main-container" >
                 {body}
             </div>
         )
@@ -134,7 +129,7 @@ class AnswerChoices extends React.Component
     constructor(props) {
         super(props);
 
-        this.state={choices:props.choices};
+        this.state={choices:this.props.choices};
         this.triggerAnswersChanged=this.triggerAnswersChanged.bind(this);
         this.deleteAnswer=this.deleteAnswer.bind(this);
     }
@@ -160,22 +155,25 @@ class AnswerChoices extends React.Component
     render() {
         /*******************************************************************/
         const $this=this;
-        const letters=['A','B','C','D','E','F','G','H']
-        const questions=this.state.choices.map(function(answerChoice,index){
+        const letters=['A','B','C','D','E','F','G','H'];
+
+        if(typeof this.getChoices() != "undefined"){
+            console.log(this.state.choices);
+        }
+        const questions=this.getChoices().map(function(answerChoice,index){
             var letter=letters[index%letters.length];
             return (
                 <AnswerChoice choice={answerChoice} onAnswerDelete={$this.deleteAnswer} editible={$this.props.editible} key={index} id={index} letter={letter} onAnswerChanged={$this.triggerAnswersChanged}>
                 </AnswerChoice>
-            )
+            );
 
         });
 
         /*******************************************************************/
         return (
-                <div className="col-lg-12">
-                    <div className="col-lg-12">
-                        {questions}
-                    </div>
+                <div className="multiple-choice-choices-container">
+                    {questions}
+                    {this.props.appendComponent}
                 </div>
         );
     }
@@ -197,8 +195,7 @@ class MultipleChoiceQuestionCreator extends GenericQuestion {
         this.active=this;
 
         /*******************************************************************/
-
-        this.state={question:'Unkown',choices:[{'text':'Unkown','letter':'A'}]};
+        this.state={question:'Unknown',choices:[{'text':'Unknown','letter':'A'}]};
 
     }
     buildContent2(){
@@ -210,29 +207,39 @@ class MultipleChoiceQuestionCreator extends GenericQuestion {
     addChoice(){
         const letters=['A','B','C','D','E','F','G','H']
         var myChoices=this.state.choices;
-        myChoices.push({text:"Unkown",letter:letters[myChoices.length%letters.length]});
+        myChoices.push({text:"Unknown",letter:letters[myChoices.length%letters.length]});
         this.setState({choices:myChoices});
+
+        /*******************************************************************/
+        /* Allow Others to grab question content                           */
+        /*******************************************************************/
+        this.props.onChanged?this.props.onChanged(this.buildContent()):true;
     }
     updateChoices(choices){
         var myChoices=this.state.choices;
         myChoices=choices.getChoices();
         this.setState({choices:myChoices});
+
+        /*******************************************************************/
+        /* Allow Others to grab question content                           */
+        /*******************************************************************/
+        this.props.onChanged?this.props.onChanged(this.buildContent()):true;
     }
     render() {
 
+
+
         return (
+
             <GenericQuestion onCreatedNewQuestion={()=>this.props.onCreatedNewQuestion()} props={this.props} active={this}>
-                <h3>Multiple Choice</h3>
+                
                 <form>
-                    <div className="form-group">
-                        <label htmlFor="questionEntered2">Question</label>
-                        <input value={this.state.question} onChange={(event)=>this.saveInput('question',event.target.value)} type="text" className="form-control" id="questionEntered2"/>
-                    </div>
+                    <input value={this.state.question} onChange={(event)=>this.saveInput('question',event.target.value)} type="text" className="form-control multiple-choice-question-input" id="questionEntered2"/>
                 </form>
-                <AnswerChoices choices={this.state.choices} onAnswersChanged={this.updateChoices} editible="true"/>
-                <div className="col-lg-12" style={{margin:"5px"}}>
-                    <span onClick={this.addChoice} className="btn btn-success btn-block btn-lg">Add Answer</span>
-                </div>
+                <AnswerChoices choices={this.state.choices} onAnswersChanged={this.updateChoices} editible="true" appendComponent={(<div onClick={this.addChoice}  className="multiple-choice-add-choice-container" >
+                    <span className="multiple-choice-add-choice-btn ">Add Answer</span>
+                </div>)}/>
+
             </GenericQuestion>);
     }
 }
@@ -246,34 +253,22 @@ class MultipleChoiceQuestionDisplay extends GenericQuestion {
 
     constructor(props) {
         super(props);
-        this.buildContent=this.buildContent.bind(this);
-        this.updateChoices=this.updateChoices.bind(this);
         this.active=this;
     }
-    buildContent(){
-        return {
-            type:'multiple-choice',
-            content:JSON.stringify({question:this.getInput('question'),
-                                   choices:this.state.choices})
-        };
-    }
-    updateChoices(choices){
-        this.setState({choices:choices.getChoices()});
-    }
+
     render() {
 
         /*******************************************************************/
         return (
-            <div className="col-lg-12" style={{borderBottom:'2px solid black'}}>
-                <div className="col-lg-12">
-                    <h3>{this.props.question.ID}. {this.props.question.content.question}</h3>
-                </div>
-                <AnswerChoices onAnswersChanged={this.updateChoices} choices={this.props.question.content.choices}/>
+            <div className="col-lg-12">
+                <h3>Multiple Choice Question</h3>
+                <h2>{this.props.question.ID}. {this.props.question.content.question}</h2>
+                <AnswerChoices choices={this.props.question.content.choices}/>
             </div>);
     }
 }
 
 export default {
         Creator:MultipleChoiceQuestionCreator,
-        Display:MultipleChoiceQuestionDisplay
+        Display:MultipleChoiceQuestionDisplay,
 };

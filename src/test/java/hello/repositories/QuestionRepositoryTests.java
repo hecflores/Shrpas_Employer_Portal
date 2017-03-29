@@ -1,37 +1,44 @@
 package hello.repositories;
 
-/**
- * Created by Hector on 1/28/2017.
- */
 import hello.models.Question;
-import org.junit.Assert;
+import hello.storage.StorageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.persistence.PersistenceContext;
+import static org.junit.Assert.assertEquals;
 
-
-// This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
-// CRUD refers Create, Read, Update, Delete
-
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@DirtiesContext
 public class QuestionRepositoryTests{
 
+    @Autowired
+    private QuestionRepository questionRepository;
 
+    @MockBean
+    private StorageService storageService;
 
+    @Test
+    public void testQuestionRepository() {
+        Question question = new Question();
+        question.setId(1);
+        question.setType("Text");
+        question.setContent("Question: Test question");
+        question.setStatus("answered");
+        question.setHasHint(true);
+        question.setHint("this is a hint");
+        questionRepository.save(question);
 
-
+        assertEquals(1, questionRepository.count());
+        assertEquals(question.getType(), "Text");
+        assertEquals(question.getContent(), "Question: Test question");
+    }
 
 }

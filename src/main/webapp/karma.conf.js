@@ -16,23 +16,42 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        '*.html',
-        'tests.webpack.js' //just load this file
+        'node_modules/angular/angular.js',
+        'node_modules/angular-mocks/angular-mocks.js',
+        'tests.webpack.js', //just load this file
       //'test-app.js',
-       // 'src/*.js',
         //'src/test/*.spec.js',
 
 
     ],
-
-      reporters: [ 'dots' ], //report results in this format
       webpack: { //kind of a copy of your webpack config
           devtool: 'inline-source-map', //just do inline source maps instead of the default
           module: {
+
               loaders: [
-                  { test: /\.js|\.jsx$/, loader: 'babel-loader' }
-              ]
-          }
+                  //New Code - Exactly what the running version has
+                  // {
+                  //     test: /\.js|\.jsx$/,
+                  //     exclude: /node_modules/,
+                  //     loader: 'babel',
+                  //     query: {
+                  //         presets: ['es2015', 'react']
+                  //     }
+                  // }
+
+                  //Old Code
+                   {
+                       test: /\.js|\.jsx$/,
+                       loader: 'babel-loader'
+                   },
+              ],
+              postLoaders: [ { //delays coverage til after tests are run, fixing transpiled source coverage error
+                  test: /\.js|\.jsx$/,
+                  exclude: /(test|node_modules|bower_components)/,
+                  loader: "istanbul-instrumenter",
+                  presets: ['es2015', 'react']
+              } ]
+          },
       },
       webpackServer: {
           noInfo: false //please don't spam the console when running in karma!
@@ -56,8 +75,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
       preprocessors : {
-          '**/*.html': ['html2js'],
-          'src/test/*.spec.js':['coverage'],
+           'src/components/Template/tests/App.jsx': ['coverage'],
+          'src/test/*.spec.js':['sourcemap','coverage'],
           'tests.webpack.js': [ 'webpack', 'sourcemap' ] //preprocess with webpack and our sourcemap loader
       },
 
@@ -88,7 +107,15 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['PhantomJS','Chrome'],
 
+    reporters: ['progress', 'html','coverage' ],
 
+    htmlReporter: {
+      outputFile: 'test-reports/units.html'
+    },
+     coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     //singleRun: true,

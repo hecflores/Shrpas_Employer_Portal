@@ -1,10 +1,11 @@
 import React from 'react';
-import Popup from 'react-popup';
 import ReactDom from 'react-dom';
 import $ from 'jquery';
 import Modal from 'react-modal';
 
 import QuestionTypes from './QuestionTypes.jsx';
+import Question from './Question.jsx';
+
 
 const MultipleChoiceDisplay=QuestionTypes.MultipleChoiceQuestion.Display;
 const MultipleChoiceCreator=QuestionTypes.MultipleChoiceQuestion.Creator;
@@ -28,107 +29,6 @@ const customStyles = {
     }
 };
 
-/***************************************************************************/
-/* Question Status                                                         */
-/***************************************************************************/
-class QuestionStatus extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (<span className="label label-primary">{this.props.status}</span>);
-    }
-}
-
-/***************************************************************************/
-/* Question Type                                                           */
-/***************************************************************************/
-class QuestionType extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (<span className="label label-primary">{this.props.type}</span>);
-    }
-
-}
-
-/***************************************************************************/
-/* Question                                                                */
-/***************************************************************************/
-class Question extends React.Component{
-
-    constructor(props) {
-        super(props);
-        this.state={
-            answered:props.answered
-        };
-        this.delete=this.delete.bind(this);
-
-        this.questionTypes=
-            {
-                'code': (
-                    <CodeQuestionDisplay question={this.props.question}>
-
-                    </CodeQuestionDisplay>
-                ),
-                'text': (
-                    <TextQuestionDisplay question={this.props.question}>
-
-                    </TextQuestionDisplay>
-                ),
-                'audio': (
-                    <AudioQuestionDisplay question={this.props.question}>
-
-                    </AudioQuestionDisplay>
-                ),
-                'video': (
-                    <VideoQuestionDisplay question={this.props.question}>
-
-                    </VideoQuestionDisplay>
-                ),
-                'multiple-choice': (
-                    <MultipleChoiceDisplay question={this.props.question}>
-
-                    </MultipleChoiceDisplay>
-                )
-            };
-
-
-
-    }
-    delete(){
-        var $this=this;
-        $.ajax({
-            method:'DELETE',
-            url:this.props.question._links.self.href
-        }).done(function(){
-            $this.props.parent.updateTable();
-        });
-    }
-    render() {
-
-        /*******************************************************************/
-        var questionType=(<div className="col-lg-12">Unkown Type <b>{this.props.question.type}</b></div>);
-        if(typeof this.questionTypes[this.props.question.type]!='undefined')
-        {
-            questionType=this.questionTypes[this.props.question.type];
-        }
-
-        /*******************************************************************/
-        return (
-            <div className='col-lg-12' style={{borderRadius:'10px',padding:'10px',margin:'5px',boxShadow:'0px 1px 3px black'}} >
-                {questionType}
-                <div className="col-lg-2 text-right">
-                    <span className="text-right">
-                        <span onClick={this.delete} className="btn btn-danger ">Delete</span>
-                    </span>
-                </div>
-            </div>
-        )
-    }
-}
 
 
 
@@ -150,7 +50,7 @@ class Questions extends React.Component{
         this.lastPage=this.lastPage.bind(this);
 
         this.state={
-            questions:[],
+            questions:this.props.questions,
             currentPage:0,
             pageSize:20,
             totalElements:0,
@@ -159,7 +59,10 @@ class Questions extends React.Component{
             next:null,
             prev:null,
             last:null,
-            first:null
+            first:null,
+            creatingNewQuestion: false,
+            addingNewQuestion: false,
+            addingExistingQuestion: false
         };
     }
     buildLink(link){
@@ -172,52 +75,55 @@ class Questions extends React.Component{
     }
     updateTable(link)
     {
-        /*******************************************************************/
-        var $this=this;
-
-        /*******************************************************************/
-        $.get($this.buildLink(link),function(data){
-
-            if($this.state.creatingNewQuestion){
-                return;
-            }
-
-            data._embedded.questions.content=data._embedded.questions.map(function(question){
-                question.content=JSON.parse(question.content);
-                if(question.content==null){
-                    question.content={question:"Broke",choices:[]};
-                }
-                if(typeof question.content["choices"] == 'undefined'){
-                    question.content["choices"]=[];
-                }
-                return question;
-            });
-            $this.setState(
-                {
-                    questions:data._embedded.questions,
-                    totalElements:data.page.totalElements,
-                    totalPages:data.page.totalPages,
-                    pageSize:data.page.size,
-                    number:data.page.number,
-                    next:(data._links?data._links.next:null),
-                    prev:(data._links?data._links.prev:null),
-                    last:(data._links?data._links.last:null),
-                    first:(data._links?data._links.first:null),
-                    creatingNewQuestion:false
-                });
-        });
+        //Not Doing this any-more
+        // /*******************************************************************/
+        // var $this=this;
+        //
+        // /*******************************************************************/
+        // $.get($this.buildLink(link),function(data){
+        //
+        //     if($this.state.creatingNewQuestion){
+        //         return;
+        //     }
+        //
+        //     data._embedded.questions.content=data._embedded.questions.map(function(question){
+        //         question.content=JSON.parse(question.content);
+        //         if(question.content==null){
+        //             question.content={question:"Broke",choices:[]};
+        //         }
+        //         if(typeof question.content["choices"] == 'undefined'){
+        //             question.content["choices"]=[];
+        //         }
+        //         return question;
+        //     });
+        //     $this.setState(
+        //         {
+        //             questions:data._embedded.questions,
+        //             totalElements:data.page.totalElements,
+        //             totalPages:data.page.totalPages,
+        //             pageSize:data.page.size,
+        //             number:data.page.number,
+        //             next:(data._links?data._links.next:null),
+        //             prev:(data._links?data._links.prev:null),
+        //             last:(data._links?data._links.last:null),
+        //             first:(data._links?data._links.first:null),
+        //             creatingNewQuestion:false
+        //         });
+        // });
     }
     componentDidMount() {
-        var $this=this;
-        var startUpdate;
-        startUpdate=function(){
-            setTimeout(function() {
-                $this.updateTable();
-                startUpdate();
-            },1000);
-        }
 
-        startUpdate();
+        //Not Doing this anymore
+        // var $this=this;
+        // var startUpdate;
+        // startUpdate=function(){
+        //     setTimeout(function() {
+        //         $this.updateTable();
+        //         //startUpdate();
+        //     },1000);
+        // }
+        //
+        // startUpdate();
 
 
 
@@ -241,76 +147,41 @@ class Questions extends React.Component{
     lastPage(){
         this.updateTable(this.state.last.href);
     }
+    getNewQuetionModal(){
+        return (
+          <div>
+             
+
+              <div className="tab-content">
+                  <MultipleChoiceCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="multipleChoice" isTab="true" />
+                  <TextQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="question" isTab="true" />
+                  <VideoQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="video" isTab="true" />
+                  <AudioQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="audio" isTab="true" />
+                  <CodeQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="code" isTab="true" />
+              </div>
+
+              <div>
+                        <span className="pull-right">
+                            <button type="button" onClick={this.closeCreateQuestions} className= "btn btn-default">Close</button>
+                        </span>
+              </div>
+          </div>
+        );
+    }
     render() {
         var parent=this;
-        const questions = this.state.questions.map(function(question,index){
-            question.ID=index+(parent.state.number*parent.state.pageSize);
+        console.log("Questions: "+JSON.stringify(this.props.questions));
+
+        if(typeof this.props.questions=="undefined"){
+            return (<div ref="Questions"></div>);
+        }
+        const questions = this.props.questions.map(function(question,index){
+            question.ID=index+1+(parent.state.number*parent.state.pageSize);
             return <Question key={index} question={question} parent={parent}/>
         });
         return (
             <div ref="Questions">
-                <div className="container">
-                    <div className="well col-lg-12">
-                        <div className="col-lg-4 text-left">
-                            <div><b>{this.state.totalPages} Pages</b></div>
-                        </div>
-                        <div className="col-lg-4 text-center">
-                            <div><b>{this.state.totalElements} Elements</b></div>
-                        </div>
-                        <div className="col-lg-4 text-right">
-                            <div><div onClick={this.openCreateQuestions} className="btn btn-success">Add</div></div>
-                        </div>
-                    </div>
-                    <div className="well col-lg-12">
-                        {questions}
-                    </div>
-                    <div className="well col-lg-12">
-                        <div className="col-lg-4 text-left">
-                            {this.state.first != null &&
-                            <span onClick={this.firstPage} className="btn btn-primary">First</span>
-                            }
-                            {this.state.last != null &&
-                            <span onClick={this.prevPage} className="btn btn-default">Previous</span>
-                            }
-                        </div>
-
-                        <div className="col-lg-4 text-center"><b>Current Page({this.state.number})</b></div>
-                        <div className="col-lg-4 text-right">
-                            {this.state.next != null &&
-                            <span onClick={this.nextPage} className="btn btn-default">Next</span>
-                            }
-                            {this.state.last != null &&
-                            <span onClick={this.lastPage} className="btn btn-primary">Last</span>
-                            }
-
-                        </div>
-                    </div>
-
-                </div>
-                <Modal isOpen={this.state.creatingNewQuestion} contentLabel="QuestionsModal">
-                    <h2 ref="subtitle">Create A Question</h2>
-                    <ul className="nav nav-tabs nav-justified">
-                        <li className="active"><a data-toggle="tab" href="#multipleChoice">Multiple Choice</a></li>
-                        <li><a data-toggle="tab" href="#question">Question</a></li>
-                        <li><a data-toggle="tab" href="#video">Video</a></li>
-                        <li><a data-toggle="tab" href="#audio">Audio</a></li>
-                        <li><a data-toggle="tab" href="#code">Code</a></li>
-                    </ul>
-
-                    <div className="tab-content">
-                        <MultipleChoiceCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="multipleChoice" isTab="true" isActive="true"/>
-                        <TextQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="question" isTab="true" />
-                        <VideoQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="video" isTab="true" />
-                        <AudioQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="audio" isTab="true" />
-                        <CodeQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="code" isTab="true" />
-                    </div>
-
-                    <div>
-                        <span className="pull-right">
-                            <button type="button" onClick={this.closeCreateQuestions} className="btn btn-danger">Close</button>
-                        </span>
-                    </div>
-                </Modal>
+                {questions}
             </div>
         )
     }
