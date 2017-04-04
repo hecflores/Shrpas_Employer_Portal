@@ -1,0 +1,38 @@
+import React from "react";
+import {Router, Route, browserHistory} from "react-router";
+import Home from "../Home/Home.jsx";
+import Questions from "../Questions/Questions.jsx";
+
+import Video from "../Prototype/Video.jsx";
+import Audio from "../Prototype/Audio.jsx";
+import Assessment from "../Assessment/Assessments.jsx";
+import AssessmentNew from "../Assessment/AssessmentNew.jsx";
+import AssessmentTimer from "../Prototype/AssessmentTimer.jsx";
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+    }
+
+
+    render() {
+        return (
+            <div className="">
+                <Router history={browserHistory}>
+                    <Route path="/" component={Home}/>
+                    <Route path="/app/questions" component={Questions}/>
+                    <Route path="/app/prototype" component={Video}/>
+                    <Route path="/app/audioPrototype" component={Audio}/>
+                    <Route path="/app/assessmentTimer" component={AssessmentTimer}/>
+                    <Route path="/app/assessments/create" component={AssessmentNew} />
+                    <Route path="/app/assessments/:assessmentID" component={Assessment}/>
+
+                </Router>
+            </div>
+
+        )
+    }
+}
+
+export default App;
