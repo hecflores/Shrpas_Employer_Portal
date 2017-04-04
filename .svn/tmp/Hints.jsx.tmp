@@ -1,0 +1,111 @@
+import React from 'react';
+import Popup from 'react-popup';
+import ReactDom from 'react-dom';
+
+class HintsDropdown extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            hasHint: props.hasHint, //Changed the name and type to keep it simple
+            hint: props.hint
+        };
+        this.setIfHintEnabled = this.setIfHintEnabled.bind(this);
+        this.setHint = this.setHint.bind(this);
+    }
+
+    setIfHintEnabled(event) //Separated the two parameters to keep things organized
+    {
+        this.setState({
+            hasHint: event.target.value=="YES"
+        },function(){
+            this.handleChange();
+        });
+    }
+
+    setHint(hint) //Separated the two parameters to keep things organized
+    {
+        this.setState({
+            hint: hint
+        },function(){
+            this.handleChange();
+        });
+    }
+    handleChange(){
+        this.props.onHintChanged(this.state.hasHint,this.state.hint);
+    }
+    render() {
+
+        return (
+
+<<<<<<< .mine
+            <div>
+                <label className='hints-checkbox-label'>
+                    Hints
+                    <select className='hints-checkbox-select' value={this.state.isChoose} onChange={this.setIfHintEnabled}>
+                        <option value="YES">Yes</option>
+                        <option value="NO">No</option>
+                    </select>
+                </label>
+                <Hints hint={this.state.hint} hasHint={this.state.hasHint} onHintChanged={this.setHint}/>
+            </div>
+        )
+    }
+=======
+    return (
+      <div>
+      <label className='hints-checkbox-label'>
+         Hints
+        <select className='hints-checkbox-select' value={this.state.isChoose} onChange={this.handleChange}>
+          <option value="YES">Yes</option>
+          <option value="NO">No</option>
+        </select>
+      </label>
+     <Hints onChoose = {this.state.isChoose}/>
+      </div>
+    )
+  }
+>>>>>>> .r438
+}
+
+class Hints extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            hint: props.hint
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            hint: event.target.value
+        });
+
+
+    }
+
+    handleSubmit(event)
+    {
+        this.props.onHintChanged(this.state.hint); //Notify the HintDropdown that something changed(Saved)
+    }
+
+    render() {
+        var $this = this;
+        if (this.props.hasHint) {
+            return (
+                <div className="form-group">
+                    <label htmlFor="hintContent hint-input-label">Hint</label>
+                    <textarea className='hint-input' type="text" value={this.state.hint}
+                              onChange={this.handleChange}/>
+                    <input onClick={this.handleSubmit} className='submit-button' type="submit" value="save"/>
+                </div>
+            );
+        } else /* (this.props.hasHint == "NO") //Dont know why you had this */
+        return null;
+    }
+}
+
+
+export default HintsDropdown;

@@ -1,0 +1,31 @@
+package hello.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import hello.models.*;
+import hello.repositories.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+public class QuestionController {
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+
+    @RequestMapping(value = "/rest/questions", method=RequestMethod.GET)
+    public ArrayList<Question> getQuestions(){
+        ArrayList<Question> questionList = new ArrayList<Question>();
+        for (Question question :
+                questionRepository.findAll()) {
+            questionList.add(question);
+        }
+        return questionList;
+    }
+}

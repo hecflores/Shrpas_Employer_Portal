@@ -1,0 +1,109 @@
+package hello.services;
+
+
+import hello.helpers.PatchClasses;
+import hello.models.Assessment;
+import hello.models.Question;
+import hello.repositories.AssessmentRepository;
+import hello.repositories.QuestionRepository;
+import javassist.tools.rmi.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Set;
+
+@Service
+public class AssessmentService {
+
+
+    @Autowired
+    private AssessmentRepository assessmentRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+    @Autowired
+    public AssessmentService(AssessmentRepository assessmentRepository, QuestionRepository questionRepository){
+        this.assessmentRepository = assessmentRepository;
+        this.questionRepository = questionRepository;
+    }
+
+    public Assessment saveAssessment(Assessment assessment){
+        assessment = this.getAssessmentRepository().save(assessment);
+        return assessment;
+    }
+
+    public Assessment updateAssessment(int assessmentID, Assessment newAssessment) throws Exception{
+        try{
+            Assessment assessmentToBeUpdated = this.getAssessmentByID(assessmentID);
+            if(assessmentToBeUpdated == null){
+                throw new ObjectNotFoundException("Assessment of " + assessmentID + " was not found");
+            }
+            PatchClasses.PerformAPatch(assessmentToBeUpdated, newAssessment);
+            return assessmentToBeUpdated;
+        }catch (ObjectNotFoundException objectNotFoundException){
+            objectNotFoundException.printStackTrace();
+            return null;
+        }
+    }
+
+    public boolean deleteAssessment(int assessmentId){
+        try{
+            Assessment assessmentToBeDeleted = this.getAssessmentByID(assessmentId);
+            this.getAssessmentRepository().delete(assessmentToBeDeleted);
+            return true;
+        } catch (ObjectNotFoundException objectNotFoundException) {
+            objectNotFoundException.printStackTrace();
+            return false;
+        }
+    }
+
+    public Assessment addQuestionToAssessment(int assessmentID, Question question) {
+        try{
+            Assessment assessment = this.getAssessmentByID(assessmentID);
+            Set<Question> questionSet = assessment.getQuestionSet();
+            if(questionSet.add(question)){
+                assessment.setQuestionSet(questionSet);
+                return this.saveAssessment(assessment);
+            }else{
+                throw new Exception("Unable to add question to assessment");
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
+        }
+    }
+
+    public Assessment addQuestionToAssessment(int assessmentID, int questionID){
+        try{
+            return this.addQuestionToAssessment(assessmentID, this.getQuestionByID(questionID));
+        } catch (Exception exception){
+            exception.printStackTrace();
+            return null;
+        }
+    }
+
+    public Assessment getAssessmentByID(int id) throws ObjectNotFoundException{
+        Assessment assessment = this.getAssessmentRepository().findOne(id);
+        if(assessment == null){
+            throw new ObjectNotFoundException("Assessment of " + id + " was not found");
+        }
+        return assessment;
+    }
+
+    public Question getQuestionByID(int id) throws ObjectNotFoundException{
+        Question question = this.getQuestionRepository().findOne(id);
+        if(question == null){
+            throw new ObjectNotFoundException("Question of " + id + " was not found");
+        }
+        return question;
+    }
+
+    private QuestionRepository getQuestionRepository(){
+        return this.questionRepository;
+    }
+
+    private AssessmentRepository getAssessmentRepository(){
+        return this.assessmentRepository;
+    }
+}

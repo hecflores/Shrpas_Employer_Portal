@@ -1,0 +1,9 @@
+package hello.repositories;
+
+import hello.models.TargetGroup;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+@RepositoryRestResource(collectionResourceRel = "targetGroups", path = "targetGroups")
+public interface TargetGroupRepository extends PagingAndSortingRepository<TargetGroup, Integer>{
+}

@@ -1,0 +1,45 @@
+import React from "react";
+import {Router, Route, browserHistory} from "react-router";
+import Home from "../Home/Home.jsx";
+import Questions from "../Questions/Questions.jsx";
+import Video from "../Prototype/Video.jsx";
+import Audio from "../Prototype/Audio.jsx";
+import Assessment from "../Assessment/Assessments.jsx";
+import AssessmentNew from "../Assessment/AssessmentNew.jsx";
+import TargetGroups from "../Group/ImportParticipants.jsx";
+
+import AssessmentTimer from "../Prototype/AssessmentTimer.jsx";
+import AssessmentTargetGroup from "../Prototype/AssessmentTargetGroup.jsx";
+import GetUserInput from "../UserLogin/LoginPage.jsx";
+import UserAPI from "../../libaries/APIs/UserAPI.jsx";
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state={
+            loggedStatus:""
+        };
+
+    }
+    componentDidMount(){
+        this.setState({loggedStatus:"Logging In..."});
+        var $this=this;
+        UserAPI.instance.hookToUser(function(data){
+            $this.setState({loggedStatus:"Logged In"})
+        });
+    }
+    render() {
+        return (
+            <div>
+                <div className="user-status-container">
+                    <div className="user-status">
+                        {this.state.loggedStatus}
+                    </div>
+                </div>
+                {this.props.children}
+            </div>
+        )
+    }
+}
+
+export default App;

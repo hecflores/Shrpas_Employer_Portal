@@ -1,0 +1,33 @@
+import React from 'react';
+import QuestionPreview from './QuestionPreview.jsx'
+
+class AssessmentPreview extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+
+        const questions = this.props.questions.map(function(question,index){
+            return <QuestionPreview key={index} question={question} id={index+1}/>
+        });
+
+        return (
+            <div className="assessment-questions-container">
+                <div className="assessment-questions-header-container">
+                    <div className="assessment-questions-header-title">
+                        <span>{this.props.questions.length}</span> Questions
+                    </div>
+                </div>
+                <div className="assessment-questions-body">
+                    {questions}
+                </div>
+            </div>
+        );
+
+
+    }
+}
+
+export default AssessmentPreview;

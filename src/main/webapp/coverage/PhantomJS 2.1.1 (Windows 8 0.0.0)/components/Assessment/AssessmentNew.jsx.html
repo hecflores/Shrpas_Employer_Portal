@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">86.89% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>53/61</span>
+        <span class='fraction'>56/64</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">57.14% </span>
+        <span class="strong">60% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>20/35</span>
+        <span class='fraction'>21/35</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">83.33% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>15/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">89.74% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>32/36</span>
+        <span class='fraction'>35/39</span>
       </div>
     </div>
   </div>
@@ -175,7 +175,21 @@
 130
 131
 132
-133</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,7 +205,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -217,6 +235,15 @@
 <span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -236,7 +263,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -323,7 +351,11 @@ var _jquery = require("jquery");
 &nbsp;
 var _jquery2 = _interopRequireDefault(_jquery);
 &nbsp;
-function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? <span class="branch-0 cbranch-no" title="branch not covered" >obj </span>: { "default": obj }; }
+var _AssessmentAPI = require("../../libaries/APIs/AssessmentAPI.jsx");
+&nbsp;
+var _AssessmentAPI2 = _interopRequireDefault(_AssessmentAPI);
+&nbsp;
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { "default": obj }; }
 &nbsp;
 function _classCallCheck(instance, Constructor) { <span class="missing-if-branch" title="if path not taken" >I</span>if (!(instance instanceof Constructor)) { <span class="cstat-no" title="statement not covered" >throw new TypeError("Cannot call a class as a function"); </span>} }
 &nbsp;
@@ -348,7 +380,16 @@ var AssessmentNew = function (_React$Component) {
 &nbsp;
         var _this = _possibleConstructorReturn(this, (AssessmentNew.__proto__ || <span class="branch-1 cbranch-no" title="branch not covered" >Object.getPrototypeOf(AssessmentNew))</span>.call(this, props));
 &nbsp;
-        _this.state = { init: true, data: {} };
+        _this.api = _AssessmentAPI2["default"].instance.hook().on("create-new-assessment", <span class="fstat-no" title="function not covered" >function (data) {</span>
+<span class="cstat-no" title="statement not covered" >            window.location = data.url;</span>
+        });
+&nbsp;
+        _this.state = {
+            init: true,
+            data: {
+                name: ""
+            }
+        };
         return _this;
     }
 &nbsp;
@@ -362,14 +403,15 @@ var AssessmentNew = function (_React$Component) {
         key: "createAndRedirect",
         value: function () {
 <span class="fstat-no" title="function not covered" >            function createAndRedirect() {</span>
-<span class="cstat-no" title="statement not covered" >                _jquery2["default"].ajax({</span>
-                    url: "/rest/assessments",
-                    method: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(this.state.data)
-                }).done(<span class="fstat-no" title="function not covered" >function (data) {</span>
-<span class="cstat-no" title="statement not covered" >                    window.location = "/app/assessments/" + data.id;</span>
-                });
+<span class="cstat-no" title="statement not covered" >                this.api.getListener().createNewAssessmentAndRedirect(this.state.data);</span>
+                // $.ajax({
+                //     url:"/rest/assessments",
+                //     method:"POST",
+                //     contentType:"application/json",
+                //     data:JSON.stringify(this.state.data)
+                // }).done(function(data){
+                //     window.location="/app/assessments/"+data.id;
+                // });
             }
 &nbsp;
             return createAndRedirect;
@@ -416,7 +458,7 @@ var AssessmentNew = function (_React$Component) {
                     ),
                     _react2["default"].createElement("input", { ref: "assessmentNameInput", onChange: function () {
                             function onChange(e) {
-                                return _this2.setState({ name: e.target.value });
+                                return _this2.setState({ data: { name: e.target.value } });
                             }
 &nbsp;
                             return onChange;
@@ -445,7 +487,7 @@ exports["default"] = AssessmentNew;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 23 2017 22:36:18 GMT-0500 (Central Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 04 2017 10:58:00 GMT-0500 (Central Daylight Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

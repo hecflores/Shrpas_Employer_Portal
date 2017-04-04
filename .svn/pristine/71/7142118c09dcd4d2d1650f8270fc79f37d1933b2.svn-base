@@ -1,0 +1,37 @@
+import React from 'react';
+import ReactDom from 'react-popup';
+import Questions from '../Questions/Questions.jsx';
+import Assessment from '../Assessment/Assessments.jsx';
+import Modal from 'react-modal';
+
+class AssessmentNew extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={init:true,data:{}};
+    }
+    createAndRedirect(){
+        $.ajax({
+            url:"/rest/assessments",
+            method:"POST",
+            contentType:"application/json",
+            data:JSON.stringify(this.state.data)}).done(function(data){
+            window.location="/app/assessments/"+data.id;
+        });
+    }
+    render(){
+        if(!this.state.init){
+            this.createAndRedirect();
+        }
+
+        return (
+            <div>
+                <Modal isOpen={this.state.init} contentLabel="SetNameModal">
+                    <input onChange={(e)=>this.setState({data:{name:e.target.value}})} type="text" className="form-control assessment-create-set-name-input" placeholder="Enter the Name" ></input>
+                    <input className="assessment-create-submit-name-btn" type="submit" onClick={()=>{this.setState({init:false})}}/>
+                </Modal>
+            </div>
+        );
+    }
+}
+
+export default AssessmentNew;

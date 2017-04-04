@@ -1,0 +1,107 @@
+hr {
+      border: 0;
+      border-top: 1px solid #ddd;
+      margin: 20px 0;
+}
+body {
+    font-family:"Trajan Pro";
+    font-size:1.5em;
+    background: rgb(241,243,243);
+    padding: 5px;
+    font-weight: 20pt;
+    color:rgb(102,102,102);
+}
+
+.outerborder {
+  border: 1px solid blue;
+  background: rgb(184,184,184);
+}
+
+.headerborder {
+  
+  margin: 10px;
+  padding: 5px 10px;
+  border: 1px solid green;
+  font-size: 1.5em;
+}
+.cell{
+  text-align: center;
+
+}
+.buttonstyle{
+  -webkit-border-radius: 2;
+  -moz-border-radius: 2;
+  border-radius: 2px;
+  font-family: Arial;
+  color: #999999;
+  font-size: 18px;
+  background: #ffffff;
+  padding: 6px 35px 8px 35px;
+  border: solid #c2bec2 2px;
+  text-decoration: none;
+  font-family:"Trajan Pro";
+  float: right;
+  
+}
+
+.otherbuttonstyle{
+   -webkit-border-radius: 2;
+  -moz-border-radius: 2;
+  border-radius: 2px;
+  font-family: Arial;
+  color: #999999;
+  font-size: 18px;
+  background: #ffffff;
+  padding: 6px 35px 8px 35px;
+  border: solid #c2bec2 2px;
+  text-decoration: none;
+  font-family:"Trajan Pro";
+  
+}
+.bordering{
+  border: 1px solid red;
+}
+    
+
+
+.footer {
+  margin: 10px;
+  border: 2px solid pink;
+  text-align: center;
+}
+.MyTable{
+  margin: 10px;
+  border: 2px solid red;
+  padding: 6px 35px 8px 35px;
+  
+}
+.container-header{
+  border: 1px solid black;
+  color: white;
+  font-size: 1em;
+  background: rgb(102,102,102);
+  font-family: "Trajan Pro";
+  text-align: center;
+}
+.row{
+  margin: 0px;
+  font-family: "Trajan Pro";
+  color: #999999;
+  border: 1px solid yellow;
+}
+.container-footer{
+  border: 1px solid red;
+  text-align: center;
+}
+
+.container-body{
+  border: 1px solid purple;
+  text-align: center;
+}
+.container-title{
+  font-family: "Trajan Pro";
+  font-size: 1.5em;
+  color: #999999;
+  text-align: center;
+  border: 1px solid yellow;
+}

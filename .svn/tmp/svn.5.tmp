@@ -1,0 +1,91 @@
+package hello.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import hello.models.*;
+import hello.repositories.*;
+
+import java.util.List;
+
+/**
+localhost:8080/assessments
+ */
+@RestController
+public class AssessmentController{
+
+    @Autowired
+    private AssessmentRepository assessmentRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+
+    /**
+        localhost:8080/rest/assessments/{id}/
+        Gets A Assessment
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/", method=RequestMethod.GET)
+    public ResponseEntity<Assessment> getAssessment(@PathVariable("id") int id)
+    {
+        Assessment assessment = assessmentRepository.findOne(id);
+        return new ResponseEntity<Assessment>(assessment, HttpStatus.OK);
+    }
+
+    /**
+     * Adds an assessment
+     * @param assessment
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments", method=RequestMethod.POST)
+    public ResponseEntity<Assessment> addAssessment(@RequestBody Assessment assessment)
+    {
+        assessmentRepository.save(assessment);
+
+        return new ResponseEntity<Assessment>(assessmentRepository.findOne((int)assessmentRepository.count()), HttpStatus.OK);
+    }
+
+    /**
+     * Adds a question to an assessment
+     * @param id
+     * @param question
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/question", method=RequestMethod.POST)
+    public ResponseEntity<AsssessmentQuestion> addQuestion(@PathVariable("id") int id, @RequestBody Question question)
+    {
+        Question newQuestion = questionRepository.save(question);
+        Assessment assessment = assessmentRepository.findOne(id);
+        AsssessmentQuestion assessmentQuestion=new AsssessmentQuestion();
+        assessmentQuestion.setAssessment(assessment);
+        assessmentQuestion.setQuestion(newQuestion);
+
+
+
+        return new ResponseEntity<AsssessmentQuestion>(assessmentQuestion, HttpStatus.OK);
+    }
+
+    /**
+     * Adds a question to an assessment
+     * @param id
+     * @param questionId
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/question/{questionId}", method=RequestMethod.POST)
+    public ResponseEntity<AsssessmentQuestion> addExistingQuestion(@PathVariable("id") int id, @PathVariable("questionId") int questionId){
+
+
+
+
+        Question question = questionRepository.findOne(questionId);
+        Assessment assessment = assessmentRepository.findOne(id);
+
+        AsssessmentQuestion assessmentQuestion=new AsssessmentQuestion();
+        assessmentQuestion.setAssessment(assessment);
+        assessmentQuestion.setQuestion(question);
+        return new ResponseEntity<AsssessmentQuestion>(assessmentQuestion, HttpStatus.OK);
+    }
+}

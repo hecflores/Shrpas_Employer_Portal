@@ -1,0 +1,66 @@
+import React from 'react';
+
+import TargetGroupAPI from '../../libaries/APIs/TargetGroupAPI.jsx';
+class ImportParticipants extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.handleFileSelect = this.handleFileSelect.bind(this);
+        this.handleImport = this.handleImport.bind(this);
+        this.handleOnLoad = this.handleOnLoad.bind(this);
+        this.parseData = this.parseData.bind(this);
+
+        this.state={
+            file:'',
+            errorMsg:''
+        };
+    }
+
+    handleFileSelect(event) {
+        this.setState({
+            file:event.target.files[0]
+        });
+    }
+
+    handleImport(event) {
+        event.preventDefault();
+        console.log(this.state.file);
+
+        // if (this.state.file.type === 'text/plain') {
+            const reader = new FileReader();
+            reader.readAsText(this.state.file);
+            reader.onload = this.handleOnLoad;
+        // }
+    }
+
+    handleOnLoad(event) {
+        this.parseData(event.target.result);
+    }
+
+    parseData(text) {
+        const allTextLines = text.split(/\r\n|\n/);
+        const lines = [];
+
+        for (let i = 0; i < allTextLines.length; i++) {
+            let data = allTextLines[i].split(',');
+            lines.push(data);
+        }
+        TargetGroupAPI.instance.addParticpant(this.props.id,lines);
+
+    }
+
+    render() {
+
+        return (
+            <form onSubmit={this.handleImport}>
+                <label>Import from text file: </label>
+                <input type="file" required="true" onChange={this.handleFileSelect}/>
+                <span>{this.state.errorMsg}</span>
+                <br/><br/>
+                <button type="submit" className="btn btn-default" >Import</button>
+            </form>
+        )
+    }
+}
+
+export default ImportParticipants;

@@ -1,0 +1,22 @@
+import React from 'react';
+import Timer from 'react.timer';
+
+class AssessmentTimer extends React.Component{
+    constructor(props){
+        super(props);
+        <Timer CountDownTimer = {500}/>
+        this.state{
+            hours: 0;
+            minutes:0;
+            seconds:0;
+            isTimed: true;
+        };
+        this.StoreTime = this.StoreTime.bind(this);
+    }
+    StoreTime : function(){
+        var timerParts = {hours: 0, minutes : 0, seconds : 0, isTimed : {true : false}};
+    }
+
+}
+
+export default AssessmentTimer;

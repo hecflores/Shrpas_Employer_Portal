@@ -1,0 +1,16 @@
+package hello.security;
+
+import org.junit.Before;
+
+public class WebSecurityConfigTest {
+    /*
+     TODO: Need to implement Web Security Config Test
+     */
+
+    private WebSecurityConfig webSecurityConfig;
+
+    @Before
+    public void setUp(){
+        webSecurityConfig = new WebSecurityConfig();
+    }
+}

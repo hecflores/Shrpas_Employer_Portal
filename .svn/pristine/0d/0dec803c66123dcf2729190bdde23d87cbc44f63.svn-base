@@ -1,0 +1,43 @@
+import React from "react";
+
+class GetUserInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    const name = e.target.name;
+    this.setState({
+      [name]: e.target.value
+    });
+    console.log('this is username: ' + this.state.username);
+    console.log('this is password: ' + this.state.password);
+  }
+
+  handleSubmit(e) {
+    alert('username and password were submitted: ' + this.state.username + ' and ' + this.state.password);
+    e.prevenDefault();
+  }
+
+  render() {
+    return (
+      <form className="container" onSubmit={this.handleSubmit}>
+        <label><b>Username:</b>
+          <input name="username" placeholder='Enter username' type="text" value= {this.state.username}              onChange={this.handleChange} required/>
+         </label> <br/>
+         <label><b>Password:</b>
+          <input name="password" placeholder='Enter password' type="password" value={this.state.password}           onChange=  {this.handleChange} required/>
+         </label><br/>
+        <button type="submit">Login</button>
+     </form>
+    )
+  }
+}
+
+export default GetUserInput;

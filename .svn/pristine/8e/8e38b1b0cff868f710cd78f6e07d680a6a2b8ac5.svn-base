@@ -1,0 +1,37 @@
+
+var React = require('react');
+var TestUtils = require('react-addons-test-utils');
+var expect = require('expect');
+var AssessmentNew = require('../AssessmentNew.jsx').default;
+var expectJSX = require('expect-jsx');
+expect.extend(expectJSX);
+
+describe('<AssessmentNew />', () => {
+    beforeEach(function () {
+        this.TestUtils = TestUtils;
+        this.TestUtils.route = '/app/assessments/create';
+        this.renderer = this.TestUtils.createRenderer();
+        this.component = this.TestUtils.renderIntoDocument(<AssessmentNew/>);
+    });
+    it('should render without problems', function () {
+        expect(this.component).toExist();
+    });
+    it('should be able to have child elements', function () {
+        renderer.render(<AssessmentNew/>)
+        const wrapper = this.renderer.getRenderOutput();
+
+        expect(wrapper.type).toBe('div');
+        expect(result.props.className).toEqual('new-assessment-name-container');
+
+        //@TODO: Need to test if it renders the elements within the div
+    });
+    it('should be able to change data on user input', function () {
+        TestUtils.route = '/app/assessments/create';
+        const root = TestUtils.renderIntoDocument(<AssessmentNew/>);
+
+        const assessmentNameInput = root.refs.assessmentNameInput;
+        assessmentNameInput.value = "Software Engineer Assessment";
+        TestUtils.Simulate.change(assessmentNameInput);
+
+    });
+});

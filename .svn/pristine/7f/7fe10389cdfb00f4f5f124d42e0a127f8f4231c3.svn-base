@@ -1,0 +1,35 @@
+package hello.models;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "assessment_question")
+public class AsssessmentQuestion implements Serializable{
+
+    private Question question;
+    private Assessment assessment;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    public Question getQuestion() {
+        return this.question;
+    }
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "assessment_id")
+    public Assessment getAssessment(){
+        return this.assessment;
+    }
+
+    public void setAssessment(Assessment assessment){
+        this.assessment = assessment;
+    }
+
+    public void setQuestion(Question question){
+        this.question = question;
+    }
+
+}

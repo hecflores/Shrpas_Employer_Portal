@@ -1,0 +1,242 @@
+import $ from 'jquery';
+import EventHandler from '../EventHandler.jsx';
+
+class APIHook{
+
+
+
+    _isLive;
+
+    /**
+     * @param int
+     */
+    id;
+
+    /**
+     * @param APIListener
+     */
+    listener;
+
+    /**
+     * @constructor
+     * @param listener APIListener
+     */
+    constructor(listener){
+        this.listener=listener;
+        this._isLive=true;
+    }
+
+    /**
+     *
+     * @returns {int}
+     */
+    getID(){
+        return this.id;
+    }
+
+    /**
+     *
+     * @returns {APIListener}
+     */
+    getListener(){
+        return this.listener;
+    }
+
+    /**
+     *
+     * @returns {boolean}
+     */
+    isLive(){
+        return this._isLive;
+    }
+
+    close(){
+        this._isLive=false;
+    }
+
+    trigger(eventName, data){
+
+    }
+    on(){
+        switch(arguments.length){
+            case 0:
+                throw new Error("Expecting at least 2 arguments, recieved 0");
+            case 1:
+                throw new Error("Expecting at least 2 arguments, recieved 1");
+            default:
+                let $this=this;
+                let actualCallback=arguments[arguments.length-1];
+
+                /***********************************************************/
+                if(typeof actualCallback!="function"){
+                    throw new Error("Expecting last argument to be a function, function was not found");
+                }
+
+                /***********************************************************/
+                arguments[arguments.length-1]=function(e)
+                {
+                    if(!$this.isLive()){
+                        return;
+                    }
+                    actualCallback(e.data);
+                };
+
+                /************************************************************/
+                /* Build better argument list                               */
+                /************************************************************/
+                let newArguments=[];
+                for(let index in arguments){
+                    newArguments.push(arguments[index]);
+
+                    //We just want to parameters so exit if it reaches that
+                    if(newArguments.length==arguments.length-1){
+                        break
+                    }
+                }
+                newArguments.push("updated");//What is triggered when the data is finished
+                newArguments.push(arguments[arguments.length-1]);
+
+                /***********************************************************/
+                this.getListener().on.apply(this.getListener(),newArguments);
+        }
+        return this;
+    }
+
+    /**
+     * @param  listener APIListener
+     * @param  nameOfCaller string
+     * @returns {APIHook}
+     */
+    static create(listener, nameOfCaller){
+        if(typeof nameOfCaller == 'undefined'){
+            nameOfCaller=(APIHook.latestHookID++);
+        }
+        if(typeof APIHook.CurrentHooks[nameOfCaller] =="undefined"){
+            let hook= new APIHook(listener,nameOfCaller);
+            APIHook.CurrentHooks[nameOfCaller]=hook;
+            return hook;
+        }
+        return APIHook.CurrentHooks[nameOfCaller];
+
+    }
+
+}
+APIHook.latestHookID=1;
+APIHook.CurrentHooks={};
+
+
+class APIListener
+{
+    modules;
+
+    eventHandler;
+
+
+    constructor()
+    {
+        this.modules={};
+        this.eventHandler=new EventHandler();
+    }
+
+    AlaxCall(data, callback){
+
+        //Here is where you can use what ever you want
+        $.ajax(data).done(callback);
+    }
+    /**
+     * On the event given your callback will be called
+     * @return APIListener
+     */
+    on(){
+        switch(arguments.length){
+            case 0:
+                throw new Error("Expecting at least 2 arguments, recieved 0");
+            case 1:
+                throw new Error("Expecting at least 2 arguments, recieved 1");
+            default:
+                EventHandler.prototype.on.apply(this.eventHandler,arguments);
+        }
+        return this;
+    }
+
+
+    /**
+     * Will have the api event be started evert {miliseconds} of time with the given data
+     * @param name string
+     * @param milliseconds int
+     * @param data function|object
+     */
+    setConstantUpdate(name,milliseconds,data){
+        if(typeof data=="function"){
+            data=data();
+        }
+        else if(typeof data!="object"){
+            throw new Error("Expecting either a function or data for constant update");
+        }
+
+        /*******************************************************************/
+        let $this=this;
+        let triggerFunction;
+        triggerFunction=function(){
+            $this.initiate(name,data);
+            setTimeout(function(){
+                triggerFunction();
+            },milliseconds);
+        };
+        triggerFunction();
+
+    }
+
+    /**
+     * Adds a api call. The name can be anything, so... example add-assessment
+     * @param name string
+     * @param callback function
+     */
+    addModule(name, callback)
+    {
+        /*******************************************************************/
+        if(typeof callback != "function"){
+            throw new Error("Expecting a function in addModule");
+        }
+
+        /*******************************************************************/
+        let $this=this;
+        this.eventHandler.on(name, "start",function(e){
+            callback(e.data,function(data){
+                $this.eventHandler.trigger(name,"updated",{data:data});
+            });
+        });
+    }
+
+    initiate(eventName, data){
+        this.eventHandler.trigger(eventName,"start",data?data:{});
+    }
+    quick(moduleName,data,callback){
+        this.hook().on(moduleName,callback);
+        this.initiate(moduleName,data);
+    }
+    /**
+     * This is the routine that is called to get an instance of the abilities of the listener
+     * @returns {APIHook}
+     */
+    hook()
+    {
+        switch(arguments.length)
+        {
+            case 0:
+                let re = /.*at (.*)\(/g;
+                let stack=new Error().stack;
+                re.exec(stack); // First
+                let aRegexResult=re.exec(stack); // Second
+                if(aRegexResult==null){
+                    return APIHook.create(this); // Will auto generate one
+                }
+
+                let sCallerName = aRegexResult[1];
+                return APIHook.create(this,sCallerName);
+                break;
+            default:
+        }
+    }
+}
+export default APIListener;

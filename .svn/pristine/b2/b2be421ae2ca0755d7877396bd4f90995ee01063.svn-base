@@ -1,0 +1,272 @@
+package hello.controllers;
+
+import hello.models.Assessment;
+import hello.models.Participant;
+import hello.models.TargetGroup;
+import hello.repositories.AssessmentRepository;
+import hello.repositories.ParticipantRepository;
+import hello.repositories.TargetGroupRepository;
+import hello.repositories.exceptions.AssessmentNotFoundException;
+import hello.repositories.exceptions.ParticipantNotFoundException;
+import hello.repositories.exceptions.TargetGroupNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+@RestController
+public class TargetGroupController {
+
+    private TargetGroupRepository targetGroupRepository;
+    private ParticipantRepository participantRepository;
+    private AssessmentRepository assessmentRepository;
+
+    @Autowired
+    public TargetGroupController(TargetGroupRepository targetGroupRepository, ParticipantRepository participantRepository, AssessmentRepository assessmentRepository) {
+        this.targetGroupRepository = targetGroupRepository;
+        this.participantRepository = participantRepository;
+        this.assessmentRepository = assessmentRepository;
+    }
+
+    /**
+     localhost:8080/rest/targetGroups
+     Gets all target groups
+     */
+    @RequestMapping(value = "/rest/targetGroups", method= RequestMethod.GET)
+    public ArrayList<TargetGroup> getTargetGroups() {
+        ArrayList<TargetGroup> targetGroups = new ArrayList<>();
+
+        for (TargetGroup targetGroup : targetGroupRepository.findAll()) {
+            targetGroups.add(targetGroup);
+        }
+
+        return targetGroups;
+    }
+
+    /**
+     localhost:8080/rest/targetGroups/{id}
+     Gets a target group
+     */
+    @RequestMapping(value = "/rest/targetGroups/{id}", method = RequestMethod.GET)
+    public ResponseEntity<TargetGroup> getTargetGroup(@PathVariable("id") int id) {
+        TargetGroup targetGroup = targetGroupRepository.findOne(id);
+        HttpStatus httpStatus = (targetGroup == null) ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+
+        return new ResponseEntity<>(targetGroup, httpStatus);
+    }
+
+    /**
+     * Adds a target group
+     * @param targetGroup
+     * @return
+     */
+    @RequestMapping(value = "/rest/targetGroups", method = RequestMethod.POST)
+    public ResponseEntity<TargetGroup> addTargetGroup(@RequestBody TargetGroup targetGroup) {
+        TargetGroup newTargetGroup = targetGroupRepository.save(targetGroup);
+
+        return new ResponseEntity<>(newTargetGroup, HttpStatus.CREATED);
+    }
+
+    /**
+     * Updates a target group
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/rest/targetGroups/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<TargetGroup> updateTargetGroup(@PathVariable("id") int id, @RequestBody TargetGroup targetGroup) throws Exception {
+        TargetGroup targetGroupToUpdate = targetGroupRepository.findOne(id);
+        if (targetGroupToUpdate == null)
+            throw new TargetGroupNotFoundException(id);
+
+        targetGroupToUpdate.setName(targetGroup.getName());
+        targetGroupToUpdate.setAssessment(targetGroup.getAssessment());
+        targetGroupToUpdate.setParticipantSet(targetGroup.getParticipantSet());
+        targetGroupRepository.save(targetGroupToUpdate);
+
+        return new ResponseEntity<>(targetGroupToUpdate, HttpStatus.OK);
+    }
+
+    /**
+     * Deletes a target group
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "rest/targetGroups/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> deleteTargetGroup(@PathVariable("id") int id) throws Exception {
+        TargetGroup targetGroup = targetGroupRepository.findOne(id);
+
+        if (targetGroup == null)
+            throw new TargetGroupNotFoundException(id);
+
+        targetGroupRepository.delete(targetGroup);
+
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+    }
+
+    /**
+     * Gets all participants in target group
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "rest/targetGroups/{id}/participants", method = RequestMethod.GET)
+    public ArrayList<Participant> getParticipantsInTargetGroup(@PathVariable("id") int id) throws Exception {
+        TargetGroup targetGroup = targetGroupRepository.findOne(id);
+
+        if (targetGroup == null)
+            throw new TargetGroupNotFoundException(id);
+
+        ArrayList<Participant> participantList = new ArrayList<>();
+        participantList.addAll(targetGroup.getParticipantSet());
+
+        return participantList;
+    }
+
+    /**
+     * Adds a list of participants to target group
+     * @param id The Id of the Target Group
+     * @param participants The Participants
+     * @return The Target Group
+     */
+    @RequestMapping(value = "rest/targetGroups/{id}/participantList", method = RequestMethod.POST)
+    public ResponseEntity<TargetGroup> addNewParticipantsToTargetGroup(@PathVariable("id") int id, @RequestBody List<Participant> participants) throws Exception {
+        TargetGroup targetGroup = targetGroupRepository.findOne(id);
+
+        if (targetGroup == null)
+            throw new TargetGroupNotFoundException(id);
+
+        targetGroup = addParticipantsToTargetGroup(targetGroup, participants);
+        return new ResponseEntity<>(targetGroup, HttpStatus.OK);
+    }
+    /**
+     * Adds a participant to target group
+     * @param id The Id of the Target Group
+     * @param participant The Participant
+     * @return The Target Group
+     */
+    @RequestMapping(value = "rest/targetGroups/{id}/participants", method = RequestMethod.POST)
+    public ResponseEntity<TargetGroup> addNewParticipantToTargetGroup(@PathVariable("id") int id, @RequestBody Participant participant) throws Exception {
+        TargetGroup targetGroup = targetGroupRepository.findOne(id);
+
+        if (targetGroup == null)
+            throw new TargetGroupNotFoundException(id);
+
+        targetGroup = addParticipantToTargetGroup(targetGroup, participant);
+        return new ResponseEntity<>(targetGroup, HttpStatus.OK);
+    }
+
+    /**
+     * Adds an existing participant to target group
+     * @param targetGroupId
+     * @param participantId
+     * @return
+     */
+    @RequestMapping(value = "rest/targetGroups/{id}/participants/{participantId}", method = RequestMethod.POST)
+    public ResponseEntity<TargetGroup> addExistingParticipantToTargetGroup(@PathVariable("id") int targetGroupId, @PathVariable("participantId") int participantId) throws Exception {
+        TargetGroup targetGroup = targetGroupRepository.findOne(targetGroupId);
+
+        if (targetGroup == null)
+            throw new TargetGroupNotFoundException(targetGroupId);
+
+        Participant participant = participantRepository.findOne(participantId);
+
+        if (participant == null)
+            throw new ParticipantNotFoundException(participantId);
+
+        targetGroup = addParticipantToTargetGroup(targetGroup, participant);
+        return new ResponseEntity<>(targetGroup, HttpStatus.OK);
+    }
+
+    /**
+     * Removes a participant from target group
+     * @param targetGroupId
+     * @param participantId
+     * @return
+     */
+    @RequestMapping(value = "rest/targetGroups/{id}/participants/{participantId}", method = RequestMethod.PUT)
+    public ResponseEntity<TargetGroup> removeParticipantFromTargetGroup(@PathVariable("id") int targetGroupId, @PathVariable("participantId") int participantId) throws Exception {
+        TargetGroup targetGroup = targetGroupRepository.findOne(targetGroupId);
+
+        if (targetGroup == null)
+            throw new TargetGroupNotFoundException(targetGroupId);
+
+        Participant participant = participantRepository.findOne(participantId);
+
+        if (participant == null)
+            throw new ParticipantNotFoundException(participantId);
+
+        Set<Participant> participantSet = targetGroup.getParticipantSet();
+        participantSet.remove(participant);
+        targetGroup.setParticipantSet(participantSet);
+        targetGroup = targetGroupRepository.save(targetGroup);
+
+        return new ResponseEntity<>(targetGroup, HttpStatus.OK);
+    }
+
+    /**
+     * Adds an assessment to target group
+     * @param id
+     * @param assessment
+     * @return
+     */
+    @RequestMapping(value = "rest/targetGroups/{id}/assessment", method = RequestMethod.POST)
+    public ResponseEntity<TargetGroup> addNewAssessmentToTargetGroup(@PathVariable("id") int id, @RequestBody Assessment assessment) throws Exception {
+        TargetGroup targetGroup = targetGroupRepository.findOne(id);
+
+        if (targetGroup == null)
+            throw new TargetGroupNotFoundException(id);
+
+        assessmentRepository.save(assessment);
+        targetGroup = addAssessmentToTargetGroup(targetGroup, assessment);
+        return new ResponseEntity<>(targetGroup, HttpStatus.OK);
+    }
+
+    /**
+     * Adds an existing assessment to target group
+     * @param targetGroupId
+     * @param assessmentId
+     * @return
+     */
+    @RequestMapping(value = "rest/targetGroups/{id}/assessment/{assessmentid}", method = RequestMethod.POST)
+    public ResponseEntity<TargetGroup> addExistingAssessmentToTargetGroup(@PathVariable("id") int targetGroupId, @PathVariable("assessmentid") int assessmentId) throws Exception {
+        TargetGroup targetGroup = targetGroupRepository.findOne(targetGroupId);
+
+        if (targetGroup == null)
+            throw new TargetGroupNotFoundException(targetGroupId);
+
+        Assessment assessment = assessmentRepository.findOne(assessmentId);
+
+        if (assessment == null)
+            throw new AssessmentNotFoundException(assessmentId);
+
+        targetGroup = addAssessmentToTargetGroup(targetGroup, assessment);
+        return new ResponseEntity<>(targetGroup, HttpStatus.OK);
+    }
+
+    private TargetGroup addParticipantToTargetGroup(TargetGroup targetGroup, Participant participant) {
+        Set<Participant> participantSet = targetGroup.getParticipantSet();
+        participantSet.add(participant);
+        targetGroup.setParticipantSet(participantSet);
+
+        return targetGroupRepository.save(targetGroup);
+    }
+    private TargetGroup addParticipantsToTargetGroup(TargetGroup targetGroup, List<Participant> participants) {
+        Set<Participant> participantSet = targetGroup.getParticipantSet();
+        for(Participant participant : participants){
+            participantSet.add(participant);
+        }
+        targetGroup.setParticipantSet(participantSet);
+
+        return targetGroupRepository.save(targetGroup);
+    }
+
+    private TargetGroup addAssessmentToTargetGroup(TargetGroup targetGroup, Assessment assessment) {
+        targetGroup.setAssessment(assessment);
+
+        return targetGroupRepository.save(targetGroup);
+    }
+
+}

@@ -1,0 +1,753 @@
+import React from "react";
+import $ from "jquery";
+
+import EventHandler from "../../libaries/EventHandler.jsx";
+import Rests from "../../libaries/Rest.jsx";
+import Questions from "../Questions/Questions.jsx";
+import ExistingQuestions from "./ExistingQuestions.jsx";
+import AssessmentPreview from "./Preview/AssessmentPreview.jsx";
+import AssessmentTimer from "../Prototype/AssessmentTimer.jsx";
+import QuestionTypes from "../Questions/QuestionTypes.jsx";
+
+const MultipleChoiceDisplay=QuestionTypes.MultipleChoiceQuestion.Display;
+const MultipleChoiceCreator=QuestionTypes.MultipleChoiceQuestion.Creator;
+const CodeQuestionDisplay=QuestionTypes.CodeQuestion.Display;
+const CodeQuestionCreator=QuestionTypes.CodeQuestion.Creator;
+const VideoQuestionDisplay=QuestionTypes.VideoQuestion.Display;
+const VideoQuestionCreator=QuestionTypes.VideoQuestion.Creator;
+const TextQuestionDisplay=QuestionTypes.TextQuestion.Display;
+const TextQuestionCreator=QuestionTypes.TextQuestion.Creator;
+const AudioQuestionDisplay=QuestionTypes.AudioQuestion.Display;
+const AudioQuestionCreator=QuestionTypes.AudioQuestion.Creator;
+
+/**
+ *
+ */
+class Assessment extends React.Component{
+    constructor(props) {
+        super(props);
+        var $this=this;
+
+        /*******************************************************************/
+        /* Setup Event Handler to handle Events Between Components         */
+        /*******************************************************************/
+        this.myEventHandler=new EventHandler();
+
+        /*******************************************************************/
+        this.myEventHandler.on("save-question","started",function(e){
+            $this.loading("Saving Question...");
+        });
+
+        /*******************************************************************/
+        this.myEventHandler.on("save-question","finished",function(e){
+
+            var questionInfo=e.data;
+            $this.loading("Adding Question to Assessment...");
+            Rests.Lets().post(
+                "/rest/assessments/"+$this.getAssessmentID()+"/question/"+e.data.id,
+                {},
+                function(data){
+                    var assessmentInfo=data;
+                    $this.myEventHandler.trigger("question-added",{question:questionInfo,assessment:assessmentInfo});
+                }
+            );
+            // $.ajax({
+            //     url:,
+            //     method:"POST",
+            //     dataType: "json",
+            //     contentType:'application/json',
+            //     success:function(data){
+            //         var assessmentInfo=data;
+            //         $this.myEventHandler.trigger("question-added",{question:questionInfo,assessment:assessmentInfo});
+            //     }
+            // });
+        });
+        $this.myEventHandler.on("question-added",function(e){
+            $this.notLoading();
+            $this.MoveTo("mainPage");
+            $this.loadQuestions();
+        });
+
+        $this.myEventHandler.on("questions-loaded",function(e){
+            var questions=e.questions.map(function(item){
+                item.content=JSON.parse(item.content);
+                return item;
+            });
+            console.log(JSON.stringify(questions));
+
+            $this.setState({questions:questions});
+        });
+
+        //TODO After performing testing, this seemed to never be used
+        // this.myEventHandler.on("get-all-existing-questions", function (event) {
+        //     const data = Rests.Lets.get('/rest/questions',{}, function (data) {
+        //         return data;
+        //     });
+        //     console.log(data);
+        //     return data;
+        // });
+
+
+        this.state={"currentPage":"mainPage",questions:[]};
+        this.SideBar=(<div className="col-lg-1 assessment-side-panel">
+                <span className="assessment-side-panel-item btn btn-block btn-default" ><span className="glyphicon glyphicon-plus"></span></span>
+                <span className="assessment-side-panel-item btn btn-block btn-primary" ><span className="glyphicon glyphicon-home"></span></span>
+                <span className="assessment-side-panel-item btn btn-block btn-primary" ><span className="glyphicon glyphicon-user"></span></span>
+                <span className="assessment-side-panel-item btn btn-block btn-primary" ><span className="glyphicon glyphicon-th"></span></span>
+                <span className="assessment-side-panel-item btn btn-block btn-primary" ><span className="glyphicon glyphicon-check"></span></span>
+            </div>);
+
+        /*******************************************************************/
+        this.questionTypes=
+            {
+                'code': (
+                    <CodeQuestionCreator noCreateBtn={true} eventHandler={this.myEventHandler} question={this.props.question}>
+
+                    </CodeQuestionCreator>
+                ),
+                'text': (
+                    <TextQuestionCreator noCreateBtn={true} eventHandler={this.myEventHandler} question={this.props.question}>
+
+                    </TextQuestionCreator>
+                ),
+                'audio': (
+                    <AudioQuestionCreator noCreateBtn={true} eventHandler={this.myEventHandler} question={this.props.question}>
+
+                    </AudioQuestionCreator>
+                ),
+                'video': (
+                    <VideoQuestionCreator noCreateBtn={true} eventHandler={this.myEventHandler} question={this.props.question}>
+
+                    </VideoQuestionCreator>
+                ),
+                'multiple-choice': (
+                    <MultipleChoiceCreator noCreateBtn={true} eventHandler={this.myEventHandler} question={this.props.question}>
+
+                    </MultipleChoiceCreator>
+                )
+            };
+
+
+        this.questionSelection=function(selection){
+            return (
+                <div className={(typeof selection!="undefined"?"selection-exists":"")+" question-type-selection"}>
+                    <div onClick={()=>$this.chooseQuestionType('multiple-choice')}  className={"btn question-type-selection-option multiple-choice-selection  "+(selection=='multiple-choice'?'selected':'')} >
+                        <div className="question-type-selection-option-icon"><span className="glyphicon glyphicon-star-empty"></span></div>
+                        <div className="question-type-selection-option-text">Multiple Choice</div>
+                    </div>
+                    <div onClick={()=>$this.chooseQuestionType('text')} className={"btn question-type-selection-option text-selection  "+(selection=='text'?'selected':'')}>
+                        <div className="question-type-selection-option-icon"><span className="glyphicon glyphicon-font"></span> </div>
+                        <div className="question-type-selection-option-text">Text response</div>
+                    </div>
+                    <div onClick={()=>$this.chooseQuestionType('video')} className={"btn question-type-selection-option video-selection  "+(selection=='video'?'selected':'')}>
+                        <div className="question-type-selection-option-icon"><span className="glyphicon glyphicon-facetime-video"></span> </div>
+                        <div className="question-type-selection-option-text">Video response</div>
+                    </div>
+                    <div onClick={()=>$this.chooseQuestionType('audio')} className={"btn question-type-selection-option audio-selection  "+(selection=='audio'?'selected':'')}>
+                        <div className="question-type-selection-option-icon"><span className="glyphicon glyphicon-volume-up"></span> </div>
+                        <div className="question-type-selection-option-text">Audio response</div>
+                    </div>
+                    <div onClick={()=>$this.chooseQuestionType('code')} className={"btn question-type-selection-option code-selection "+(selection=='code'?'selected':'')}>
+                        <div className="question-type-selection-option-icon"><span className="glyphicon glyphicon-console"></span> </div>
+                        <div className="question-type-selection-option-text">Code response</div>
+                    </div>
+                </div>
+            );
+        };
+
+        //TODO After performing testing, this seemed to never be used
+        // this.getExistingQuestionSelection=function () {
+        //     return (
+        //         <div>
+        //             <h2>Hello world</h2>
+        //             <div className="assessment-questions-header-container">
+        //                 <div className="assessment-questions-header-add-container">
+        //                                 <span onClick={() => {
+        //                                     $this.MoveTo("interPageForQuestions")
+        //                                 }} className="btn assessment-questions-container-add-btn"><span className="glyphicon glyphicon-plus"/> Add</span>
+        //                 </div>
+        //                 <div className="assessment-questions-header-title">{$this.state.questions.length} Questions</div>
+        //
+        //             </div>
+        //             <div className="assessment-questions-body">
+        //                 <Questions questions={$this.state.questions}/>
+        //             </div>
+        //         </div>
+        //     );
+        // };
+
+
+        this.stepInstructions= {
+
+            /***************************************************************/
+            /* Page: Main Page                                             */
+            /* Description: Where the questions currently in assessment are*/
+            /*              shown                                          */
+            /* Developers: Hector Flores    - Design, Structure            */
+            /*             Sean Graham      - Design, Questions List       */
+            /*             Rashan Whittaker - Design, Set Time List        */
+            /*             Joshua Bird      - Design, Expiration Date      */
+            /***************************************************************/
+            "mainPage":
+                {
+
+                /***********************************************************/
+                /* What is Displayed on Top Heading                        */
+                /***********************************************************/
+                headingTitle: "New Assessment",
+
+                /***********************************************************/
+                /* Previous Button Properties                              */
+                /***********************************************************/
+                previous:{
+                    enabled:true,
+                    html:"Cancel",
+                    clicked:function($this){
+                        $this.MoveTo("targetGroups");
+                    }
+                },
+
+                /***********************************************************/
+                /* Next Button Properties                                  */
+                /***********************************************************/
+                next:{
+                    enabled:function($this){
+                        return $this.state.questions.length>0;
+                    },
+                    html:function($this){
+                        if($this.state.questions.length>0){
+                            return "Save";
+                        }
+                        return "Next"
+                    },
+                    clicked:function($this){
+                        $this.MoveTo("saveAssessment")
+                    }
+                },
+
+                /***********************************************************/
+                /* Render Function(Meat Goes Here)                         */
+                /***********************************************************/
+                render: function () {
+
+
+
+                    return (
+                        <div className="build-your-assessment-container">
+
+                            <div className="top-header-container">
+                                <div className="top-header-title">
+                                    Build Your Assessment
+                                </div>
+                                <div className="top-header-tools">
+                                    <AssessmentTimer assessmentID = {$this.getAssessmentID()}/>
+                                    <div className="top-header-expiration-date-container">
+                                        <i className="fa fa-calendar"/>
+                                        Set Expiration
+                                        {/* swdp-iteration2  Joshua Bird - Put your expiration date component here */}
+                                    </div>
+                                    <div onClick={()=>{$this.MoveTo("previewAssessment")}} className="top-header-preview-container">
+                                        <div className="preview-button"><i className="fa fa-eye"></i> Preview</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="assessment-questions-container">
+                                <div className="assessment-questions-header-container">
+                                    <div className="assessment-questions-header-add-container">
+                                        <span onClick={() => {
+                                            $this.MoveTo("interPageForQuestions")
+                                        }} className="btn assessment-questions-container-add-btn"><span className="glyphicon glyphicon-plus"/> Add</span>
+                                    </div>
+                                    <div className="assessment-questions-header-title">{$this.state.questions.length} Questions</div>
+
+                                </div>
+                                <div className="assessment-questions-body">
+                                    <Questions questions={$this.state.questions}/>
+                                </div>
+                            </div>
+
+                        </div>);
+                }
+            },
+
+            /***************************************************************/
+            /* Page: New/Existing Question                                 */
+            /* Description: Where the questions currently in assessment are*/
+            /*              shown                                          */
+            /* Developers: Mathew Dickens -Design, Structure, Functionality*/
+            /***************************************************************/
+            "interPageForQuestions": {
+
+                /***********************************************************/
+                /* What is Displayed on Top Heading                        */
+                /***********************************************************/
+                headingTitle: "New/Existing Question",
+
+                /***********************************************************/
+                /* Previous Button Properties                              */
+                /***********************************************************/
+                previous:{
+                    enabled:true,
+                    html:"Cancel",
+                    clicked:function($this){
+                        $this.MoveTo("mainPage");
+                    }
+                },
+
+                /***********************************************************/
+                /* Next Button Properties                                  */
+                /***********************************************************/
+                next: { //swdp-iteration2 We dont want to be next. Matt, you have to call $this.MoveTo("chooseQuestion") or $this.MoveTo("getExistingQuestion") depending on this selection
+                    enabled:false,
+                    html:"Done",
+                    clicked:function($this){}
+                },
+
+                /***********************************************************/
+                /* Render Function(Meat Goes Here)                         */
+                /***********************************************************/
+                render: function () {
+                    return (
+                        <div>
+                            {/*<h2 className="quick-note" >Matt (Your Stuff Goes Here)</h2>*/}
+                            <h2 className="quick-note" >Choose to add a new question or existing question</h2>
+                            {/* swdp-iteration2 Matthew Dickens - Put the Choosing Component here. Where they choose to either make a question or use an existing one */}
+                            {/* swdp-iteration2                   See above not. New Question-> $this.MoveTo("chooseQuestion"), Existing Question-> $this.MoveTo("getExistingQuestion") This*/}
+                            <div className="row">
+                                <div className="col-md-2 col-md-offset-5">
+                                    <button onClick={() => $this.MoveTo("getExistingQuestion")} className="btn btn-default btn-lg add-existing-question-btn">Add Existing Question</button>
+                                    <button onClick={() => $this.MoveTo("chooseQuestion")} className="btn btn-default btn-lg add-new-question-btn">Add New Question</button>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+            },
+
+            /***************************************************************/
+            /* Page:Add a Question                                         */
+            /* Description: Main Page where a question is created          */
+            /* Developers: Hector Flores - Outer Design, Structure         */
+            /*                             Outer Functionality             */
+            /*             Lauren Oneal  - Design, Finalizing Functionality*/
+            /***************************************************************/
+            "chooseQuestion": {
+
+                /***********************************************************/
+                /* What is Displayed on Top Heading                        */
+                /***********************************************************/
+                headingTitle: "Add a Question",
+
+                /***********************************************************/
+                /* Previous Button Properties                              */
+                /***********************************************************/
+                previous:{
+                    enabled:true,
+                    html:"Back",
+                    clicked:function($this){
+                        $this.MoveTo("interPageForQuestions");
+                    }
+                },
+
+                /***********************************************************/
+                /* Next Button Properties                                  */
+                /***********************************************************/
+                next:{
+                    enabled:function($this){
+                        return typeof $this.state.selection!="undefined";
+                    },
+                    html:function($this){
+                        return "Next"
+                    },
+                    clicked:function($this){
+                        $this.myEventHandler.trigger("save-question");
+                    }
+                },
+
+                /***********************************************************/
+                /* Render Function(Meat Goes Here)                         */
+                /***********************************************************/
+                render: function () {
+                    return (
+
+                        // swdp-iteration2 Lauren Oneal - Please get the Design Working for All Question Types(Checkout hector.css)
+                        <div className="add-a-question-main-container">
+                            <div className="add-a-question-types-selection">
+                            {$this.questionSelection($this.state.selection)}
+                            </div>
+                            <div className="add-a-question-type-selected">
+                                {typeof $this.state.selection!="undefined"?
+                                    (<div>
+                                        {$this.questionTypes[$this.state.selection]}
+                                        <div className="col-lg-12 bottomBar">
+
+                                        </div>
+                                    </div>):
+                                    (<div className="no-type-selected-message">Select Question Type</div> )
+                                }
+                            </div>
+
+
+
+                        </div>);
+                }
+            },
+            "getExistingQuestion": {
+
+                /***********************************************************/
+                /* What is Displayed on Top Heading                        */
+                /***********************************************************/
+                headingTitle: "Choose Existing Question",
+
+                /***********************************************************/
+                /* Previous Button Properties                              */
+                /***********************************************************/
+                previous:{
+                    enabled:true,
+                    html:"Back",
+                    clicked:function($this){
+                        $this.MoveTo("interPageForQuestions");
+                    }
+                },
+
+                /***********************************************************/
+                /* Next Button Properties                                  */
+                /***********************************************************/
+                next:{
+                    enabled:function($this){
+                        return typeof $this.state.selection!="undefined";
+                    },
+                    html:function($this){
+                        return "Next"
+                    },
+                    clicked:function($this){
+                        $this.myEventHandler.trigger("save-question");
+                    }
+                },
+
+                /***********************************************************/
+                /* Render Function(Meat Goes Here)                         */
+                /***********************************************************/
+                render: function () {
+                    const assessmentID = $this.getAssessmentID();
+                    return (
+                        <div>
+                            {/*<h2>Hello world</h2>*/}
+                            <ExistingQuestions assessmentID={$this.getAssessmentID()}/>
+                        </div>
+                    );
+                }
+            },
+
+
+            /***************************************************************/
+            /* Needs Improving                                             */
+            /***************************************************************/
+            "saveAssessment": {
+
+                /***********************************************************/
+                /* What is Displayed on Top Heading                        */
+                /***********************************************************/
+                headingTitle: "More?",
+
+                /***********************************************************/
+                /* Render Function(Meat Goes Here)                         */
+                /***********************************************************/
+                render: function () {
+                    return (
+                        <div>
+                            /* TODO Code will need to change to a local data center before this is usfull. Next Iteration */
+                        </div>
+                    )
+
+                }
+            },
+            "reviewAssessments": {
+
+                /***********************************************************/
+                /* What is Displayed on Top Heading                        */
+                /***********************************************************/
+                headingTitle: "Review Assessment",
+
+                /***********************************************************/
+                /* Render Function(Meat Goes Here)                         */
+                /***********************************************************/
+                render: function () {
+                    return (
+                        <div>
+                            {/* TODO Code will need to change to a local data center before this is usfull. Next Iteration */}
+                        </div>
+                    )
+                }
+            },
+
+            /***************************************************************/
+            /* Page:Preview Assessment                                     */
+            /* Description: Will Show a Question List of view of runnable  */
+            /*              questions to make sure the assessment looks as */
+            /*              expected                                       */
+            /* Developers:  Sajiva Pradham - Solo Developer (Design,       */
+            /*                               Functionality, Structure)     */
+            /***************************************************************/
+            "previewAssessment": {
+
+                /***********************************************************/
+                /* What is Displayed on Top Heading                        */
+                /***********************************************************/
+                headingTitle: "Preview Assessment",
+
+                /***********************************************************/
+                /* Previous Button Properties                              */
+                /***********************************************************/
+                previous:{
+                    enabled:true,
+                    html:"Back",
+                    clicked:function($this){
+                        $this.MoveTo("mainPage");
+                    }
+                },
+
+                /***********************************************************/
+                /* Next Button Properties                                  */
+                /***********************************************************/
+                next:{
+                    enabled:true,
+                    html:"Done",
+                    clicked:function($this){
+                        $this.MoveTo("mainPage");
+                    }
+                },
+
+                /***********************************************************/
+                /* Render Function(Meat Goes Here)                         */
+                /***********************************************************/
+                render: function () {
+                    const assessmentID = $this.getAssessmentID();
+                    return (
+                        <div className="build-your-assessment-container">
+                            <AssessmentPreview assessmentID={assessmentID} questions={$this.state.questions}/>
+                        </div>
+                    )
+                }
+            },
+
+            /****************************************************************/
+            /* Special Pages                                                */
+            /****************************************************************/
+            "targetGroups": {
+                urlRoute: "/app/target-groups"
+            },
+
+            /****************************************************************/
+            "errorPage": {
+                headingTitle: "Unkown Page",
+
+                /***********************************************************/
+                /* Render Function(Meat Goes Here)                         */
+                /***********************************************************/
+                render: function () {
+                    return (
+                        <div>
+                            <h2 className="text-danger"><b>Error</b>{this.state.error}</h2>
+                        </div>
+                    )
+                }
+            }
+
+        };
+
+    }
+    componentDidMount() {
+        this.loadQuestions();
+    }
+    loadQuestions(){
+        var $this=this;
+        $this.loading("Loading Questions...");
+
+        Rests.Lets().get(
+            "/rest/assessments/"+$this.getAssessmentID()+"/",
+            {"_":$.now()},
+            function(data)
+            {
+                var assessmentInfo=data;
+                $this.notLoading();
+                $this.myEventHandler.trigger("questions-loaded",{questions:data.questionSet});
+
+            });
+
+        // $.get("/rest/assessments/"+$this.getAssessmentID()+"/",{"_":$.now()},function(data)
+        // {
+        //     var assessmentInfo=data;
+        //     $this.notLoading();
+        //     $this.myEventHandler.trigger("questions-loaded",{questions:data.questionSet});
+        //
+        // });
+    }
+    getCurrentPageProperties(){
+        return this.stepInstructions[this.state.currentPage];
+    }
+    MoveTo(pageName){
+
+        /*******************************************************************/
+        if(typeof this.stepInstructions[this.state.currentPage] == "undefined"){
+            this.setState({
+                error:"Unkown Page"+pageName,
+                currentPage:"errorPage",
+            });
+            return;
+        }
+
+        /*******************************************************************/
+        this.setState({"currentPage":pageName});
+
+    }
+    getAssessmentID(){
+        return this.props.params.assessmentID;
+    }
+    chooseQuestionType(selectionChoicen){
+        this.setState({selection:selectionChoicen});
+    }
+    loading(message){
+        this.setState({loading:true,loadingMessage:message});
+    }
+    notLoading(){
+        this.setState({loading:false});
+    }
+    render() {
+
+        /*******************************************************************/
+        var $this=this;
+
+        /*******************************************************************/
+        /* Check for Rerouting                                             */
+        /*******************************************************************/
+        if(typeof this.getCurrentPageProperties()["urlRoute"] != "undefined"){
+            document.location=this.getCurrentPageProperties()["urlRoute"];
+            return (<div></div>)
+        }
+
+
+
+
+        /*******************************************************************/
+        /* Back Info                                                       */
+        /*******************************************************************/
+        var backInfo={};
+        if(typeof this.getCurrentPageProperties().previous =="undefined"){
+            backInfo.enabled=false;
+            backInfo.html="Back";
+            backInfo.class="back-btn disabled";
+            backInfo.click=function(){};
+        }
+        else
+        {
+            /***************************************************************/
+            if(typeof this.getCurrentPageProperties().previous.enabled =="function"){
+                backInfo.enabled=this.getCurrentPageProperties().previous.enabled(this);
+            }
+            else{
+                backInfo.enabled=this.getCurrentPageProperties().previous.enabled;
+            }
+
+            /***************************************************************/
+            if(typeof this.getCurrentPageProperties().previous.html =="function"){
+                backInfo.html=this.getCurrentPageProperties().previous.html(this);
+            }
+            else if(typeof this.getCurrentPageProperties().previous.html =="string"){
+                backInfo.html=this.getCurrentPageProperties().previous.html;
+            }
+
+            /***************************************************************/
+            backInfo.clicked=this.getCurrentPageProperties().previous.clicked?this.getCurrentPageProperties().previous.clicked:function(){};
+
+            /***************************************************************/
+            backInfo.class=backInfo.enabled?"back-btn":"back-btn disabled";
+
+
+        }
+
+        /*******************************************************************/
+        /* Next Info                                                       */
+        /*******************************************************************/
+        var nextInfo={};
+        if(typeof this.getCurrentPageProperties().next =="undefined"){
+            nextInfo.enabled=false;
+            nextInfo.html="Back";
+            nextInfo.class="back-btn disabled";
+            nextInfo.click=function(){};
+        }
+        else
+        {
+            /***************************************************************/
+            if(typeof this.getCurrentPageProperties().next.enabled =="function"){
+                nextInfo.enabled=this.getCurrentPageProperties().next.enabled(this);
+            }
+            else{
+                nextInfo.enabled=this.getCurrentPageProperties().next.enabled;
+            }
+
+            /***************************************************************/
+            if(typeof this.getCurrentPageProperties().next.html =="function"){
+                nextInfo.html=this.getCurrentPageProperties().next.html(this);
+            }
+            else if(typeof this.getCurrentPageProperties().next.html =="string"){
+                nextInfo.html=this.getCurrentPageProperties().next.html;
+            }
+
+            /***************************************************************/
+            nextInfo.clicked=this.getCurrentPageProperties().next.clicked?this.getCurrentPageProperties().next.clicked:function(){};
+
+            /***************************************************************/
+            nextInfo.class=nextInfo.enabled?"next-btn":"next-btn disabled";
+
+
+        }
+
+      //Add Later
+      //this.props.OnRequestApp().setHeadingTitle(this.stepInstructions[this.state.step].headingTitle);
+
+        /*******************************************************************/
+        return (
+            <div className="new-assessment-main-container">
+                <div className="new-assessment-container">
+                    <div className="top-main-header">
+                        <div className="assessment-id">ASSESS{$this.getAssessmentID()}</div>
+                        <div ref={(input)=>{this.headingTitle=input}}  className="heading-title">{this.getCurrentPageProperties().headingTitle}</div>
+                        <div className="heading-user-info">
+                            <i className="fa fa-user-circle-o"/>
+                        </div>
+                    </div>
+                    {this.getCurrentPageProperties().render()}
+                </div>
+                <div className="new-assessment-footer">
+                    <div className="new-assessment-previous-next-buttons">
+                        <div ref={"backButton"} onClick={()=>{backInfo.clicked(this)}} className={backInfo.class}>
+                            <i className="fa fa-arrow-circle-o-left" />
+                            {backInfo.html}
+                        </div>
+                        <div ref={"nextButton"} onClick={()=>{nextInfo.clicked(this)}} className={nextInfo.class}>
+                            {nextInfo.html}
+                            <i className="fa fa-arrow-circle-o-right" />
+                        </div>
+                    </div>
+                </div>
+                <div className={(this.state.loading?"":"disabled")+" loading-splash-screen"}>
+                    <div className="loading-spinner-container">
+                        <div className="loading-spinner"></div>
+                        <div className="loading-message">{this.state.loadingMessage}</div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+
+}
+
+
+
+
+
+
+
+export default Assessment;

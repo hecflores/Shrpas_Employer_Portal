@@ -1,0 +1,89 @@
+package hello.models;
+
+import javax.persistence.*;
+import java.sql.Time;
+import java.util.*;
+
+@Entity
+@Table(name = "assessment")
+public class Assessment {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "subtitle", nullable = true)
+    private String subtitle;
+
+    @Column(name = "allowed_time_sec", nullable = true)
+    private Integer allowed_time_sec;
+
+    @Column(name = "is_timed", nullable = true)
+    private boolean istimed;
+
+    @Column(name = "expirationDate", nullable = true)
+    private Date expirationDate;
+
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="assessment_question", joinColumns=@JoinColumn(name="assessment_id"), inverseJoinColumns=@JoinColumn(name="question_id"))
+    private Set<Question> questionSet;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public Set<Question> getQuestionSet() {
+        return questionSet;
+    }
+
+    public void setQuestionSet(Set<Question> questionSet) {
+        this.questionSet = questionSet;
+    }
+
+    public Integer getAllowed_time_sec() {
+        return allowed_time_sec;
+    }
+
+    public void setAllowed_time_sec(Integer allowed_time_sec) {
+        this.allowed_time_sec = allowed_time_sec;
+    }
+
+    public boolean isIstimed() {
+        return istimed;
+    }
+
+    public void setIstimed(boolean istimed) {
+        this.istimed = istimed;
+    }
+
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+}

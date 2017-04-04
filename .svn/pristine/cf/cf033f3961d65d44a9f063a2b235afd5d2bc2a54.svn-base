@@ -1,0 +1,44 @@
+import EventHandler from '../EventHandler.jsx';
+
+class QuestionsAPI{
+    constructor(){
+        this.eventHandler = new EventHandler();
+
+        /*
+        create the events here
+         */
+        this.eventHandler.on("get-all-questions", function (eventData) {
+            let questions = eventData.questions.map(function (question, index) {
+                return question;
+            });
+            return questions;
+        });
+
+        this.eventHandler.on("get-all-questions-of-assessment", function (eventData) {
+
+        });
+
+        this.eventHandler.on("delete-question", function (eventData) {
+
+        });
+
+        this.eventHandler.on("update-question", function (eventData) {
+
+        });
+
+        this.eventHandler.on("create-question", function (eventData) {
+
+        });
+    }
+    //Example trigger
+    getAllQuestions(){
+        const questions = $.getJSON('/rest/questions', function (data) {
+            const questions = this.myEventHandler.trigger('get-all-questions', {questions:data});
+            return questions;
+        });
+        return questions;
+    }
+    getAllQuestionsOfAssessment(){
+
+    }
+}

@@ -1,0 +1,71 @@
+import APIListener  from './APIListener.jsx';
+
+class TargetGroupAPI extends APIListener {
+
+    constructor() {
+        super();
+        const $this = this;
+
+        this.addModule("create-new-targetgroup", function (data, done) {
+            $this.AjaxCall({
+                url: "/rest/targetGroups",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(data)
+            }, function () {
+                $this.initiate("get-targetgroups");
+                done({success:true});
+            });
+        });
+
+        this.addModule("get-targetgroups", function (data, done) {
+            $this.AjaxCall({
+                url: "/rest/targetGroups",
+                method: "GET",
+            }, function (data) {
+                done({
+                    targetGroupsData: data
+                });
+            });
+        });
+
+        this.addModule("get-targetgroup", function (data, done) {
+            $this.AjaxCall({
+                url: "/rest/targetGroups/" + data.id,
+                method: "GET",
+            }, function (data) {
+                done({
+                    targetGroupData: data
+                });
+            });
+        });
+
+        this.addModule("add-participant-to-targetgroup",function(data,done){
+            $this.AjaxCall({
+                url: "/rest/targetGroups/" + data.id + "/participants",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(data)
+            },function () {
+                $this.initiate("get-targetgroup-participants",data);
+                done({success:true});
+            });
+
+        });
+
+        this.addModule("get-targetgroup-participants", function (data, done) {
+            $this.AjaxCall({
+                url: "/rest/targetGroups/" + data.id + "/participants",
+                method: "GET",
+            }, function (data) {
+                done({
+                    participantsData: data
+                });
+            });
+        });
+    }
+}
+
+TargetGroupAPI.instance = new TargetGroupAPI();
+
+export default TargetGroupAPI;

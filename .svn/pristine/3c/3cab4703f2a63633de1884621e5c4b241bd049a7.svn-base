@@ -1,0 +1,15 @@
+.top-container{
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+.place-content{
+	padding-left: 0px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: bold;
+
+}
+.header{
+	font-size: 1.5em;
+
+}
