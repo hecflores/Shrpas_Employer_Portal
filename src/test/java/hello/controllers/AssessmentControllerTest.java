@@ -1,0 +1,254 @@
+package hello.controllers;
+
+import hello.Application;
+import hello.models.Assessment;
+import hello.models.Question;
+import hello.repositories.AssessmentRepository;
+import hello.repositories.QuestionRepository;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.util.NestedServletException;
+
+import java.nio.charset.Charset;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
+@WebAppConfiguration
+@DirtiesContext
+public class AssessmentControllerTest {
+
+
+    private final MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
+            MediaType.APPLICATION_JSON.getSubtype(),
+            Charset.forName("utf8"));
+
+    private MockMvc mockMvc;
+
+    private Assessment assessment;
+
+    private Question question;
+
+    @Autowired
+    private AssessmentRepository assessmentRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+    @Autowired
+    private WebApplicationContext webApplicationContext;
+
+    @Before
+    public void setUp() {
+        this.mockMvc = webAppContextSetup(webApplicationContext).build();
+
+        this.assessmentRepository.deleteAll();
+        this.questionRepository.deleteAll();
+        assessment = new Assessment();
+    }
+
+    @Test
+    public void gettingAssessmentReturnsAnAssessment() throws Exception {
+        assessment.setName("Software Engineer");
+        assessment = assessmentRepository.save(assessment);
+        mockMvc.perform(get("/rest/assessments/" + assessment.getId() + "/"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(assessment.getId())))
+                .andExpect(jsonPath("$.name", is(assessment.getName())));
+    }
+
+    @Test
+    public void gettingNonExistingAssessmentReturnsABadRequest() throws Exception {
+        mockMvc.perform(get("/rest/assessments/" + 23 + "/"))
+                        .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void addingAnAssessmentReturnsAnOkStatusAndAssessmentJSON() throws Exception {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/assessments")
+                .contentType(contentType)
+                .content(createAssessmentInJson("Software Engineer"))
+                .header("TestingHeader", "Test Header");
+
+        mockMvc.perform(postBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.name", is("Software Engineer")));
+    }
+
+    @Test
+    public void updatingAnAssessmentShouldUpdateAssessmentAndReturnOk() throws Exception {
+        assessment.setName("Software Engineer");
+        assessment = assessmentRepository.save(assessment);
+
+
+
+        MockHttpServletRequestBuilder patchBuilder = patch("/rest/assessments/" + assessment.getId())
+                .contentType(contentType)
+                .content(createAssessmentInJson("Software Developer"))
+                .header("Testing Header", "Test Header");
+
+        mockMvc.perform(patchBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(assessment.getId())))
+                .andExpect(jsonPath("$.name", is("Software Developer")));
+    }
+
+    @Test
+    public void nullAssessmentShouldThrowException(){
+        MockHttpServletRequestBuilder patchBuilder = patch("/rest/assessments/" + 23)
+                .contentType(contentType)
+                .content(createAssessmentInJson("Software Developer"))
+                .header("Testing Header", "Test Header");
+        try{
+            mockMvc.perform(patchBuilder);
+            fail("Did not throw exception");
+        }catch (Exception exception){
+            Assert.assertNotNull(exception);
+            assertTrue(exception instanceof NestedServletException);
+        }
+    }
+
+    @Test
+    public void addingQuestionToAssessmentReturnsAnAssessmentWithAQuestion() throws Exception {
+        assessment.setName("Software Engineer");
+        assessment = assessmentRepository.save(assessment);
+
+        MockHttpServletRequestBuilder postBuilder = post("/rest/assessments/" + assessment.getId() + "/question")
+                .contentType(contentType)
+                .content(createQuestionInJson("text", "Is this a test?"))
+                .header("TestingHeader", "Test Header");
+        try{
+            mockMvc.perform(postBuilder)
+                    .andExpect(status().isOk())
+                    .andExpect(content().contentType(contentType))
+                    .andExpect(jsonPath("$.id", is(assessment.getId())))
+                    .andExpect(jsonPath("$.name", is("Software Engineer")));
+        }catch (Exception exception){
+            fail("Exception was thrown");
+        }
+    }
+
+    @Test
+    public void addingQuestionToNullAssessmentThrowsException(){
+        MockHttpServletRequestBuilder postBuilder = post("/rest/assessments/" + 23 + "/question")
+                .contentType(contentType)
+                .content(createQuestionInJson("text", "Is this a test?"))
+                .header("TestingHeader", "Test Header");
+        try{
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        }catch (Exception exception){
+            assertNotNull(exception);
+        }
+    }
+
+    @Test
+    public void addingExistingQuestionToAssessmentReturnsAnAssessmentWithAQuestion() throws Exception {
+        assessment.setName("Software Engineer");
+        assessment = assessmentRepository.save(assessment);
+
+        question = new Question();
+        question.setType("text");
+        question.setContent("This is a question?");
+        question = questionRepository.save(question);
+
+        System.out.println("Question ID: " + question.getId());
+        System.out.println("Assessment ID: " + assessment.getId());
+
+        MockHttpServletRequestBuilder postBuilder = post("/rest/assessments/" + assessment.getId() + "/question/" + question.getId());
+        try{
+            mockMvc.perform(postBuilder)
+                    .andExpect(status().isOk());
+        }catch (Exception exception){
+            fail("Exception was thrown");
+        }
+    }
+
+    @Test
+    public void addingExistingQuestionToNullAssessmentThrowsException(){
+        question = new Question();
+        question.setType("text");
+        question.setContent("This is a question?");
+        question = questionRepository.save(question);
+
+        MockHttpServletRequestBuilder postBuilder = post("/rest/assessments/" + 23 + "/question/" + question.getId());
+
+        try{
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        }catch (Exception exception){
+            assertNotNull(exception);
+        }
+    }
+
+    @Test
+    public void addingNullQuestionToExistingAssessmentThrowsException(){
+        assessment.setName("Software Engineer");
+        assessment = assessmentRepository.save(assessment);
+
+        MockHttpServletRequestBuilder postBuilder = post("/rest/assessments/" + assessment.getId() + "/question/" + 12);
+
+        try{
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        }catch (Exception exception){
+            assertNotNull(exception);
+        }
+    }
+
+    @Test
+    public void deletingAnAssessmentWillReturnTrueAndOkStatus(){
+        assessment.setName("Software Engineer");
+        assessment = assessmentRepository.save(assessment);
+
+        MockHttpServletRequestBuilder deleteBuilder = delete("/rest/assessments/" + assessment.getId() + "/delete");
+        try{
+            mockMvc.perform(deleteBuilder)
+                    .andExpect(status().isOk())
+                    .andExpect(content().contentType(contentType));
+
+        }catch (Exception exception){
+            fail("Exception has been thrown");
+        }
+    }
+
+    @Test
+    public void deletingANonExistingAssessmentWillThrowException(){
+        MockHttpServletRequestBuilder deleteBuilder = delete("/rest/assessments/" + 23 + "/delete");
+
+        try {
+            mockMvc.perform(deleteBuilder);
+            fail("Exception not thrown");
+        }catch (Exception exception){
+            assertNotNull(exception);
+        }
+    }
+
+
+    private static String createAssessmentInJson (String assessmentName){
+        return "{ \"name\": \"" + assessmentName + "\"}";
+    }
+
+    private static String createQuestionInJson (String questionType, String question){
+        return "{\"type\": \"" + questionType + "\", \"content\":\"" + question + "\"}";
+    }
+}

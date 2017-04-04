@@ -3,16 +3,18 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="JSX" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/classes" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
   <component name="SvnBranchConfigurationManager">
     <option name="myConfigurationMap">
       <map>
         <entry key="$PROJECT_DIR$">
           <value>
             <SvnBranchConfiguration>
+<<<<<<< HEAD
               <option name="trunkUrl" value="https://agile.cs.uh.edu/svn/s17_sdp/prismindustries/code/Project" />
+=======
+              <option name="trunkUrl" value="https://agile.cs.uh.edu/svn/s17_sdp/prismindustries/code/Project_v2" />
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
             </SvnBranchConfiguration>
           </value>
         </entry>
