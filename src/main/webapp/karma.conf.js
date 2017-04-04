@@ -7,6 +7,7 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     basePath: '',
 
 
@@ -16,6 +17,8 @@ module.exports = function(config) {
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     basePath: './',
 
       singleRun: true, //just run once by default
@@ -24,13 +27,17 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     //frameworks: ['mocha', 'requirejs', 'chai'],
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 
 
     // list of files / patterns to load in the browser
     files: [
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       'test-main.js',
@@ -44,6 +51,8 @@ module.exports = function(config) {
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
         'node_modules/angular/angular.js',
         'node_modules/angular-mocks/angular-mocks.js',
         'tests.webpack.js', //just load this file
@@ -85,13 +94,17 @@ module.exports = function(config) {
           noInfo: false //please don't spam the console when running in karma!
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     // list of files to exclude
     exclude: [
     ],
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       babelPreprocessor: {
@@ -113,6 +126,8 @@ module.exports = function(config) {
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
   babelPreprocessor: {
       options: {
           presets: ['es2015'],
@@ -132,15 +147,19 @@ module.exports = function(config) {
           'src/test/*.spec.js':['sourcemap','coverage'],
           'tests.webpack.js': [ 'webpack', 'sourcemap' ] //preprocess with webpack and our sourcemap loader
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
       },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     reporters: ['progress'],
@@ -150,6 +169,9 @@ module.exports = function(config) {
 =======
     //reporters: ['progress'],
 >>>>>>> refs/remotes/origin/master
+=======
+    //reporters: ['progress'],
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 
     // web server port
     port: 9876,
@@ -172,6 +194,7 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     browsers: ['PhantomJS'],
 
 
@@ -181,6 +204,8 @@ module.exports = function(config) {
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     browsers: ['PhantomJS','Chrome'],
 
     reporters: ['progress', 'html','coverage' ],
@@ -196,9 +221,12 @@ module.exports = function(config) {
     // if true, Karma captures browsers, runs the tests and exits
     //singleRun: true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 
     // Concurrency level
     // how many browser should be started simultaneous

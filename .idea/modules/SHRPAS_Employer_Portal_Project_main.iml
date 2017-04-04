@@ -2,9 +2,12 @@
 <module external.linked.project.id="SHRPAS_Employer_Portal_Project:main" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
   <component name="FacetManager">
     <facet type="hibernate" name="Hibernate">
       <configuration>
@@ -17,9 +20,12 @@
     </facet>
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/../../build/classes/main" />
     <exclude-output />
@@ -37,21 +43,27 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-test:4.3.6.RELEASE" level="project" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <orderEntry type="library" name="Gradle: org.springframework:spring-webmvc:3.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-validator:5.2.4.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:4.1.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-entitymanager:4.1.0.Final" level="project" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.40" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.8.6" level="project" />
@@ -60,6 +72,7 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:1.4.4.RELEASE" level="project" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-validator:5.2.4.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-web:4.3.6.RELEASE" level="project" />
 =======
@@ -70,12 +83,17 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-web:4.3.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-webmvc:4.3.6.RELEASE" level="project" />
 >>>>>>> refs/remotes/origin/master
+=======
+    <orderEntry type="library" name="Gradle: org.springframework:spring-web:4.3.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-webmvc:4.3.6.RELEASE" level="project" />
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-actuator:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.thymeleaf:thymeleaf-spring4:2.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-core:4.3.6.RELEASE" level="project" />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <orderEntry type="library" name="Gradle: org.springframework:spring-asm:3.1.1.RELEASE" level="project" />
@@ -93,6 +111,8 @@
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-aop:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-jdbc:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: javax.transaction:javax.transaction-api:1.2" level="project" />
@@ -109,9 +129,12 @@
     <orderEntry type="library" name="Gradle: org.javassist:javassist:3.20.0-GA" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate.common:hibernate-commons-annotations:4.0.1.Final" level="project" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.4.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.8.6" level="project" />
@@ -123,6 +146,7 @@
     <orderEntry type="library" name="Gradle: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.11" level="project" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <orderEntry type="library" name="Gradle: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.jboss.logging:jboss-logging:3.3.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml:classmate:1.3.3" level="project" />
@@ -130,19 +154,25 @@
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: org.springframework:spring-aop:4.3.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-beans:4.3.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-context:4.3.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-expression:4.3.6.RELEASE" level="project" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: org.thymeleaf:thymeleaf:2.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.codehaus.groovy:groovy:2.4.7" level="project" />
     <orderEntry type="library" name="Gradle: org.aspectj:aspectjweaver:1.8.9" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.tomcat:tomcat-jdbc:8.5.11" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-jdbc:4.3.6.RELEASE" level="project" />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <orderEntry type="library" name="Gradle: org.javassist:javassist:3.20.0-GA" level="project" />
@@ -156,14 +186,19 @@
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-commons:1.12.7.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-orm:4.3.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-tx:4.3.6.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: xml-apis:xml-apis:1.4.01" level="project" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.1.9" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:jul-to-slf4j:1.7.22" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.22" level="project" />
@@ -175,11 +210,14 @@
     <orderEntry type="library" name="Gradle: org.apache.tomcat:tomcat-juli:8.5.11" level="project" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <orderEntry type="library" name="Gradle: xml-apis:xml-apis:1.4.01" level="project" />
 =======
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.9" level="project" />
   </component>
 </module>

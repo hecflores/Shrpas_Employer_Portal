@@ -9,6 +9,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <class>hello.User</class>
 =======
 
@@ -16,6 +17,9 @@
 =======
 
 >>>>>>> refs/remotes/origin/master
+=======
+
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
         <properties>
             <property name="hibernate.naming.implicit-strategy"
                       value="org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl" />

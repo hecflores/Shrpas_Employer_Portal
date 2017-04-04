@@ -7,6 +7,7 @@ echo /* Close if you want to stop this                       */
 echo /********************************************************/
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .\node_modules\.bin\webpack main.js
 =======
 .\node_modules\.bin\webpack src/app.js --watch
@@ -14,4 +15,7 @@ echo /********************************************************/
 =======
 .\node_modules\.bin\webpack src/app.js --watch
 >>>>>>> refs/remotes/origin/master
+=======
+.\node_modules\.bin\webpack src/app.js --watch
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 popd

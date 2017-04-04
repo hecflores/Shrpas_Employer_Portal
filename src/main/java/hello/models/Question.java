@@ -2,6 +2,7 @@ package hello.models;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * Created by Hector on 1/28/2017.
  */
@@ -18,6 +19,10 @@ import java.util.Set;
 import javax.persistence.*;
 import java.util.Set;
 >>>>>>> refs/remotes/origin/master
+=======
+import javax.persistence.*;
+import java.util.Set;
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 
 
 @Entity // This tells Hibernate to make a table out of this class
@@ -29,6 +34,7 @@ public class Question {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private String Type;
 
     private String Status;
@@ -37,6 +43,8 @@ public class Question {
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     private String type;
 
     private String status;
@@ -47,9 +55,12 @@ public class Question {
 
     private boolean hasHint;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 
     public Integer getId() {
         return id;
@@ -59,6 +70,7 @@ public class Question {
         this.id = id;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     public void setType(String Type) {
@@ -83,6 +95,8 @@ public class Question {
 =======
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     public void setType(String type) {
         this.type = type;
     }
@@ -123,7 +137,10 @@ public class Question {
         this.hasHint = hasHint;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
 }
