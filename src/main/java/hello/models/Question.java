@@ -1,6 +1,7 @@
 package hello.models;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * Created by Hector on 1/28/2017.
  */
@@ -13,6 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.*;
 import java.util.Set;
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+import javax.persistence.*;
+import java.util.Set;
+>>>>>>> refs/remotes/origin/master
 
 
 @Entity // This tells Hibernate to make a table out of this class
@@ -23,12 +28,15 @@ public class Question {
     private Integer id;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private String Type;
 
     private String Status;
 
     private String Content;
 =======
+=======
+>>>>>>> refs/remotes/origin/master
     private String type;
 
     private String status;
@@ -38,7 +46,10 @@ public class Question {
     private String hint;
 
     private boolean hasHint;
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
 
     public Integer getId() {
         return id;
@@ -48,6 +59,7 @@ public class Question {
         this.id = id;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public void setType(String Type) {
         this.Type = Type;
@@ -69,6 +81,8 @@ public class Question {
 
 
 =======
+=======
+>>>>>>> refs/remotes/origin/master
     public void setType(String type) {
         this.type = type;
     }
@@ -108,5 +122,8 @@ public class Question {
     public void setHasHint(boolean hasHint) {
         this.hasHint = hasHint;
     }
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
 }

@@ -11,10 +11,14 @@
           <value>
             <SvnBranchConfiguration>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <option name="trunkUrl" value="https://agile.cs.uh.edu/svn/s17_sdp/prismindustries/code/Project" />
 =======
               <option name="trunkUrl" value="https://agile.cs.uh.edu/svn/s17_sdp/prismindustries/code/Project_v2" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+              <option name="trunkUrl" value="https://agile.cs.uh.edu/svn/s17_sdp/prismindustries/code/Project_v2" />
+>>>>>>> refs/remotes/origin/master
             </SvnBranchConfiguration>
           </value>
         </entry>

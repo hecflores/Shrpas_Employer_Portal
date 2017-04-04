@@ -8,10 +8,14 @@
     <persistence-unit name="default">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <class>hello.User</class>
 =======
 
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+
+>>>>>>> refs/remotes/origin/master
         <properties>
             <property name="hibernate.naming.implicit-strategy"
                       value="org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl" />

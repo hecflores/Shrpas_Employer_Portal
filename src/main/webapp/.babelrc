@@ -1,8 +1,13 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "presets": ["airbnb", "es2015", "stage-0"]
 =======
   "presets": ["airbnb", "es2015", "stage-0"],
   "plugins": ["transform-object-assign"]
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+  "presets": ["airbnb", "es2015", "stage-0"],
+  "plugins": ["transform-object-assign"]
+>>>>>>> refs/remotes/origin/master
 }

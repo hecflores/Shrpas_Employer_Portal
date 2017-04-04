@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="87c097df-b263-439e-83dd-dc92e07dd333" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/node_modules/lodash/_countHolders.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/node_modules/babel-register/node_modules/core-js/fn/typed/uint16-array.js" />
@@ -8651,6 +8652,12 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/src/libaries/APIs/AssessmentAPI.jsx" afterPath="$PROJECT_DIR$/src/main/webapp/src/libaries/APIs/AssessmentAPI.jsx" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
     </list>
+=======
+    <list default="true" readonly="true" id="77d2fd92-1876-4713-98fa-2675789cdfc8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/src/components/Questions/Question.jsx" afterPath="$PROJECT_DIR$/src/main/webapp/src/components/Questions/Question.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/src/libaries/APIs/AssessmentAPI.jsx" afterPath="$PROJECT_DIR$/src/main/webapp/src/libaries/APIs/AssessmentAPI.jsx" />
+    </list>
+>>>>>>> refs/remotes/origin/master
     <list id="1528f9ad-c17c-4abf-af50-a0575d8a6634" name="Revert: Finished up CSS" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -8681,6 +8688,7 @@
       </PATH_ELEMENT>
       <PATH_ELEMENT>
         <option name="myItemId" value="hecflore_SHRPAS_Employer_Portal@hectorsoftware.com" />
+<<<<<<< HEAD
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -8695,6 +8703,8 @@
       </PATH_ELEMENT>
       <PATH_ELEMENT>
         <option name="myItemId" value="Question" />
+=======
+>>>>>>> refs/remotes/origin/master
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -8708,6 +8718,23 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+        <option name="myItemId" value="Question" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="hecflore_SHRPAS_Employer_Portal@hectorsoftware.com" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+>>>>>>> refs/remotes/origin/master
         <option name="myItemId" value="assessment" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
@@ -8734,6 +8761,8 @@
               </PATH_ELEMENT>
               <PATH_ELEMENT>
                 <option name="myItemId" value="SHRPAS_Project" />
+<<<<<<< HEAD
+=======
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
               </PATH_ELEMENT>
               <PATH_ELEMENT>
@@ -8748,6 +8777,29 @@
               </PATH_ELEMENT>
               <PATH_ELEMENT>
                 <option name="myItemId" value="SHRPAS_Project" />
+>>>>>>> refs/remotes/origin/master
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Tasks" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
+              </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+              <PATH_ELEMENT>
+                <option name="myItemId" value="other" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode$1" />
+              </PATH_ELEMENT>
+>>>>>>> refs/remotes/origin/master
+            </PATH>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="SHRPAS_Project" />
+<<<<<<< HEAD
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
               </PATH_ELEMENT>
               <PATH_ELEMENT>
@@ -8766,6 +8818,8 @@
               </PATH_ELEMENT>
               <PATH_ELEMENT>
                 <option name="myItemId" value="SHRPAS_Project" />
+=======
+>>>>>>> refs/remotes/origin/master
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
               </PATH_ELEMENT>
             </PATH>
@@ -8777,6 +8831,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <file leaf-file-name="app.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/app.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -8787,6 +8842,11 @@
       <file leaf-file-name="Assessments.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/Assessments.jsx">
           <provider selected="true" editor-type-id="text-editor">
+=======
+      <file leaf-file-name="Assessments.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/Assessments.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+>>>>>>> refs/remotes/origin/master
             <state relative-caret-position="4624">
               <caret line="281" column="31" lean-forward="false" selection-start-line="281" selection-start-column="31" selection-end-line="281" selection-end-column="31" />
               <folding>
@@ -8794,11 +8854,15 @@
                 <marker date="1490135003866" expanded="true" signature="7:18" ph="..." />
                 <marker date="1490135003866" expanded="true" signature="27632:27663" ph="&lt;div/&gt;" />
               </folding>
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="UserRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hello/UserRepository.java">
@@ -8810,16 +8874,25 @@
       <file leaf-file-name="ExistingQuestions.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/ExistingQuestions.jsx">
           <provider selected="true" editor-type-id="text-editor">
+=======
+      <file leaf-file-name="ExistingQuestions.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/ExistingQuestions.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+>>>>>>> refs/remotes/origin/master
             <state relative-caret-position="986">
               <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hello/User.java">
@@ -8847,10 +8920,34 @@
             <state relative-caret-position="119">
               <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
               <folding />
+=======
+      <file leaf-file-name="Content.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/Content.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="hecflore_SHRPAS_Employer_Portal.assessment" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/1754b3a5/83d1cdb8-398c-40ae-a06e-a97f6f4acb23/hecflore_SHRPAS_Employer_Portal.assessment">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+>>>>>>> refs/remotes/origin/master
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="hecflore_SHRPAS_Employer_Portal.assessment" pinned="false" current-in-tab="false">
         <entry file="dbDummy://dbtable:/1754b3a5/83d1cdb8-398c-40ae-a06e-a97f6f4acb23/hecflore_SHRPAS_Employer_Portal.assessment">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -8882,6 +8979,11 @@
       <file leaf-file-name="AssessmentNew.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/AssessmentNew.jsx">
           <provider selected="true" editor-type-id="text-editor">
+=======
+      <file leaf-file-name="AssessmentNew.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/AssessmentNew.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+>>>>>>> refs/remotes/origin/master
             <state relative-caret-position="1037">
               <caret line="62" column="32" lean-forward="false" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
               <folding />
@@ -8890,6 +8992,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="App.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/App.jsx">
@@ -8903,11 +9006,19 @@
             <state relative-caret-position="2091">
               <caret line="124" column="16" lean-forward="false" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+      <file leaf-file-name="karma.conf.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/karma.conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2091">
+              <caret line="124" column="16" lean-forward="false" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
+>>>>>>> refs/remotes/origin/master
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
@@ -8919,13 +9030,18 @@
               </first_editor>
               <second_editor />
 =======
+=======
+>>>>>>> refs/remotes/origin/master
       <file leaf-file-name="AssessmentAPI.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/src/libaries/APIs/AssessmentAPI.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
               <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
               <folding />
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
             </state>
           </provider>
         </entry>
@@ -8940,6 +9056,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
@@ -9008,6 +9125,53 @@
             <state relative-caret-position="1326">
               <caret line="80" column="27" lean-forward="false" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+      <file leaf-file-name="Assessment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hello/models/Assessment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#901#902#0" expanded="false" />
+                <element signature="e#926#927#0" expanded="false" />
+                <element signature="e#963#964#0" expanded="false" />
+                <element signature="e#991#992#0" expanded="false" />
+                <element signature="e#1022#1023#0" expanded="false" />
+                <element signature="e#1049#1050#0" expanded="false" />
+                <element signature="e#1089#1090#0" expanded="false" />
+                <element signature="e#1121#1122#0" expanded="false" />
+                <element signature="e#1156#1157#0" expanded="false" />
+                <element signature="e#1187#1188#0" expanded="false" />
+                <element signature="e#1235#1236#0" expanded="false" />
+                <element signature="e#1275#1276#0" expanded="false" />
+                <element signature="e#1320#1321#0" expanded="false" />
+                <element signature="e#1354#1355#0" expanded="false" />
+                <element signature="e#1415#1416#0" expanded="false" />
+                <element signature="e#1461#1462#0" expanded="false" />
+                <element signature="e#1505#1506#0" expanded="false" />
+                <element signature="e#1544#1545#0" expanded="false" />
+                <element signature="e#1609#1610#0" expanded="false" />
+                <element signature="e#1665#1666#0" expanded="false" />
+                <element signature="e#1699#1700#0" expanded="false" />
+                <element signature="e#1729#1730#0" expanded="false" />
+                <element signature="e#1776#1777#0" expanded="false" />
+                <element signature="e#1814#1815#0" expanded="false" />
+                <element signature="e#1853#1854#0" expanded="false" />
+                <element signature="e#1890#1891#0" expanded="false" />
+                <element signature="e#1948#1949#0" expanded="false" />
+                <element signature="e#2000#2001#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Question.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Questions/Question.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1326">
+              <caret line="80" column="27" lean-forward="false" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
+>>>>>>> refs/remotes/origin/master
               <folding />
             </state>
           </provider>
@@ -9556,11 +9720,14 @@
         <option value="$PROJECT_DIR$/src/main/webapp/src/libaries/Rest.jsx" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/app.html" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/webapp/App.jsx" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
         <option value="dbtable:/36f8af1c/128f8f06-7c75-48d0-85cd-740dce9107bd/hecflore_SHRPAS_Employer_Portal.user" />
         <option value="$PROJECT_DIR$/README.md" />
 =======
+=======
+>>>>>>> refs/remotes/origin/master
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/di.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/hectors.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/lauren.css" />
@@ -9575,7 +9742,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/src/components/Questions/Question.jsx" />
         <option value="$PROJECT_DIR$/src/main/webapp/karma.conf.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/src/libaries/APIs/AssessmentAPI.jsx" />
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
       </list>
     </option>
   </component>
@@ -9590,10 +9760,14 @@
   </component>
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="x" value="-8" />
 =======
     <option name="x" value="1272" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+    <option name="x" value="1272" />
+>>>>>>> refs/remotes/origin/master
     <option name="y" value="-8" />
     <option name="width" value="1296" />
     <option name="height" value="1000" />
@@ -9629,6 +9803,7 @@
           <PATH>
             <PATH_ELEMENT>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <option name="myItemId" value="SHRPAS_Employer_Portal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
@@ -9657,6 +9832,8 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="wrapper" />
 =======
+=======
+>>>>>>> refs/remotes/origin/master
               <option name="myItemId" value="SHRPAS_Project" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
@@ -9666,7 +9843,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -9681,10 +9861,13 @@
   </component>
   <component name="PropertiesComponent">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Roaming/TortoiseSVN" />
 =======
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
@@ -10156,6 +10339,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <updated>1485551856086</updated>
       <workItem from="1485551857397" duration="5830000" />
       <workItem from="1485570612038" duration="13900000" />
@@ -10168,6 +10352,8 @@
       <workItem from="1485793558317" duration="138000" />
       <workItem from="1489268544414" duration="42000" />
 =======
+=======
+>>>>>>> refs/remotes/origin/master
       <updated>1487448841943</updated>
       <workItem from="1487448843506" duration="17651000" />
       <workItem from="1487597039246" duration="15000" />
@@ -10191,7 +10377,10 @@
       <workItem from="1490414370426" duration="2435000" />
       <workItem from="1490572141754" duration="30903000" />
       <workItem from="1490828043806" duration="348000" />
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
     </task>
     <task id="LOCAL-00001" summary="Commiting Somthing With Webapp&#10;">
       <created>1489613626111</created>
@@ -10311,6 +10500,7 @@
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
       <updated>1490326804108</updated>
+<<<<<<< HEAD
     </task>
 <<<<<<< HEAD
     <task id="LOCAL-00003" summary="Adding Final Template">
@@ -10346,6 +10536,14 @@
 =======
     <option name="totallyTimeSpent" value="223573000" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="223573000" />
+>>>>>>> refs/remotes/origin/master
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -10353,22 +10551,30 @@
     </todo-panel>
     <todo-panel id="all">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <are-packages-shown value="true" />
 =======
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
 =======
     <frame x="1272" y="-8" width="1296" height="1000" extended-state="6" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+    <frame x="1272" y="-8" width="1296" height="1000" extended-state="6" />
+>>>>>>> refs/remotes/origin/master
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32871974" sideWeight="0.53236246" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -10402,6 +10608,16 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0987055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19723183" sideWeight="0.22572815" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0987055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> refs/remotes/origin/master
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39939025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.6674757" order="6" side_tool="false" content_ui="tabs" />
@@ -10418,12 +10634,16 @@
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.49676377" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32921347" sideWeight="0.496875" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33794695" sideWeight="0.47734627" order="9" side_tool="false" content_ui="tabs" />
 =======
@@ -10431,6 +10651,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32756633" sideWeight="0.49029127" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32756633" sideWeight="0.49029127" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> refs/remotes/origin/master
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33102652" sideWeight="0.70469254" order="1" side_tool="false" content_ui="tabs" />
@@ -10482,10 +10707,13 @@
   </component>
   <component name="VcsManagerConfiguration">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <MESSAGE value="Adding Begining Files" />
     <MESSAGE value="Adding Final Template" />
     <option name="LAST_COMMIT_MESSAGE" value="Adding Final Template" />
 =======
+=======
+>>>>>>> refs/remotes/origin/master
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
     <MESSAGE value="Commiting Somthing With Webapp&#10;" />
     <MESSAGE value="Commiting Somthing With Root&#10;" />
@@ -10505,7 +10733,10 @@
     <MESSAGE value="Fixing Build" />
     <MESSAGE value="After seeing our evaluation today we realized that the missing &quot;Chrome&quot; caused the confusion on our actual testing. This change is to be used for the next iteration and not the current iteration seeing that it has already finished.&#10;&#10; Venkat - This commit is meant to make sure this doesnt happen again for the next iteration." />
     <option name="LAST_COMMIT_MESSAGE" value="After seeing our evaluation today we realized that the missing &quot;Chrome&quot; caused the confusion on our actual testing. This change is to be used for the next iteration and not the current iteration seeing that it has already finished.&#10;&#10; Venkat - This commit is meant to make sure this doesnt happen again for the next iteration." />
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -10526,8 +10757,11 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.3.6.RELEASE/223e3c4360e3ee95f223ffbe2f435eeef52a6852/spring-test-4.3.6.RELEASE-sources.jar!/org/springframework/test/web/servlet/result/ContentResultMatchers.java">
 =======
+=======
+>>>>>>> refs/remotes/origin/master
     <entry file="dbDummy://dbtable:/1754b3a5/83d1cdb8-398c-40ae-a06e-a97f6f4acb23/hecflore_SHRPAS_Employer_Portal.question">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -10541,6 +10775,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hello/repositories/AssessmentRepository.java">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
@@ -10563,12 +10798,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/Footer.jsx">
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hello/controllers/QuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-286">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/Heading.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="22" column="18" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="22" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/Footer.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26707">
+          <caret line="1575" column="30" lean-forward="false" selection-start-line="1575" selection-start-column="30" selection-end-line="1575" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/ExistingQuestionChoice.jsx">
+>>>>>>> refs/remotes/origin/master
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26707">
@@ -10680,10 +10953,108 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/tests/heading.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/libaries/APIs/QuestionsAPI.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/libaries/Cookies.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hello/controllers/AssessmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="68" column="76" lean-forward="false" selection-start-line="68" selection-start-column="76" selection-end-line="68" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hello/services/AssessmentService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Prototype/AssessmentTimer.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/sean.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/EventHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="87" column="59" lean-forward="false" selection-start-line="87" selection-start-column="59" selection-end-line="87" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/libaries/tests/Cookies.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Questions/QuestionTypes/CodeQuestion.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/Review/AdminReview.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Questions/QuestionTypes/AudioQuestion.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/tests/footer.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/tests/heading.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/tests/app.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+>>>>>>> refs/remotes/origin/master
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/js/.babelrc" />
     <entry file="file://$PROJECT_DIR$/src/main/js/app/index.jsx" />
@@ -10749,11 +11120,53 @@
         <state relative-caret-position="323">
           <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/tests/assessment-new.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="68" lean-forward="false" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/tests/content.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/libaries/EventHandler.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="266" column="0" lean-forward="false" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+>>>>>>> refs/remotes/origin/master
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/src/libaries/Rest.jsx">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -10761,11 +11174,16 @@
         <state relative-caret-position="561">
           <caret line="33" column="58" lean-forward="false" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+        <state relative-caret-position="561">
+          <caret line="33" column="58" lean-forward="false" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
+>>>>>>> refs/remotes/origin/master
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/app.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -10887,13 +11305,72 @@
         </state>
       </provider>
     </entry>
+=======
+        <state relative-caret-position="374">
+          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/lauren.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Questions/Hints.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="66" column="53" lean-forward="false" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Questions/QuestionTypes/MultipleChoiceQuestion.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="196" column="77" lean-forward="false" selection-start-line="196" selection-start-column="77" selection-end-line="196" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/di.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="36" column="1" lean-forward="false" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Questions/QuestionTypes/GenericQuestion.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="24" column="24" lean-forward="false" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/ExistingQuestion.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="52" column="30" lean-forward="false" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> refs/remotes/origin/master
     <entry file="dbDummy://dbtable:/1754b3a5/83d1cdb8-398c-40ae-a06e-a97f6f4acb23/hecflore_SHRPAS_Employer_Portal.Question">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -10901,8 +11378,11 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/greeting.html">
 =======
+=======
+>>>>>>> refs/remotes/origin/master
     <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/tests/assessment.spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
@@ -10918,13 +11398,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Questions/Questions.jsx">
+<<<<<<< HEAD
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+>>>>>>> refs/remotes/origin/master
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2890">
           <caret line="176" column="9" lean-forward="false" selection-start-line="176" selection-start-column="9" selection-end-line="176" selection-end-column="9" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/app.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -10973,10 +11457,57 @@
             <element signature="e#1890#1891#0" expanded="false" />
             <element signature="e#1948#1949#0" expanded="false" />
             <element signature="e#2000#2001#0" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/hello/models/Assessment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#901#902#0" expanded="false" />
+            <element signature="e#926#927#0" expanded="false" />
+            <element signature="e#963#964#0" expanded="false" />
+            <element signature="e#991#992#0" expanded="false" />
+            <element signature="e#1022#1023#0" expanded="false" />
+            <element signature="e#1049#1050#0" expanded="false" />
+            <element signature="e#1089#1090#0" expanded="false" />
+            <element signature="e#1121#1122#0" expanded="false" />
+            <element signature="e#1156#1157#0" expanded="false" />
+            <element signature="e#1187#1188#0" expanded="false" />
+            <element signature="e#1235#1236#0" expanded="false" />
+            <element signature="e#1275#1276#0" expanded="false" />
+            <element signature="e#1320#1321#0" expanded="false" />
+            <element signature="e#1354#1355#0" expanded="false" />
+            <element signature="e#1415#1416#0" expanded="false" />
+            <element signature="e#1461#1462#0" expanded="false" />
+            <element signature="e#1505#1506#0" expanded="false" />
+            <element signature="e#1544#1545#0" expanded="false" />
+            <element signature="e#1609#1610#0" expanded="false" />
+            <element signature="e#1665#1666#0" expanded="false" />
+            <element signature="e#1699#1700#0" expanded="false" />
+            <element signature="e#1729#1730#0" expanded="false" />
+            <element signature="e#1776#1777#0" expanded="false" />
+            <element signature="e#1814#1815#0" expanded="false" />
+            <element signature="e#1853#1854#0" expanded="false" />
+            <element signature="e#1890#1891#0" expanded="false" />
+            <element signature="e#1948#1949#0" expanded="false" />
+            <element signature="e#2000#2001#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/ExistingQuestions.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+>>>>>>> refs/remotes/origin/master
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/ExistingQuestions.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
@@ -10992,10 +11523,37 @@
         <state relative-caret-position="1037">
           <caret line="62" column="32" lean-forward="false" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/AssessmentNew.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="62" column="32" lean-forward="false" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Assessment/Assessments.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4624">
+          <caret line="281" column="31" lean-forward="false" selection-start-line="281" selection-start-column="31" selection-end-line="281" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1490135003866" expanded="true" signature="7:18" ph="..." />
+            <marker date="1490135003866" expanded="true" signature="27632:27663" ph="&lt;div/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Template/Content.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+>>>>>>> refs/remotes/origin/master
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/hello/User.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -11051,10 +11609,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+=======
     <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Questions/Question.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1326">
@@ -11067,7 +11622,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2091">
           <caret line="124" column="16" lean-forward="false" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
+>>>>>>> refs/remotes/origin/master
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/components/Questions/Question.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="80" column="27" lean-forward="false" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/libaries/APIs/AssessmentAPI.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/1754b3a5/83d1cdb8-398c-40ae-a06e-a97f6f4acb23/hecflore_SHRPAS_Employer_Portal.assessment">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> refs/remotes/origin/master
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2091">
+          <caret line="124" column="16" lean-forward="false" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
 >>>>>>> b52cc917bd6158e211e6fd5ad8ad68cceba8ac8e
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/hectors.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="154" column="16" lean-forward="true" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="16" />
+>>>>>>> refs/remotes/origin/master
           <folding />
         </state>
       </provider>
@@ -11119,6 +11718,81 @@
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>NEW_PROJECT</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
   <component name="masterDetails">
     <states>
