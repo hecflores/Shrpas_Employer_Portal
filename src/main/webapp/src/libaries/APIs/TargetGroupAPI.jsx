@@ -6,7 +6,10 @@ class TargetGroupAPI extends APIListener {
         super();
         const $this = this;
 
+<<<<<<< HEAD
         /*******************************************************************/
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         this.addModule("create-new-targetgroup", function (data, done) {
             $this.AjaxCall({
                 url: "/rest/targetGroups",
@@ -19,7 +22,10 @@ class TargetGroupAPI extends APIListener {
             });
         });
 
+<<<<<<< HEAD
         /*******************************************************************/
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         this.addModule("get-targetgroups", function (data, done) {
             $this.AjaxCall({
                 url: "/rest/targetGroups",
@@ -31,7 +37,10 @@ class TargetGroupAPI extends APIListener {
             });
         });
 
+<<<<<<< HEAD
         /*******************************************************************/
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         this.addModule("get-targetgroup", function (data, done) {
             $this.AjaxCall({
                 url: "/rest/targetGroups/" + data.id,
@@ -43,7 +52,10 @@ class TargetGroupAPI extends APIListener {
             });
         });
 
+<<<<<<< HEAD
         /*******************************************************************/
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         this.addModule("add-participant-to-targetgroup",function(data,done){
             $this.AjaxCall({
                 url: "/rest/targetGroups/" + data.id + "/participants",
@@ -56,8 +68,11 @@ class TargetGroupAPI extends APIListener {
             });
 
         });
+<<<<<<< HEAD
 
         /*******************************************************************/
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         this.addModule("add-participants-to-targetgroup",function(data,done){
             $this.AjaxCall({
                 url: "/rest/targetGroups/" + data.id + "/participantList",
@@ -70,8 +85,11 @@ class TargetGroupAPI extends APIListener {
             });
 
         });
+<<<<<<< HEAD
 
         /*******************************************************************/
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         this.addModule("get-targetgroup-participants", function (data, done) {
             $this.AjaxCall({
                 url: "/rest/targetGroups/" + data.id + "/participants",

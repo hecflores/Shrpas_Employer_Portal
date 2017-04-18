@@ -1,0 +1,58 @@
+package hello.models;
+
+import javax.persistence.*;
+import java.util.Set;
+
+
+@Entity // This tells Hibernate to make a table out of this class
+public class Question {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
+
+    private String type;
+
+    private String status;
+
+    private String content;
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<AsssessmentQuestion> asssessmentQuestionSet;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Set<AsssessmentQuestion> getAssesmentQuestionSet() {
+        return asssessmentQuestionSet;
+    }
+
+    public void setAsssessmentQuestionSet(Set<AsssessmentQuestion> asssessmentQuestionSet) {
+        this.asssessmentQuestionSet = asssessmentQuestionSet;
+    }
+
+
+
+
+
+}

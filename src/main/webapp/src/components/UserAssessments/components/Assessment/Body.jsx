@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import $ from 'jquery';
+=======
+
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 import Footer from './Footer.jsx';
 import Title from './Title.jsx';
 class Body extends React.Component{
@@ -11,6 +15,7 @@ class Body extends React.Component{
       
     }
   render(){
+<<<<<<< HEAD
   var questions = this.props.questions
   var questionType = {};
 
@@ -30,10 +35,14 @@ questions.map(function(question, index){
   typeCountMap[question["type"]]++;
 })
 
+=======
+   
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
     return(
       <div className='container-body'>
         <Title title={this.props.title}/>
         <div className="row custom-row">
+<<<<<<< HEAD
           <div className="col-md-4">
             <span className="glyphicon glyphicon-edit"/>
           </div>
@@ -55,6 +64,17 @@ questions.map(function(question, index){
 
         <Footer />
           </div>
+=======
+          <div className="col-md-4">Count</div>
+          <div className="col-md-4 offset-md-4">Rating</div>
+        </div>
+         <div className="row custom-row">
+          <div className="col-md-3">Video</div>
+          <div className="col-md-3">MC</div>
+          <div className="col-md-3">Text</div>
+        </div>
+        <Footer />
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
       </div>
     );
   }

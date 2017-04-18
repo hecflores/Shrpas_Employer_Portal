@@ -1,0 +1,329 @@
+import React from 'react';
+import GenericQuestion from './GenericQuestion.jsx';
+
+class AnswerChoice extends React.Component
+{
+    constructor(props) {
+        super(props);
+
+        this.state={choice:props.choice,changingText:false,changingTextTo:""};
+
+        this.startEditing=this.startEditing.bind(this);
+        this.setEditingText=this.setEditingText.bind(this);
+        this.cancelEditing=this.cancelEditing.bind(this);
+        this.saveEditing=this.saveEditing.bind(this);
+    }
+    getId(){
+        return this.props.id;
+    }
+    getChoice(){
+        return this.props.choice;
+    }
+
+
+    startEditing(){
+        this.setState({changingText:true,changingTextTo:this.state.choice.text});
+    }
+    setEditingText(event){
+        this.setState({changingTextTo:event.target.value});
+    }
+    cancelEditing(event){
+        this.setState({changingText:false});
+    }
+    saveEditing(){
+
+        /*******************************************************************/
+        var oldChoice=this.state.choice;
+        oldChoice.text=this.state.changingTextTo;
+
+        /*******************************************************************/
+        var $this=this;
+        this.setState({changingText: false, choice: oldChoice});
+    }
+
+    renderEditableVersion()
+    {
+        /*******************************************************************/
+        if(this.state.changingText)
+        {
+            return this.renderEditingVersion();
+        }
+
+        /*******************************************************************/
+        var $this=this;
+        return (
+            <div className="col-lg-12" style={{margin:"2px",padding:'10px',borderRadius:'5px', border:'2px solid rgba(100,100,100,.9)'}}>
+                <div className='col-lg-10'>
+                    <span onClick={this.startEditing} className="answer-choice answer-choice-editable"><b>{this.props.letter}. </b>{this.props.choice.text}</span>
+                </div>
+                <div className="col-lg-2 text-right">
+                    <span className="text-right">
+                        <span onClick={(event)=>this.props.onAnswerDelete($this)} className="btn btn-danger ">Delete</span>
+                    </span>
+                </div>
+            </div>);
+    }
+    renderEditingVersion()
+    {
+        var $this=this;
+        return (
+            <div className="col-lg-12" style={{margin:"2px",padding:'10px',borderRadius:'5px', border:'2px solid rgba(100,100,100,.9)'}}>
+                <div className='col-lg-12' >
+                    <form className="form-inline">
+                        <div style={{marginRight:'30px'}}  className="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div className="input-group-addon"><b>{this.props.letter}.</b></div>
+                            <input onChange={this.setEditingText}  placeholder="Enter an answer choice here" type="text" className="form-control" id="answerInput"/>
+                        </div>
+                        <button onClick={this.saveEditing} type="button" className="btn btn-success">Save</button>
+                        <button onClick={this.cancelEditing} type="button" className="btn btn-danger">Cancel</button>
+                    </form>
+                </div>
+            </div>);
+    }
+    renderNormalVersion()
+    {
+        var $this=this;
+        return (
+            <div className="col-lg-12" style={{margin:"2px",padding:'10px',borderRadius:'5px', border:'2px solid rgba(100,100,100,.9)'}}>
+
+                <span className="answer-choice"><b>{this.props.letter}. </b>{this.props.choice.text}</span>
+
+            </div>)
+    }
+
+    render()
+    {
+
+        var body=this.renderNormalVersion();
+        if(this.props.editible){
+            body=this.renderEditableVersion();
+        }
+
+        var $this=this;
+        var classForFirstPart='col-lg-10';
+        if(!this.props.editible)
+        {
+            classForFirstPart='';
+        }
+        return (
+
+
+
+            <div className="col-lg-6" style={{margin:"0px"}}>
+                {body}
+            </div>
+        )
+    }
+
+}
+class AnswerChoices extends React.Component
+{
+    // defaultProps={
+    //     onAnswersChanged:function(choices){
+    //
+    //     },
+    //
+    //     choices:[],
+    //     editible:false
+    // };
+
+    constructor(props) {
+        super(props);
+
+        this.state={choices:props.choices};
+        this.triggerAnswersChanged=this.triggerAnswersChanged.bind(this);
+        this.deleteAnswer=this.deleteAnswer.bind(this);
+    }
+    getChoices(){
+        return this.state.choices;
+    }
+    deleteAnswer(answerChoice){
+        var $this=this;
+        var myChoices=this.state.choices;
+        delete myChoices[answerChoice.getId()];
+        if(typeof myChoices=='undefined'){
+            myChoices=[];
+        }
+        this.setState({choices: myChoices});
+    }
+    triggerAnswersChanged(answerChoice){
+        var $this=this;
+        var myChoices=this.state.choices;
+        myChoices[answerChoice.getId()]=answerChoice.getChoice();
+        this.setState({choices: myChoices});
+
+    }
+    render() {
+        /*******************************************************************/
+        const $this=this;
+        const letters=['A','B','C','D','E','F','G','H']
+        const questions=this.state.choices.map(function(answerChoice,index){
+            var letter=letters[index%letters.length];
+            return (
+                <AnswerChoice choice={answerChoice} onAnswerDelete={$this.deleteAnswer} editible={$this.props.editible} key={index} id={index} letter={letter} onAnswerChanged={$this.triggerAnswersChanged}>
+                </AnswerChoice>
+            )
+
+        });
+
+        /*******************************************************************/
+        return (
+                <div className="col-lg-12">
+                    <div className="col-lg-12">
+                        {questions}
+                    </div>
+                </div>
+        );
+    }
+
+}
+
+/***************************************************************************/
+/* Question(Multiple Choice) - Creator                                     */
+/***************************************************************************/
+class MultipleChoiceQuestionCreator extends GenericQuestion {
+
+    constructor(props) {
+        super(props);
+
+        /*******************************************************************/
+        this.buildContent=this.buildContent2.bind(this);
+        this.updateChoices=this.updateChoices.bind(this);
+        this.addChoice=this.addChoice.bind(this);
+        this.active=this;
+
+        /*******************************************************************/
+
+        this.state={question:'Enter a question here',choices:[{'text':' ','letter':'A'}]};
+
+    }
+    buildContent2(){
+        return {
+                  type:'multiple-choice',
+                  content:JSON.stringify(this.state)
+               };
+    }
+    addChoice(){
+        const letters=['A','B','C','D','E','F','G','H']
+        var myChoices=this.state.choices;
+        myChoices.push({text:' ',letter:letters[myChoices.length%letters.length]});
+        this.setState({choices:myChoices});
+    }
+    updateChoices(choices){
+        var myChoices=this.state.choices;
+        myChoices=choices.getChoices();
+        this.setState({choices:myChoices});
+    }
+    render() {
+
+        return (
+            <GenericQuestion onCreatedNewQuestion={()=>this.props.onCreatedNewQuestion()} props={this.props} active={this}>
+                <h3>Multiple Choice</h3>
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="questionEntered2">Question</label>
+                        <input value= {null} placeholder ={this.state.question}onChange={(event)=>this.saveInput('question',event.target.value)} type="text" className="form-control" id="questionEntered2"/>
+                    </div>
+                </form>
+                <AnswerChoices choices={this.state.choices}  onAnswersChanged={this.updateChoices} editible="true"/>
+                <div className="col-lg-12" style={{margin:"5px"}}>
+                    <span onClick={this.addChoice}   className="btn btn-success btn-block btn-lg">Add Answer</span>
+                </div>
+            </GenericQuestion>);
+    }
+}
+MultipleChoiceQuestionCreator.defaultProps={
+    onCreatedNewQuestion:function(){}
+}
+/***************************************************************************/
+/* Question(Multiple Choice) - Display                                     */
+/***************************************************************************/
+class MultipleChoiceQuestionDisplay extends GenericQuestion {
+
+    constructor(props) {
+        super(props);
+        this.buildContent=this.buildContent.bind(this);
+        this.updateChoices=this.updateChoices.bind(this);
+        this.active=this;
+    }
+    buildContent(){
+        return {
+            type:'multiple-choice',
+            content:JSON.stringify({question:this.getInput('question'),
+                                   choices:this.state.choices})
+        };
+    }
+    updateChoices(choices){
+        this.setState({choices:choices.getChoices()});
+    }
+    render() {
+
+        /*******************************************************************/
+        return (
+            <div className="col-lg-12" style={{borderBottom:'2px solid black'}}>
+                <div className="col-lg-12">
+                    <h3>{this.props.question.ID}. {this.props.question.content.question}</h3>
+                </div>
+                <AnswerChoices onAnswersChanged={this.updateChoices} choices={this.props.question.content.choices}/>
+            </div>);
+    }
+}
+
+function AnswerOption(props) {
+
+    return (
+        <div>
+            <input
+                type="radio"
+                className="radio-button"
+                name="radioGroup"
+                checked={props.checked}
+                id={props.id}
+                value={props.choice.text}
+                onChange={props.handleChange}
+            />
+            <label className="answer-choice">{props.letter}. {props.choice.text}</label>
+        </div>
+    );
+}
+
+class MultipleChoiceQuestionPreview extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state={
+            answer:''
+        };
+
+        this.onAnswerSelected = this.onAnswerSelected.bind(this);
+    }
+
+    onAnswerSelected(event) {
+        this.setState({answer: event.target.value});
+    }
+
+    render() {
+        const letters=['A','B','C','D','E','F','G','H'];
+        var answerChoices = this.props.content.choices.length > 0 ?
+            this.props.content.choices.map(function(answerChoice,index) {
+                var letter=letters[index%letters.length];
+                return (
+                   <AnswerOption choice={answerChoice} key={index} id={index} letter={letter} checked={this.state.answer === answerChoice.text} handleChange={this.onAnswerSelected}/>
+                )
+            }, this) : [];
+
+        return (
+            <div className="form-group">
+                <div>{this.props.id}. {this.props.content.question}</div>
+                <div>{answerChoices}</div>
+            </div>
+        )
+    }
+}
+
+export default {
+        Creator:MultipleChoiceQuestionCreator,
+        Display:MultipleChoiceQuestionDisplay,
+        Preview:MultipleChoiceQuestionPreview
+};

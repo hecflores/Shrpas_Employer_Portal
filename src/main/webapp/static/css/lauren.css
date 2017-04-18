@@ -2,12 +2,18 @@
 .outerborder{
   border: 1px solid blue;
   font-family:"Trajan Pro";
+<<<<<<< HEAD
   color: rgb(100,100,100);
   font-weight: lighter;
   background: rgb(241,243,243);
 }
 
 
+=======
+  color:rgb(102,102,102);
+  background: rgb(184,184,184);
+}
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 .outerborder .row{
   margin: 0px;
   border: 1px solid green;
@@ -23,12 +29,17 @@
 .MyTable .col-md-3.cell{
   border: 1px solid green;
   text-align: center;
+<<<<<<< HEAD
   height:16vw;
   width: 25vw;
 
 }
 
 
+=======
+
+}
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 .buttonstyle{
   -webkit-border-radius: 2;
   -moz-border-radius: 2;
@@ -64,6 +75,7 @@
 }
     
 
+<<<<<<< HEAD
 
 .footer {
   margin: 10px;
@@ -107,6 +119,45 @@
 
 .container-title{
   height: 5vw;
+=======
+
+.footer {
+  margin: 10px;
+  border: 2px solid pink;
+  text-align: center;
+}
+.MyTable{
+  margin: 10px;
+  border: 2px solid red;
+  padding: 6px 35px 8px 35px;
+  font-family: "Trajan Pro";
+  text-align: center;
+  
+}
+.MyTable .row{
+  margin: 0px;
+  color: #999999;
+}
+.container-header{
+  border: 1px solid black;
+  background: rgb(84,84,84);
+  color: white;
+  font-size: 1em;
+  text-align: center;
+}
+.container-body .row.custom-row{
+  font-family: "Trajan Pro";
+  color: #999999;
+  border: 1px solid yellow;
+}
+
+.row.container-footer{
+  border: 1px solid red;
+  text-align: center;
+}
+
+.container-title{
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
   font-family: "Trajan Pro";
   font-size: 1.5em;
   color: #999999;

@@ -1,0 +1,15 @@
+<<<<<<< .mine
+#Wed Mar 29 18:29:22 CDT 2017
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-2.13-all.zip
+=======
+#Sat Mar 25 11:37:06 CDT 2017
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-2.13-all.zip
+>>>>>>> .r560

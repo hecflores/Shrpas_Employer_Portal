@@ -10,6 +10,7 @@ class UserAPI extends APIListener{
         var $this=this;
 
         /*******************************************************************/
+<<<<<<< HEAD
         this.addModule("register",function(data,done){
             Rests.Lets().post("/rest/register",data
                 ,function(data){
@@ -17,6 +18,8 @@ class UserAPI extends APIListener{
 
             });
         });
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         this.addModule("log-in",function(data,done){
             Rests.Lets().post("/rest/session/login",{
                 username:data.username,
@@ -37,6 +40,7 @@ class UserAPI extends APIListener{
         });
         this.addModule("check-if-logged-in",function(data,done){
             Rests.Lets().get("/rest/session/is-logged-in",{},function(data){
+<<<<<<< HEAD
 
                 done(data);
 
@@ -49,6 +53,8 @@ class UserAPI extends APIListener{
                 if(!data.success){
                     window.location="/";
                 }
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
                 done(data);
 
             });
@@ -58,6 +64,7 @@ class UserAPI extends APIListener{
 
         /*******************************************************************/
         this.addModule("get-user-profile",function(data,done){
+<<<<<<< HEAD
             Rests.Lets().get("/rest/currentUser",{},function(data){
                 done(data);
             });
@@ -74,6 +81,16 @@ class UserAPI extends APIListener{
             },function (data) {
 
                 done(data);
+=======
+            Rests.Lets().get("/rest/session/is-logged-in",{},function(data){
+                if(!data.success)
+                {
+                    window.location="/";
+                    return;
+                }
+                done(data);
+
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
             });
 
 

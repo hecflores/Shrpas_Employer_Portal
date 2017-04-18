@@ -1,0 +1,27 @@
+import React from 'react';
+import QuestionPreview from './QuestionPreview.jsx'
+
+class AssessmentPreview extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        if(typeof this.props.questions=="undefined"){
+            return (<div ref="Questions"></div>);
+        }
+        const questions = this.props.questions.map(function(question,index){
+            return <QuestionPreview key={index} question={question} id={index+1}/>
+        });
+        return (
+            <div ref="Questions">
+                {questions}
+            </div>
+        )
+
+
+    }
+}
+
+export default AssessmentPreview;

@@ -56,6 +56,7 @@ export class TestingRest extends Rests{
         this.__repositories__=[];
         this.addRepository(new TestingRestRepository(
             "assessment",
+<<<<<<< HEAD
             /\/rest\/currentUser$/i,
             "GET",
             function(results,parameters){
@@ -86,6 +87,8 @@ export class TestingRest extends Rests{
             }));
         this.addRepository(new TestingRestRepository(
             "assessment",
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
             /\/rest\/session\/is-logged-in$/i,
             "GET",
             function(results,parameters){

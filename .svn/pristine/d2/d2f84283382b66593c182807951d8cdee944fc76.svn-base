@@ -1,0 +1,465 @@
+package hello.controllers;
+
+import hello.Application;
+import hello.models.*;
+import hello.repositories.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.web.context.WebApplicationContext;
+
+import java.nio.charset.Charset;
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
+@WebAppConfiguration
+@DirtiesContext
+public class TargetGroupControllerTest {
+
+    private final MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
+            MediaType.APPLICATION_JSON.getSubtype(),
+            Charset.forName("utf8"));
+
+    private MockMvc mockMvc;
+    private TargetGroup targetGroup;
+    private Participant participant;
+
+    private User mockUser;
+    private UserSession mockUserSession;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private UserSessionRepository userSessionRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private TargetGroupRepository targetGroupRepository;
+
+    @Autowired
+    private ParticipantRepository participantRepository;
+
+    @Autowired
+    private AssessmentRepository assessmentRepository;
+
+    @Autowired
+    private WebApplicationContext webApplicationContext;
+
+    @Before
+    public void setup() {
+        mockMvc = webAppContextSetup(webApplicationContext).build();
+
+        /*******************************************************************/
+        Role thisRole=new Role();
+        thisRole.setId(1);
+        thisRole.setRole("user");
+        roleRepository.save(thisRole);
+
+        /*******************************************************************/
+        this.mockUser = new User();
+        this.mockUser.setUsername("user1");
+        this.mockUser.setPassword("user_pass");
+        this.mockUser.setRole(thisRole);
+        userRepository.save(this.mockUser);
+
+        /*******************************************************************/
+        this.mockUserSession=new UserSession();
+        this.mockUserSession.setLinkedUser(this.mockUser);
+        userSessionRepository.save(this.mockUserSession);
+
+        /*******************************************************************/
+
+
+        targetGroupRepository.deleteAll();
+        targetGroup = new TargetGroup();
+        targetGroup.setName("group1");
+        targetGroupRepository.save(targetGroup);
+    }
+
+    @Test
+    public void getTargetGroupsReturnsAllTargetGroups() throws Exception {
+        mockMvc.perform(get("/rest/targetGroups")
+                .sessionAttr("SessionID",this.mockUserSession))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$", hasSize(1)));
+    }
+
+    @Test
+    public void getTargetGroupReturnsATargetGroup() throws Exception {
+        mockMvc.perform(get("/rest/targetGroups/" + targetGroup.getId())
+                .sessionAttr("SessionID",this.mockUserSession))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(targetGroup.getId())));
+    }
+
+    @Test
+    public void gettingNonExistentTargetGroupReturnsNotFoundStatus() throws Exception {
+        mockMvc.perform(get("/rest/targetGroups/10")
+                .sessionAttr("SessionID",this.mockUserSession))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void addTargetGroupReturnsCreatedStatus() throws Exception {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups")
+                .sessionAttr("SessionID",this.mockUserSession)
+                .contentType(contentType)
+                .content(createJson("group2"));
+
+        mockMvc.perform(postBuilder)
+                .andExpect(status().isCreated())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.name", is("group2")));
+    }
+
+    @Test
+    public void addTargetGroupAddsNewTargetGroup() throws Exception {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups")
+                .sessionAttr("SessionID",this.mockUserSession)
+                .contentType(contentType)
+                .content(createJson("group2"));
+
+        mockMvc.perform(postBuilder);
+        assertEquals(2, targetGroupRepository.count());
+    }
+
+    @Test
+    public void updateTargetGroupUpdatesATargetGroup() throws Exception {
+        MockHttpServletRequestBuilder putBuilder = put("/rest/targetGroups/" + targetGroup.getId())
+                .sessionAttr("SessionID",this.mockUserSession)
+                .contentType(contentType)
+                .content(createJson("group2"));
+
+        mockMvc.perform(putBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(targetGroup.getId())))
+                .andExpect(jsonPath("$.name", is("group2")));
+    }
+
+    @Test
+    public void updateNullTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder putBuilder = put("/rest/targetGroups/10")
+                .sessionAttr("SessionID",this.mockUserSession)
+                .contentType(contentType)
+                .content(createJson("group2"));
+
+        try {
+            mockMvc.perform(putBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void deleteTargetGroupReturnsStatusOK() throws Exception {
+        MockHttpServletRequestBuilder deleteBuilder = delete("/rest/targetGroups/" + targetGroup.getId())
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        mockMvc.perform(deleteBuilder)
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void deleteTargetGroupDeletesATargetGroup() throws Exception {
+        MockHttpServletRequestBuilder deleteBuilder = delete("/rest/targetGroups/" + targetGroup.getId())
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        mockMvc.perform(deleteBuilder);
+        assertEquals(0, targetGroupRepository.count());
+    }
+
+    @Test
+    public void deletingNullTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder deleteBuilder = delete("/rest/targetGroups/10")
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        try {
+            mockMvc.perform(deleteBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void getParticipantsInTargetGroupReturnsParticipantsInTargetGroup() throws Exception {
+        addParticipant();
+
+        mockMvc.perform(get("/rest/targetGroups/" + targetGroup.getId() + "/participants")
+                .sessionAttr("SessionID",this.mockUserSession))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].name", is(participant.getName())));
+    }
+
+    @Test
+    public void getParticipantsInNullTargetGroupThrowsException() {
+        try {
+            mockMvc.perform(get("/rest/targetGroups/10/participants")
+                    .sessionAttr("SessionID",this.mockUserSession));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void addNewParticipantToTargetGroup() throws Exception {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/" + targetGroup.getId() + "/participants")
+                .sessionAttr("SessionID",this.mockUserSession)
+                .contentType(contentType)
+                .content(createJson("participant2"));
+
+        mockMvc.perform(postBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(targetGroup.getId())))
+                .andExpect(jsonPath("$.participantSet", hasSize(1)))
+                .andExpect(jsonPath("$.participantSet[0].name", is("participant2")));
+    }
+
+    @Test
+    public void addNewParticipantToNullTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/10/participants")
+                .sessionAttr("SessionID",this.mockUserSession)
+                .contentType(contentType)
+                .content(createJson("participant2"));
+
+        try {
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void addNewParticipantListToTargetGroup() throws Exception {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/" + targetGroup.getId() + "/participantList")
+                .contentType(contentType)
+                .content(createParticipantsListInJson("participant1", "participant2"));
+
+        mockMvc.perform(postBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(targetGroup.getId())))
+                .andExpect(jsonPath("$.participantSet", hasSize(2)));
+    }
+
+    @Test
+    public void addNewParticipantListToNullTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/10/participantList")
+                .contentType(contentType)
+                .content(createParticipantsListInJson("participant1", "participant2"));
+
+        try {
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void addExistingParticipantToTargetGroup() throws Exception {
+        participant = new Participant();
+        participant.setName("participant2");
+        participantRepository.save(participant);
+
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/" + targetGroup.getId() + "/participants/" + participant.getId())
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        mockMvc.perform(postBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(targetGroup.getId())))
+                .andExpect(jsonPath("$.participantSet", hasSize(1)))
+                .andExpect(jsonPath("$.participantSet[0].id", is(participant.getId())))
+                .andExpect(jsonPath("$.participantSet[0].name", is(participant.getName())));
+    }
+
+    @Test
+    public void addExistingParticipantToNullTargetGroupThrowsException() {
+        participant = new Participant();
+        participant.setName("participant2");
+        participantRepository.save(participant);
+
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/10/participants/" + participant.getId())
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        try {
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void addNullParticipantsToTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/" + targetGroup.getId() + "/participants/20")
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        try {
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void removeParticipantFromTargetGroup() throws Exception {
+        addParticipant();
+        MockHttpServletRequestBuilder putBuilder = put("/rest/targetGroups/" + targetGroup.getId() + "/participants/" + participant.getId())
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        mockMvc.perform(putBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(targetGroup.getId())))
+                .andExpect(jsonPath("$.participantSet", hasSize(0)));
+    }
+
+    @Test
+    public void removeParticipantsFromNullTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder putBuilder = put("/rest/targetGroups/10/participants/1")
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        try {
+            mockMvc.perform(putBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void removeNullParticipantsFromTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder putBuilder = put("/rest/targetGroups/" + targetGroup.getId() + "/participants/10")
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        try {
+            mockMvc.perform(putBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void addNewAssessmentToTargetGroup() throws Exception {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/" + targetGroup.getId() + "/assessment")
+                .sessionAttr("SessionID",this.mockUserSession)
+                .contentType(contentType)
+                .content(createJson("assess1"));
+
+        mockMvc.perform(postBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(targetGroup.getId())))
+                .andExpect(jsonPath("$.assessment.name", is("assess1")));
+    }
+
+    @Test
+    public void addNewAssessmentToNullTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/10/assessment")
+                .sessionAttr("SessionID",this.mockUserSession)
+                .contentType(contentType)
+                .content(createJson("assess1"));
+
+        try {
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void addExistingAssessmentToTargetGroup() throws Exception {
+        Assessment assessment = new Assessment();
+        assessment.setName("assess2");
+        assessmentRepository.save(assessment);
+
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/" + targetGroup.getId() + "/assessment/" + assessment.getId())
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        mockMvc.perform(postBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.id", is(targetGroup.getId())))
+                .andExpect(jsonPath("$.assessment.name", is(assessment.getName())));
+    }
+
+    @Test
+    public void addExistingAssessmentToNullTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/10/assessment/1")
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        try {
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void addNullAssessmentToTargetGroupThrowsException() {
+        MockHttpServletRequestBuilder postBuilder = post("/rest/targetGroups/" + targetGroup.getId() + "/assessment/10")
+                .sessionAttr("SessionID",this.mockUserSession);
+
+        try {
+            mockMvc.perform(postBuilder);
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    private static String createJson(String name){
+        return "{\"name\": \"" + name + "\"}";
+    }
+
+    private static String createParticipantsListInJson(String name1, String name2) {
+        return "[{\"name\": \"" + name1 + "\"}, {\"name\": \"" + name2 + "\"}]";
+    }
+
+    private void addParticipant() {
+        participantRepository.deleteAll();
+        participant = new Participant();
+        participant.setName("participant1");
+        participantRepository.save(participant);
+
+        Set<Participant> participantSet = new HashSet<>();
+        participantSet.add(participant);
+        targetGroup.setParticipantSet(participantSet);
+        targetGroupRepository.save(targetGroup);
+    }
+
+}

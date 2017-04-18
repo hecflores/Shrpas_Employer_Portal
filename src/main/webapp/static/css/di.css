@@ -65,8 +65,26 @@
   color:rgb(10,10,10);
 }
 
+<<<<<<< HEAD
 
  .parse-button {
+=======
+form{
+  border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  box-shadow:0px 1px 1px rgba(0,0,0,.7), inset 0px 1px rgba(255,255,255,.7);
+}
+
+button {
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
     background-color: gray;
     color: white;
     padding: 14px 20px;
@@ -77,6 +95,7 @@
   box-shadow:0px 1px 1px rgba(0,0,0,.7), inset 0px 1px rgba(255,255,255,.7);
 }
 
+<<<<<<< HEAD
 .login-button {
   position:relative;
   left:50%;
@@ -224,3 +243,13 @@
   box-shadow:0px 1px 1px rgba(0,0,0,.7),inset 0px 1px rgba(255,255,255,.7);
   border:none;
 }
+=======
+button:hover {
+    opacity: 0.8;
+}
+
+.container {
+    padding: 16px;
+  box-shadow:0px 1px 1px rgba(0,0,0,.7), inset 0px 1px rgba(255,255,255,.7);
+}
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e

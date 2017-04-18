@@ -20,9 +20,15 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
         <span class="strong">90.16% </span>
         <span class="quiet">Statements</span>
         <span class='fraction'>55/61</span>
+=======
+        <span class="strong">87.5% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>56/64</span>
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">60% </span>
@@ -35,9 +41,15 @@
         <span class='fraction'>14/17</span>
       </div>
       <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
         <span class="strong">94.44% </span>
         <span class="quiet">Lines</span>
         <span class='fraction'>34/36</span>
+=======
+        <span class="strong">89.74% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>35/39</span>
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
       </div>
     </div>
   </div>
@@ -189,6 +201,7 @@
 144
 145
 146
+<<<<<<< HEAD
 147
 148
 149
@@ -204,6 +217,9 @@
 159
 160
 161</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+=======
+147</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -222,6 +238,11 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<<<<<<< HEAD
+=======
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -253,6 +274,20 @@
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+=======
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -277,6 +312,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+=======
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -383,12 +423,15 @@ var _AssessmentAPI = require("../../libaries/APIs/AssessmentAPI.jsx");
 &nbsp;
 var _AssessmentAPI2 = _interopRequireDefault(_AssessmentAPI);
 &nbsp;
+<<<<<<< HEAD
 var _Loader = require("../Containers/Loader.jsx");
 &nbsp;
 var _Loader2 = _interopRequireDefault(_Loader);
 &nbsp;
 var _Assessments = require("./Assessments.jsx");
 &nbsp;
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { "default": obj }; }
 &nbsp;
 function _classCallCheck(instance, Constructor) { <span class="missing-if-branch" title="if path not taken" >I</span>if (!(instance instanceof Constructor)) { <span class="cstat-no" title="statement not covered" >throw new TypeError("Cannot call a class as a function"); </span>} }
@@ -426,9 +469,22 @@ var AssessmentNew = function (_React$Component) {
 &nbsp;
         var _this = _possibleConstructorReturn(this, (AssessmentNew.__proto__ || <span class="branch-1 cbranch-no" title="branch not covered" >Object.getPrototypeOf(AssessmentNew))</span>.call(this, props));
 &nbsp;
+<<<<<<< HEAD
         _this.CreatedFinished = <span class="fstat-no" title="function not covered" >function (assessmentID, assessmentData) {</span>
 <span class="cstat-no" title="statement not covered" >            this.context.router.push("/app/assessments/" + assessmentID);</span>
         }.bind(_this);
+=======
+        _this.api = _AssessmentAPI2["default"].instance.hook().on("create-new-assessment", <span class="fstat-no" title="function not covered" >function (data) {</span>
+<span class="cstat-no" title="statement not covered" >            window.location = data.url;</span>
+        });
+&nbsp;
+        _this.state = {
+            init: true,
+            data: {
+                name: ""
+            }
+        };
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         return _this;
     }
 &nbsp;
@@ -441,6 +497,7 @@ var AssessmentNew = function (_React$Component) {
     _createClass(AssessmentNew, [{
         key: "createAndRedirect",
         value: function () {
+<<<<<<< HEAD
 <span class="fstat-no" title="function not covered" >            function createAndRedirect() {</span>}
             /** @deprecated Using APIComponent AssessmentCreator instead **/
             // this.api.getListener().createNewAssessmentAndRedirect(this.state.data);
@@ -452,6 +509,19 @@ var AssessmentNew = function (_React$Component) {
             // }).done(function(data){
             //     window.location="/app/assessments/"+data.id;
             // });
+=======
+<span class="fstat-no" title="function not covered" >            function createAndRedirect() {</span>
+<span class="cstat-no" title="statement not covered" >                this.api.getListener().createNewAssessmentAndRedirect(this.state.data);</span>
+                // $.ajax({
+                //     url:"/rest/assessments",
+                //     method:"POST",
+                //     contentType:"application/json",
+                //     data:JSON.stringify(this.state.data)
+                // }).done(function(data){
+                //     window.location="/app/assessments/"+data.id;
+                // });
+            }
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 &nbsp;
 &nbsp;
             /**
@@ -474,6 +544,7 @@ var AssessmentNew = function (_React$Component) {
                 // }
 &nbsp;
                 return _react2["default"].createElement(
+<<<<<<< HEAD
                     _Assessments.AssessmentCreator,
                     { Assessment: {}, onAssessmentCreated: this.CreatedFinished },
                     function (assessmentData, updateLocalCopy, initiateCreation, overwriteData, isCreating) {
@@ -509,6 +580,43 @@ var AssessmentNew = function (_React$Component) {
                             isCreating ? <span class="branch-0 cbranch-no" title="branch not covered" >_react2["default"].createElement(_Loader2["default"], null) </span>: _react2["default"].createElement("input", { className: "new-assessment-name-btn", type: "submit", onClick: initiateCreation })
                         );
                     }
+=======
+                    "div",
+                    { className: "new-assessment-name-container", style: {
+                            border: '0',
+                            borderRadius: '4px',
+                            bottom: 'auto',
+                            minHeight: '10rem',
+                            left: '50%',
+                            padding: '2rem',
+                            position: 'fixed',
+                            right: 'auto',
+                            top: '50%',
+                            transform: 'translate(-50%,-50%)',
+                            minWidth: '20rem',
+                            width: '80%',
+                            maxWidth: '60rem'
+                        } },
+                    _react2["default"].createElement(
+                        "h2",
+                        { className: "new-assessment-name-title" },
+                        "New Assessment"
+                    ),
+                    _react2["default"].createElement("input", { ref: "assessmentNameInput", onChange: function () {
+                            function onChange(e) {
+                                return _this2.setState({ data: { name: e.target.value } });
+                            }
+&nbsp;
+                            return onChange;
+                        }(), type: "text", className: "new-assessment-name-input form-control assessment-create-set-name-input", placeholder: "Enter the Name" }),
+                    _react2["default"].createElement("input", { className: "new-assessment-name-btn", type: "submit", onClick: function () {
+<span class="fstat-no" title="function not covered" >                            function onClick() {</span>
+<span class="cstat-no" title="statement not covered" >                                _this2.setState({ init: false });</span>
+                            }
+&nbsp;
+                            return onClick;
+                        }() })
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
                 );
             }
 &nbsp;
@@ -529,7 +637,11 @@ exports["default"] = AssessmentNew;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
+<<<<<<< HEAD
   generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 14 2017 14:38:25 GMT-0500 (Central Daylight Time)
+=======
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 04 2017 10:58:00 GMT-0500 (Central Daylight Time)
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 </div>
 </div>
 <script src="../../prettify.js"></script>

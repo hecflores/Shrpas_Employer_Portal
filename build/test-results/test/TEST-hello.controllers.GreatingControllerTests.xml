@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hello.controllers.GreatingControllerTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-02-28T20:40:46" hostname="Puget-99033" time="0.926">
+  <properties/>
+  <testcase name="testGreeting" classname="hello.controllers.GreatingControllerTests" time="0.926"/>
+  <system-out><![CDATA[14:40:46.993 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+14:40:46.996 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+14:40:46.996 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+14:40:47.124 [Test worker] DEBUG org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping - Looking for request mappings in application context: org.springframework.test.web.servlet.setup.StubWebApplicationContext@3176cbfb
+14:40:47.147 [Test worker] DEBUG org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping - 1 request handler methods found on class hello.controllers.GreetingController: {public java.lang.String hello.controllers.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)={[/greeting],methods=[GET],produces=[text/html]}}
+14:40:47.152 [Test worker] INFO org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping - Mapped "{[/greeting],methods=[GET],produces=[text/html]}" onto public java.lang.String hello.controllers.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)
+14:40:47.471 [Test worker] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider
+14:40:47.473 [Test worker] INFO org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.2.4.Final
+14:40:47.504 [Test worker] DEBUG org.hibernate.validator.internal.engine.resolver.DefaultTraversableResolver - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+14:40:47.505 [Test worker] DEBUG org.hibernate.validator.internal.engine.resolver.DefaultTraversableResolver - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+14:40:47.513 [Test worker] DEBUG org.hibernate.validator.internal.engine.ConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+14:40:47.514 [Test worker] DEBUG org.hibernate.validator.internal.engine.ConfigurationImpl - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy21
+14:40:47.516 [Test worker] DEBUG org.hibernate.validator.internal.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+14:40:47.517 [Test worker] DEBUG org.hibernate.validator.internal.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+14:40:47.517 [Test worker] DEBUG org.hibernate.validator.internal.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+14:40:47.518 [Test worker] DEBUG org.hibernate.validator.internal.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+14:40:47.575 [Test worker] INFO org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@3176cbfb
+14:40:47.622 [Test worker] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Looking for exception mappings: org.springframework.test.web.servlet.setup.StubWebApplicationContext@3176cbfb
+14:40:47.642 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Initializing servlet ''
+14:40:47.653 [Test worker] DEBUG org.springframework.web.context.support.StandardServletEnvironment - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+14:40:47.653 [Test worker] DEBUG org.springframework.web.context.support.StandardServletEnvironment - Adding [servletContextInitParams] PropertySource with lowest search precedence
+14:40:47.656 [Test worker] DEBUG org.springframework.web.context.support.StandardServletEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+14:40:47.656 [Test worker] DEBUG org.springframework.web.context.support.StandardServletEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+14:40:47.657 [Test worker] DEBUG org.springframework.web.context.support.StandardServletEnvironment - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+14:40:47.657 [Test worker] INFO org.springframework.mock.web.MockServletContext - Initializing Spring FrameworkServlet ''
+14:40:47.657 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet - FrameworkServlet '': initialization started
+14:40:47.661 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Unable to locate MultipartResolver with name 'multipartResolver': no multipart request handling provided
+14:40:47.662 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Using LocaleResolver [org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@2ebbec6e]
+14:40:47.662 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Using ThemeResolver [org.springframework.web.servlet.theme.FixedThemeResolver@42044395]
+14:40:47.662 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Using RequestToViewNameTranslator [org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@12477eae]
+14:40:47.662 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Using FlashMapManager [org.springframework.web.servlet.support.SessionFlashMapManager@665d976c]
+14:40:47.662 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Published WebApplicationContext of servlet '' as ServletContext attribute with name [org.springframework.web.servlet.FrameworkServlet.CONTEXT.]
+14:40:47.662 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet - FrameworkServlet '': initialization completed in 5 ms
+14:40:47.662 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Servlet '' configured successfully
+14:40:47.698 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - DispatcherServlet with name '' processing GET request for [/greeting]
+14:40:47.700 [Test worker] DEBUG org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping - Looking up handler method for path /greeting
+14:40:47.704 [Test worker] DEBUG org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping - Returning handler method [public java.lang.String hello.controllers.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)]
+14:40:47.704 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Last-Modified value for [/greeting] is: -1
+14:40:47.731 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Rendering view [org.springframework.web.servlet.view.InternalResourceView: unnamed; URL [/main/resources/templates/greeting.html]] in DispatcherServlet with name ''
+14:40:47.731 [Test worker] DEBUG org.springframework.web.servlet.view.InternalResourceView - Added model object 'name' of type [java.lang.String] to request in view with name 'null'
+14:40:47.731 [Test worker] DEBUG org.springframework.web.servlet.view.InternalResourceView - Forwarding to resource [/main/resources/templates/greeting.html] in InternalResourceView 'null'
+14:40:47.732 [Test worker] DEBUG org.springframework.mock.web.MockRequestDispatcher - MockRequestDispatcher: forwarding to [/main/resources/templates/greeting.html]
+14:40:47.732 [Test worker] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Successfully completed request
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /greeting
+       Parameters = {}
+          Headers = {}
+
+Handler:
+             Type = hello.controllers.GreetingController
+           Method = public java.lang.String hello.controllers.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = greeting
+             View = null
+        Attribute = name
+            value = World
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {}
+     Content type = null
+             Body = 
+    Forwarded URL = /main/resources/templates/greeting.html
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

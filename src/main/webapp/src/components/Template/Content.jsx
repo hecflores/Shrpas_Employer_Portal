@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import {Router, Route, browserHistory,DefaultRoute, IndexRoute} from "react-router";
 import Home from "components/Home/Home.jsx";
 import GuestHome from "components/Home/GuestHome.jsx";
@@ -27,17 +28,39 @@ import AddExistingQuestion from "components/Assessment/Pages/AddExistingQuestion
 import PreviewAssessmentsPage from "components/Assessment/Pages/PreviewAssessmentsPage/PreviewAssessmentsPage.jsx";
 import UserProfile from "../Profile/UserProfile.jsx";
 import RegisterPage from 'components/Register/RegisterPage.jsx';
+=======
+import {Router, Route, browserHistory} from "react-router";
+import Home from "../Home/Home.jsx";
+import Questions from "../Questions/Questions.jsx";
+import Video from "../Prototype/Video.jsx";
+import Audio from "../Prototype/Audio.jsx";
+import Assessment from "../Assessment/Assessments.jsx";
+import AssessmentNew from "../Assessment/AssessmentNew.jsx";
+import TargetGroups from "../TargetGroup/TargetGroups.jsx";
+import LoginPage from "../UserLogin/LoginPage.jsx";
+import AssessmentTable from "../UserAssessments/components/AssessmentTable.jsx";
+
+
+import AssessmentTimer from "../Prototype/AssessmentTimer.jsx";
+import AssessmentTargetGroup from "../Prototype/AssessmentTargetGroup.jsx";
+import TargetGroup from "../Group/TargetGroup.jsx";
+import UserHome from "../Home/UserHome.jsx";
+import UserAPI from "../../libaries/APIs/UserAPI.jsx";
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 class App extends React.Component {
 
     constructor(props) {
         super(props);
 
     }
+<<<<<<< HEAD
     getChildContext(){
         return {
             root:this.root
         };
     }
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
     componentDidMount(){
 
     }
@@ -45,6 +68,7 @@ class App extends React.Component {
         return (
             <div className="" ref={(input) => { this.root = input; }}>
                 <Router history={browserHistory}>
+<<<<<<< HEAD
                     <Route path="/" component={GuestHome}>
                         <IndexRoute components={RegisterPage}/>
                     </Route>
@@ -55,12 +79,20 @@ class App extends React.Component {
                         <Route path="target-groups/import-emails" component={ImportEmails}/>
                         <Route path="assessments" component={AssessmentTable}/>
                         <Route path="participant-popup" component={AssessmentTargetGroup}/>
+=======
+                    <Route path="/" component={LoginPage}/>
+                    <Route path="/app" component={UserHome}>
+                        <Route path="home" component={Home}/>
+                        <Route path="target-groups" component={TargetGroups}/>
+                        <Route path="assessments" component={AssessmentTable}/>
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
                         <Route path="questions" component={Questions}/>
                         <Route path="target-group/:targetGroup" component={TargetGroup}/>
                         <Route path="prototype" component={Video}/>
                         <Route path="audioPrototype" component={Audio}/>
                         <Route path="assessmentTimer" component={AssessmentTimer}/>
                         <Route path="assessments/create" component={AssessmentNew} />
+<<<<<<< HEAD
                         <Route path="assessments/:assessmentID" component ={Assessment}>
                             <IndexRoute component={AssessmentHomePage}/>
                             <Route path="home" component={AssessmentHomePage}/>
@@ -71,6 +103,9 @@ class App extends React.Component {
                             <Route path="preview" component={PreviewAssessmentsPage}/>
                         </Route>
                         <Route path="profile" component={UserProfile} />
+=======
+                        <Route path="assessments/:assessmentID" component ={Assessment}/>
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
                     </Route>
 
                 </Router>

@@ -9,8 +9,11 @@
 
 .target-table-container table {
   margin: 0;
+<<<<<<< HEAD
 }
 .target-table-container tbody tr.selected .glyphicon {
     font-weight: bold;
 	color: #4CAF50;
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 }

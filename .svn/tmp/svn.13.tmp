@@ -1,0 +1,26 @@
+import React from 'react';
+import ReactDom from 'react-popup';
+import Questions from '../Questions/Questions.jsx';
+
+class AssessmentNew extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            <div>
+                <h3>New Assessment</h3>
+                <div className="pull-right">
+                    <a className="btn btn-default" href="/assessment" role="button"><i className="glyphicon glyphicon-time"/> Set Time Allowed </a>
+                    &nbsp; | &nbsp;
+                    <a className="btn btn-default" href="/assessment" role="button"><i className="glyphicon glyphicon-calendar"/> Set Expiration </a>
+                    &nbsp; | &nbsp;
+                    <div className="btn btn-default"><i className="glyphicon glyphicon-eye-open"/> Preview</div>
+                </div>
+                <Questions/>
+            </div>
+        );
+    }
+}
+
+export default AssessmentNew;

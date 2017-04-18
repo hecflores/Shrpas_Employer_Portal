@@ -1,9 +1,12 @@
 import React from 'react';
 import TargetGroupAPI from '../../libaries/APIs/TargetGroupAPI.jsx';
+<<<<<<< HEAD
 import BasicSideToolBox from 'components/Template/BasicSideToolBox.jsx';
 import PageContent from 'components/Template/PageContent.jsx';
 
 
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 
 class TargetGroups extends React.Component {
 
@@ -26,7 +29,11 @@ class TargetGroups extends React.Component {
         this.apiGet = TargetGroupAPI.instance.hook()
           .on("get-targetgroups",function(data){
                 $this.setState({
+<<<<<<< HEAD
                     groups: data.data.targetGroupsData
+=======
+                    groups: data.targetGroupsData
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
                 });
         }).on("create-new-targetgroup", function (data) {
 
@@ -55,11 +62,14 @@ class TargetGroups extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.apiGet.getListener().initiate("create-new-targetgroup",this.state.data);
+<<<<<<< HEAD
         this.setState({
             data: {
                 name: ''
             }
         });
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
     }
 
     render() {
@@ -74,6 +84,7 @@ class TargetGroups extends React.Component {
         });
 
         return (
+<<<<<<< HEAD
             <PageContent PageTitle="Target Groups">
                     <form onSubmit={this.handleSubmit} className="add-target-group-form">
                         <input type="text" value={this.state.data.name} onChange={this.handleChange} required="true" placeholder="Target Group Name" className="form-control"/>
@@ -90,6 +101,25 @@ class TargetGroups extends React.Component {
                         </table>
                     </div>
             </PageContent>
+=======
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" name="groupname" value={this.state.data.name} onChange={this.handleChange} required="true" placeholder="Target Group Name" className="form-control"/>
+                    <button type="submit" className="btn btn-default" >Add Target Group</button>
+                </form>
+                <br/><br/>
+                <div className="target-groups">
+                    <table id="targetGroupTable" className="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Target Groups</th>
+                            </tr>
+                            {$targetGroups}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         )
     }
 }

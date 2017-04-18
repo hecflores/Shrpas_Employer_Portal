@@ -1,0 +1,146 @@
+package hello.controllers;
+
+import hello.helpers.PatchClasses;
+import hello.models.Assessment;
+import hello.models.Question;
+import hello.repositories.AssessmentRepository;
+import hello.repositories.QuestionRepository;
+import hello.repositories.exceptions.AssessmentNotFoundException;
+import hello.repositories.exceptions.QuestionNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
+
+
+/**
+localhost:8080/assessments
+ */
+@RestController
+public class AssessmentController{
+
+
+
+    private AssessmentRepository assessmentRepository;
+
+    private QuestionRepository questionRepository;
+
+    @Autowired
+    public AssessmentController(AssessmentRepository assessmentRepository, QuestionRepository questionRepository){
+        this.assessmentRepository = assessmentRepository;
+        this.questionRepository = questionRepository;
+    }
+
+
+    /**
+        localhost:8080/rest/assessments/{id}/
+        Gets a Assessment
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/", method=RequestMethod.GET)
+    public ResponseEntity<Assessment> getAssessment(@PathVariable("id") int assessmentID) {
+        Assessment assessment = this.assessmentRepository.findOne(assessmentID);
+        if(assessment != null){
+            return new ResponseEntity<Assessment>(assessment, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<Assessment>(assessment, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    /**
+     * Adds an assessment
+     * @param assessment
+     * @return
+     *
+     * data: {
+     *     name: "Software Developer Assessment"
+     * }
+     *
+     * Assessment.getName() return "Software Develooper Assessment"
+     *
+     */
+    @RequestMapping(value = "/rest/assessments", method=RequestMethod.POST)
+    public ResponseEntity<Assessment> addAssessment(@RequestBody Assessment assessment){
+        Assessment newAssessment = assessmentRepository.save(assessment);
+        return new ResponseEntity<Assessment>(newAssessment, HttpStatus.OK);
+    }
+
+    /**
+     * Updates an assessment
+     * @param assessmentID
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}", method=RequestMethod.PATCH)
+    public ResponseEntity<Assessment> updateAssessment(@PathVariable("id") int assessmentID, @RequestBody Assessment assessment) throws Exception {
+        Assessment assessmentToBeUpdated = assessmentRepository.findOne(assessmentID);
+        if(assessmentToBeUpdated == null){
+            throw new AssessmentNotFoundException(assessmentID);
+        }
+        PatchClasses.PerformAPatch(assessmentToBeUpdated, assessment);
+        return new ResponseEntity<Assessment>(assessmentToBeUpdated, HttpStatus.OK);
+    }
+
+    /**
+     * Adds a question to an assessment
+     * @param assessmentID
+     * @param question
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/question", method=RequestMethod.POST)
+    public ResponseEntity<Assessment> addQuestion(@PathVariable("id") int assessmentID, @RequestBody Question question) throws Exception {
+        Assessment assessment = assessmentRepository.findOne(assessmentID);
+        if(assessment != null){
+            assessment = this.addQuestionToAssessment(assessment, question);
+            return new ResponseEntity<Assessment>(assessment, HttpStatus.OK);
+        } else {
+            throw new AssessmentNotFoundException(assessmentID);
+        }
+    }
+
+    /**
+     * Adds an existing question to an assessment
+     * @param assessmentID
+     * @param questionId
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/question/{questionId}", method=RequestMethod.POST)
+    public ResponseEntity<Assessment> addExistingQuestion(@PathVariable("id") int assessmentID, @PathVariable("questionId") int questionId){
+        Assessment assessment = assessmentRepository.findOne(assessmentID);
+        if(assessment != null){
+            Question question = questionRepository.findOne(questionId);
+            if(question != null){
+                assessment = this.addQuestionToAssessment(assessment, question);
+                return new ResponseEntity<Assessment>(assessment, HttpStatus.OK);
+            } else {
+                throw new QuestionNotFoundException(questionId);
+            }
+        } else {
+            throw new AssessmentNotFoundException(assessmentID);
+        }
+    }
+
+    /**
+     * Deletes an assessment
+     * @param assessmentID
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/delete", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> deleteAssessment(@PathVariable("id") int assessmentID){
+        Assessment assessment = assessmentRepository.findOne(assessmentID);
+        if (assessment != null) {
+            assessmentRepository.delete(assessment);
+            return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+        } else {
+            throw new AssessmentNotFoundException(assessmentID);
+        }
+    }
+
+    private Assessment addQuestionToAssessment(Assessment assessment, Question question){
+        Set<Question> questionSet = assessment.getQuestionSet();
+        questionSet.add(question);
+        assessment.setQuestionSet(questionSet);
+        return this.assessmentRepository.save(assessment);
+    }
+
+}

@@ -1,0 +1,56 @@
+import APIListener from "./APIListener.jsx";
+
+class AssessmentAPI extends APIListener{
+
+
+    constructor()
+    {
+        super();
+        var $this=this;
+
+        /*******************************************************************/
+        this.addModule("create-new-assessment",function(data,done){
+            $this.AlaxCall({
+                url: "/rest/assessments",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(data)
+            },function (data) {
+                done({
+                    url:"/app/assessments/" + data.id
+                });
+            });
+        });
+
+        /*******************************************************************/
+        this.addModule("add-question-to-assessment",function(data,done){
+            $this.AlaxCall({
+                url: "/rest/assessments/" + data.assessmentID + "/question",
+                method: "POST",
+                contentType: "application/json",
+                data: json.stringify(data)
+            },function (data) {
+                 done({success:true});
+            });
+
+        });
+    }
+
+
+
+    createNewAssessmentAndRedirect(assessmentData){
+        this.initiate("create-new-assessment",assessmentData);
+    }
+
+    /**
+     * @function add
+     * @param assessmentID
+     * @param questionData
+     */
+    addNewQuestionToAssessment(assessmentID, questionData){
+        this.initiate("add-question-to-assessment",$.extend(questionData,{assessmentID:assessmentID}));
+    }
+}
+AssessmentAPI.instance=new AssessmentAPI();
+
+export default AssessmentAPI;

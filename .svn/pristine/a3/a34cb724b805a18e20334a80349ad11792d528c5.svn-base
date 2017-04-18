@@ -1,0 +1,35 @@
+import React from 'react';
+import $ from 'jquery';
+import Timer from 'react.timer';
+
+class AssessmentTimer extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            is_timed : true,
+            amount_time_sec : 0
+        };
+        this.StoreTime = this.StoreTime.bind(this);
+        this.buildContent = this.buildContent2().bind(this);
+    }
+
+    buildContent2(){
+        return {
+            content:JSON.stringify(this.state)
+        };
+    }
+
+    StoreTime(){
+        let timerParts = {hours: 0, minutes : 0, seconds : 0, isTimed : {true : false}};
+    }
+
+    render(){
+        return(
+            <div>
+                Based Timer
+            </div>
+        );
+    }
+}
+
+export default AssessmentTimer;

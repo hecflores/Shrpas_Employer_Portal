@@ -658,6 +658,7 @@ body,html{
     left:0px;
     top:110%;
     text-align:center;
+<<<<<<< HEAD
 }
 
 
@@ -1239,4 +1240,6 @@ tr.target-group .name{
 .container-for-new-or-existing .existing-question-container .add-existing-question-btn{
     color:#b7b7b7;
     cursor:not-allowed;
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 }

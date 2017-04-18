@@ -1,0 +1,35 @@
+/* If you need any more imports they go here */
+import Questions from "../../Questions/Questions.jsx";
+
+/* If you need other components they go here */
+class AdminReview extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state={assessment:{}};
+    }
+    componentDidMount(){
+        var $this=this;
+
+      //Not Made yet but in progress
+      //AssessmentAPI.hookToAssessment(this.props.assessmentID,function(assessment){
+      //      $this.setState({assessment:assessment});
+      //);
+      
+      //Do this for now
+      $.get("/rest/assessments/"+this.props.assessmentID+"/",{"_":$.now()},function(data)
+      {        
+      data.questions=data.questionSet;
+      $this.setState({assessment:data});
+      });
+    }
+    render() {
+        return (
+            <div>
+                {/* Here you put the extra details for assessment  */}
+                <Questions questions={this.state.assessment.questions}/>
+                {/* Here you put buttons to submit assessment  */}
+            </div>
+        )
+    }
+}

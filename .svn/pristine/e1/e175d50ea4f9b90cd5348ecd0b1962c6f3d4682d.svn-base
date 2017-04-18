@@ -1,0 +1,52 @@
+import React from "react";
+import {Router, Route, browserHistory} from "react-router";
+import Home from "../Home/Home.jsx";
+import Questions from "../Questions/Questions.jsx";
+import Video from "../Prototype/Video.jsx";
+import Audio from "../Prototype/Audio.jsx";
+import Assessment from "../Assessment/Assessments.jsx";
+import AssessmentNew from "../Assessment/AssessmentNew.jsx";
+import TargetGroups from "../TargetGroup/TargetGroups.jsx";
+import LoginPage from "../UserLogin/LoginPage.jsx";
+import AssessmentTable from "../UserAssessments/components/AssessmentTable.jsx";
+
+
+import AssessmentTimer from "../Prototype/AssessmentTimer.jsx";
+import AssessmentTargetGroup from "../Prototype/AssessmentTargetGroup.jsx";
+import UserHome from "../Home/UserHome.jsx";
+import UserAPI from "../../libaries/APIs/UserAPI.jsx";
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+    }
+    componentDidMount(){
+
+    }
+    render() {
+        return (
+            <div className="">
+                <Router history={browserHistory}>
+                    <Route path="/" component={LoginPage}/>
+                    <Route path="/app" component={UserHome}>
+                        <Route path="home" component={Home}/>
+                        <Route path="target-groups" component={TargetGroups}/>
+                        <Route path="assessments" component={AssessmentTable}/>
+                        <Route path="questions" component={Questions}/>
+                        <Route path="target-group" component={AssessmentTargetGroup}/>
+                        <Route path="prototype" component={Video}/>
+                        <Route path="audioPrototype" component={Audio}/>
+                        <Route path="assessmentTimer" component={AssessmentTimer}/>
+                        <Route path="assessments/create" component={AssessmentNew} />
+                        <Route path="assessments/:assessmentID" component ={Assessment}/>
+                    </Route>
+
+                </Router>
+            </div>
+
+        )
+    }
+}
+
+export default App;

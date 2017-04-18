@@ -14,14 +14,23 @@ class AssessmentAPI extends APIListener{
                 url: "/rest/assessments",
                 method: "POST",
                 contentType: "application/json",
+<<<<<<< HEAD
                 data: JSON.stringify(data),
                 cache:false
             },function (data) {
                 done(data);
+=======
+                data: JSON.stringify(data)
+            },function (data) {
+                done({
+                    url:"/app/assessments/" + data.id
+                });
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
             });
         });
 
         /*******************************************************************/
+<<<<<<< HEAD
         this.addModule("add-question-to-assessment",function(data,done)
         {
             /***************************************************************/
@@ -32,10 +41,14 @@ class AssessmentAPI extends APIListener{
             }
 
             /***************************************************************/
+=======
+        this.addModule("add-question-to-assessment",function(data,done){
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
             $this.AjaxCall({
                 url: "/rest/assessments/" + data.assessmentID + "/question",
                 method: "POST",
                 contentType: "application/json",
+<<<<<<< HEAD
                 data: JSON.stringify(data),
                 cache:false
             },function (output) {
@@ -46,11 +59,20 @@ class AssessmentAPI extends APIListener{
         });
 
         /*******************************************************************/
+=======
+                data: JSON.stringify(data)
+            },function (data) {
+                 done({success:true});
+            });
+
+        });
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
         this.addModule("save-assessment-assessment",function(data,done){
             $this.AjaxCall({
                 url: "/rest/assessments/" + data.assessmentID + "",
                 method: "PATCH",
                 contentType: "application/json",
+<<<<<<< HEAD
                 data: JSON.stringify(data),
                 cache:false
             },function () {
@@ -89,6 +111,14 @@ class AssessmentAPI extends APIListener{
                 done({Assessments:data});
             });
         });
+=======
+                data: JSON.stringify(data.data)
+            },function (data) {
+                done({success:true});
+            });
+
+        });
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
     }
 
 

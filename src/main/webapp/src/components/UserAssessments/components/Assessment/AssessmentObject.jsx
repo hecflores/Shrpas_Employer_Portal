@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './Header.jsx';
 import Body from './Body.jsx';
 
+<<<<<<< HEAD
 
 class AssessmentObject extends React.Component {
     constructor(props) {
@@ -36,4 +37,25 @@ AssessmentObject.propTypes = {
     obj: React.PropTypes.object,
     onSelect:React.PropTypes.func
 };
+=======
+class AssessmentObject extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+       
+        };
+      
+    }
+
+  render(){
+    return (
+      <div>
+        <Header />
+        <Body title={this.props.title}/>
+      </div>
+    );
+  }
+}
+
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 export default AssessmentObject;

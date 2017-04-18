@@ -1,0 +1,72 @@
+import React from 'react';
+import ReactDom from 'react-popup';
+import Questions from '../Questions/Questions.jsx';
+<<<<<<< .mine
+import Modal from 'react-modal';
+
+=======
+import Modal from 'react-modal';
+>>>>>>> .r353
+class AssessmentNew extends React.Component{
+    constructor(props){
+        super(props);
+<<<<<<< .mine
+        this.state={};
+    }
+    update(){
+        var $this=this;
+        if(typeof this.state.id == "undefined"){
+            $.ajax({
+                url:"/rest/assessments",
+                method:"POST",
+                contentType:"application/json",
+                data:JSON.stringify(this.state)}).done(function(data){
+                $this.setState(data);
+            });
+        }
+        else
+        {
+            $.ajax({
+                url:"/rest/assessments/"+this.state.id,
+                method:"PATCH",
+                contentType:"application/json",
+                data:JSON.stringify(this.state)}).done(function(data){
+                $this.setState(data);
+            });
+        }
+
+    }
+    componentDidMount() {
+        this.update();
+=======
+        this.state = {
+
+        }
+>>>>>>> .r353
+    }
+    render(){
+
+        return (
+            <div>
+                <div className="assessmentView">
+                    <h3>New Assessment</h3>
+                    <div className="pull-right">
+                        <a className="btn btn-default" href="/assessment" role="button"><i className="glyphicon glyphicon-time"/> Set Time Allowed </a>
+                        &nbsp; | &nbsp;
+                        <a className="btn btn-default" href="/assessment" role="button"><i className="glyphicon glyphicon-calendar"/> Set Expiration </a>
+                        &nbsp; | &nbsp;
+                        <div className="btn btn-default"><i className="glyphicon glyphicon-eye-open"/> Preview</div>
+                    </div>
+                    <Questions/>
+                </div>
+                <Modal isOpen={this.state.name==null || typeof this.state.name=="undefined"} contentLabel="SetNameModal">
+                    <input onChange={(e)=>this.setState({name:e.target.value})} type="text" className="form-control assessment-create-set-name-input" placeholder="Enter the Name" value={this.state.name}></input>
+                    <input className="assessment-create-submit-name-btn" type="submit" onClick={()=>this.update()}/>
+                </Modal>
+            </div>
+        );
+    }
+
+}
+
+export default AssessmentNew;

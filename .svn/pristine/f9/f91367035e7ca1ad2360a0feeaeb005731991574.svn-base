@@ -1,0 +1,39 @@
+import React from 'react';
+
+class TargetGroup extends React.Component {
+
+    constructor(props){
+        super(props);
+        var $this=this;
+        TargetGroupAPI.instance.on("get-target-groups",function(data){
+            $this.groups=data;
+        });
+    }
+    componentDidMount()
+    {
+        TargetGroupAPI.instance.initiate("get-target-groups");
+    }
+    render(){
+        const $targetGroups=this.state.group.participants.map(function(item){
+            return (<tr className="target-group">
+                        <td className="name">{item.name}</td>
+                        <td className="email">{item.email}</td>
+                        <td className="phone">{item.phone}</td>
+                    </tr>);
+        });
+        return (
+            <div className="target-group">
+                <h2>{this.state.group.name}</h2>
+                <table className="table">
+                    <thead>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </thead>
+                    <tbody>
+                    {$targetGroups}
+                    </tbody>
+                </table></div>)
+        }
+
+}

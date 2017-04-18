@@ -82,7 +82,11 @@ public class ParticipantControllerTest {
 
     @Test
     public void addParticipantReturnsCreatedStatusAndParticipantJSON() throws Exception {
+<<<<<<< HEAD
         MockHttpServletRequestBuilder postBuilder = post("/rest/participant")
+=======
+        MockHttpServletRequestBuilder postBuilder = post("/rest/participants")
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
                 .contentType(contentType)
                 .content(createParticipantInJson("aname", "anemail", "aphone"));
 
@@ -94,7 +98,11 @@ public class ParticipantControllerTest {
 
     @Test
     public void addParticipantAddsNewParticipant() throws Exception {
+<<<<<<< HEAD
         MockHttpServletRequestBuilder postBuilder = post("/rest/participant")
+=======
+        MockHttpServletRequestBuilder postBuilder = post("/rest/participants")
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
                 .contentType(contentType)
                 .content(createParticipantInJson("aname", "anemail", "aphone"));
         mockMvc.perform(postBuilder);
@@ -103,6 +111,7 @@ public class ParticipantControllerTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void addParticipantsAddsListOfParticipants() throws Exception {
 
         MockHttpServletRequestBuilder postBuilder = post("/rest/participants")
@@ -115,6 +124,8 @@ public class ParticipantControllerTest {
     }
 
     @Test
+=======
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
     public void updateParticipantShouldUpdateParticipantAndReturnOK() throws Exception {
         MockHttpServletRequestBuilder putBuilder = put("/rest/participants/" + participant.getId())
                 .contentType(contentType)

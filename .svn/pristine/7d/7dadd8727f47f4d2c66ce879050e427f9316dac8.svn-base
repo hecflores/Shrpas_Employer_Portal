@@ -1,0 +1,123 @@
+package hello.controllers;
+
+import hello.helpers.PatchClasses;
+import hello.services.AssessmentService;
+import javassist.tools.rmi.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.core.util.Methods;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import hello.models.*;
+import hello.repositories.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.net.URI;
+import java.util.List;
+import java.util.Set;
+
+
+/**
+localhost:8080/assessments
+ */
+@RestController
+public class AssessmentController{
+
+    private AssessmentService assessmentService;
+
+    @Autowired
+    public AssessmentController(AssessmentService assessmentService){
+        this.assessmentService = assessmentService;
+    }
+
+
+    /**
+        localhost:8080/rest/assessments/{id}/
+        Gets a Assessment
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/", method=RequestMethod.GET)
+    public ResponseEntity<Assessment> getAssessment(@PathVariable("id") int assessmentID) throws ObjectNotFoundException {
+        Assessment assessment = this.getAssessmentService().getAssessmentByID(assessmentID);
+        if(assessment != null) {
+            return new ResponseEntity<Assessment>(assessment, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Assessment>((Assessment) null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    /**
+     * Adds an assessment
+     * @param assessment
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments", method=RequestMethod.POST)
+    public ResponseEntity<Assessment> addAssessment(@RequestBody Assessment assessment){
+        assessment = this.getAssessmentService().saveAssessment(assessment);
+        return new ResponseEntity<Assessment>(assessment, HttpStatus.OK);
+    }
+    /**
+     * Updates an assessment
+     * @param assessmentID
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}", method=RequestMethod.PATCH)
+    public ResponseEntity<Assessment> updateAssessment(@PathVariable("id") int assessmentID, @RequestBody Assessment assessment) throws Exception {
+        Assessment assessmentUpdating = this.getAssessmentService().updateAssessment(assessmentID, assessment);
+        return new ResponseEntity<Assessment>(assessmentUpdating, HttpStatus.OK);
+    }
+
+    /**
+     * Adds a question to an assessment
+     * @param assessmentID
+     * @param question
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/question", method=RequestMethod.POST)
+    public ResponseEntity<Assessment> addQuestion(@PathVariable("id") int assessmentID, @RequestBody Question question){
+        Assessment assessment = this.getAssessmentService().addQuestionToAssessment(assessmentID, question);
+        if(assessment != null){
+            return new ResponseEntity<Assessment>(assessment, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Assessment>(assessment, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    /**
+     * Adds an existing question to an assessment
+     * @param assessmentID
+     * @param questionId
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/question/{questionId}", method=RequestMethod.POST)
+    public ResponseEntity<Assessment> addExistingQuestion(@PathVariable("id") int assessmentID, @PathVariable("questionId") int questionId){
+        Assessment assessment = this.getAssessmentService().addQuestionToAssessment(assessmentID, questionId);
+        if(assessment != null){
+            return new ResponseEntity<Assessment>(assessment, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<Assessment>((Assessment) null, HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    /**
+     * Deletes an assessment
+     * @param assessmentID
+     * @return
+     */
+    @RequestMapping(value = "/rest/assessments/{id}/delete", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> deleteAssessment(@PathVariable("id") int assessmentID){
+        if (this.getAssessmentService().deleteAssessment(assessmentID)) {
+            return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    private AssessmentService getAssessmentService(){
+        return this.assessmentService;
+    }
+}
