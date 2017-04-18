@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>TargetGroupController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SHRPAS_Project</a> &gt; <a href="index.source.html" class="el_package">hello.controllers</a> &gt; <span class="el_source">TargetGroupController.java</span></div><h1>TargetGroupController.java</h1><pre class="source lang-java linenums">package hello.controllers;
+
+import hello.helpers.PatchClasses;
+import hello.models.Assessment;
+import hello.models.Participant;
+import hello.models.TargetGroup;
+import hello.models.User;
+import hello.repositories.AssessmentRepository;
+import hello.repositories.ParticipantRepository;
+import hello.repositories.TargetGroupRepository;
+import hello.repositories.exceptions.AssessmentNotFoundException;
+import hello.repositories.exceptions.ParticipantNotFoundException;
+import hello.repositories.exceptions.TargetGroupNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@RestController
+public class TargetGroupController {
+
+    private TargetGroupRepository targetGroupRepository;
+    private ParticipantRepository participantRepository;
+    private AssessmentRepository assessmentRepository;
+
+    @Autowired
+<span class="fc" id="L33">    public TargetGroupController(TargetGroupRepository targetGroupRepository, ParticipantRepository participantRepository, AssessmentRepository assessmentRepository) {</span>
+<span class="fc" id="L34">        this.targetGroupRepository = targetGroupRepository;</span>
+<span class="fc" id="L35">        this.participantRepository = participantRepository;</span>
+<span class="fc" id="L36">        this.assessmentRepository = assessmentRepository;</span>
+<span class="fc" id="L37">    }</span>
+
+
+    /**
+     * Gets all the Target Groups
+     * @return The Target Groups
+     * *NOTE* Will only deal with Target Groups with the Signed in User
+     */
+    @RequestMapping(value = &quot;/rest/targetGroups&quot;, method= RequestMethod.GET)
+    public ArrayList&lt;TargetGroup&gt; getTargetGroups() throws Exception
+    {
+<span class="fc" id="L48">        ArrayList&lt;TargetGroup&gt; targetGroups = new ArrayList&lt;&gt;();</span>
+
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        for (TargetGroup targetGroup : targetGroupRepository.findAll(AuthenticationController.GetUser()))</span>
+        {
+<span class="nc" id="L52">            targetGroups.add(targetGroup);</span>
+<span class="nc" id="L53">        }</span>
+
+<span class="fc" id="L55">        return targetGroups;</span>
+    }
+
+    /**
+     * Gets the info for one Target Group
+     * @param id The Id of the Target Grou[
+     * @return The Target Group
+     * *NOTE* Will only deal with Target Groups with the Signed in User
+     */
+    @RequestMapping(value = &quot;/rest/targetGroups/{id}&quot;, method = RequestMethod.GET)
+    public ResponseEntity&lt;TargetGroup&gt; getTargetGroup(@PathVariable(&quot;id&quot;) int id) {
+<span class="fc" id="L66">        TargetGroup targetGroup = targetGroupRepository.findOne(id);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        HttpStatus httpStatus = (targetGroup == null) ? HttpStatus.NOT_FOUND : HttpStatus.OK;</span>
+<span class="fc" id="L68">        return new ResponseEntity&lt;&gt;(targetGroup, httpStatus);</span>
+    }
+
+    /**
+     * Adds a target group
+     * @param targetGroup The Info for the Target Group
+     * @return The Target Group Created
+     */
+    @RequestMapping(value = &quot;/rest/targetGroups&quot;, method = RequestMethod.POST)
+    public ResponseEntity&lt;TargetGroup&gt; addTargetGroup(HttpSession session,@RequestBody TargetGroup targetGroup) throws Exception{
+<span class="fc" id="L78">        TargetGroup newTargetGroup = targetGroupRepository.save(targetGroup);</span>
+<span class="fc" id="L79">        newTargetGroup.setUsersSet(((new HashSet&lt;User&gt;() {})));</span>
+
+        /*******************************************************************/
+        /* Add the User to the Target Group                                */
+        /*******************************************************************/
+        try
+        {
+<span class="fc" id="L86">            newTargetGroup=this.addUserToTargetGroup(newTargetGroup,AuthenticationController.GetUser(session));</span>
+        }
+<span class="nc" id="L88">        catch (Exception e)</span>
+        {
+<span class="nc" id="L90">            targetGroupRepository.delete(newTargetGroup); //Roll Back Change</span>
+<span class="nc" id="L91">            throw e;</span>
+<span class="fc" id="L92">        }</span>
+
+        /*******************************************************************/
+<span class="fc" id="L95">        return new ResponseEntity&lt;&gt;(newTargetGroup, HttpStatus.CREATED);</span>
+    }
+
+    /**
+     * Updates a target group
+     * @param id the Id of the Target Group
+     * @param targetGroup The Target Group Info updating
+     * @return The Target Group
+     */
+    @RequestMapping(value = &quot;/rest/targetGroups/{id}&quot;, method = RequestMethod.PUT)
+    public ResponseEntity&lt;TargetGroup&gt; updateTargetGroup(@PathVariable(&quot;id&quot;) int id, @RequestBody TargetGroup targetGroup) throws Exception {
+<span class="fc" id="L106">        TargetGroup targetGroupToUpdate = targetGroupRepository.findOne(id);</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        if (targetGroupToUpdate == null)</span>
+<span class="fc" id="L108">            throw new TargetGroupNotFoundException(id);</span>
+
+<span class="fc" id="L110">        PatchClasses.PerformAPatch(targetGroupToUpdate,targetGroup); //Will do all below</span>
+        //targetGroupToUpdate.setName(targetGroup.getName());
+        //targetGroupToUpdate.setAssessment(targetGroup.getAssessment());
+        //targetGroupToUpdate.setParticipantSet(targetGroup.getParticipantSet());
+<span class="fc" id="L114">        targetGroupRepository.save(targetGroupToUpdate);</span>
+
+<span class="fc" id="L116">        return new ResponseEntity&lt;&gt;(targetGroupToUpdate, HttpStatus.OK);</span>
+    }
+
+    /**
+     * Deletes a target group
+     * @param id the Id of the Target Group
+     * @return The Target Group
+     */
+    @RequestMapping(value = &quot;rest/targetGroups/{id}&quot;, method = RequestMethod.DELETE)
+    public ResponseEntity&lt;Boolean&gt; deleteTargetGroup(@PathVariable(&quot;id&quot;) int id) throws Exception {
+<span class="fc" id="L126">        TargetGroup targetGroup = targetGroupRepository.findOne(id);</span>
+
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (targetGroup == null)</span>
+<span class="fc" id="L129">            throw new TargetGroupNotFoundException(id);</span>
+
+<span class="fc" id="L131">        targetGroupRepository.delete(targetGroup);</span>
+
+<span class="fc" id="L133">        return new ResponseEntity&lt;&gt;(Boolean.TRUE, HttpStatus.OK);</span>
+    }
+
+    /**
+     * Gets all participants in target group
+     * @param id the Id of the Target Group
+     * @return List of Participants
+     */
+    @RequestMapping(value = &quot;rest/targetGroups/{id}/participants&quot;, method = RequestMethod.GET)
+    public ArrayList&lt;Participant&gt; getParticipantsInTargetGroup(@PathVariable(&quot;id&quot;) int id) throws Exception {
+<span class="fc" id="L143">        TargetGroup targetGroup = targetGroupRepository.findOne(id);</span>
+
+<span class="fc bfc" id="L145" title="All 2 branches covered.">        if (targetGroup == null)</span>
+<span class="fc" id="L146">            throw new TargetGroupNotFoundException(id);</span>
+
+<span class="fc" id="L148">        ArrayList&lt;Participant&gt; participantList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L149">        participantList.addAll(targetGroup.getParticipantSet());</span>
+
+<span class="fc" id="L151">        return participantList;</span>
+    }
+
+    /**
+     * Adds a list of participants to target group
+     * @param id The Id of the Target Group
+     * @param participants The Participants
+     * @return The Target Group
+     */
+    @RequestMapping(value = &quot;rest/targetGroups/{id}/participantList&quot;, method = RequestMethod.POST)
+    public ResponseEntity&lt;TargetGroup&gt; addNewParticipantsToTargetGroup(@PathVariable(&quot;id&quot;) int id, @RequestBody List&lt;Participant&gt; participants) throws Exception {
+<span class="fc" id="L162">        TargetGroup targetGroup = targetGroupRepository.findOne(id);</span>
+
+<span class="fc bfc" id="L164" title="All 2 branches covered.">        if (targetGroup == null)</span>
+<span class="fc" id="L165">            throw new TargetGroupNotFoundException(id);</span>
+
+<span class="fc" id="L167">        targetGroup = addParticipantsToTargetGroup(targetGroup, participants);</span>
+<span class="fc" id="L168">        return new ResponseEntity&lt;&gt;(targetGroup, HttpStatus.OK);</span>
+    }
+    /**
+     * Adds new participant to target group
+     * @param id The Id of the Target Group
+     * @param participant The Participant
+     * @return The Target Group
+     */
+    @RequestMapping(value = &quot;rest/targetGroups/{id}/participants&quot;, method = RequestMethod.POST)
+    public ResponseEntity&lt;TargetGroup&gt; addNewParticipantToTargetGroup(@PathVariable(&quot;id&quot;) int id, @RequestBody Participant participant) throws Exception {
+<span class="fc" id="L178">        TargetGroup targetGroup = targetGroupRepository.findOne(id);</span>
+
+<span class="fc bfc" id="L180" title="All 2 branches covered.">        if (targetGroup == null)</span>
+<span class="fc" id="L181">            throw new TargetGroupNotFoundException(id);</span>
+
+<span class="fc" id="L183">        targetGroup = addParticipantToTargetGroup(targetGroup, participant);</span>
+<span class="fc" id="L184">        return new ResponseEntity&lt;&gt;(targetGroup, HttpStatus.OK);</span>
+    }
+
+    /**
+     * Adds an existing participant to target group
+     * @param targetGroupId The Id of the Target Group
+     * @param participantId The Id of the Participant
+     * @return The Target Group
+     */
+    @RequestMapping(value = &quot;rest/targetGroups/{id}/participants/{participantId}&quot;, method = RequestMethod.POST)
+    public ResponseEntity&lt;TargetGroup&gt; addExistingParticipantToTargetGroup(@PathVariable(&quot;id&quot;) int targetGroupId, @PathVariable(&quot;participantId&quot;) int participantId) throws Exception {
+<span class="fc" id="L195">        TargetGroup targetGroup = targetGroupRepository.findOne(targetGroupId);</span>
+
+<span class="fc bfc" id="L197" title="All 2 branches covered.">        if (targetGroup == null)</span>
+<span class="fc" id="L198">            throw new TargetGroupNotFoundException(targetGroupId);</span>
+
+<span class="fc" id="L200">        Participant participant = participantRepository.findOne(participantId);</span>
+
+<span class="fc bfc" id="L202" title="All 2 branches covered.">        if (participant == null)</span>
+<span class="fc" id="L203">            throw new ParticipantNotFoundException(participantId);</span>
+
+<span class="fc" id="L205">        targetGroup = addParticipantToTargetGroup(targetGroup, participant);</span>
+<span class="fc" id="L206">        return new ResponseEntity&lt;&gt;(targetGroup, HttpStatus.OK);</span>
+    }
+
+    /**
+     * Removes a participant from target group
+     * @param targetGroupId The Id of the Target Group
+     * @param participantId The Id of the Participant
+     * @return The Target Group
+     */
+    @RequestMapping(value = &quot;rest/targetGroups/{id}/participants/{participantId}&quot;, method = RequestMethod.PUT)
+    public ResponseEntity&lt;TargetGroup&gt; removeParticipantFromTargetGroup(@PathVariable(&quot;id&quot;) int targetGroupId, @PathVariable(&quot;participantId&quot;) int participantId) throws Exception {
+<span class="fc" id="L217">        TargetGroup targetGroup = targetGroupRepository.findOne(targetGroupId);</span>
+
+<span class="fc bfc" id="L219" title="All 2 branches covered.">        if (targetGroup == null)</span>
+<span class="fc" id="L220">            throw new TargetGroupNotFoundException(targetGroupId);</span>
+
+<span class="fc" id="L222">        Participant participant = participantRepository.findOne(participantId);</span>
+
+<span class="fc bfc" id="L224" title="All 2 branches covered.">        if (participant == null)</span>
+<span class="fc" id="L225">            throw new ParticipantNotFoundException(participantId);</span>
+
+<span class="fc" id="L227">        Set&lt;Participant&gt; participantSet = targetGroup.getParticipantSet();</span>
+<span class="fc" id="L228">        participantSet.remove(participant);</span>
+<span class="fc" id="L229">        targetGroup.setParticipantSet(participantSet);</span>
+<span class="fc" id="L230">        targetGroup = targetGroupRepository.save(targetGroup);</span>
+
+<span class="fc" id="L232">        return new ResponseEntity&lt;&gt;(targetGroup, HttpStatus.OK);</span>
+    }
+
+    /**
+     * Adds an assessment to target group
+     * @param id The Id of the Target Group
+     * @param assessment The Content of a New Assessment
+     * @return The Target Group
+     */
+    @RequestMapping(value = &quot;rest/targetGroups/{id}/assessment&quot;, method = RequestMethod.POST)
+    public ResponseEntity&lt;TargetGroup&gt; addNewAssessmentToTargetGroup(@PathVariable(&quot;id&quot;) int id, @RequestBody Assessment assessment) throws Exception {
+<span class="fc" id="L243">        TargetGroup targetGroup = targetGroupRepository.findOne(id);</span>
+
+<span class="fc bfc" id="L245" title="All 2 branches covered.">        if (targetGroup == null)</span>
+<span class="fc" id="L246">            throw new TargetGroupNotFoundException(id);</span>
+
+<span class="fc" id="L248">        assessmentRepository.save(assessment);</span>
+<span class="fc" id="L249">        targetGroup = addAssessmentToTargetGroup(targetGroup, assessment);</span>
+<span class="fc" id="L250">        return new ResponseEntity&lt;&gt;(targetGroup, HttpStatus.OK);</span>
+    }
+
+    /**
+     * Adds an existing assessment to target group
+     * @param targetGroupId The Id of the Target Group
+     * @param assessmentId The Id of a The Assessment
+     * @return The Target Group
+     */
+    @RequestMapping(value = &quot;rest/targetGroups/{id}/assessment/{assessmentid}&quot;, method = RequestMethod.POST)
+    public ResponseEntity&lt;TargetGroup&gt; addExistingAssessmentToTargetGroup(@PathVariable(&quot;id&quot;) int targetGroupId, @PathVariable(&quot;assessmentid&quot;) int assessmentId) throws Exception {
+<span class="fc" id="L261">        TargetGroup targetGroup = targetGroupRepository.findOne(targetGroupId);</span>
+
+<span class="fc bfc" id="L263" title="All 2 branches covered.">        if (targetGroup == null)</span>
+<span class="fc" id="L264">            throw new TargetGroupNotFoundException(targetGroupId);</span>
+
+<span class="fc" id="L266">        Assessment assessment = assessmentRepository.findOne(assessmentId);</span>
+
+<span class="fc bfc" id="L268" title="All 2 branches covered.">        if (assessment == null)</span>
+<span class="fc" id="L269">            throw new AssessmentNotFoundException(assessmentId);</span>
+
+<span class="fc" id="L271">        targetGroup = addAssessmentToTargetGroup(targetGroup, assessment);</span>
+<span class="fc" id="L272">        return new ResponseEntity&lt;&gt;(targetGroup, HttpStatus.OK);</span>
+    }
+
+    private TargetGroup addParticipantToTargetGroup(TargetGroup targetGroup, Participant participant) {
+<span class="fc" id="L276">        Set&lt;Participant&gt; participantSet = targetGroup.getParticipantSet();</span>
+<span class="fc" id="L277">        participantSet.add(participant);</span>
+<span class="fc" id="L278">        targetGroup.setParticipantSet(participantSet);</span>
+
+<span class="fc" id="L280">        return targetGroupRepository.save(targetGroup);</span>
+    }
+    private TargetGroup addParticipantsToTargetGroup(TargetGroup targetGroup, List&lt;Participant&gt; participants) {
+<span class="fc" id="L283">        Set&lt;Participant&gt; participantSet = targetGroup.getParticipantSet();</span>
+<span class="fc bfc" id="L284" title="All 2 branches covered.">        for(Participant participant : participants){</span>
+<span class="fc" id="L285">            participantSet.add(participant);</span>
+<span class="fc" id="L286">        }</span>
+<span class="fc" id="L287">        targetGroup.setParticipantSet(participantSet);</span>
+
+<span class="fc" id="L289">        return targetGroupRepository.save(targetGroup);</span>
+    }
+
+    private TargetGroup addAssessmentToTargetGroup(TargetGroup targetGroup, Assessment assessment) {
+<span class="fc" id="L293">        targetGroup.setAssessment(assessment);</span>
+
+<span class="fc" id="L295">        return targetGroupRepository.save(targetGroup);</span>
+    }
+
+    /***********************************************************************/
+    private TargetGroup addUserToTargetGroup(TargetGroup targetGroup, User user)
+    {
+<span class="fc" id="L301">        Set&lt;User&gt; userSet = targetGroup.getUsersSet();</span>
+<span class="fc" id="L302">        userSet.add(user);</span>
+<span class="fc" id="L303">        targetGroup.setUsersSet(userSet);</span>
+<span class="fc" id="L304">        return this.targetGroupRepository.save(targetGroup);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

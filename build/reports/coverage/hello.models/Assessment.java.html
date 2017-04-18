@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Assessment.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SHRPAS_Project</a> &gt; <a href="index.source.html" class="el_package">hello.models</a> &gt; <span class="el_source">Assessment.java</span></div><h1>Assessment.java</h1><pre class="source lang-java linenums">package hello.models;
+
+import javax.persistence.*;
+import java.sql.Time;
+import java.util.*;
+
+@Entity
+@Table(name = &quot;assessment&quot;)
+public class Assessment {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column(name = &quot;name&quot;, nullable = true)
+    private String name;
+
+    @Column(name = &quot;subtitle&quot;, nullable = true)
+    private String subtitle;
+
+    @Column(name = &quot;allowed_time_sec&quot;, nullable = true)
+    private Integer allowed_time_sec;
+
+    @Column(name = &quot;istimed&quot;, nullable = true)
+    private boolean istimed;
+
+    @Column(name = &quot;expirationDate&quot;)
+    private Date expirationDate;
+
+    @Column(name = &quot;createdAt&quot;)
+    private Date createdAt;
+
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name=&quot;assessment_question&quot;, joinColumns=@JoinColumn(name=&quot;assessment_id&quot;),  inverseJoinColumns=@JoinColumn(name=&quot;question_id&quot;))
+    private Set&lt;Question&gt; questionSet;
+
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name=&quot;users_assessments&quot;, joinColumns=@JoinColumn(name=&quot;assessment_id&quot;), inverseJoinColumns=@JoinColumn(name=&quot;user_id&quot;))
+    private Set&lt;User&gt; usersSet;
+
+<span class="fc" id="L41">    public Assessment(){</span>
+<span class="fc" id="L42">        this.setAllowed_time_sec(100);</span>
+<span class="fc" id="L43">        this.setCreatedAt(new Date());</span>
+<span class="fc" id="L44">        this.setExpirationDate(new Date());</span>
+<span class="fc" id="L45">    }</span>
+    public Integer getId() {
+<span class="fc" id="L47">        return id;</span>
+    }
+
+    public void setId(Integer id) {
+<span class="fc" id="L51">        this.id = id;</span>
+<span class="fc" id="L52">    }</span>
+
+    public String getName() {
+<span class="fc" id="L55">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L59">        this.name = name;</span>
+<span class="fc" id="L60">    }</span>
+
+    public String getSubtitle() {
+<span class="fc" id="L63">        return subtitle;</span>
+    }
+
+    public void setSubtitle(String subtitle) {
+<span class="fc" id="L67">        this.subtitle = subtitle;</span>
+<span class="fc" id="L68">    }</span>
+
+    public Set&lt;Question&gt; getQuestionSet() {
+<span class="fc" id="L71">        return questionSet;</span>
+    }
+
+    public void setQuestionSet(Set&lt;Question&gt; questionSet) {
+<span class="fc" id="L75">        this.questionSet = questionSet;</span>
+<span class="fc" id="L76">    }</span>
+
+    public Integer getAllowed_time_sec() {
+<span class="fc" id="L79">        return allowed_time_sec;</span>
+    }
+
+    public void setAllowed_time_sec(Integer allowed_time_sec) {
+<span class="fc" id="L83">        this.allowed_time_sec = allowed_time_sec;</span>
+<span class="fc" id="L84">    }</span>
+
+    public boolean isIstimed() {
+<span class="fc" id="L87">        return istimed;</span>
+    }
+
+    public void setIstimed(boolean istimed) {
+<span class="fc" id="L91">        this.istimed = istimed;</span>
+<span class="fc" id="L92">    }</span>
+
+    public Date getExpirationDate()
+    {
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">        if(expirationDate==null){</span>
+<span class="nc" id="L97">            return new Date();</span>
+        }
+<span class="fc" id="L99">        return expirationDate;</span>
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        if(expirationDate==null){</span>
+<span class="nc" id="L105">            this.setExpirationDate(new Date());</span>
+        }
+<span class="fc" id="L107">        this.expirationDate = expirationDate;</span>
+<span class="fc" id="L108">    }</span>
+
+<span class="fc" id="L110">    public Set&lt;User&gt; getUsersSet() { return usersSet; }</span>
+
+    public void setUsersSet(Set&lt;User&gt; usersSet) {
+<span class="fc" id="L113">        this.usersSet = usersSet;</span>
+<span class="fc" id="L114">    }</span>
+
+    public Date getCreatedAt() {
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">        if(createdAt==null){</span>
+<span class="nc" id="L118">            return new Date();</span>
+        }
+<span class="fc" id="L120">        return createdAt;</span>
+    }
+
+    public void setCreatedAt(Date createdAt) {
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">        if(createdAt==null){</span>
+<span class="nc" id="L125">            this.setCreatedAt(new Date());</span>
+        }
+<span class="fc" id="L127">        this.createdAt = createdAt;</span>
+<span class="fc" id="L128">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
