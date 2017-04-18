@@ -19,8 +19,13 @@ public class TargetGroup {
     @JoinTable(name="users_targetgroups", joinColumns=@JoinColumn(name="group_id"), inverseJoinColumns=@JoinColumn(name="user_id"))
     private Set<User> usersSet;
 
+<<<<<<< HEAD
+//    @ManyToOne
+//    private Assessment assessment;
+=======
     @ManyToOne
     private Assessment assessment;
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 
     public Integer getId() {
         return id;
@@ -50,6 +55,15 @@ public class TargetGroup {
         this.participantSet = participantSet;
     }
 
+<<<<<<< HEAD
+//    public Assessment getAssessment() {
+//        return assessment;
+//    }
+//
+//    public void setAssessment(Assessment assessment) {
+//        this.assessment = assessment;
+//    }
+=======
     public Assessment getAssessment() {
         return assessment;
     }
@@ -57,6 +71,7 @@ public class TargetGroup {
     public void setAssessment(Assessment assessment) {
         this.assessment = assessment;
     }
+>>>>>>> 9f5ffe0f76db53075822042f1afeb7248f2b295e
 
 
 }
