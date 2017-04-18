@@ -31,8 +31,8 @@ public class RoleRepositoryTest {
     @Before
     public void setup() {
         role = new Role();
-        role.setRoleId("Admin");
-        role.setDescription("Administrator");
+        role.setId(1);
+        role.setRole("Administrator");
         roleRepository.save(role);
     }
 
@@ -40,13 +40,14 @@ public class RoleRepositoryTest {
     public void testRoleRepository1() {
 
         assertEquals(1, roleRepository.count());
-        assertEquals(role.getRoleId(), "Admin");
-        assertEquals(role.getDescription(), "Administrator");
+        assertEquals(role.getId(), 1);
+        assertEquals(role.getRole(), "Administrator");
     }
 
     @Test
     public void testRoleRepository2() {
-        Role role1 = new Role("Participant");
+        Role role1 = new Role();
+        role1.setRole("Participant");
 
         roleRepository.save(role1);
         assertEquals(2, roleRepository.count());

@@ -1,77 +1,87 @@
 package hello.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import groovy.transform.ToString;
+
 import javax.persistence.*;
 
+import java.io.Serializable;
+
 @Entity(name = "User")
-@Table(name = "User")
-public class User {
+@Table(name = "user")
+@ToString(excludes = "password")
+public class User implements Serializable{
 
+//    private final static PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    /***********************************************************************/
     @Id
-    private String UserID;
-    private String Title;
-    private String Organization;
-    private String Password;
-    private String Email;
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    private String title;
+    private String organization;
+    private String email;
 
     @ManyToOne
-    private Role Role;
+    private Role role;
 
-    public User() {
+    public User(){
+
     }
 
-    /***********************************************************************/
-    public String getUserID() {
-        return UserID;
+    public User(String username){
+        this.username = username;
     }
 
-    public void setUserID(String userID) {
-        UserID = userID;
+    public String getUsername() {
+        return username;
     }
 
-    /***********************************************************************/
-    public String getTitle() {
-        return Title;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setTitle(String title) {
-        Title = title;
-    }
-
-    /***********************************************************************/
-    public String getOrganization() {
-        return Organization;
-    }
-
-    public void setOrganization(String organization) {
-        Organization = organization;
-    }
-
-    /***********************************************************************/
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
-    /***********************************************************************/
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
-    /***********************************************************************/
-    public hello.models.Role getRole() {
-        return Role;
+    public String getTitle() {
+        return title;
     }
 
-    public void setRole(hello.models.Role role) {
-        Role = role;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
     }
 }

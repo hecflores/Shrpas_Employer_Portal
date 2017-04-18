@@ -18,11 +18,11 @@ public class StorageProperties {
     }
 
     public void setLocation(String location){
-        if(location == "video")
+        if(location == "video") // TODO Mat, String.equals....
         {
             this.location = this.defaultDir + videoDir;
         }
-        else if(location == "audio")
+        else if(location == "audio")  // TODO Mat, String.equals....
         {
             this.location = this.defaultDir + audioDir;
         }

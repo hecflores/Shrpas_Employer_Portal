@@ -1,6 +1,7 @@
 // Karma configuration
 // Generated on Wed Feb 08 2017 00:24:37 GMT-0600 (Central Standard Time)
-
+var path = require("path");
+const debug=function(){};
 module.exports = function(config) {
   config.set({
 
@@ -18,6 +19,7 @@ module.exports = function(config) {
     files: [
         'node_modules/angular/angular.js',
         'node_modules/angular-mocks/angular-mocks.js',
+        'static/js/Debugger.js',
         'tests.webpack.js', //just load this file
       //'test-app.js',
         //'src/test/*.spec.js',
@@ -25,6 +27,11 @@ module.exports = function(config) {
 
     ],
       webpack: { //kind of a copy of your webpack config
+          resolve: {
+              root: [
+                  path.resolve('./src')
+              ]
+          },
           devtool: 'inline-source-map', //just do inline source maps instead of the default
           module: {
 
@@ -44,6 +51,10 @@ module.exports = function(config) {
                        test: /\.js|\.jsx$/,
                        loader: 'babel-loader'
                    },
+                  {
+                      test: /\.(png|jpg)$/,
+                      loader: 'url-loader?limit=25000'
+                  }
               ],
               postLoaders: [ { //delays coverage til after tests are run, fixing transpiled source coverage error
                   test: /\.js|\.jsx$/,
@@ -76,7 +87,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
       preprocessors : {
            'src/components/Template/tests/App.jsx': ['coverage'],
-          'src/test/*.spec.js':['sourcemap','coverage'],
+           'src/test/*.spec.js':['sourcemap','coverage'],
           'tests.webpack.js': [ 'webpack', 'sourcemap' ] //preprocess with webpack and our sourcemap loader
       },
 

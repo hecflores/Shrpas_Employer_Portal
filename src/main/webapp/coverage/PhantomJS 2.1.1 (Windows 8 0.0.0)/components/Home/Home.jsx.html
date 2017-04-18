@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">91.3% </span>
+        <span class="strong">92.45% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>42/46</span>
+        <span class='fraction'>49/53</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">57.58% </span>
+        <span class="strong">60.61% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>19/33</span>
+        <span class='fraction'>20/33</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>21/21</span>
+        <span class='fraction'>28/28</span>
       </div>
     </div>
   </div>
@@ -119,7 +119,17 @@
 74
 75
 76
-77</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -135,7 +145,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,10 +181,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -211,7 +231,21 @@ var _jquery = require('jquery');
 &nbsp;
 var _jquery2 = _interopRequireDefault(_jquery);
 &nbsp;
-function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? <span class="branch-0 cbranch-no" title="branch not covered" >obj </span>: { 'default': obj }; }
+var _reactRouter = require('react-router');
+&nbsp;
+var _PageContent = require('components/Template/PageContent.jsx');
+&nbsp;
+var _PageContent2 = _interopRequireDefault(_PageContent);
+&nbsp;
+var _TargetGroups = require('components/TargetGroup/TargetGroups.jsx');
+&nbsp;
+var _TargetGroups2 = _interopRequireDefault(_TargetGroups);
+&nbsp;
+var _TargetGroupButTogether = require('../TargetGroup/TargetGroupButTogether.jsx');
+&nbsp;
+var _TargetGroupButTogether2 = _interopRequireDefault(_TargetGroupButTogether);
+&nbsp;
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { 'default': obj }; }
 &nbsp;
 function _classCallCheck(instance, Constructor) { <span class="missing-if-branch" title="if path not taken" >I</span>if (!(instance instanceof Constructor)) { <span class="cstat-no" title="statement not covered" >throw new TypeError("Cannot call a class as a function"); </span>} }
 &nbsp;
@@ -233,19 +267,14 @@ var Home = function (_React$Component) {
         value: function () {
             function render() {
                 return _react2['default'].createElement(
-                    'div',
-                    null,
-                    _react2['default'].createElement(
-                        'h2',
-                        null,
-                        'Home Page'
-                    ),
+                    _PageContent2['default'],
+                    { PageTitle: 'Home' },
                     _react2['default'].createElement(
                         'div',
                         { className: 'pull-left' },
                         _react2['default'].createElement(
-                            'a',
-                            { className: 'btn btn-default', href: '/app/group', role: 'button' },
+                            _reactRouter.Link,
+                            { className: 'btn btn-default', to: '/app/target-groups', role: 'button' },
                             _react2['default'].createElement('i', { className: 'glyphicon glyphicon-plus' }),
                             ' Add new target group'
                         )
@@ -254,12 +283,13 @@ var Home = function (_React$Component) {
                         'div',
                         { className: 'pull-right' },
                         _react2['default'].createElement(
-                            'a',
-                            { className: 'btn btn-default', href: '/app/assessments/create', role: 'button' },
+                            _reactRouter.Link,
+                            { className: 'btn btn-default', to: '/app/assessments/create', role: 'button' },
                             _react2['default'].createElement('i', { className: 'glyphicon glyphicon-plus' }),
                             ' Add new assessment'
                         )
-                    )
+                    ),
+                    _react2['default'].createElement(_TargetGroupButTogether2['default'], null)
                 );
             }
 &nbsp;
@@ -277,7 +307,7 @@ exports['default'] = Home;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Mar 23 2017 22:36:18 GMT-0500 (Central Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 18 2017 13:00:01 GMT-0500 (Central Daylight Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

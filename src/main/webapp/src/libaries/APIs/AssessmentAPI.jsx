@@ -1,19 +1,100 @@
-import $ from 'jquery';
+import APIListener from "./APIListener.jsx";
 
-class AssessmentAPI{
+class AssessmentAPI extends APIListener{
 
+
+    constructor()
+    {
+        super();
+        var $this=this;
+
+        /*******************************************************************/
+        this.addModule("create-new-assessment",function(data,done){
+            $this.AjaxCall({
+                url: "/rest/assessments",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                cache:false
+            },function (data) {
+                done(data);
+            });
+        });
+
+        /*******************************************************************/
+        this.addModule("add-question-to-assessment",function(data,done)
+        {
+            /***************************************************************/
+            /* Fix the Context before sending                              */
+            /***************************************************************/
+            if(typeof data.content == 'object'){
+                data.content=JSON.stringify(data.content);
+            }
+
+            /***************************************************************/
+            $this.AjaxCall({
+                url: "/rest/assessments/" + data.assessmentID + "/question",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                cache:false
+            },function (output) {
+                 done({success:true});
+                AssessmentAPI.instance.initiate("get-assessment",data);
+            });
+
+        });
+
+        /*******************************************************************/
+        this.addModule("save-assessment-assessment",function(data,done){
+            $this.AjaxCall({
+                url: "/rest/assessments/" + data.assessmentID + "",
+                method: "PATCH",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                cache:false
+            },function () {
+                done({success:true});
+                AssessmentAPI.instance.initiate("get-assessment",data);
+            });
+
+        });
+
+        /*******************************************************************/
+        this.addModule("get-assessment",function(data,done){
+            $this.AjaxCall({
+                url: "/rest/assessments/" + data.assessmentID + "/",
+                method: "GET",
+                contentType: "application/json",
+                data: JSON.stringify(data.data),
+                cache:false
+            },function (data)
+            {
+                data.questionSet.sort(function(a,b){
+                    return a.id-b.id;
+                });
+                done(data);
+            });
+
+        });
+
+        /*******************************************************************/
+        this.addModule("get-assessments",function(input,done){
+            $this.AjaxCall({
+                url: '/rest/assessments',
+                method: 'GET',
+                contentType: 'application/json',
+                cache:false
+            },function (data) {
+                done({Assessments:data});
+            });
+        });
+    }
 
 
 
     createNewAssessmentAndRedirect(assessmentData){
-        $.ajax({
-            url: "/rest/assessments",
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(assessmentData)
-        }).done(function (data) {
-            window.location="/app/assessments/" + data.id;
-        });
+        this.initiate("create-new-assessment",assessmentData);
     }
 
     /**
@@ -22,15 +103,13 @@ class AssessmentAPI{
      * @param questionData
      */
     addNewQuestionToAssessment(assessmentID, questionData){
-        $.ajax({
-            url: "/rest/assessments/" + assessmentID + "/question",
-            method: "POST",
-            contentType: "application/json",
-            data: json.stringify(questionData)
-        }).success(function (data) {
-            console.log("Question successfully saved to the assessment");
-        }).done(function (data) {
-            
-        });
+        this.initiate("add-question-to-assessment",$.extend(questionData,{assessmentID:assessmentID}));
+    }
+
+    saveAssessment(assessmentID, assessment){
+        this.initiate("save-assessment-assessment",{assessmentID:assessmentID,data:assessment});
     }
 }
+AssessmentAPI.instance=new AssessmentAPI();
+
+export default AssessmentAPI;

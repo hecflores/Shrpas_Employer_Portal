@@ -3,12 +3,12 @@ import $ from "jquery";
  * Created by Hector on 2/27/2017.
  * I made awhile back for js, converted for React use
  */
-class MyEvent{
+export class MyEvent{
     constructor(data){
         $.extend(this, data);
     }
 }
-class EventHandler{
+export  class EventHandler{
     constructor(){
         this._events = {events: [], subevents: {}};
     }
@@ -181,7 +181,7 @@ class EventHandler{
                     /*******************************************************/
                     if (typeof node.subevents[arguments[i]] == "undefined") {
                         node=null;
-                        continue;
+                        break;
                     }
 
                     /*******************************************************/
@@ -202,7 +202,35 @@ class EventHandler{
                 });
         }
     }
+    triggerAllRoots(){
+        if (typeof this._events != "object") {
+            this._events = { events: [], subevents: {} };
+        }
+        switch (arguments.length) {
+            case 0:
+                throw new Error("EventHandler.triggerAllRoots: Invalid number of parameters");
+            default:
+                var node = this._events;
 
+
+                for(let subevent in node.subevents)
+                {
+                    if(!node.subevents.hasOwnProperty(subevent)){
+                        break;
+                    }
+                    let argumentsAsArray=[subevent];
+                    for(let item in arguments){
+                        if(!arguments.hasOwnProperty(item)){
+                            break;
+                        }
+                        argumentsAsArray.push(arguments[item]);
+                    }
+
+                    EventHandler.prototype.trigger.apply(this,argumentsAsArray);
+                }
+        }
+        return this;
+    }
     triggerAll(){
         if (typeof this._events != "object") {
             this._events = { events: [], subevents: {} };

@@ -5,16 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
 public class JSONResponse {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String status;
 
     private String resourceType;
+
+    private String resourceName;
 
     public Integer getId() {
         return id;
@@ -54,5 +53,4 @@ public class JSONResponse {
         this.setResourceName(name);
     }
 
-    private String resourceName;
 }

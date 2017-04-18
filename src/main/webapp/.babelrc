@@ -1,4 +1,4 @@
 {
-  "presets": ["airbnb", "es2015", "stage-0"],
-  "plugins": ["transform-object-assign"]
+  "presets": ["react","airbnb", "es2016", "stage-0"],
+  "plugins": ["transform-object-assign","transform-class-properties"]
 }

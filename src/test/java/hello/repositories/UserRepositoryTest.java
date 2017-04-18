@@ -29,29 +29,23 @@ public class UserRepositoryTest {
     @Test
     public void testUserRepository() {
         User user = new User();
-        user.setUserID("1");
-        user.setTitle("Admin");
-        user.setOrganization("Organization");
-        user.setEmail("admin@mail.com");
-        user.setPassword("password");
-
+        user.setUsername("user1");
+        user.setPassword("user1_pass");
+        userRepository.deleteAll();
         userRepository.save(user);
 
         assertEquals(1, userRepository.count());
-        assertEquals(user.getUserID(), "1");
-        assertEquals(user.getTitle(), "Admin");
-        assertEquals(user.getOrganization(), "Organization");
-        assertEquals(user.getEmail(), "admin@mail.com");
-        assertEquals(user.getPassword(), "password");
+        assertEquals(user.getUsername(), "user1");
 
     }
 
     @Test
     public void testUserRole() {
         User user = new User();
-        user.setUserID("2");
+        user.setUsername("2");
 
-        Role role = new Role("admin");
+        Role role = new Role();
+        role.setRole("Admin");
         user.setRole(role);
 
         assertEquals(user.getRole(), role);

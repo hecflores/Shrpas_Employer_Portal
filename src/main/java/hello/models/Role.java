@@ -6,31 +6,25 @@ import javax.persistence.Id;
 @Entity
 public class Role {
 
-    public Role() {
-        Description = "Unkown";
-    }
-
-    public Role(String RoleID) {
-        this.setRoleId(RoleID);
-    }
 
     @Id
-    private String RoleId;
-    private String Description;
+    private int id;
 
-    public String getRoleId() {
-        return RoleId;
+    private String role;
+
+    public int getId() {
+        return id;
     }
 
-    public void setRoleId(String roleId) {
-        RoleId = roleId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getDescription() {
-        return Description;
+    public String getRole() {
+        return role;
     }
 
-    public void setDescription(String description) {
-        Description = description;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

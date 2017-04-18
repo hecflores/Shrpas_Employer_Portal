@@ -49,12 +49,122 @@ export class TestingRestRepository{
         this.init=init;
     }
 }
-
 export class TestingRest extends Rests{
 
     constructor(){
         super();
         this.__repositories__=[];
+        this.addRepository(new TestingRestRepository(
+            "assessment",
+            /\/rest\/currentUser$/i,
+            "GET",
+            function(results,parameters){
+                return {
+                    username:"hector",
+                    title:"dsd",
+                    organization:"ssad",
+                    email:'djasd'
+                }
+            }
+            ,function(){
+                //Init
+            }));
+        this.addRepository(new TestingRestRepository(
+            "assessment",
+            /\/rest\/currentUser$/i,
+            "PATCH",
+            function(results,parameters){
+                return {
+                    username:"hector",
+                    title:"dsd",
+                    organization:"ssad",
+                    email:'djasd'
+                }
+            }
+            ,function(){
+                //Init
+            }));
+        this.addRepository(new TestingRestRepository(
+            "assessment",
+            /\/rest\/session\/is-logged-in$/i,
+            "GET",
+            function(results,parameters){
+                return {
+                    success:true,
+                    sessionid:"Session"
+                }
+            }
+            ,function(){
+                //Init
+            }));
+
+        this.addRepository(new TestingRestRepository(
+            "assessment",
+            /\/assessments\/(\d+)\/$/i,
+            "GET",
+            function(results,parameters){
+                return {id:              results.match[1],
+                    allowed_time_sec:null,
+                    expirationDate:  null,
+                    istimed:        false,
+                    name:            "Hector",
+                    subtitle:        "Subtitle",
+                    questionSet:     [
+                        {
+                            id:0,
+                            type:"text",
+                            content:JSON.stringify({question:"Question"})
+                        },
+                        {
+                            id:0,
+                            type:"multiple-choice",
+                            content:JSON.stringify({"question":"Unknown","choices":[{"text":"Unknown","letter":"A"},{"text":"Unknown","letter":"B"},{"text":"Unknown","letter":"C"},{"text":"Unknown","letter":"D"}]})
+                        }
+                    ]
+                }
+            }
+            ,function(){
+                //Init
+            }));
+
+        this.addRepository(new TestingRestRepository("assessment", /\/rest\/assessments/i, "POST", function(results,parameters){
+
+                return $.extend(results.parameters,{id:results.match[1],
+                    allowed_time_sec:null,
+                    expirationDate:null,
+                    istimed:false,
+                    name:"Hector",
+                    subtitle:"Subtitle",
+                    questionSet:[
+                        {
+                            id:0,
+                            type:"text",
+                            content:JSON.stringify({question:"Question"})
+                        },
+                        {
+                            id:0,
+                            type:"multiple-choice",
+                            content:JSON.stringify({"question":"Unknown","choices":[{"text":"Unknown","letter":"A"},{"text":"Unknown","letter":"B"},{"text":"Unknown","letter":"C"},{"text":"Unknown","letter":"D"}]})
+                        }
+
+                    ]})}
+            ,function(){}));
+        this.addRepository(new TestingRestRepository("assessment", /\/rest\/questions/i, "GET", function(results,parameters) {
+
+            return [
+                {
+                    id:0,
+                    type:"text",
+                    content:JSON.stringify({question:"Question"})
+                },
+                {
+                    id:0,
+                    type:"multiple-choice",
+                    content:JSON.stringify({"question":"Unknown","choices":[{"text":"Unknown","letter":"A"},{"text":"Unknown","letter":"B"},{"text":"Unknown","letter":"C"},{"text":"Unknown","letter":"D"}]})
+                }
+            ]
+        },function(){}))
+
     }
     addRepository(repository)
     {

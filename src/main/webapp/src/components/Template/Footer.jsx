@@ -12,7 +12,12 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <div className="col-lg-12">
+            <div className="baseline-footer">
+                {this.props.children && this.props.children.map(function(child,index){
+                    return <div onClick={child.disabled?function(){}:child.onClick} className={(child.disabled?"disabled ":" ")+"baseline-footer-item"} key={index}>
+                                {child.Content}
+                           </div>
+                }.bind(this))}
             </div>
 
         )

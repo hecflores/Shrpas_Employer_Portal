@@ -1,37 +1,5 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import $ from 'jquery';
-import Modal from 'react-modal';
-
-import QuestionTypes from './QuestionTypes.jsx';
-import Question from './Question.jsx';
-
-
-const MultipleChoiceDisplay=QuestionTypes.MultipleChoiceQuestion.Display;
-const MultipleChoiceCreator=QuestionTypes.MultipleChoiceQuestion.Creator;
-const CodeQuestionDisplay=QuestionTypes.CodeQuestion.Display;
-const CodeQuestionCreator=QuestionTypes.CodeQuestion.Creator;
-const VideoQuestionDisplay=QuestionTypes.VideoQuestion.Display;
-const VideoQuestionCreator=QuestionTypes.VideoQuestion.Creator;
-const TextQuestionDisplay=QuestionTypes.TextQuestion.Display;
-const TextQuestionCreator=QuestionTypes.TextQuestion.Creator;
-const AudioQuestionDisplay=QuestionTypes.AudioQuestion.Display;
-const AudioQuestionCreator=QuestionTypes.AudioQuestion.Creator;
-
-const customStyles = {
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
-    }
-};
-
-
-
-
+import Question from 'components/Questions/Question/Question.jsx';
 
 
 /***************************************************************************/
@@ -41,147 +9,24 @@ class Questions extends React.Component{
 
     constructor(props) {
         super(props);
+    }
 
-        this.closeCreateQuestions = this.closeCreateQuestions.bind(this);
-        this.openCreateQuestions = this.openCreateQuestions.bind(this);
-        this.nextPage=this.nextPage.bind(this);
-        this.prevPage=this.prevPage.bind(this);
-        this.firstPage=this.firstPage.bind(this);
-        this.lastPage=this.lastPage.bind(this);
-
-        this.state={
-            questions:this.props.questions,
-            currentPage:0,
-            pageSize:20,
-            totalElements:0,
-            totalPages:0,
-            number:0,
-            next:null,
-            prev:null,
-            last:null,
-            first:null,
-            creatingNewQuestion: false,
-            addingNewQuestion: false,
-            addingExistingQuestion: false
-        };
-    }
-    buildLink(link){
-        if(typeof link == 'undefined')
-        {
-            return '/api/questions?page='+this.state.number+"&"+this.state.pageSize
-        }
-
-        return link;
-    }
-    updateTable(link)
-    {
-        //Not Doing this any-more
-        // /*******************************************************************/
-        // var $this=this;
-        //
-        // /*******************************************************************/
-        // $.get($this.buildLink(link),function(data){
-        //
-        //     if($this.state.creatingNewQuestion){
-        //         return;
-        //     }
-        //
-        //     data._embedded.questions.content=data._embedded.questions.map(function(question){
-        //         question.content=JSON.parse(question.content);
-        //         if(question.content==null){
-        //             question.content={question:"Broke",choices:[]};
-        //         }
-        //         if(typeof question.content["choices"] == 'undefined'){
-        //             question.content["choices"]=[];
-        //         }
-        //         return question;
-        //     });
-        //     $this.setState(
-        //         {
-        //             questions:data._embedded.questions,
-        //             totalElements:data.page.totalElements,
-        //             totalPages:data.page.totalPages,
-        //             pageSize:data.page.size,
-        //             number:data.page.number,
-        //             next:(data._links?data._links.next:null),
-        //             prev:(data._links?data._links.prev:null),
-        //             last:(data._links?data._links.last:null),
-        //             first:(data._links?data._links.first:null),
-        //             creatingNewQuestion:false
-        //         });
-        // });
-    }
-    componentDidMount() {
-
-        //Not Doing this anymore
-        // var $this=this;
-        // var startUpdate;
-        // startUpdate=function(){
-        //     setTimeout(function() {
-        //         $this.updateTable();
-        //         //startUpdate();
-        //     },1000);
-        // }
-        //
-        // startUpdate();
-
-
-
-    }
-    closeCreateQuestions(){
-        this.setState({creatingNewQuestion:false});
-    }
-    openCreateQuestions(){
-        this.setState({creatingNewQuestion:true});
-
-    }
-    nextPage(){
-        this.updateTable(this.state.next.href);
-    }
-    prevPage(){
-        this.updateTable(this.state.prev.href);
-    }
-    firstPage(){
-        this.updateTable(this.state.first.href);
-    }
-    lastPage(){
-        this.updateTable(this.state.last.href);
-    }
-    getNewQuetionModal(){
-        return (
-          <div>
-             
-
-              <div className="tab-content">
-                  <MultipleChoiceCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="multipleChoice" isTab="true" />
-                  <TextQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="question" isTab="true" />
-                  <VideoQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="video" isTab="true" />
-                  <AudioQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="audio" isTab="true" />
-                  <CodeQuestionCreator  onCreatedNewQuestion={this.closeCreateQuestions} id="code" isTab="true" />
-              </div>
-
-              <div>
-                        <span className="pull-right">
-                            <button type="button" onClick={this.closeCreateQuestions} className= "btn btn-default">Close</button>
-                        </span>
-              </div>
-          </div>
-        );
-    }
     render() {
-        var parent=this;
-        console.log("Questions: "+JSON.stringify(this.props.questions));
-
-        if(typeof this.props.questions=="undefined"){
-            return (<div ref="Questions"></div>);
-        }
-        const questions = this.props.questions.map(function(question,index){
-            question.ID=index+1+(parent.state.number*parent.state.pageSize);
-            return <Question key={index} question={question} parent={parent}/>
-        });
         return (
             <div ref="Questions">
-                {questions}
+                {this.props.questions.map(function(question,index){
+                    return (<div className="questions-item" key={question.id}>
+                                <div className="question-side-bar">
+                                    <img src="/resources/static/img/icons/side-thing.png"/>
+                                </div>
+                                <div className="question-number">{(index+1)+"."}</div>
+                                <div className="question">
+
+                                    <Question Type={question.type} Question={question} Renderer={Question.Renders.Display}/>
+
+                                </div>
+                            </div>);
+                })}
             </div>
         )
     }

@@ -6,18 +6,21 @@
 
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 
-        <!--<property name="hibernate.connection.url">jdbc:mysql://gator4045.hostgator.com:3306/hecflore_SHRPAS_Employer_Portal</property>-->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/employer_portal</property>
+        <property name="hibernate.connection.url">jdbc:mysql://gator4045.hostgator.com:3306/hecflore_SHRPAS_Employer_Portal</property>
+        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/employer_portal</property>-->
 
-        <!--<property name="hibernate.connection.username">hecflore_me</property>-->
-        <property name="hibernate.connection.username">root</property>
-        <!--<property name="hibernate.connection.password">Armandorocha1-</property>-->
-        <property name="hibernate.connection.password">dont4get</property>
+        <property name="hibernate.connection.username">hecflore_me</property>
+        <!--<property name="hibernate.connection.username">root</property>-->
+        <property name="hibernate.connection.password">Armandorocha1-</property>
+        <!--<property name="hibernate.connection.password">dont4get</property>-->
 
         <property name="hibernate.show_sql">true</property>
 
 
         <mapping class="hello.models.User"/>
+        <mapping class="hello.models.Participant"/>
+        <mapping class="hello.models.UserSession"/>
+        <mapping class="hello.models.TargetGroup"/>
         <mapping class="hello.models.Question"/>
         <mapping class="hello.models.Assessment"/>
         <mapping class="hello.models.Role"/>

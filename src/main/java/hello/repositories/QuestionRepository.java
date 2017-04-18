@@ -17,7 +17,7 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "questions", path = "questions")
 public interface QuestionRepository extends PagingAndSortingRepository<Question, Integer> {
     /**
-     * /api/questions/search?type={type}
+     * /rest/questions/search?type={type}
      */
     List<Question> findByType(@Param("type") String type);
 
@@ -29,7 +29,7 @@ public interface QuestionRepository extends PagingAndSortingRepository<Question,
     List<Question> findByContent(@Param("content") String content);
 
     /**
-     * /api/questions/search?%type={type}%
+     * /rest/questions/search?%type={type}%
      * @param type
      * @param content
      * @return

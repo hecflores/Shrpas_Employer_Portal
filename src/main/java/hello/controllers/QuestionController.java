@@ -56,7 +56,7 @@ public class QuestionController {
     }
 
     /**
-     * Adds a question to an assessment
+     * Update Question
      * @param id
      * @return
      */

@@ -22,7 +22,7 @@ public class FileSystemStorageService implements StorageService{
 
     @Autowired
     public FileSystemStorageService(StorageProperties properties){
-        this.rootLocation = Paths.get(properties.getLocation());
+        rootLocation = Paths.get(properties.getLocation()); //from Venkat: Please avoid "this."
     }
 
 
@@ -42,7 +42,7 @@ public class FileSystemStorageService implements StorageService{
                 throw new StorageException("Filed to store empty file " + file.getOriginalFilename());
             }
             Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
-        } catch (IOException ioException){
+        } catch (Exception ioException){
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), ioException);
         }
     }
@@ -52,8 +52,8 @@ public class FileSystemStorageService implements StorageService{
         try{
             return Files.walk(this.rootLocation, 1)
                     .filter(path -> !path.equals(this.rootLocation))
-                    .map(path -> this.rootLocation.relativize(path));
-        } catch (IOException ioException){
+                    .map(rootLocation::relativize);
+        } catch (Exception ioException){
             throw new StorageException("Failed to read stored files", ioException);
         }
     }
@@ -68,12 +68,12 @@ public class FileSystemStorageService implements StorageService{
         try{
             Path file = load(filename);
             Resource resource = new UrlResource(file.toUri());
-            if(resource.exists() || resource.isReadable()){
+            if(resource.exists() && resource.isReadable()){
                 return resource;
             } else {
                 throw new StorageFileNotFoundException("Could not read file: " + filename);
             }
-        } catch (MalformedURLException exception){
+        } catch (Exception exception){
             throw new StorageFileNotFoundException("Could not read file: " + filename, exception);
         }
     }

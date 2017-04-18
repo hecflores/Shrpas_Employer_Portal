@@ -1,46 +1,73 @@
 import React from 'react';
+import Loader from '../Containers/Loader.jsx';
 import $ from 'jquery';
-
 
 class AssessmentTimer extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            timeInSeconds: this.props.timeInSeconds,
-            isTimed: this.props.isTimed
+            allowed_time_sec: this.props.timeInSeconds,
+            istimed: this.props.istimed,
+            setting:false
         };
         this.handleChange = this.handleChange.bind(this);
         this.setTimeAllowed = this.setTimeAllowed.bind(this);
+        this.setting = this.setting.bind(this);
+        this.notSetting = this.notSetting.bind(this);
+
     }
+    componentWillReceiveProps(props){
+        this.setState({
+            allowed_time_sec: props.timeInSeconds,
+            istimed: props.istimed,
+        })
+    }
+
     handleChange(event){
+
+        if (event.key === 'Enter') {
+           this.setTimeAllowed();
+           return;
+        }
         const timeInSeconds = event.target.value;
         console.log(timeInSeconds);
+
         this.setState({
-            timeInSeconds: timeInSeconds
+            allowed_time_sec: timeInSeconds,
+            istimed:true
         });
     }
-    setTimeAllowed(){
-
-        $.ajax({
-            url: '/rest/assessments/' + this.props.assessmentID,
-            contentType: 'application/json',
-            method: 'PATCH',
-            data:JSON.stringify({allowed_time_sec: this.state.timeInSeconds, is_timed: this.state.isTimed})
-        }).done(function (data) {
-            console.log("SUCCESS: You are not a terrible coder after all", data);
-        }).error(function (data) {
-            console.log("ERROR: YOU DONE GOOFED", data);
+    setting(){
+        this.setState({
+            setting:true
+        })
+    }
+    notSetting(){
+        this.setState({
+            setting:false
+        })
+    }
+    setTimeAllowed()
+    {
+        this.setState({
+            setting: false
         });
+        this.props.onSavedTime(this.state);
     }
     render(){
+        debug("AssessmentTimer: render() -> ",this.state);
         return(
-            <span>
-                <input type="text" onChange={this.handleChange} />
-                <div onClick={this.setTimeAllowed} className="top-header-time-allowed-container">
+            <div className='time-allowed'>
+                <div onClick={this.setting} className="">
                     <i className="fa fa-clock-o"/>
-                    Time allowed
+                    Time allowed ({this.props.isSaving?<Loader/>:this.state.allowed_time_sec?this.state.allowed_time_sec+" sec":""})
                 </div>
-            </span>
+                {this.state.setting?(
+                        <input onBlur={this.notSetting} type="text" onKeyUp={this.handleChange}  />
+                    ):""}
+
+
+            </div>
         );
     }
 }

@@ -21,16 +21,28 @@ public class Assessment {
     @Column(name = "allowed_time_sec", nullable = true)
     private Integer allowed_time_sec;
 
-    @Column(name = "is_timed", nullable = true)
+    @Column(name = "istimed", nullable = true)
     private boolean istimed;
 
-    @Column(name = "expirationDate", nullable = true)
+    @Column(name = "expirationDate")
     private Date expirationDate;
 
+    @Column(name = "createdAt")
+    private Date createdAt;
+
     @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="assessment_question", joinColumns=@JoinColumn(name="assessment_id"), inverseJoinColumns=@JoinColumn(name="question_id"))
+    @JoinTable(name="assessment_question", joinColumns=@JoinColumn(name="assessment_id"),  inverseJoinColumns=@JoinColumn(name="question_id"))
     private Set<Question> questionSet;
 
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="users_assessments", joinColumns=@JoinColumn(name="assessment_id"), inverseJoinColumns=@JoinColumn(name="user_id"))
+    private Set<User> usersSet;
+
+    public Assessment(){
+        this.setAllowed_time_sec(100);
+        this.setCreatedAt(new Date());
+        this.setExpirationDate(new Date());
+    }
     public Integer getId() {
         return id;
     }
@@ -79,11 +91,39 @@ public class Assessment {
         this.istimed = istimed;
     }
 
-    public Date getExpirationDate() {
+    public Date getExpirationDate()
+    {
+        if(expirationDate==null){
+            return new Date();
+        }
         return expirationDate;
     }
 
     public void setExpirationDate(Date expirationDate) {
+
+        if(expirationDate==null){
+            this.setExpirationDate(new Date());
+        }
         this.expirationDate = expirationDate;
+    }
+
+    public Set<User> getUsersSet() { return usersSet; }
+
+    public void setUsersSet(Set<User> usersSet) {
+        this.usersSet = usersSet;
+    }
+
+    public Date getCreatedAt() {
+        if(createdAt==null){
+            return new Date();
+        }
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        if(createdAt==null){
+            this.setCreatedAt(new Date());
+        }
+        this.createdAt = createdAt;
     }
 }
