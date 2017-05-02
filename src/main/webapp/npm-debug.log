@@ -1,0 +1,108 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\Program Files\\NodeJS\\node.exe',
+1 verbose cli   'D:\\Program Files\\NodeJS\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'jsdoc-generator' ]
+2 info using npm@3.10.10
+3 info using node@v6.9.4
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData jsdoc-generator
+8 silly fetchNamedPackageData jsdoc-generator
+9 silly mapToRegistry name jsdoc-generator
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'jsdoc-generator',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'jsdoc-generator',
+12 silly mapToRegistry   name: 'jsdoc-generator',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/jsdoc-generator
+14 verbose request uri https://registry.npmjs.org/jsdoc-generator
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 2:06:01 PM
+17 verbose request id 3e8bb63aa4b69d6f
+18 http request GET https://registry.npmjs.org/jsdoc-generator
+19 http 200 https://registry.npmjs.org/jsdoc-generator
+20 verbose headers { server: 'nginx/1.10.1',
+20 verbose headers   'content-type': 'application/json',
+20 verbose headers   'last-modified': 'Fri, 31 Mar 2017 19:09:54 GMT',
+20 verbose headers   etag: 'W/"58dea982-6b32"',
+20 verbose headers   'content-encoding': 'gzip',
+20 verbose headers   'cache-control': 'max-age=300',
+20 verbose headers   'content-length': '3542',
+20 verbose headers   'accept-ranges': 'bytes',
+20 verbose headers   date: 'Tue, 02 May 2017 19:06:02 GMT',
+20 verbose headers   via: '1.1 varnish',
+20 verbose headers   age: '0',
+20 verbose headers   connection: 'keep-alive',
+20 verbose headers   'x-served-by': 'cache-dfw1841-DFW',
+20 verbose headers   'x-cache': 'MISS',
+20 verbose headers   'x-cache-hits': '0',
+20 verbose headers   'x-timer': 'S1493751962.964299,VS0,VE61',
+20 verbose headers   vary: 'Accept-Encoding' }
+21 silly get cb [ 200,
+21 silly get   { server: 'nginx/1.10.1',
+21 silly get     'content-type': 'application/json',
+21 silly get     'last-modified': 'Fri, 31 Mar 2017 19:09:54 GMT',
+21 silly get     etag: 'W/"58dea982-6b32"',
+21 silly get     'content-encoding': 'gzip',
+21 silly get     'cache-control': 'max-age=300',
+21 silly get     'content-length': '3542',
+21 silly get     'accept-ranges': 'bytes',
+21 silly get     date: 'Tue, 02 May 2017 19:06:02 GMT',
+21 silly get     via: '1.1 varnish',
+21 silly get     age: '0',
+21 silly get     connection: 'keep-alive',
+21 silly get     'x-served-by': 'cache-dfw1841-DFW',
+21 silly get     'x-cache': 'MISS',
+21 silly get     'x-cache-hits': '0',
+21 silly get     'x-timer': 'S1493751962.964299,VS0,VE61',
+21 silly get     vary: 'Accept-Encoding' } ]
+22 verbose get saving jsdoc-generator to C:\Users\Hector\AppData\Roaming\npm-cache\registry.npmjs.org\jsdoc-generator\.cache.json
+23 verbose correctMkdir C:\Users\Hector\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+24 silly install normalizeTree
+25 silly loadCurrentTree Finishing
+26 silly loadIdealTree Starting
+27 silly install loadIdealTree
+28 silly cloneCurrentTree Starting
+29 silly install cloneCurrentTreeToIdealTree
+30 silly cloneCurrentTree Finishing
+31 silly loadShrinkwrap Starting
+32 silly install loadShrinkwrap
+33 silly loadShrinkwrap Finishing
+34 silly loadAllDepsIntoIdealTree Starting
+35 silly install loadAllDepsIntoIdealTree
+36 silly rollbackFailedOptional Starting
+37 silly rollbackFailedOptional Finishing
+38 silly runTopLevelLifecycles Finishing
+39 silly install printInstalled
+40 verbose stack Error: Unsupported platform for jsdoc-generator@0.3.3: wanted {"name":"jsdoc-generator","version":"0.3.3","description":"Generate jsdoc for your js files","scripts":{},"bin":{"jsdoc-generator":"./index.js"},"repository":{"type":"git","url":"git+https://github.com/mitzerh/node-jsdoc-generator.git"},"os":["darwin","linux"],"engines":{"node":">= 4.0.0"},"author":{"name":"Helcon Mabesa"},"license":"MIT","bugs":{"url":"https://github.com/mitzerh/node-jsdoc-generator/issues"},"homepage":"https://github.com/mitzerh/node-jsdoc-generator#readme","dependencies":{"cli-helper":"^0.1.0","colors":"^1.1.2","docdash":"^0.4.0","jsdoc":"^3.4.3","lodash":"^4.17.4","npm-path":"^2.0.3","npm-run":"^4.1.2"},"eslintConfig":{"env":{"node":true,"es6":true}},"gitHead":"7b9892654fd633dda00148fd83aad26285c5f34b","_id":"jsdoc-generator@0.3.3","_shasum":"ea1d3235788204979ac7e0cb27a323534449e839","_from":"jsdoc-generator","_npmVersion":"3.10.10","_nodeVersion":"6.10.1","_npmUser":{"name":"mitzerh","email":"hmabesa+npm@gmail.com"},"dist":{"shasum":"ea1d3235788204979ac7e0cb27a323534449e839","tarball":"https://registry.npmjs.org/jsdoc-generator/-/jsdoc-generator-0.3.3.tgz"},"maintainers":[{"name":"mitzerh","email":"hmabesa+npm@gmail.com"}],"_npmOperationalInternal":{"host":"packages-12-west.internal.npmjs.com","tmp":"tmp/jsdoc-generator-0.3.3.tgz_1490987392774_0.2550696996040642"},"directories":{},"_resolved":"https://registry.npmjs.org/jsdoc-generator/-/jsdoc-generator-0.3.3.tgz","_requested":{"raw":"jsdoc-generator","scope":null,"escapedName":"jsdoc-generator","name":"jsdoc-generator","rawSpec":"","spec":"latest","type":"tag"},"_spec":"jsdoc-generator","_where":"D:\\SHRPAS_Project\\src\\main\\webapp","_args":[[{"raw":"jsdoc-generator","scope":null,"escapedName":"jsdoc-generator","name":"jsdoc-generator","rawSpec":"","spec":"latest","type":"tag"},"D:\\SHRPAS_Project\\src\\main\\webapp"]],"readme":"ERROR: No README data found!"} (current: {"os":"win32","cpu":"x64"})
+40 verbose stack     at checkPlatform (D:\Program Files\NodeJS\node_modules\npm\node_modules\npm-install-checks\index.js:45:14)
+40 verbose stack     at thenWarnEngineIssues (D:\Program Files\NodeJS\node_modules\npm\lib\install\validate-args.js:41:5)
+40 verbose stack     at D:\Program Files\NodeJS\node_modules\npm\node_modules\iferr\index.js:13:50
+40 verbose stack     at checkEngine (D:\Program Files\NodeJS\node_modules\npm\node_modules\npm-install-checks\index.js:24:10)
+40 verbose stack     at module.exports.isInstallable (D:\Program Files\NodeJS\node_modules\npm\lib\install\validate-args.js:38:3)
+40 verbose stack     at Array.<anonymous> (D:\Program Files\NodeJS\node_modules\npm\node_modules\slide\lib\bind-actor.js:15:8)
+40 verbose stack     at LOOP (D:\Program Files\NodeJS\node_modules\npm\node_modules\slide\lib\chain.js:15:14)
+40 verbose stack     at D:\Program Files\NodeJS\node_modules\npm\node_modules\slide\lib\chain.js:18:7
+40 verbose stack     at checkSelf (D:\Program Files\NodeJS\node_modules\npm\lib\install\validate-args.js:46:72)
+40 verbose stack     at Array.<anonymous> (D:\Program Files\NodeJS\node_modules\npm\node_modules\slide\lib\bind-actor.js:15:8)
+41 verbose pkgid jsdoc-generator@0.3.3
+42 verbose cwd D:\SHRPAS_Project\src\main\webapp
+43 error Windows_NT 10.0.14393
+44 error argv "D:\\Program Files\\NodeJS\\node.exe" "D:\\Program Files\\NodeJS\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save" "jsdoc-generator"
+45 error node v6.9.4
+46 error npm  v3.10.10
+47 error code EBADPLATFORM
+48 error notsup Unsupported platform for jsdoc-generator@0.3.3: wanted {"os":"darwin,linux","arch":"any"} (current: {"os":"win32","arch":"x64"})
+49 error notsup Valid OS:    darwin,linux
+49 error notsup Valid Arch:  any
+49 error notsup Actual OS:   win32
+49 error notsup Actual Arch: x64
+50 verbose exit [ 1, true ]

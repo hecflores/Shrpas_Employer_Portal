@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AssessmentController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SHRPAS_Project</a> &gt; <a href="index.source.html" class="el_package">hello.controllers</a> &gt; <span class="el_source">AssessmentController.java</span></div><h1>AssessmentController.java</h1><pre class="source lang-java linenums">package hello.controllers;
+
+import hello.helpers.PatchClasses;
+import hello.models.Assessment;
+import hello.models.Question;
+import hello.models.User;
+import hello.repositories.AssessmentRepository;
+import hello.repositories.QuestionRepository;
+import hello.repositories.UserRepository;
+import hello.repositories.exceptions.AssessmentNotFoundException;
+import hello.repositories.exceptions.NotAuthorizedException;
+import hello.repositories.exceptions.QuestionNotFoundException;
+import hello.repositories.exceptions.UserNotFoundException;
+import org.hibernate.validator.constraints.Email;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.web.bind.annotation.*;
+
+import javax.mail.Message;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+
+/**
+localhost:8080/assessments
+ */
+@RestController
+public class AssessmentController{
+
+
+    private static JavaMailSenderImpl StaticEmailSender;
+
+    private AssessmentRepository assessmentRepository;
+    private QuestionRepository questionRepository;
+    private UserRepository userRepository;
+    private JavaMailSender emailSender;
+
+    @Autowired
+<span class="fc" id="L51">    public AssessmentController(JavaMailSenderImpl emailSender, AssessmentRepository assessmentRepository, QuestionRepository questionRepository, UserRepository userRepository){</span>
+<span class="fc" id="L52">        this.assessmentRepository = assessmentRepository;</span>
+<span class="fc" id="L53">        this.questionRepository = questionRepository;</span>
+<span class="fc" id="L54">        this.userRepository=userRepository;</span>
+<span class="fc" id="L55">        this.emailSender=emailSender;</span>
+<span class="fc" id="L56">        AssessmentController.StaticEmailSender=emailSender;</span>
+<span class="fc" id="L57">    }</span>
+
+    public static void sendEmail() throws Exception{
+<span class="nc" id="L60">        MimeMessagePreparator  crunchifyMsg = new MimeMessagePreparator(){</span>
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+
+<span class="nc" id="L63">                mimeMessage.setRecipient(Message.RecipientType.TO,</span>
+                        new InternetAddress(&quot;hectorhpflores72@gmail.com&quot;));
+<span class="nc" id="L65">                mimeMessage.setSubject(&quot;SHRPAS Assessment&quot;);</span>
+<span class="nc" id="L66">                mimeMessage.setFrom( new InternetAddress(&quot;updates@shrpas.com&quot;,&quot;SHRPAS Updates&quot;));</span>
+<span class="nc" id="L67">                mimeMessage.setText(&quot;Hello, this is a test for the SHRPAS Assessment Portal&quot;);</span>
+<span class="nc" id="L68">            }</span>
+        };
+
+<span class="nc" id="L71">        StaticEmailSender.send(crunchifyMsg);</span>
+
+<span class="nc" id="L73">    }</span>
+    /**
+     localhost:8080/rest/assessments/{id}/
+     Gets a Assessment
+     */
+    @RequestMapping(value = &quot;/rest/send-email-test&quot;, method=RequestMethod.GET)
+    public ResponseEntity&lt;String&gt; sendEmailTest() throws Exception {
+<span class="nc" id="L80">        AssessmentController.sendEmail();</span>
+<span class="nc" id="L81">        return new ResponseEntity&lt;String&gt;(&quot;Success&quot;, HttpStatus.OK);</span>
+
+    }
+
+
+    /**
+        localhost:8080/rest/assessments/{id}/
+        Gets a Assessment
+     */
+    @RequestMapping(value = &quot;/rest/assessments/{id}/&quot;, method=RequestMethod.GET)
+    public ResponseEntity&lt;Assessment&gt; getAssessment(@PathVariable(&quot;id&quot;) int assessmentID) {
+<span class="fc" id="L92">        Assessment assessment = this.assessmentRepository.findOne(assessmentID);</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        if(assessment != null){</span>
+<span class="fc" id="L94">            return new ResponseEntity&lt;Assessment&gt;(assessment, HttpStatus.OK);</span>
+        }else{
+<span class="fc" id="L96">            return new ResponseEntity&lt;Assessment&gt;(assessment, HttpStatus.BAD_REQUEST);</span>
+        }
+    }
+
+    /**
+     * Adds an assessment
+     * @param assessment The Body of the Assessment
+     * @return The Assessment
+     */
+    @RequestMapping(value = &quot;/rest/assessments&quot;, method=RequestMethod.POST)
+    public ResponseEntity&lt;Assessment&gt; addAssessment(HttpSession session,@RequestBody Assessment assessment) throws Exception
+    {
+        /*******************************************************************/
+        /* Add the Assessment                                              */
+        /*******************************************************************/
+<span class="fc" id="L111">        Assessment newAssessment = assessmentRepository.save(assessment);</span>
+<span class="fc" id="L112">        newAssessment.setUsersSet(((new HashSet&lt;User&gt;() {})));</span>
+
+        /*******************************************************************/
+        /* Adds the User to the assessment                                 */
+        /*******************************************************************/
+        try {
+<span class="fc" id="L118">            this.addUserToAssessment(newAssessment, AuthenticationController.GetUser(session));</span>
+        }
+<span class="nc" id="L120">        catch(Exception e){</span>
+<span class="nc" id="L121">            assessmentRepository.delete(newAssessment); // Roll Back</span>
+<span class="nc" id="L122">            throw e;</span>
+<span class="fc" id="L123">        }</span>
+
+        /*******************************************************************/
+<span class="fc" id="L126">        return new ResponseEntity&lt;Assessment&gt;(newAssessment, HttpStatus.OK);</span>
+    }
+
+    /**
+     * Updates an assessment
+     * @param assessmentID The Id of the Assessment to be used
+     * @return The Assessment
+     */
+    @RequestMapping(value = &quot;/rest/assessments/{id}&quot;, method=RequestMethod.PATCH)
+    public ResponseEntity&lt;Assessment&gt; updateAssessment(@PathVariable(&quot;id&quot;) int assessmentID, @RequestBody Assessment assessment) throws Exception {
+<span class="fc" id="L136">        Assessment assessmentToBeUpdated = assessmentRepository.findOne(assessmentID);</span>
+
+        /*******************************************************************/
+<span class="fc bfc" id="L139" title="All 2 branches covered.">        if(assessmentToBeUpdated == null)</span>
+        {
+<span class="fc" id="L141">            throw new AssessmentNotFoundException(assessmentID);</span>
+        }
+
+        /*******************************************************************/
+<span class="fc" id="L145">        PatchClasses.PerformAPatch(assessmentToBeUpdated, assessment);</span>
+<span class="fc" id="L146">        assessmentRepository.save(assessmentToBeUpdated);</span>
+<span class="fc" id="L147">        return new ResponseEntity&lt;Assessment&gt;(assessmentToBeUpdated, HttpStatus.OK);</span>
+    }
+
+    /**
+     * Adds a question to an assessment
+     * @param assessmentID The Id of the Assessment to be used
+     * @param question The body of a question(Will be creating a new question)
+     * @return The Assessment
+     */
+    @RequestMapping(value = &quot;/rest/assessments/{id}/question&quot;, method=RequestMethod.POST)
+    public ResponseEntity&lt;Assessment&gt; addQuestion(@PathVariable(&quot;id&quot;) int assessmentID, @RequestBody Question question) throws Exception
+    {
+<span class="fc" id="L159">        Assessment assessment = assessmentRepository.findOne(assessmentID);</span>
+
+        /*******************************************************************/
+<span class="fc bfc" id="L162" title="All 2 branches covered.">        if(assessment != null)</span>
+        {
+<span class="fc" id="L164">            assessment = this.addQuestionToAssessment(assessment, question);</span>
+<span class="fc" id="L165">            return new ResponseEntity&lt;Assessment&gt;(assessment, HttpStatus.OK);</span>
+        }
+
+        /*******************************************************************/
+        else
+        {
+<span class="fc" id="L171">            throw new AssessmentNotFoundException(assessmentID);</span>
+        }
+    }
+
+    /**
+     * Adds an existing question to an assessment
+     * @param assessmentID The Id of the Assess to be used
+     * @param questionId The id of the Question to be used
+     * @return The Assessment
+     */
+    @RequestMapping(value = &quot;/rest/assessments/{id}/question/{questionId}&quot;, method=RequestMethod.POST)
+    public ResponseEntity&lt;Assessment&gt; addExistingQuestion(@PathVariable(&quot;id&quot;) int assessmentID, @PathVariable(&quot;questionId&quot;) int questionId){
+<span class="fc" id="L183">        Assessment assessment = assessmentRepository.findOne(assessmentID);</span>
+
+        /*******************************************************************/
+        /* We have found the assessment                                    */
+        /*******************************************************************/
+<span class="fc bfc" id="L188" title="All 2 branches covered.">        if(assessment != null)</span>
+        {
+<span class="fc" id="L190">            Question question = questionRepository.findOne(questionId);</span>
+
+            /***************************************************************/
+<span class="fc bfc" id="L193" title="All 2 branches covered.">            if(question != null)</span>
+            {
+<span class="fc" id="L195">                assessment = this.addQuestionToAssessment(assessment, question);</span>
+<span class="fc" id="L196">                return new ResponseEntity&lt;Assessment&gt;(assessment, HttpStatus.OK);</span>
+            }
+            else
+            {
+<span class="fc" id="L200">                throw new QuestionNotFoundException(questionId);</span>
+            }
+        }
+        else
+        {
+<span class="fc" id="L205">            throw new AssessmentNotFoundException(assessmentID);</span>
+        }
+    }
+
+    /**
+     * Adds a question to an assessment
+     * @param assessmentID Assessment ID
+     * @param user User that is being added(Must exist)
+     * @return ResponseEntity&lt;Assessment&gt;
+     */
+    @RequestMapping(value = &quot;/rest/assessments/{id}/users&quot;, method=RequestMethod.POST)
+    public ResponseEntity&lt;Assessment&gt; addUser(@PathVariable(&quot;id&quot;) int assessmentID, @RequestBody User user) throws Exception {
+<span class="nc" id="L217">        Assessment assessment = assessmentRepository.findOne(assessmentID);</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">        if(assessment != null)</span>
+        {
+            /***************************************************************/
+<span class="nc bnc" id="L221" title="All 2 branches missed.">            if(user==null)</span>
+            {
+<span class="nc" id="L223">                throw new UserNotFoundException(&quot;No User Name was found in the body&quot;);</span>
+            }
+
+            /***************************************************************/
+<span class="nc bnc" id="L227" title="All 2 branches missed.">            if(user.getUsername()==null)</span>
+            {
+<span class="nc" id="L229">                throw new UserNotFoundException(null,&quot;No User Name was found in the body&quot;);</span>
+            }
+
+            /***************************************************************/
+<span class="nc" id="L233">            User foundUser=userRepository.findOne(user.getUsername());</span>
+
+            /***************************************************************/
+<span class="nc bnc" id="L236" title="All 2 branches missed.">            if(foundUser==null)</span>
+            {
+<span class="nc" id="L238">                throw new UserNotFoundException(user.getUsername());</span>
+            }
+
+            /***************************************************************/
+<span class="nc" id="L242">            assessment = this.addUserToAssessment(assessment, foundUser);</span>
+<span class="nc" id="L243">            return new ResponseEntity&lt;Assessment&gt;(assessment, HttpStatus.OK);</span>
+        }
+        else
+        {
+<span class="nc" id="L247">            throw new AssessmentNotFoundException(assessmentID);</span>
+        }
+    }
+
+    /**
+     * Adds a question to an assessment
+     * @param session Users Session(Were we will pick the user making the request)
+     * @return ResponseEntity&lt;Assessment&gt;
+     */
+    @RequestMapping(value = &quot;/rest/assessments&quot;, method=RequestMethod.GET)
+    public ArrayList&lt;Assessment&gt; getAllAssessments(HttpSession session) throws Exception
+    {
+        /*******************************************************************/
+<span class="fc" id="L260">        ArrayList&lt;Assessment&gt; assessments = new ArrayList&lt;Assessment&gt;();</span>
+
+        /*******************************************************************/
+<span class="fc bfc" id="L263" title="All 2 branches covered.">        for (Assessment assessment : assessmentRepository.findForUser(AuthenticationController.GetUser(session).getUsername()))</span>
+        {
+<span class="fc" id="L265">            assessments.add(assessment);</span>
+<span class="fc" id="L266">        }</span>
+
+        /*******************************************************************/
+<span class="fc" id="L269">        return assessments;</span>
+
+
+    }
+
+
+
+    /**
+     * Deletes an assessment
+     * @param assessmentID Id of the assessment
+     * @return A boolean indicating if it was trully deleted
+     */
+    @RequestMapping(value = &quot;/rest/assessments/{id}/delete&quot;, method = RequestMethod.DELETE)
+    public ResponseEntity&lt;Boolean&gt; deleteAssessment(@PathVariable(&quot;id&quot;) int assessmentID)
+    {
+<span class="fc" id="L284">        Assessment assessment = assessmentRepository.findOne(assessmentID);</span>
+
+        /*******************************************************************/
+<span class="fc bfc" id="L287" title="All 2 branches covered.">        if (assessment != null)</span>
+        {
+<span class="fc" id="L289">            assessmentRepository.delete(assessment);</span>
+<span class="fc" id="L290">            return new ResponseEntity&lt;Boolean&gt;(Boolean.TRUE, HttpStatus.OK);</span>
+        }
+
+        /*******************************************************************/
+        else
+        {
+<span class="fc" id="L296">            throw new AssessmentNotFoundException(assessmentID);</span>
+        }
+    }
+
+    /***********************************************************************/
+    /* To Make Life Easier                                                 */
+    /***********************************************************************/
+    private Assessment addQuestionToAssessment(Assessment assessment, Question question)
+    {
+<span class="fc" id="L305">        Set&lt;Question&gt; questionSet = assessment.getQuestionSet();</span>
+<span class="fc" id="L306">        questionSet.add(question);</span>
+<span class="fc" id="L307">        assessment.setQuestionSet(questionSet);</span>
+<span class="fc" id="L308">        return this.assessmentRepository.save(assessment);</span>
+    }
+
+    /***********************************************************************/
+    private Assessment addUserToAssessment(Assessment assessment, User user)
+    {
+<span class="fc" id="L314">        Set&lt;User&gt; userSet = assessment.getUsersSet();</span>
+<span class="fc" id="L315">        userSet.add(user);</span>
+<span class="fc" id="L316">        assessment.setUsersSet(userSet);</span>
+<span class="fc" id="L317">        return this.assessmentRepository.save(assessment);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

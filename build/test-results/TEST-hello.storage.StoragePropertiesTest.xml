@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hello.storage.StoragePropertiesTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-04-16T10:43:35" hostname="Puget-99033" time="0.001">
+  <properties/>
+  <testcase name="canary" classname="hello.storage.StoragePropertiesTest" time="0.0"/>
+  <testcase name="setVideoDirectoryTest" classname="hello.storage.StoragePropertiesTest" time="0.0"/>
+  <testcase name="setAudioDirectoryTest" classname="hello.storage.StoragePropertiesTest" time="0.0"/>
+  <testcase name="setDirectoryTest" classname="hello.storage.StoragePropertiesTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

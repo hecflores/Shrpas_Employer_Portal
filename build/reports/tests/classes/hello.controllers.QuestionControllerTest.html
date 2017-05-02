@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class hello.controllers.QuestionControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class hello.controllers.QuestionControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/hello.controllers.html">hello.controllers</a> &gt; QuestionControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">7</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">4.925s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">addAQuestion</td>
+<td>0.432s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAQuestionReturnsOKStatus</td>
+<td>0.947s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteAQuestion</td>
+<td>0.687s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deletingANonExistingQuestionThrowException</td>
+<td>0.571s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAllAssessmentQuestions</td>
+<td>0.870s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAnAssessmentQuestion</td>
+<td>0.701s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">nullQuestionShouldThrowException</td>
+<td>0.717s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2017-04-16 05:34:59.003  INFO 8432 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [hello.controllers.QuestionControllerTest], using SpringBootContextLoader
+2017-04-16 05:34:59.003  INFO 8432 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [hello.controllers.QuestionControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2017-04-16 05:34:59.003  INFO 8432 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener]
+2017-04-16 05:34:59.003  INFO 8432 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3956fc8c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@ddd3a0b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@50bb4f51, org.springframework.test.context.support.DirtiesContextTestExecutionListener@e31fde5, org.springframework.test.context.transaction.TransactionalTestExecutionListener@8dd233, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6464bd4b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6e2fa751, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6f70a1a4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@102ea33, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@404d91bd, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@534ba3ca, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@395c5586]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.4.4.RELEASE)
+
+2017-04-16 05:34:59.062  INFO 8432 --- [    Test worker] h.controllers.QuestionControllerTest     : Starting QuestionControllerTest on Puget-99033 with PID 8432 (started by Hector in D:\SHRPAS_Project)
+2017-04-16 05:34:59.062  INFO 8432 --- [    Test worker] h.controllers.QuestionControllerTest     : The following profiles are active: production
+2017-04-16 05:34:59.062  INFO 8432 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@2414277: startup date [Sun Apr 16 05:34:59 CDT 2017]; root of context hierarchy
+2017-04-16 05:34:59.610  INFO 8432 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'managementServletContext' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcHypermediaManagementContextConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcAutoConfiguration.class]]
+2017-04-16 05:34:59.748  INFO 8432 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$84143e54] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-04-16 05:34:59.864  INFO 8432 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-04-16 05:34:59.864  INFO 8432 --- [    Test worker] org.hibernate.ejb.Ejb3Configuration      : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-04-16 05:34:59.864  INFO 8432 --- [    Test worker] o.h.s.j.c.i.ConnectionProviderInitiator  : HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2017-04-16 05:35:12.808  INFO 8432 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2017-04-16 05:35:12.808  INFO 8432 --- [    Test worker] o.h.e.t.i.TransactionFactoryInitiator    : HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory
+2017-04-16 05:35:12.808  INFO 8432 --- [    Test worker] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2017-04-16 05:35:12.824  INFO 8432 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2017-04-16 05:35:16.935  INFO 8432 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-04-16 05:35:16.935  WARN 8432 --- [    Test worker] o.h.e.i.EntityManagerFactoryRegistry     : HHH000436: Entity manager factory name (default) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property 'hibernate.ejb.entitymanager_factory_name'
+2017-04-16 05:35:16.935  INFO 8432 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-04-16 05:35:17.066  INFO 8432 --- [    Test worker] o.s.b.f.config.PropertiesFactoryBean     : Loading properties file from class path resource [rest-default-messages.properties]
+2017-04-16 05:35:18.855  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@2414277: startup date [Sun Apr 16 05:34:59 CDT 2017]; root of context hierarchy
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/login],methods=[POST],consumes=[application/json]}&quot; onto public hello.models.LoginResults hello.controllers.AdministratorController.login(java.lang.String,hello.models.LoginRequest,org.springframework.validation.BindingResult,javax.servlet.http.HttpServletResponse)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/assessments/{id}/users],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Assessment&gt; hello.controllers.AssessmentController.addUser(int,hello.models.User) throws java.lang.Exception
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/send-email-test],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.String&gt; hello.controllers.AssessmentController.sendEmailTest() throws java.lang.Exception
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/assessments/{id}/delete],methods=[DELETE]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Boolean&gt; hello.controllers.AssessmentController.deleteAssessment(int)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/assessments],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Assessment&gt; hello.controllers.AssessmentController.addAssessment(javax.servlet.http.HttpSession,hello.models.Assessment) throws java.lang.Exception
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/assessments/{id}],methods=[PATCH]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Assessment&gt; hello.controllers.AssessmentController.updateAssessment(int,hello.models.Assessment) throws java.lang.Exception
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/assessments/{id}/],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Assessment&gt; hello.controllers.AssessmentController.getAssessment(int)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/assessments/{id}/question],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Assessment&gt; hello.controllers.AssessmentController.addQuestion(int,hello.models.Question) throws java.lang.Exception
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/assessments],methods=[GET]}&quot; onto public java.util.ArrayList&lt;hello.models.Assessment&gt; hello.controllers.AssessmentController.getAllAssessments(javax.servlet.http.HttpSession) throws java.lang.Exception
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/assessments/{id}/question/{questionId}],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Assessment&gt; hello.controllers.AssessmentController.addExistingQuestion(int,int)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/session/login],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.LoginResponse&gt; hello.controllers.AuthenticationController.login(hello.models.LoginRequest,javax.servlet.http.HttpSession)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/session],methods=[GET]}&quot; onto public hello.models.User hello.controllers.AuthenticationController.session(javax.servlet.http.HttpSession)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/session],methods=[DELETE]}&quot; onto public void hello.controllers.AuthenticationController.logout(javax.servlet.http.HttpSession)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/session/logout],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.LogoutResponse&gt; hello.controllers.AuthenticationController.logout() throws java.lang.Exception
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/session/is-logged-in],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.LoginResponse&gt; hello.controllers.AuthenticationController.isLoggedIn(javax.servlet.http.HttpSession)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/files/upload]}&quot; onto public hello.models.JSONResponse hello.controllers.FileUploadController.uploadFile(org.springframework.web.multipart.MultipartFile)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/files/{filename:.+}],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;org.springframework.core.io.Resource&gt; hello.controllers.FileUploadController.serveFile(java.lang.String)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/app/**]}&quot; onto public org.springframework.web.servlet.ModelAndView hello.controllers.HomeController.index(javax.servlet.http.HttpSession,javax.servlet.http.HttpServletResponse)
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[]}&quot; onto public java.lang.String hello.controllers.HomeController.home()
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/participants],methods=[GET]}&quot; onto public java.util.ArrayList&lt;hello.models.Participant&gt; hello.controllers.ParticipantController.getParticipants()
+2017-04-16 05:35:18.870  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/participants],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.List&lt;hello.models.Participant&gt;&gt; hello.controllers.ParticipantController.addParticipant(java.util.List&lt;hello.models.Participant&gt;)
+2017-04-16 05:35:18.886  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/participant],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Participant&gt; hello.controllers.ParticipantController.addParticipant(hello.models.Participant)
+2017-04-16 05:35:18.886  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/participants/{id}],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Participant&gt; hello.controllers.ParticipantController.getParticipant(int)
+2017-04-16 05:35:18.886  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/participants/{id}],methods=[DELETE]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Boolean&gt; hello.controllers.ParticipantController.deleteParticipant(int) throws java.lang.Exception
+2017-04-16 05:35:18.886  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/participants/{id}],methods=[PUT]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Participant&gt; hello.controllers.ParticipantController.updateParticipant(int,hello.models.Participant) throws java.lang.Exception
+2017-04-16 05:35:18.886  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/questions],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Question&gt; hello.controllers.QuestionController.addQuestion(hello.models.Question)
+2017-04-16 05:35:18.886  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/questions/{id}/],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Question&gt; hello.controllers.QuestionController.getAQuestion(int)
+2017-04-16 05:35:18.886  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/questions/{id}],methods=[PATCH]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.Question&gt; hello.controllers.QuestionController.updateQuestion(int,hello.models.Question) throws java.lang.Exception
+2017-04-16 05:35:18.886  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/questions],methods=[GET]}&quot; onto public java.util.ArrayList&lt;hello.models.Question&gt; hello.controllers.QuestionController.getQuestions()
+2017-04-16 05:35:18.886  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/questions/{id}],methods=[DELETE]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Boolean&gt; hello.controllers.QuestionController.deleteQuestion(int)
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}/assessment/{assessmentid}],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.addExistingAssessmentToTargetGroup(int,int) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}/participants/{participantId}],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.addExistingParticipantToTargetGroup(int,int) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.addTargetGroup(javax.servlet.http.HttpSession,hello.models.TargetGroup) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.getTargetGroup(int)
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups],methods=[GET]}&quot; onto public java.util.ArrayList&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.getTargetGroups() throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}],methods=[DELETE]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Boolean&gt; hello.controllers.TargetGroupController.deleteTargetGroup(int) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}/assessment],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.addNewAssessmentToTargetGroup(int,hello.models.Assessment) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}/participants],methods=[GET]}&quot; onto public java.util.ArrayList&lt;hello.models.Participant&gt; hello.controllers.TargetGroupController.getParticipantsInTargetGroup(int) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}/participants/{participantId}],methods=[PUT]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.removeParticipantFromTargetGroup(int,int) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}/participants],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.addNewParticipantToTargetGroup(int,hello.models.Participant) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}/participantList],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.addNewParticipantsToTargetGroup(int,java.util.List&lt;hello.models.Participant&gt;) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/targetGroups/{id}],methods=[PUT]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.TargetGroup&gt; hello.controllers.TargetGroupController.updateTargetGroup(int,hello.models.TargetGroup) throws java.lang.Exception
+2017-04-16 05:35:18.887  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/register],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.User&gt; hello.controllers.UserController.registerUser(hello.models.User) throws java.lang.Exception
+2017-04-16 05:35:18.888  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/currentUser],methods=[PATCH]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.User&gt; hello.controllers.UserController.updateUser(hello.models.User) throws java.lang.Exception
+2017-04-16 05:35:18.888  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rest/currentUser],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;hello.models.User&gt; hello.controllers.UserController.getCurrentUser() throws java.lang.Exception
+2017-04-16 05:35:18.888  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-04-16 05:35:18.888  INFO 8432 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-04-16 05:35:18.892  INFO 8432 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-04-16 05:35:18.892  INFO 8432 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/resources/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-04-16 05:35:18.908  INFO 8432 --- [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : Detected @ExceptionHandler methods in repositoryRestExceptionHandler
+2017-04-16 05:35:18.908  INFO 8432 --- [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2017-04-16 05:35:18.924  INFO 8432 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-04-16 05:35:18.955  INFO 8432 --- [    Test worker] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-04-16 05:35:19.108  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerAdapter   : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@2414277: startup date [Sun Apr 16 05:34:59 CDT 2017]; root of context hierarchy
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerAdapter   : Detected ResponseBodyAdvice bean in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/ || /api],methods=[GET],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.HttpEntity&lt;org.springframework.data.rest.webmvc.RepositoryLinksResource&gt; org.springframework.data.rest.webmvc.RepositoryController.listRepositories()
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/ || /api],methods=[HEAD],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;?&gt; org.springframework.data.rest.webmvc.RepositoryController.headForRepositories()
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/ || /api],methods=[OPTIONS],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; org.springframework.data.rest.webmvc.RepositoryController.optionsForRepositories()
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}],methods=[PUT],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;? extends org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.putItemResource(org.springframework.data.rest.webmvc.RootResourceInformation,org.springframework.data.rest.webmvc.PersistentEntityResource,java.io.Serializable,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler,org.springframework.data.rest.webmvc.support.ETag,java.lang.String) throws org.springframework.web.HttpRequestMethodNotSupportedException
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}],methods=[GET],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;org.springframework.hateoas.Resource&lt;?&gt;&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.getItemResource(org.springframework.data.rest.webmvc.RootResourceInformation,java.io.Serializable,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler,org.springframework.util.MultiValueMap&lt;java.lang.String, java.lang.String&gt;) throws org.springframework.web.HttpRequestMethodNotSupportedException
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}],methods=[PATCH],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.patchItemResource(org.springframework.data.rest.webmvc.RootResourceInformation,org.springframework.data.rest.webmvc.PersistentEntityResource,java.io.Serializable,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler,org.springframework.data.rest.webmvc.support.ETag,java.lang.String) throws org.springframework.web.HttpRequestMethodNotSupportedException,org.springframework.data.rest.webmvc.ResourceNotFoundException
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}],methods=[DELETE],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;?&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.deleteItemResource(org.springframework.data.rest.webmvc.RootResourceInformation,java.io.Serializable,org.springframework.data.rest.webmvc.support.ETag) throws org.springframework.data.rest.webmvc.ResourceNotFoundException,org.springframework.web.HttpRequestMethodNotSupportedException
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}],methods=[GET],produces=[application/x-spring-data-compact+json || text/uri-list]}&quot; onto public org.springframework.hateoas.Resources&lt;?&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.getCollectionResourceCompact(org.springframework.data.rest.webmvc.RootResourceInformation,org.springframework.data.rest.webmvc.support.DefaultedPageable,org.springframework.data.domain.Sort,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler) throws org.springframework.data.rest.webmvc.ResourceNotFoundException,org.springframework.web.HttpRequestMethodNotSupportedException
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}],methods=[POST],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.postCollectionResource(org.springframework.data.rest.webmvc.RootResourceInformation,org.springframework.data.rest.webmvc.PersistentEntityResource,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler,java.lang.String) throws org.springframework.web.HttpRequestMethodNotSupportedException
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}],methods=[GET],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.hateoas.Resources&lt;?&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.getCollectionResource(org.springframework.data.rest.webmvc.RootResourceInformation,org.springframework.data.rest.webmvc.support.DefaultedPageable,org.springframework.data.domain.Sort,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler) throws org.springframework.data.rest.webmvc.ResourceNotFoundException,org.springframework.web.HttpRequestMethodNotSupportedException
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}],methods=[OPTIONS],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;?&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.optionsForItemResource(org.springframework.data.rest.webmvc.RootResourceInformation)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}],methods=[OPTIONS],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;?&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.optionsForCollectionResource(org.springframework.data.rest.webmvc.RootResourceInformation)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}],methods=[HEAD],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;?&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.headCollectionResource(org.springframework.data.rest.webmvc.RootResourceInformation,org.springframework.data.rest.webmvc.support.DefaultedPageable) throws org.springframework.web.HttpRequestMethodNotSupportedException
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}],methods=[HEAD],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;?&gt; org.springframework.data.rest.webmvc.RepositoryEntityController.headForItemResource(org.springframework.data.rest.webmvc.RootResourceInformation,java.io.Serializable,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler) throws org.springframework.web.HttpRequestMethodNotSupportedException
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}/{property}/{propertyId}],methods=[DELETE],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController.deletePropertyReferenceId(org.springframework.data.rest.webmvc.RootResourceInformation,java.io.Serializable,java.lang.String,java.lang.String) throws java.lang.Exception
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}/{property}/{propertyId}],methods=[GET],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController.followPropertyReference(org.springframework.data.rest.webmvc.RootResourceInformation,java.io.Serializable,java.lang.String,java.lang.String,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler) throws java.lang.Exception
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}/{property}],methods=[GET],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController.followPropertyReference(org.springframework.data.rest.webmvc.RootResourceInformation,java.io.Serializable,java.lang.String,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler) throws java.lang.Exception
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}/{property}],methods=[PATCH || PUT || POST],consumes=[application/json || application/x-spring-data-compact+json || text/uri-list],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;? extends org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController.createPropertyReference(org.springframework.data.rest.webmvc.RootResourceInformation,org.springframework.http.HttpMethod,org.springframework.hateoas.Resources&lt;java.lang.Object&gt;,java.io.Serializable,java.lang.String) throws java.lang.Exception
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}/{property}],methods=[GET],produces=[application/x-spring-data-compact+json || text/uri-list]}&quot; onto public org.springframework.http.ResponseEntity&lt;org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController.followPropertyReferenceCompact(org.springframework.data.rest.webmvc.RootResourceInformation,java.io.Serializable,java.lang.String,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler) throws java.lang.Exception
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/{id}/{property}],methods=[DELETE],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;? extends org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController.deletePropertyReference(org.springframework.data.rest.webmvc.RootResourceInformation,java.io.Serializable,java.lang.String) throws java.lang.Exception
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/search],methods=[OPTIONS],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; org.springframework.data.rest.webmvc.RepositorySearchController.optionsForSearches(org.springframework.data.rest.webmvc.RootResourceInformation)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/search/{search}],methods=[GET],produces=[application/x-spring-data-compact+json]}&quot; onto public org.springframework.hateoas.ResourceSupport org.springframework.data.rest.webmvc.RepositorySearchController.executeSearchCompact(org.springframework.data.rest.webmvc.RootResourceInformation,org.springframework.util.MultiValueMap&lt;java.lang.String, java.lang.Object&gt;,java.lang.String,java.lang.String,org.springframework.data.rest.webmvc.support.DefaultedPageable,org.springframework.data.domain.Sort,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/search],methods=[GET],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.data.rest.webmvc.RepositorySearchesResource org.springframework.data.rest.webmvc.RepositorySearchController.listSearches(org.springframework.data.rest.webmvc.RootResourceInformation)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/search/{search}],methods=[HEAD],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Object&gt; org.springframework.data.rest.webmvc.RepositorySearchController.headForSearch(org.springframework.data.rest.webmvc.RootResourceInformation,java.lang.String)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/search/{search}],methods=[GET],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Object&gt; org.springframework.data.rest.webmvc.RepositorySearchController.executeSearch(org.springframework.data.rest.webmvc.RootResourceInformation,org.springframework.util.MultiValueMap&lt;java.lang.String, java.lang.Object&gt;,java.lang.String,org.springframework.data.rest.webmvc.support.DefaultedPageable,org.springframework.data.domain.Sort,org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/search/{search}],methods=[OPTIONS],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Object&gt; org.springframework.data.rest.webmvc.RepositorySearchController.optionsForSearch(org.springframework.data.rest.webmvc.RootResourceInformation,java.lang.String)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.RepositoryRestHandlerMapping   : Mapped &quot;{[/api/{repository}/search],methods=[HEAD],produces=[application/hal+json || application/json || application/*+json;charset=UTF-8]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; org.springframework.data.rest.webmvc.RepositorySearchController.headForSearches(org.springframework.data.rest.webmvc.RootResourceInformation)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.BasePathAwareHandlerMapping    : Mapped &quot;{[/api/profile/{repository}],methods=[GET],produces=[application/alps+json || */*]}&quot; onto org.springframework.http.HttpEntity&lt;org.springframework.data.rest.webmvc.RootResourceInformation&gt; org.springframework.data.rest.webmvc.alps.AlpsController.descriptor(org.springframework.data.rest.webmvc.RootResourceInformation)
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.BasePathAwareHandlerMapping    : Mapped &quot;{[/api/profile/{repository}],methods=[OPTIONS],produces=[application/alps+json]}&quot; onto org.springframework.http.HttpEntity&lt;?&gt; org.springframework.data.rest.webmvc.alps.AlpsController.alpsOptions()
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.BasePathAwareHandlerMapping    : Mapped &quot;{[/api/profile],methods=[OPTIONS]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; org.springframework.data.rest.webmvc.ProfileController.profileOptions()
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.BasePathAwareHandlerMapping    : Mapped &quot;{[/api/profile],methods=[GET]}&quot; onto org.springframework.http.HttpEntity&lt;org.springframework.hateoas.ResourceSupport&gt; org.springframework.data.rest.webmvc.ProfileController.listAllFormsOfMetadata()
+2017-04-16 05:35:19.124  INFO 8432 --- [    Test worker] o.s.d.r.w.BasePathAwareHandlerMapping    : Mapped &quot;{[/api/profile/{repository}],methods=[GET],produces=[application/schema+json]}&quot; onto public org.springframework.http.HttpEntity&lt;org.springframework.data.rest.webmvc.json.JsonSchema&gt; org.springframework.data.rest.webmvc.RepositorySchemaController.schema(org.springframework.data.rest.webmvc.RootResourceInformation)
+2017-04-16 05:35:19.140  INFO 8432 --- [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : Detected @ExceptionHandler methods in repositoryRestExceptionHandler
+2017-04-16 05:35:19.140  INFO 8432 --- [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/actuator || /actuator.json],produces=[application/json]}&quot; onto public org.springframework.hateoas.ResourceSupport org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint.links()
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/info || /info.json],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/beans || /beans.json],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/health || /health.json],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/dump || /dump.json],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}&quot; onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+2017-04-16 05:35:19.171  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/trace || /trace.json],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-04-16 05:35:19.187  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/env/{name:.*}],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+2017-04-16 05:35:19.187  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/env || /env.json],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-04-16 05:35:19.187  INFO 8432 --- [    Test worker] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped &quot;{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}&quot; onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-04-16 05:35:19.325  INFO 8432 --- [    Test worker] h.controllers.QuestionControllerTest     : Started QuestionControllerTest in 20.307 seconds (JVM running for 130.044)
+2017-04-16 05:35:19.325  INFO 8432 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2017-04-16 05:35:19.325  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2017-04-16 05:35:19.325  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 0 ms
+2017-04-16 05:35:19.741  WARN 8432 --- [    Test worker] o.s.orm.jpa.vendor.HibernateJpaDialect   : JDBC Connection to reset not identical to originally prepared Connection - please make sure to use connection release mode ON_CLOSE (the default) and to run against Hibernate 4.2+ (or switch HibernateJpaDialect's prepareConnection flag to false
+2017-04-16 05:35:19.757  INFO 8432 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2017-04-16 05:35:19.757  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2017-04-16 05:35:19.757  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 0 ms
+2017-04-16 05:35:20.458  WARN 8432 --- [    Test worker] o.s.orm.jpa.vendor.HibernateJpaDialect   : JDBC Connection to reset not identical to originally prepared Connection - please make sure to use connection release mode ON_CLOSE (the default) and to run against Hibernate 4.2+ (or switch HibernateJpaDialect's prepareConnection flag to false
+2017-04-16 05:35:20.474  INFO 8432 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2017-04-16 05:35:20.474  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2017-04-16 05:35:20.474  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 0 ms
+2017-04-16 05:35:21.045  WARN 8432 --- [    Test worker] o.s.orm.jpa.vendor.HibernateJpaDialect   : JDBC Connection to reset not identical to originally prepared Connection - please make sure to use connection release mode ON_CLOSE (the default) and to run against Hibernate 4.2+ (or switch HibernateJpaDialect's prepareConnection flag to false
+2017-04-16 05:35:21.060  INFO 8432 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2017-04-16 05:35:21.060  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2017-04-16 05:35:21.060  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 0 ms
+2017-04-16 05:35:21.490  WARN 8432 --- [    Test worker] o.s.orm.jpa.vendor.HibernateJpaDialect   : JDBC Connection to reset not identical to originally prepared Connection - please make sure to use connection release mode ON_CLOSE (the default) and to run against Hibernate 4.2+ (or switch HibernateJpaDialect's prepareConnection flag to false
+2017-04-16 05:35:21.733  INFO 8432 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2017-04-16 05:35:21.734  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2017-04-16 05:35:21.736  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 2 ms
+2017-04-16 05:35:22.579  WARN 8432 --- [    Test worker] o.s.orm.jpa.vendor.HibernateJpaDialect   : JDBC Connection to reset not identical to originally prepared Connection - please make sure to use connection release mode ON_CLOSE (the default) and to run against Hibernate 4.2+ (or switch HibernateJpaDialect's prepareConnection flag to false
+2017-04-16 05:35:22.679  WARN 8432 --- [    Test worker] o.s.orm.jpa.vendor.HibernateJpaDialect   : JDBC Connection to reset not identical to originally prepared Connection - please make sure to use connection release mode ON_CLOSE (the default) and to run against Hibernate 4.2+ (or switch HibernateJpaDialect's prepareConnection flag to false
+2017-04-16 05:35:22.679  INFO 8432 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2017-04-16 05:35:22.679  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2017-04-16 05:35:22.679  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 0 ms
+2017-04-16 05:35:23.380  WARN 8432 --- [    Test worker] o.s.orm.jpa.vendor.HibernateJpaDialect   : JDBC Connection to reset not identical to originally prepared Connection - please make sure to use connection release mode ON_CLOSE (the default) and to run against Hibernate 4.2+ (or switch HibernateJpaDialect's prepareConnection flag to false
+2017-04-16 05:35:23.396  INFO 8432 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2017-04-16 05:35:23.396  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2017-04-16 05:35:23.402  INFO 8432 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 6 ms
+2017-04-16 05:35:24.250  WARN 8432 --- [    Test worker] o.s.orm.jpa.vendor.HibernateJpaDialect   : JDBC Connection to reset not identical to originally prepared Connection - please make sure to use connection release mode ON_CLOSE (the default) and to run against Hibernate 4.2+ (or switch HibernateJpaDialect's prepareConnection flag to false
+2017-04-16 05:35:24.265  INFO 8432 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@2414277: startup date [Sun Apr 16 05:34:59 CDT 2017]; root of context hierarchy
+2017-04-16 05:35:24.265  INFO 8432 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 2.13</a> at Apr 16, 2017 5:43:35 AM</p>
+</div>
+</div>
+</body>
+</html>
